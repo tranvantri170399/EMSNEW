@@ -12,12 +12,12 @@ import javax.persistence.Embeddable;
 public class SchoolroomAmphiId implements java.io.Serializable {
 
 	private Integer amphiId;
-	private byte[] schoolroomId;
+	private String schoolroomId;
 
 	public SchoolroomAmphiId() {
 	}
 
-	public SchoolroomAmphiId(Integer amphiId, byte[] schoolroomId) {
+	public SchoolroomAmphiId(Integer amphiId, String schoolroomId) {
 		this.amphiId = amphiId;
 		this.schoolroomId = schoolroomId;
 	}
@@ -32,36 +32,36 @@ public class SchoolroomAmphiId implements java.io.Serializable {
 	}
 
 	@Column(name = "SchoolroomID")
-	public byte[] getSchoolroomId() {
+	public String getSchoolroomId() {
 		return this.schoolroomId;
 	}
 
-	public void setSchoolroomId(byte[] schoolroomId) {
+	public void setSchoolroomId(String schoolroomId) {
 		this.schoolroomId = schoolroomId;
 	}
 
-	public boolean equals(Object other) {
-		if ((this == other))
-			return true;
-		if ((other == null))
-			return false;
-		if (!(other instanceof SchoolroomAmphiId))
-			return false;
-		SchoolroomAmphiId castOther = (SchoolroomAmphiId) other;
-
-		return ((this.getAmphiId() == castOther.getAmphiId()) || (this.getAmphiId() != null
-				&& castOther.getAmphiId() != null && this.getAmphiId().equals(castOther.getAmphiId())))
-				&& ((this.getSchoolroomId() == castOther.getSchoolroomId())
-						|| (this.getSchoolroomId() != null && castOther.getSchoolroomId() != null
-								&& Arrays.equals(this.getSchoolroomId(), castOther.getSchoolroomId())));
-	}
-
-	public int hashCode() {
-		int result = 17;
-
-		result = 37 * result + (getAmphiId() == null ? 0 : this.getAmphiId().hashCode());
-		result = 37 * result + (getSchoolroomId() == null ? 0 : Arrays.hashCode(this.getSchoolroomId()));
-		return result;
-	}
+//	public boolean equals(Object other) {
+//		if ((this == other))
+//			return true;
+//		if ((other == null))
+//			return false;
+//		if (!(other instanceof SchoolroomAmphiId))
+//			return false;
+//		SchoolroomAmphiId castOther = (SchoolroomAmphiId) other;
+//
+//		return ((this.getAmphiId() == castOther.getAmphiId()) || (this.getAmphiId() != null
+//				&& castOther.getAmphiId() != null && this.getAmphiId().equals(castOther.getAmphiId())))
+//				&& ((this.getSchoolroomId() == castOther.getSchoolroomId())
+//						|| (this.getSchoolroomId() != null && castOther.getSchoolroomId() != null
+//								&& Arrays.equals(this.getSchoolroomId(), castOther.getSchoolroomId())));
+//	}
+//
+//	public int hashCode() {
+//		int result = 17;
+//
+//		result = 37 * result + (getAmphiId() == null ? 0 : this.getAmphiId().hashCode());
+//		result = 37 * result + (getSchoolroomId() == null ? 0 : Arrays.hashCode(this.getSchoolroomId()));
+//		return result;
+//	}
 
 }
