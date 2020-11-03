@@ -1,7 +1,5 @@
 package com.example.demo.controller;
 
-import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,46 +12,101 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.entities.*;
+import com.example.demo.repository.SchoolroomAmphiResponsitory;
 import com.example.demo.repository.AmphiResponsitory;
+import com.example.demo.repository.AttandenceResponsitory;
+import com.example.demo.repository.CourseResponsitory;
 import com.example.demo.repository.RoleRespository;
 import com.example.demo.repository.StaffResponsitory;
+import com.example.demo.repository.StudentResponsitory;
+import com.example.demo.repository.TeacherResponsitory;
 
 //@RestController
 @Controller
 public class newcontroller {
-	
+
 	@Autowired
 	AmphiResponsitory amrep;
-	
+
 	@Autowired
 	StaffResponsitory srep;
 	@Autowired
-	RoleRespository	rrep;
-		
-	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
-	  public String index() {
-	    return "/jsp/index";
-	  }
-	@RequestMapping(value = { "/hello" }, method = RequestMethod.GET)
-	  public String hello() {
-	    return "jsp/templateStudent";
-	  }
-	@RequestMapping(value = { "/login" }, method = RequestMethod.GET)
-	  public String hello11() {
-	    return "layout/layout";
-	  }
-
-	@RequestMapping(value = {"/load"}, method = RequestMethod.GET)
-	 public String index(Model model) {
-		List<Staff> list= srep.findAll();
-		model.addAttribute("List",list);
-	    return "/jsp/loadlist";
-	  }
+	RoleRespository rrep;
 	
-	@RequestMapping(value = {"/loads"})
-	 public String loadstaff() {
+	@Autowired
+	SchoolroomAmphiResponsitory amphiIDResponsitory;
+	
+	@Autowired
+	TeacherResponsitory	teacherrepo;
+	
+	@Autowired
+	StudentResponsitory sturepo;
+	
+	@Autowired
+	AttandenceResponsitory attrep;
+	
+	@Autowired
+	CourseResponsitory Courrep;
+
+	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
+	public String index() {
+		return "/jsp/index";
+	}
+
+	@RequestMapping(value = { "/hello" }, method = RequestMethod.GET)
+	public String hello() {
+		return "jsp/templateStudent";
+	}
+
+	@RequestMapping(value = { "/login" }, method = RequestMethod.GET)
+	public String hello11() {
+		return "layout/layout";
+	}
+
+	@RequestMapping(value = { "/load" }, method = RequestMethod.GET)
+	public String index(Model model) {
+		List<Staff> list = srep.findAll();
+		model.addAttribute("List", list);
+		return "/jsp/loadlist";
+	}
+
+	@RequestMapping(value = { "/loads" })
+	public String loadstaff() {
 		List<Staff> iterator = srep.findAll();
-	    return iterator.toString();
-	  }
+		return iterator.toString();
+	}
+	
+	@RequestMapping(value = { "/loadTeacher" })
+	public String loadteacher(Model model) {
+		List<Teacher> iterator = teacherrepo.findAll();
+		System.out.println("next");
+		model.addAttribute("List", iterator);
+		return "/jsp/loadteacher";
+	}
+	
+	@RequestMapping(value = { "/loadStudent" })
+	public String loadstudent() {
+		Iterable<Student> iterator = sturepo.findAll();
+		return iterator.toString();
+	}
+	
+	@RequestMapping(value = { "/loadAttan" })
+	public String loadAttan() {
+		List<Attandence> iterator = attrep.findAll();
+		return iterator.toString();
+	}
+	@RequestMapping(value = { "/loadCourse" })
+	public String loadCourse() {
+		List<Course> iterator = Courrep.findAll();
+		return iterator.toString();
+	}
+
+	@RequestMapping(value = { "/loadAmphi" })
+	public String loadsAmphi(Model model) {
+		List<Amphitheater> iterator = amrep.findAll();
+		model.addAttribute("List", iterator);
+		return "/jsp/loadamphi";
+	}
+	
 
 }
