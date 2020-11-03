@@ -15,6 +15,7 @@ import com.example.demo.entities.*;
 import com.example.demo.repository.SchoolroomAmphiResponsitory;
 import com.example.demo.repository.AmphiResponsitory;
 import com.example.demo.repository.AttandenceResponsitory;
+import com.example.demo.repository.ClassroomStudentResponsitory;
 import com.example.demo.repository.CourseResponsitory;
 import com.example.demo.repository.RoleRespository;
 import com.example.demo.repository.StaffResponsitory;
@@ -47,10 +48,17 @@ public class newcontroller {
 	
 	@Autowired
 	CourseResponsitory Courrep;
+	
+	@Autowired
+	ClassroomStudentResponsitory classrep;
 
 	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
 	public String index() {
 		return "/jsp/index";
+	}
+	@RequestMapping(value = { "/admin" }, method = RequestMethod.GET)
+	public String admin() {
+		return "/jsp/AdminPage";
 	}
 
 	@RequestMapping(value = { "/hello" }, method = RequestMethod.GET)
@@ -98,6 +106,11 @@ public class newcontroller {
 	@RequestMapping(value = { "/loadCourse" })
 	public String loadCourse() {
 		List<Course> iterator = Courrep.findAll();
+		return iterator.toString();
+	}
+	@RequestMapping(value = { "/loadClassroom" })
+	public String loadClassroomStudent() {
+		List<ClassroomStudent> iterator = classrep.findAll();
 		return iterator.toString();
 	}
 

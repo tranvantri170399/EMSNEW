@@ -29,7 +29,7 @@ public class Course {
 	private String classroomId;
 	private Set<Attandence> attandences = new HashSet<Attandence>(0);
 //	private Set<Exam> exams = new HashSet<Exam>(0);
-//	private Set<ClassroomStudent> classroomStudents = new HashSet<ClassroomStudent>(0);
+	private Set<ClassroomStudent> classroomStudents = new HashSet<ClassroomStudent>(0);
 
 	public Course() {
 	}
@@ -52,7 +52,7 @@ public class Course {
 		this.classroomId = classroomId;
 		this.attandences = attandences;
 //		this.exams = exams;
-//		this.classroomStudents = classroomStudents;
+		this.classroomStudents = classroomStudents;
 	}
 
 	@Id
@@ -148,13 +148,13 @@ public class Course {
 //		this.exams = exams;
 //	}
 //
-//	@OneToMany(mappedBy = "course")
-//	public Set<ClassroomStudent> getClassroomStudents() {
-//		return this.classroomStudents;
-//	}
-//
-//	public void setClassroomStudents(Set<ClassroomStudent> classroomStudents) {
-//		this.classroomStudents = classroomStudents;
-//	}
+	@OneToMany(mappedBy = "course")
+	public Set<ClassroomStudent> getClassroomStudents() {
+		return this.classroomStudents;
+	}
+
+	public void setClassroomStudents(Set<ClassroomStudent> classroomStudents) {
+		this.classroomStudents = classroomStudents;
+	}
 
 }
