@@ -56,6 +56,10 @@ public class newcontroller {
 	public String index() {
 		return "/jsp/index";
 	}
+	@RequestMapping(value = { "/admin" }, method = RequestMethod.GET)
+	public String admin() {
+		return "/jsp/AdminPage";
+	}
 
 	@RequestMapping(value = { "/hello" }, method = RequestMethod.GET)
 	public String hello() {
