@@ -19,6 +19,7 @@
 				<tr>
 					<th>Product ID</th>
 					<th>Name</th>
+					<th>role</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -27,6 +28,8 @@
 						<tr>
 							<td>${sp.fname}</td>
 							<td>${sp.depart.name}</td>
+							<td>${sp.role.roleName}</td>
+							
 						</tr>
 					</c:forEach>
 				</c:if>
