@@ -17,6 +17,8 @@ import com.example.demo.repository.AmphiResponsitory;
 import com.example.demo.repository.AttandenceResponsitory;
 import com.example.demo.repository.ClassroomStudentResponsitory;
 import com.example.demo.repository.CourseResponsitory;
+import com.example.demo.repository.ExamResponsitory;
+import com.example.demo.repository.MajorSemesterResponsitory;
 import com.example.demo.repository.RoleRespository;
 import com.example.demo.repository.StaffResponsitory;
 import com.example.demo.repository.StudentResponsitory;
@@ -51,6 +53,12 @@ public class newcontroller {
 	
 	@Autowired
 	ClassroomStudentResponsitory classrep;
+	
+	@Autowired
+	ExamResponsitory exrep;
+	
+	@Autowired
+	MajorSemesterResponsitory MajorseRep;
 
 	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
 	public String index() {
@@ -111,6 +119,20 @@ public class newcontroller {
 	@RequestMapping(value = { "/loadClassroom" })
 	public String loadClassroomStudent() {
 		List<ClassroomStudent> iterator = classrep.findAll();
+		return iterator.toString();
+	}
+	
+	@RequestMapping(value = { "/loadExam" })
+	public String loadexam(Model model) {
+		List<Exam> iterator = exrep.findAll();
+		model.addAttribute("List", iterator);
+		return "/jsp/loadExam";
+//		return iterator.toString();
+	}
+	
+	@RequestMapping(value = { "/loadMaSe" })
+	public String loadMajorSe() {
+		List<MajorsSemester> iterator = MajorseRep.findAll();
 		return iterator.toString();
 	}
 

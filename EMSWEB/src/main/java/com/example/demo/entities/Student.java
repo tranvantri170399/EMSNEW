@@ -34,8 +34,8 @@ public class Student  {
 	private String status;
 	private Integer idcard;
 	private String classroomId;
-//	private Set<ClassroomStudent> classroomStudents = new HashSet<ClassroomStudent>(0);
-//	private Set<ExamResult> examResults = new HashSet<ExamResult>(0);
+	private Set<ClassroomStudent> classroomStudents = new HashSet<ClassroomStudent>(0);
+	private Set<ExamResult> examResults = new HashSet<ExamResult>(0);
 	private Set<Attandence> attandences = new HashSet<Attandence>(0);
 
 	public Student() {
@@ -47,10 +47,10 @@ public class Student  {
 		this.lname = lname;
 		this.dob = dob;
 	}
-//	Set<ClassroomStudent> classroomStudents, Set<ExamResult> examResults,
+	
 	public Student(String id, Parent parent, String fname, String lname, String image,
 			String email, Date dob, String phone, String address, String status, Integer idcard,
-			String classroomId,Set<Attandence> attandences) {
+			String classroomId,Set<ClassroomStudent> classroomStudents, Set<ExamResult> examResults,Set<Attandence> attandences) {
 		this.id = id;
 		this.parent = parent;
 		this.fname = fname;
@@ -63,8 +63,8 @@ public class Student  {
 		this.status = status;
 		this.idcard = idcard;
 		this.classroomId = classroomId;
-//		this.classroomStudents = classroomStudents;
-//		this.examResults = examResults;
+		this.classroomStudents = classroomStudents;
+		this.examResults = examResults;
 		this.attandences = attandences;
 	}
 
@@ -179,23 +179,23 @@ public class Student  {
 		this.classroomId = classroomId;
 	}
 
-//	@OneToMany(fetch = FetchType.LAZY, mappedBy = "student")
-//	public Set<ClassroomStudent> getClassroomStudents() {
-//		return this.classroomStudents;
-//	}
-//
-//	public void setClassroomStudents(Set<ClassroomStudent> classroomStudents) {
-//		this.classroomStudents = classroomStudents;
-//	}
-//
-//	@OneToMany(fetch = FetchType.LAZY, mappedBy = "student")
-//	public Set<ExamResult> getExamResults() {
-//		return this.examResults;
-//	}
-//
-//	public void setExamResults(Set<ExamResult> examResults) {
-//		this.examResults = examResults;
-//	}
+	@OneToMany(mappedBy = "student")
+	public Set<ClassroomStudent> getClassroomStudents() {
+		return this.classroomStudents;
+	}
+
+	public void setClassroomStudents(Set<ClassroomStudent> classroomStudents) {
+		this.classroomStudents = classroomStudents;
+	}
+
+	@OneToMany(mappedBy = "student")
+	public Set<ExamResult> getExamResults() {
+		return this.examResults;
+	}
+
+	public void setExamResults(Set<ExamResult> examResults) {
+		this.examResults = examResults;
+	}
 
 	@OneToMany(mappedBy = "student")
 	public Set<Attandence> getAttandences() {
