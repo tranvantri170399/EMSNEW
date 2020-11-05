@@ -1,12 +1,10 @@
 package com.example.demo.entities;
 // Generated Oct 24, 2020, 7:32:02 PM by Hibernate Tools 5.1.10.Final
 
-import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -16,23 +14,23 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "Amphitheater")
-public class Amphitheater implements java.io.Serializable {
+public class Amphitheater{
 
 	private int id;
-	private Serializable amphitheaterName;
-	private Serializable amphitheaterAddress;
+	private String amphitheaterName;
+	private String amphitheaterAddress;
 	private Set<Schedule> schedules = new HashSet<Schedule>(0);
 	private Set<SchoolroomAmphi> schoolroomAmphis = new HashSet<SchoolroomAmphi>(0);
 
 	public Amphitheater() {
 	}
 
-	public Amphitheater(int id, Serializable amphitheaterName) {
+	public Amphitheater(int id, String amphitheaterName) {
 		this.id = id;
 		this.amphitheaterName = amphitheaterName;
 	}
 
-	public Amphitheater(int id, Serializable amphitheaterName, Serializable amphitheaterAddress, Set<Schedule> schedules, Set<SchoolroomAmphi> schoolroomAmphis) {
+	public Amphitheater(int id, String amphitheaterName, String amphitheaterAddress, Set<Schedule> schedules, Set<SchoolroomAmphi> schoolroomAmphis) {
 		this.id = id;
 		this.amphitheaterName = amphitheaterName;
 		this.amphitheaterAddress = amphitheaterAddress;
@@ -41,8 +39,7 @@ public class Amphitheater implements java.io.Serializable {
 	}
 
 	@Id
-
-	@Column(name = "ID", unique = true, nullable = false)
+	@Column(name = "ID")
 	public int getId() {
 		return this.id;
 	}
@@ -52,25 +49,25 @@ public class Amphitheater implements java.io.Serializable {
 	}
 
 	@Column(name = "Amphitheater_name", nullable = false)
-	public Serializable getAmphitheaterName() {
+	public String getAmphitheaterName() {
 		return this.amphitheaterName;
 	}
 
-	public void setAmphitheaterName(Serializable amphitheaterName) {
+	public void setAmphitheaterName(String amphitheaterName) {
 		this.amphitheaterName = amphitheaterName;
 	}
 
 	@Column(name = "Amphitheater_address")
-	public Serializable getAmphitheaterAddress() {
+	public String getAmphitheaterAddress() {
 		return this.amphitheaterAddress;
 	}
 
-	public void setAmphitheaterAddress(Serializable amphitheaterAddress) {
+	public void setAmphitheaterAddress(String amphitheaterAddress) {
 		this.amphitheaterAddress = amphitheaterAddress;
 	}
 
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "amphitheater")
+	@OneToMany(mappedBy = "amphitheater")
 	public Set<Schedule> getSchedules() {
 		return this.schedules;
 	}
@@ -79,7 +76,7 @@ public class Amphitheater implements java.io.Serializable {
 		this.schedules = schedules;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "amphitheater")
+	@OneToMany(mappedBy = "amphitheater")
 	public Set<SchoolroomAmphi> getSchoolroomAmphis() {
 		return this.schoolroomAmphis;
 	}
