@@ -135,6 +135,14 @@ public class newcontroller {
 		List<MajorsSemester> iterator = MajorseRep.findAll();
 		return iterator.toString();
 	}
+	
+	@RequestMapping(value = { "/loadSchoolroomAmphi" })
+	public String loadSchoolroomAmphi(Model model) {
+		List<SchoolroomAmphi> iterator = amphiIDResponsitory.findAll();
+//		return iterator.toString();
+		model.addAttribute("List", iterator);
+		return "/jsp/loadSchoolroomAmphi";
+	}
 
 	@RequestMapping(value = { "/loadAmphi" })
 	public String loadsAmphi(Model model) {

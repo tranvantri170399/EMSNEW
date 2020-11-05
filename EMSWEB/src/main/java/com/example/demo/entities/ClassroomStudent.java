@@ -1,10 +1,7 @@
 package com.example.demo.entities;
 // Generated Oct 24, 2020, 7:32:02 PM by Hibernate Tools 5.1.10.Final
 
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
