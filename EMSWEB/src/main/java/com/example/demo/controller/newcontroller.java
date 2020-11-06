@@ -16,6 +16,7 @@ import com.example.demo.repository.SchoolroomAmphiResponsitory;
 import com.example.demo.repository.AmphiResponsitory;
 import com.example.demo.repository.AttandenceResponsitory;
 import com.example.demo.repository.ClassroomStudentResponsitory;
+import com.example.demo.repository.ClassroomResponsitory;
 import com.example.demo.repository.CourseResponsitory;
 import com.example.demo.repository.ExamResponsitory;
 import com.example.demo.repository.MajorSemesterResponsitory;
@@ -23,6 +24,8 @@ import com.example.demo.repository.RoleRespository;
 import com.example.demo.repository.StaffResponsitory;
 import com.example.demo.repository.StudentResponsitory;
 import com.example.demo.repository.TeacherResponsitory;
+import com.example.demo.repository.UserResponsitory;
+import com.example.demo.repository.ParentResponsitory;
 
 //@RestController
 @Controller
@@ -55,10 +58,19 @@ public class newcontroller {
 	ClassroomStudentResponsitory classrep;
 	
 	@Autowired
+	ClassroomResponsitory classroomrep;
+	
+	@Autowired
 	ExamResponsitory exrep;
 	
 	@Autowired
 	MajorSemesterResponsitory MajorseRep;
+	
+	@Autowired
+	UserResponsitory UserRep;
+	
+	@Autowired
+	ParentResponsitory parentRep;
 
 	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
 	public String index() {
@@ -106,6 +118,18 @@ public class newcontroller {
 		return iterator.toString();
 	}
 	
+	@RequestMapping(value = { "/loadParent" })
+	public String loadparent() {
+		Iterable<Parent> iterator = parentRep.findAll();
+		return iterator.toString();
+	}
+	
+	@RequestMapping(value = { "/loadUser" })
+	public String loadUser() {
+		Iterable<User> iterator = UserRep.findAll();
+		return iterator.toString();
+	}
+	
 	@RequestMapping(value = { "/loadAttan" })
 	public String loadAttan() {
 		List<Attandence> iterator = attrep.findAll();
@@ -116,9 +140,16 @@ public class newcontroller {
 		List<Course> iterator = Courrep.findAll();
 		return iterator.toString();
 	}
-	@RequestMapping(value = { "/loadClassroom" })
+	
+	@RequestMapping(value = { "/loadClassroomStudent" })
 	public String loadClassroomStudent() {
 		List<ClassroomStudent> iterator = classrep.findAll();
+		return iterator.toString();
+	}
+	
+	@RequestMapping(value = { "/loadClassroom" })
+	public String loadClassroom() {
+		List<Classroom> iterator = classroomrep.findAll();
 		return iterator.toString();
 	}
 	
