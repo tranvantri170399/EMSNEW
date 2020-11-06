@@ -11,6 +11,9 @@
 <link
 	href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'
 	rel='stylesheet'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 <style>
 body {
 
@@ -193,33 +196,39 @@ a {
 		<div class="card card0 border-0">
 			<div class="row d-flex">
 				<div class="col-lg-6">
-					<div class="card1 pb-5">
-						<div class="row">
-							<img src="https://i.imgur.com/CXQmsmF.png" class="logo">
-						</div>
-						<div class="row px-3 justify-content-center mt-4 mb-5 border-line">
-							<img src="https://i.imgur.com/uNGdWHi.png" class="image">
+					<div class="card1 pb-3 px-4 py-4">
+						<div class="row px-3 justify-content-center mt-4 mb-5 px-5 border-line">
+							<h1 style="text-align: center">Hướng dẫn</h1>
+							<br>
+							<h5>
+							1. Giảng viên, cán bộ quản lý ở UEH chỉ sử dụng Email EMS (@ems.edu.vn) để đăng nhập.</br>
+							2. Sinh viên, học viên sử dụng tài khoản của hệ thống Online để đăng nhập:</br>
+								- Vui lòng chọn role 
+							hoặc có thể dùng Email UEH (@st.ueh.edu.vn) để đăng nhập.</br>
+							3. Lưu ý:</br>
+							- Việc đổi mật khẩu được thực hiện tại các trang Online sẽ tự động thay đổi mật khẩu toàn hệ thống</br>
+							- Nếu quên mật khẩu tại trang Online, liên hệ các đơn vị quản lý đào tạo.</br>
+							- Nếu quên mật khẩu email, truy cập: tại đây</br>
+							</h5>
 						</div>
 					</div>
 				</div>
 				<div class="col-lg-6">
 					<div class="card2 card border-0 px-4 py-5">
 						<div class="row mb-4 px-3">
-							<h6 class="mb-0 mr-4 mt-2">Sign in with</h6>
-							<div class="facebook text-center mr-3">
-								<div class="fa fa-facebook"></div>
+							<h6 class="mb-0 mr-4 mt-2">Select Your Role:</h6>
+							<div class=" text-center mr-3">
+								<button type="button" class="btn btn-outline-primary">Admin</button>
+							</div>		
+							<div class=" text-center mr-3">
+								<button type="button" class="btn btn-outline-primary">Teacher</button>
 							</div>
-							<div class="twitter text-center mr-3">
-								<div class="fa fa-twitter"></div>
-							</div>
-							<div class="linkedin text-center mr-3">
-								<div class="fa fa-linkedin"></div>
-							</div>
-						</div>
-						<div class="row px-3 mb-4">
-							<div class="line"></div>
-							<small class="or text-center">Or</small>
-							<div class="line"></div>
+							<div class=" text-center mr-3">
+								<button type="button" class="btn btn-outline-primary">Parent</button>
+							</div>		
+							<div class=" text-center mr-3">
+								<button type="button" class="btn btn-outline-primary">Student</button>
+							</div>																									
 						</div>
 						<div class="row px-3">
 							<label class="mb-1">
@@ -248,8 +257,11 @@ a {
 							
 						</div>
 						<div class="row mb-4 px-3">
-							<small class="font-weight-bold">Don't have an account? <a
-								class="text-danger ">Register</a></small>
+						<div class="row mb-4 px-3">
+							<h6 class="mb-0 mr-4 mt-2">Login With:</h6>
+							<button type="submit" class="btn btn-outline-primary"><span
+							class="fa fa-google-plus "></span> Email...</button>
+						</div>
 						</div>
 					</div>
 				</div>
@@ -260,9 +272,7 @@ a {
 						rights reserved.</small>
 					<div class="social-contact ml-4 ml-sm-auto">
 						<span class="fa fa-facebook mr-4 text-sm"></span> <span
-							class="fa fa-google-plus mr-4 text-sm"></span> <span
-							class="fa fa-linkedin mr-4 text-sm"></span> <span
-							class="fa fa-twitter mr-4 mr-sm-5 text-sm"></span>
+							class="fa fa-google-plus mr-4 text-sm"></span>
 					</div>
 				</div>
 			</div>
