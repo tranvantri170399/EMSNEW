@@ -1,3 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,12 +23,12 @@
     <link href="../../../../resources/bootstrap/css/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
     <!-- Theme style -->
     <link href="../../../../resources/bootstrap/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
-    <!-- AdminLTE Skins. Choose a skin from the css/skins
+    <!-- AdminLTE Skins. Choose a skin from the css/skins 
          folder instead of downloading all of them to reduce the load. -->
     <link href="../../../../resources/bootstrap/css/_all-skins.min.css" rel="stylesheet" type="text/css" />
 
-</head>
-<body>
+  </head>
+<body >
     <script src="../../../../resources/js/jQuery-2.1.3.min.js"></script>
     <!-- Bootstrap 3.3.2 JS -->
     <script src="../../../../resources/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
@@ -51,6 +56,6 @@
     <script src="../../../../resources/js/dashboard2.js" type="text/javascript"></script>
 
     <!-- AdminLTE for demo purposes -->
-    <script src="../../../../resources/js/demo.js" type="text/javascript"></script>
+    <script src="../../../../resources/js/demo.js" type="text/javascript"></script>       
 </body>
 </html>    
