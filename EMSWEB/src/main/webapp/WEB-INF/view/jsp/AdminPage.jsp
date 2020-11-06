@@ -130,7 +130,7 @@
 						class="fa fa-angle-right pull-right"></i>
 				</a>
 					<ul class="treeview-menu">
-						<li><a href="Page/thoikhoabieu.html" target="frame"><i
+						<li><a href="Page/thoikhoabieu" target="frame"><i
 								class="fa fa-circle-o"></i>Danh sách sinh viên</a></li>
 						<li><a href="Page/lichthi.html" target="frame"><i
 								class="fa fa-circle-o"></i>Danh sách lớp</a></li>

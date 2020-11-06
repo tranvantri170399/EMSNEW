@@ -80,6 +80,14 @@ public class newcontroller {
 	public String admin() {
 		return "/jsp/AdminPage";
 	}
+	
+	@RequestMapping(value = { "/Page/thoikhoabieu" }, method = RequestMethod.GET)
+	public String loadthoikhoabieu(Model model) {
+//		List<Staff> list = srep.findAll();
+//		model.addAttribute("List", list);
+		return "/jsp/Page/diemdanh";
+	}
+	
 
 	@RequestMapping(value = { "/hello" }, method = RequestMethod.GET)
 	public String hello() {
