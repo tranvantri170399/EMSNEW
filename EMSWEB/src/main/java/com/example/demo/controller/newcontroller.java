@@ -121,21 +121,27 @@ public class newcontroller {
 	}
 	
 	@RequestMapping(value = { "/loadStudent" })
-	public String loadstudent() {
-		Iterable<Student> iterator = sturepo.findAll();
-		return iterator.toString();
+	public String loadstudent(Model model) {
+		List<Student> iterator = sturepo.findAll();
+//		return iterator.toString();
+		model.addAttribute("List", iterator);
+		return "/jsp/loadStudent";
 	}
 	
 	@RequestMapping(value = { "/loadParent" })
-	public String loadparent() {
-		Iterable<Parent> iterator = parentRep.findAll();
-		return iterator.toString();
+	public String loadparent(Model model) {
+		List<Parent> iterator = parentRep.findAll();
+//		return iterator.toString();
+		model.addAttribute("List", iterator);
+		return "/jsp/loadParent";
 	}
 	
 	@RequestMapping(value = { "/loadUser" })
-	public String loadUser() {
-		Iterable<User> iterator = UserRep.findAll();
-		return iterator.toString();
+	public String loadUser(Model model) {
+		List<User> iterator = UserRep.findAll();
+//		return iterator.toString();
+		model.addAttribute("List", iterator);
+		return "/jsp/loadUser";
 	}
 	
 	@RequestMapping(value = { "/loadAttan" })
@@ -156,9 +162,11 @@ public class newcontroller {
 	}
 	
 	@RequestMapping(value = { "/loadClassroom" })
-	public String loadClassroom() {
+	public String loadClassroom(Model model) {
 		List<Classroom> iterator = classroomrep.findAll();
-		return iterator.toString();
+//		return iterator.toString();
+		model.addAttribute("List", iterator);
+		return "/jsp/loadClassroom";
 	}
 	
 	@RequestMapping(value = { "/loadExam" })
