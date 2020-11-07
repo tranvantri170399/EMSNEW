@@ -72,10 +72,10 @@ public class newcontroller {
 	@Autowired
 	ParentResponsitory parentRep;
 
-	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
-	public String index() {
-		return "/jsp/index";
-	}
+//	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
+//	public String index() {
+//		return "/jsp/index";
+//	}
 	@RequestMapping(value = { "/admin" }, method = RequestMethod.GET)
 	public String admin() {
 		return "/jsp/AdminPage";
@@ -94,8 +94,9 @@ public class newcontroller {
 		return "jsp/templateStudent";
 	}
 
-	@RequestMapping(value = { "/login" }, method = RequestMethod.GET)
-	public String hello11() {
+	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
+	public String hello11(Model model) {
+		model.addAttribute("student", new User());
 		return "layout/layout";
 	}
 

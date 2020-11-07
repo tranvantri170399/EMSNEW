@@ -1,3 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!doctype html>
 <html>
 
@@ -188,10 +193,12 @@ a {
 <script type='text/javascript'
 	src='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'></script>
 <script type='text/javascript'></script>
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 </head>
 
 <body oncontextmenu='return false' class='snippet-body'>
-<form action="/txt" method="POST">
+<!--<form action="/txt" method="POST">  -->
+<form:form action="login/login" modelAttribute="student" name="myform" onsubmit="return validate()">
 	<div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
 		<div class="card card0 border-0">
 			<div class="row d-flex">
@@ -232,16 +239,20 @@ a {
 						</div>
 						<div class="row px-3">
 							<label class="mb-1">
-								<h6 class="mb-0 text-sm">Email Address</h6>
-							</label> <input class="mb-4" type="text" name="email"
-								placeholder="Enter a valid email address">
+								<h6 class="mb-0 text-sm">User name: tri</h6>
+							</label>
+<!-- 							 <input class="mb-4" type="text" name="email" placeholder="Enter a valid email address"> -->
+								<form:input path="username" cssClass="mb-4" placeholder="Enter a valid email address"/>
+								<span id="nameloc"></span>
 						</div>
 						<div class="row px-3">
 							<label class="mb-1">
-								<h6 class="mb-0 text-sm">Password</h6>
-							</label> <input type="password" name="password"
-								placeholder="Enter password">
-						</div>
+								<h6 class="mb-0 text-sm">Password: tran</h6>
+							</label>
+<!-- 							 <input type="password" name="password" placeholder="Enter password"> -->
+							 <form:password path="password"   placeholder="Enter password"/>
+								<span id="passwordloc"></span>
+						</div> 
 						<div class="row px-3 mb-4">
 							<div class="custom-control custom-checkbox custom-control-inline">
 								<input id="chk1" type="checkbox" name="chk"
@@ -265,6 +276,38 @@ a {
 						</div>
 					</div>
 				</div>
+				<!-- test login -->
+<%-- 				<form:form action="login/login" modelAttribute="student" name="myform" onsubmit="return validate()"> 
+				<div style="width: 500px; height: 100px; margin-left: 100px;">
+					<div style="float: none;">Username:tritran</div>
+					<div style="float: left;">
+						<form:input path="username" cssStyle="width: 300px; height: 60px;"/>
+						<span id="nameloc"></span>
+					</div>
+				</div>
+				<form:errors />
+				<br>
+				<div
+					style="width: 500px; height: 60px; margin-bottom: 50px; margin-left: 100px;">
+					<div style="float: none;">Password:tri1999</div>
+					<div style="float: left;">
+						<form:password path="password"  cssStyle="width: 300px; height: 60px;" />
+						<span id="passwordloc"></span>
+					</div>
+				</div>
+
+
+				<form:errors />
+				<div style="margin-left: 50px;">
+					<button type="submit" style="width: 400px; height: 50px; background-color: blue;">
+						<p align="center"
+							style="color: white; height: 35px; font-size: 17;">
+							<b>SIGN IN</b>
+						</p>
+					</button>
+				</div>
+			</form:form> --%>
+			<!-- test login -->
 			</div>
 			<div class="bg-blue py-4">
 				<div class="row px-3">
@@ -278,7 +321,35 @@ a {
 			</div>
 		</div>
 	</div>
-	</form>
+	</form:form>
+<!-- 	</form> -->
+		<script>
+			    function validate() {
+			        var name = document.myform.username.value;
+			        var password = document.myform.password.value;
+			        var status = false;
+			 
+			        if (name.length < 1) {
+			            document.getElementById("nameloc").innerHTML = 
+			                " <span class='fas fa-window-close' style='color:red;'>vui lòng nhập lại Username</span> ";
+			            status = false;
+			        } else {
+			            document.getElementById("nameloc").innerHTML = 
+			                " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+			            status = true;
+			        }
+			        if (password.length < 3) {
+			            document.getElementById("passwordloc").innerHTML = 
+			                "  <span class='fas fa-window-close' style='color:red;'>vui lòng nhập lại Password</span> ";
+			            status = false;
+			        } else {
+			            document.getElementById("passwordloc").innerHTML = 
+			                "<span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+			            status = true;
+			        }
+			        return status;
+			    }
+		</script>
 </body>
 
 </html>
