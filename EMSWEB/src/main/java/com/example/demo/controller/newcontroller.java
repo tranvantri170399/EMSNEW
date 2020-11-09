@@ -76,10 +76,10 @@ public class newcontroller {
 //	public String index() {
 //		return "/jsp/index";
 //	}
-	@RequestMapping(value = { "/admin" }, method = RequestMethod.GET)
-	public String admin() {
-		return "/jsp/AdminPage";
-	}
+//	@RequestMapping(value = { "/admin" }, method = RequestMethod.GET)
+//	public String admin() {
+//		return "/jsp/AdminPage";
+//	}
 	
 	@RequestMapping(value = { "/Page/thoikhoabieu" }, method = RequestMethod.GET)
 	public String loadthoikhoabieu(Model model) {
@@ -89,10 +89,10 @@ public class newcontroller {
 	}
 	
 
-	@RequestMapping(value = { "/hello" }, method = RequestMethod.GET)
-	public String hello() {
-		return "jsp/templateStudent";
-	}
+//	@RequestMapping(value = { "/hello" }, method = RequestMethod.GET)
+//	public String hello() {
+//		return "jsp/templateStudent";
+//	}
 
 	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
 	public String hello11(Model model) {
