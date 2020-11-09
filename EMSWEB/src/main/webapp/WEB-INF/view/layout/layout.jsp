@@ -198,7 +198,7 @@ a {
 
 <body oncontextmenu='return false' class='snippet-body'>
 <!--<form action="/txt" method="POST">  -->
-<form:form action="login/login" modelAttribute="student" name="myform" onsubmit="return validate()">
+<form:form action="/login" modelAttribute="student" name="myform" onsubmit="return validate()">
 	<div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
 		<div class="card card0 border-0">
 			<div class="row d-flex">
