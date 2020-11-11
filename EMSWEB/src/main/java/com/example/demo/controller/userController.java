@@ -21,7 +21,7 @@ import com.example.demo.repository.UserResponsitory;
 
 
 @Controller
-public class UserController {
+public class userController {
 	@Autowired
 	UserResponsitory UserRep;
 	@Autowired

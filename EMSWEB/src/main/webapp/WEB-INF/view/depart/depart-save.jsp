@@ -9,17 +9,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="/user-list">List Customer</a>
 	<br />
-	<h1>Add new User:</h1>
-	<form:form action="saveUser" method="POST" modelAttribute="user">
-      	Name: <form:input path="username" value="${user.username}"/>
+	<h1>Add new Depart:</h1>
+	<form:form action="saveDepart" method="POST" modelAttribute="adddepart">
+      	MÃ GV: <form:input path="id" value="${adddepart.id}"/>
 		<br />
 		<br />
-       	pass: <form:input path="password" value="${user.password}"/>
-		<br />
-		<br />
-       	role: <form:input path="role" value="${user.role}"/>
+       	Tên Phòng: <form:input path="name" value="${adddepart.name}"/>
 		<br />
 		<br />
 		<input type="submit" value="Submit" />

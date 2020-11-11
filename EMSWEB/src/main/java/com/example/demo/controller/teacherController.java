@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.lang.reflect.Method;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,19 +21,25 @@ import com.example.demo.repository.TeacherResponsitory;
 public class teacherController {
 	@Autowired
 	TeacherResponsitory teacherResponsitory;
-//	@Autowired
-//	RoleRespository roleRespository;
-//	@Autowired
-//	DepartResponsitory departResponsitory;
-
-//	@RequestMapping(value = { "/loadlistTCher" })
-//	public String listTeacher(Model model) {
-//		model.addAttribute("listTCher", teacherResponsitory.findAll());
-//		return "/jsp/loadteacher";
-//	}
-	@RequestMapping(value= {"/","/loadlistTCher"})
-	public String loadlistTCher(Model model) {
-		model.addAttribute("listTeacher",teacherResponsitory.findAll());
-		return "";
+	
+	@RequestMapping(value = {"teacher-list" })
+	public String listUser(Model model) {
+		model.addAttribute("listTcher", teacherResponsitory.findAll());
+		return "/teacher/teacher-list";
 	}
+	
+//
+	 @RequestMapping(value = { "/teacher-save" }, method = RequestMethod.POST)
+	  public String insertCustomer(Model model) {
+	    model.addAttribute("addteacher", new Teacher());
+	    return "/teacher/teacher-save";
+	  }
+	 
+	 @RequestMapping("/saveTeacher")
+	  public String doSaveUser(@ModelAttribute("User") Teacher teacher, Model model) {
+		 teacherResponsitory.save(teacher);
+	    model.addAttribute("listUser", teacherResponsitory.findAll());
+	    return "/teacher/teacher-list";
+	  }
+//
 }
