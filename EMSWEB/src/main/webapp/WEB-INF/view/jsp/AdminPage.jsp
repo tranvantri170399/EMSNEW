@@ -63,8 +63,12 @@
 						<li class="dropdown user user-menu"><a href="#"
 							class="dropdown-toggle" data-toggle="dropdown"> <img
 								src="dist/img/user2-160x160.jpg" class="user-image"
-								alt="User Image" /> <span class="hidden-xs">Alexander
-									Pierce</span>
+								alt="User Image" /> <span class="hidden-xs">
+											<c:forEach var="sp" items="${List}">
+													${sp.username}
+												
+											</c:forEach>
+								</span>
 						</a>
 							<ul class="dropdown-menu">
 								<!-- User image -->
@@ -120,7 +124,7 @@
 									class="fa fa-circle-o"></i>Danh Sách Giáo Viên</a></li>
 							<li><a href="Page/capnhatdiachi.html" target="frame"><i
 									class="fa fa-circle-o"></i>Danh Sách CNVC</a></li> li>
-							<a href="Page/capnhatdiachi.html" target="frame"><i
+							<a href="Page/Depart" target="frame"><i
 								class="fa fa-circle-o"></i>Danh Sách Phòng ban</a></li>
 				</ul>
 				</li>
@@ -130,7 +134,7 @@
 						class="fa fa-angle-right pull-right"></i>
 				</a>
 					<ul class="treeview-menu">
-						<li><a href="Page/thoikhoabieu.html" target="frame"><i
+						<li><a href="Page/thoikhoabieu" target="frame"><i
 								class="fa fa-circle-o"></i>Danh sách sinh viên</a></li>
 						<li><a href="Page/lichthi.html" target="frame"><i
 								class="fa fa-circle-o"></i>Danh sách lớp</a></li>

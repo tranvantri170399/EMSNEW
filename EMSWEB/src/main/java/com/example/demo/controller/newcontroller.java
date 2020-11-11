@@ -16,11 +16,16 @@ import com.example.demo.repository.SchoolroomAmphiResponsitory;
 import com.example.demo.repository.AmphiResponsitory;
 import com.example.demo.repository.AttandenceResponsitory;
 import com.example.demo.repository.ClassroomStudentResponsitory;
+import com.example.demo.repository.ClassroomResponsitory;
 import com.example.demo.repository.CourseResponsitory;
+import com.example.demo.repository.ExamResponsitory;
+import com.example.demo.repository.MajorSemesterResponsitory;
 import com.example.demo.repository.RoleRespository;
 import com.example.demo.repository.StaffResponsitory;
 import com.example.demo.repository.StudentResponsitory;
 import com.example.demo.repository.TeacherResponsitory;
+import com.example.demo.repository.UserResponsitory;
+import com.example.demo.repository.ParentResponsitory;
 
 //@RestController
 @Controller
@@ -51,23 +56,47 @@ public class newcontroller {
 	
 	@Autowired
 	ClassroomStudentResponsitory classrep;
+	
+	@Autowired
+	ClassroomResponsitory classroomrep;
+	
+	@Autowired
+	ExamResponsitory exrep;
+	
+	@Autowired
+	MajorSemesterResponsitory MajorseRep;
+	
+	@Autowired
+	UserResponsitory UserRep;
+	
+	@Autowired
+	ParentResponsitory parentRep;
+
+//	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
+//	public String index() {
+//		return "/jsp/index";
+//	}
+//	@RequestMapping(value = { "/admin" }, method = RequestMethod.GET)
+//	public String admin() {
+//		return "/jsp/AdminPage";
+//	}
+	
+	@RequestMapping(value = { "/Page/thoikhoabieu" }, method = RequestMethod.GET)
+	public String loadthoikhoabieu(Model model) {
+//		List<Staff> list = srep.findAll();
+//		model.addAttribute("List", list);
+		return "/jsp/Page/diemdanh";
+	}
+	
+
+//	@RequestMapping(value = { "/hello" }, method = RequestMethod.GET)
+//	public String hello() {
+//		return "jsp/templateStudent";
+//	}
 
 	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
-	public String index() {
-		return "/jsp/index";
-	}
-	@RequestMapping(value = { "/admin" }, method = RequestMethod.GET)
-	public String admin() {
-		return "/jsp/AdminPage";
-	}
-
-	@RequestMapping(value = { "/hello" }, method = RequestMethod.GET)
-	public String hello() {
-		return "jsp/templateStudent";
-	}
-
-	@RequestMapping(value = { "/login" }, method = RequestMethod.GET)
-	public String hello11() {
+	public String hello11(Model model) {
+		model.addAttribute("student", new User());
 		return "layout/layout";
 	}
 
@@ -93,9 +122,27 @@ public class newcontroller {
 	}
 	
 	@RequestMapping(value = { "/loadStudent" })
-	public String loadstudent() {
-		Iterable<Student> iterator = sturepo.findAll();
-		return iterator.toString();
+	public String loadstudent(Model model) {
+		List<Student> iterator = sturepo.findAll();
+//		return iterator.toString();
+		model.addAttribute("List", iterator);
+		return "/jsp/loadStudent";
+	}
+	
+	@RequestMapping(value = { "/loadParent" })
+	public String loadparent(Model model) {
+		List<Parent> iterator = parentRep.findAll();
+//		return iterator.toString();
+		model.addAttribute("List", iterator);
+		return "/jsp/loadParent";
+	}
+	
+	@RequestMapping(value = { "/loadUser" })
+	public String loadUser(Model model) {
+		List<User> iterator = UserRep.findAll();
+//		return iterator.toString();
+		model.addAttribute("List", iterator);
+		return "/jsp/loadUser";
 	}
 	
 	@RequestMapping(value = { "/loadAttan" })
@@ -108,10 +155,41 @@ public class newcontroller {
 		List<Course> iterator = Courrep.findAll();
 		return iterator.toString();
 	}
-	@RequestMapping(value = { "/loadClassroom" })
+	
+	@RequestMapping(value = { "/loadClassroomStudent" })
 	public String loadClassroomStudent() {
 		List<ClassroomStudent> iterator = classrep.findAll();
 		return iterator.toString();
+	}
+	
+	@RequestMapping(value = { "/loadClassroom" })
+	public String loadClassroom(Model model) {
+		List<Classroom> iterator = classroomrep.findAll();
+//		return iterator.toString();
+		model.addAttribute("List", iterator);
+		return "/jsp/loadClassroom";
+	}
+	
+	@RequestMapping(value = { "/loadExam" })
+	public String loadexam(Model model) {
+		List<Exam> iterator = exrep.findAll();
+		model.addAttribute("List", iterator);
+		return "/jsp/loadExam";
+//		return iterator.toString();
+	}
+	
+	@RequestMapping(value = { "/loadMaSe" })
+	public String loadMajorSe() {
+		List<MajorsSemester> iterator = MajorseRep.findAll();
+		return iterator.toString();
+	}
+	
+	@RequestMapping(value = { "/loadSchoolroomAmphi" })
+	public String loadSchoolroomAmphi(Model model) {
+		List<SchoolroomAmphi> iterator = amphiIDResponsitory.findAll();
+//		return iterator.toString();
+		model.addAttribute("List", iterator);
+		return "/jsp/loadSchoolroomAmphi";
 	}
 
 	@RequestMapping(value = { "/loadAmphi" })

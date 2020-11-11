@@ -4,11 +4,10 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="UTF-8">
-    <title>AdminLTE 2 | Dashboard</title>
+    <title>AdminLTE 2 | Dashboard lap</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- Bootstrap 3.3.2 -->
     <link href="../../../resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -24,11 +23,11 @@
     <link href="../../../resources/bootstrap/css/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
     <!-- Theme style -->
     <link href="../../../resources/bootstrap/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
-    <!-- AdminLTE Skins. Choose a skin from the css/skins 
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link href="../../../resources/bootstrap/css/_all-skins.min.css" rel="stylesheet" type="text/css" />
-
-  </head>
+    
+</head>
   <body class="skin-blue">
     <div class="wrapper">
       
@@ -52,7 +51,6 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image"/>
                   <span class="hidden-xs">
-                  
                   	<c:forEach var="sp" items="${List}">
 													${sp.username}
 												
@@ -101,51 +99,59 @@
           <!-- /.search form -->
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
-            <li class="header">MENU</li>
-            <li class="active treeview">
-              <a href="documentation/index.html">
-                <i class="fa fa-dashboard"></i> <span>TRANG CỦA BẠN</span> <i class="fa fa-angle-left pull-right"></i>
-              </a>
-            </li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-calendar"></i>
-                <span>Thông tin sinh viên</span>
-                <span class="label label-primary pull-right">4</span>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="Y.html" target="frame"><i class="fa fa-circle-o"></i>Lí lịch</a></li>
-                <li><a href="Page/capnhatdiachi.html" target="frame"><i class="fa fa-circle-o"></i>Cập nhật địa chỉ</a></li>
-                <li><a href="Page/tinhtrangsinhvien.html" target="frame"><i class="fa fa-circle-o"></i>Tình trạng sinh viên</a></li>                
-              </ul>
-            </li>
-            <li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-calendar"></i>
-                <span>Học tập</span>
-                <span class="label label-primary pull-right">4</span>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="Page/thoikhoabieu.html" target="frame"><i class="fa fa-circle-o"></i>Thời khóa biểu</a></li>
-                <li><a href="Page/lichthi.html" target="frame"><i class="fa fa-circle-o"></i>Lịch thi</a></li>
-                <li><a href="Page/diemdanh.html" target="frame"><i class="fa fa-circle-o"></i>Điểm danh</a></li>  
-                <li><a href="Page/gopy.html" target="frame"><i class="fa fa-circle-o"></i>Góp ý</a></li>
-                <li><a href="Page/hocphi.html" target="frame"><i class="fa fa-circle-o"></i>Học phí</a></li>                                                
-              </ul>
-            </li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-pie-chart"></i>
-                <span>Thống kê học tập</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="Page/diemtheoky.html" target="frame"><i class="fa fa-circle-o"></i>Điểm theo kỳ</a></li>
-                <li><a href="Page/mondahoc.html" target="frame"><i class="fa fa-circle-o"></i>Môn đã học</a></li>
-                <li><a href="Page/bangdiem.html" target="frame"><i class="fa fa-circle-o"></i>Bảng điểm</a></li>
-              </ul>
-            </li>
+              <li class="header">MENU</li>
+              <li class="active treeview">
+                  <a href="documentation/index.html">
+                      <i class="fa fa-dashboard"></i> <span>TRANG CỦA BẠN</span> <i class="fa fa-angle-left pull-right"></i>
+                  </a>
+              </li>
+              <li class="treeview">
+                  <a href="#">
+                      <i class="fa fa-user"></i>
+                      <span>Tài khoản</span>
+                      <span class="label label-primary pull-right">4</span>
+                  </a>
+                  <ul class="treeview-menu">
+                      <li><a href="Page/info.html" target="frame"><i class="fa fa-circle-o"></i>Thông tin tài khoản</a></li>
+                      <li><a href="Page/capnhatPassword.html" target="frame"><i class="fa fa-circle-o"></i>Cập nhật mật khẩu</a></li>
+                  </ul>
+              </li>
+              <li class="treeview">
+                  <a href="#">
+                      <i class="fa fa-calendar"></i>
+                      <span>Thông tin sinh viên</span>
+                      <span class="label label-primary pull-right">4</span>
+                  </a>
+                  <ul class="treeview-menu">
+                      <li><a href="Page/thanhtich.html" target="frame"><i class="fa fa-circle-o"></i>Thành tích học tập</a></li>
+                      <li><a href="Page/tinhtrangsinhvien.html" target="frame"><i class="fa fa-circle-o"></i>Tình trạng sinh viên</a></li>
+                  </ul>
+              </li>
+              <li>
+              <li class="treeview">
+                  <a href="#">
+                      <i class="fa fa-calendar"></i>
+                      <span>Học tập</span>
+                      <span class="label label-primary pull-right">4</span>
+                  </a>
+                  <ul class="treeview-menu">
+                      <li><a href="Page/thoikhoabieu.html" target="frame"><i class="fa fa-circle-o"></i>Thời khóa biểu</a></li>
+                      <li><a href="Page/diemdanh.html" target="frame"><i class="fa fa-circle-o"></i>Điểm danh</a></li>
+                      <li><a href="Page/hocphi.html" target="frame"><i class="fa fa-circle-o"></i>Kiểm tra học phí</a></li>
+                  </ul>
+              </li>
+              <li class="treeview">
+                  <a href="#">
+                      <i class="fa fa-pie-chart"></i>
+                      <span>Thống kê học tập</span>
+                      <i class="fa fa-angle-left pull-right"></i>
+                  </a>
+                  <ul class="treeview-menu">
+                      <li><a href="Page/diemtheoky.html" target="frame"><i class="fa fa-circle-o"></i>Điểm theo kỳ</a></li>
+                      <li><a href="Page/mondahoc.html" target="frame"><i class="fa fa-circle-o"></i>Môn đã học</a></li>
+                      <li><a href="Page/bangdiem.html" target="frame"><i class="fa fa-circle-o"></i>Bảng điểm</a></li>
+                  </ul>
+              </li>
 
           </ul>
         </section>
