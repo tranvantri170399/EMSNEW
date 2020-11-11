@@ -63,8 +63,12 @@
 						<li class="dropdown user user-menu"><a href="#"
 							class="dropdown-toggle" data-toggle="dropdown"> <img
 								src="dist/img/user2-160x160.jpg" class="user-image"
-								alt="User Image" /> <span class="hidden-xs">Alexander
-									Pierce</span>
+								alt="User Image" /> <span class="hidden-xs">
+											<c:forEach var="sp" items="${List}">
+													${sp.username}
+												
+											</c:forEach>
+								</span>
 						</a>
 							<ul class="dropdown-menu">
 								<!-- User image -->

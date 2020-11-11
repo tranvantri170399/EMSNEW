@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,10 +37,25 @@ public class UserController {
 				
 				if (u.getPassword().equals(student.getPassword())) {					
 					if (u.getRole().equals("NV")) {
+						List<User> us= new ArrayList<User>();
+						User uss = new User();
+						uss.setUsername(u.getUsername());
+						us.add(uss);
+						model.addAttribute("List", us);
 						return "/jsp/AdminPage";
 					}else if (u.getRole().equals("PH")) {
+						List<User> us= new ArrayList<User>();
+						User uss = new User();
+						uss.setUsername(u.getUsername());
+						us.add(uss);
+						model.addAttribute("List", us);
 						return "/jsp/templateParents";
 					}else {
+						List<User> us= new ArrayList<User>();
+						User uss = new User();
+						uss.setUsername(u.getUsername());
+						us.add(uss);
+						model.addAttribute("List", us);
 						return "/jsp/templateStudent";
 					}
 				}else {
@@ -48,7 +64,7 @@ public class UserController {
 				
 			}
 //			else {
-//				return "layout/layout";
+//				return "layout/layout"
 //			}
 		}
 		
@@ -61,7 +77,7 @@ public class UserController {
 	public String loadDSPhongban(Model model,@ModelAttribute("depart") Depart depart) {
 		List<Depart> departlist = departRes.findAll();
 		model.addAttribute("List", departlist);
-		return "/jsp/Page/DSphongban";
+		return "/jsp/Page/PageforAdmin/DSphongban";
 	}
 	
 //	@Autowired
@@ -78,7 +94,7 @@ public class UserController {
 //		departRes.delete(depart);
 //		 new Depart(depart.getId(),depart.getName(),depart.getDesc())
 		departRes.save(de);
-		return "/jsp/Page/DSphongban";
+		return "/jsp/Page/PageforAdmin/DSphongban";
 	}
 	
 	
