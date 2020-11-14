@@ -72,12 +72,25 @@ public class teacherController {
 //		 LocalDateTime now = LocalDateTime.now();
 //		 System.out.println(now);
 //		 Timestamp sqlnow= Timestamp.valueOf(now);
-		 String pardate = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT).format(teacher.getDob());
-		 Timestamp sqlnow= Timestamp.valueOf(pardate);
-		 tc.setDob(sqlnow);
+//		 String pardate = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT).format(teacher.getDob());
+//		 Timestamp sqlnow= Timestamp.valueOf(pardate);
+//		 java.sql.Date sqlDate = new java.sql.Date(Teacher,teacher.getDob());
+		 tc.setDob(teacher.getDob());
 		 teacherResponsitory.save(tc);
 	    model.addAttribute("listTcher", teacherResponsitory.findAll());
 	    return "/teacher/teacher-list";
 	  }
 //
 }
+
+
+
+
+
+
+
+
+
+
+
+
