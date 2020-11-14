@@ -12,14 +12,14 @@
 </head>
 <body>
 	<div align="center">
-		<h1>Amphi List</h1>
+		<h1>Product List</h1>
 		<a href="/new">Create New Product</a> <br /> <br />
 		<table border="1" cellpadding="10">
 			<thead>
 				<tr>
 					<th>Product ID</th>
 					<th>Name</th>
-					<th>role</th>
+					<th>amount</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -27,9 +27,8 @@
 					<c:forEach var="sp" items="${List}">
 						<tr>
 							<td>${sp.fname}</td>
-							<td>${sp.depart.name}</td>
 							<td>${sp.role.roleName}</td>
-							
+							<td>${sp.salary}</td>
 						</tr>
 					</c:forEach>
 				</c:if>
