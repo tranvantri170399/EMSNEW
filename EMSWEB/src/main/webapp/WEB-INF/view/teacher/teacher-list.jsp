@@ -31,7 +31,6 @@ left: 100px;
 <body>
 	<div align="center">
 		<h1>List Teacher</h1>
-		<a href="/new">Create New Product</a> <br /> <br />
 		<table cellpadding="10" id="table1" class="display">
 			<thead>
 				<tr>
