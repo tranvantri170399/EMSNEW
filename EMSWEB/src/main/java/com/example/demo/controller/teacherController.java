@@ -35,6 +35,9 @@ public class teacherController {
 	
 	@Autowired
 	RoleRespository rolerep;
+	
+	@Autowired
+	DepartResponsitory departResponsitory;
 	 
 	
 //	@InitBinder
@@ -64,17 +67,12 @@ public class teacherController {
 		 Teacher tc = new Teacher();
 		 tc.setId(teacher.getId());
 		 //doi name sang ID (thao tac  role)
+		 
 		 Role list = rolerep.findByRoleName(teacher.getRole().getRoleName());
 		 tc.setRole(list);
 		 //
 		 tc.setFname(teacher.getFname());
-//		 tc.setDob(teacher.getDob());
-//		 LocalDateTime now = LocalDateTime.now();
-//		 System.out.println(now);
-//		 Timestamp sqlnow= Timestamp.valueOf(now);
-		 String pardate = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT).format(teacher.getDob());
-		 Timestamp sqlnow= Timestamp.valueOf(pardate);
-		 tc.setDob(sqlnow);
+		 tc.setDob(teacher.getDob());
 		 teacherResponsitory.save(tc);
 	    model.addAttribute("listTcher", teacherResponsitory.findAll());
 	    return "/teacher/teacher-list";
