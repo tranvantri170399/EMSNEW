@@ -29,7 +29,7 @@ public class Teacher{
 	private String lname;
 	private String image;
 	private String email;
-	private Date dob;
+	private String dob;
 	private String phone;
 	private String address;
 	private String status;
@@ -40,7 +40,7 @@ public class Teacher{
 	public Teacher() {
 	}
 
-	public Teacher(String id, String fname, String lname, Date dob) {
+	public Teacher(String id, String fname, String lname, String dob) {
 		this.id = id;
 		this.fname = fname;
 		this.lname = lname;
@@ -48,7 +48,7 @@ public class Teacher{
 	}
 
 	public Teacher(String id, Depart depart, Role role, String fname, String lname,
-			String image, String email, Date dob, String phone, String address, String status,
+			String image, String email, String dob, String phone, String address, String status,
 			Integer level, Float salary, Set<Course> courses) {
 		this.id = id;
 		this.depart = depart;
@@ -132,13 +132,13 @@ public class Teacher{
 		this.email = email;
 	}
 
-	@Temporal(TemporalType.DATE)
-	@Column(name = "Dob", nullable = false, length = 10)
-	public Date getDob() {
+//	@Temporal(TemporalType.DATE)
+	@Column(name = "Dob")
+	public String getDob() {
 		return this.dob;
 	}
 
-	public void setDob(Date dob) {
+	public void setDob(String dob) {
 		this.dob = dob;
 	}
 
