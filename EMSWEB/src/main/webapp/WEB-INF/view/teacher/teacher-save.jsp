@@ -34,9 +34,9 @@
 			Mail: <form:input path="email" value="${addteacher.email}"/>
 		<br />
 		<br />
-<%--        	Ngày giờ: <form:input path="dob" value="${addteacher.dob}"/>
+       	Ngày: <form:input path="dob" value="${addteacher.dob}"/>
 		<br />
-		<br /> --%>
+		<br />
        	Số ĐT: <form:input path="phone" value="${addteacher.phone}"/>
 		<br />
 		<br />
