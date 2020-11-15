@@ -124,8 +124,8 @@
 									class="fa fa-circle-o"></i>Danh Sách Giáo Viên</a></li>
 							<li><a href="Page/capnhatdiachi.html" target="frame"><i
 									class="fa fa-circle-o"></i>Danh Sách CNVC</a></li> li>
-							<a href="Page/Depart" target="frame"><i
-								class="fa fa-circle-o"></i>Danh Sách Phòng ban</a></li>
+							<li><a href="Page/capnhatdiachi.html" target="frame"><i
+									class="fa fa-circle-o"></i>Danh Sách Phòng Ban</a></li> li>
 				</ul>
 				</li>
 				<li>
