@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.demo.entities.Depart;
+import com.example.demo.entities.Parent;
 import com.example.demo.entities.Role;
 import com.example.demo.entities.User;
 import com.example.demo.repository.DepartResponsitory;
+import com.example.demo.repository.ParentResponsitory;
 import com.example.demo.repository.RoleRespository;
 import com.example.demo.repository.UserResponsitory;
 
@@ -26,6 +28,8 @@ public class userController {
 	UserResponsitory UserRep;
 	@Autowired
 	DepartResponsitory departRes;
+	@Autowired
+	ParentResponsitory parentRes;
 	
 	@RequestMapping(value = { "/login" }, method = RequestMethod.POST)
 	public String login111(ModelMap model, @ModelAttribute("student") User student, BindingResult errors) {
@@ -97,7 +101,13 @@ public class userController {
 		return "/jsp/Page/PageforAdmin/DSphongban";
 	}
 	
-	
+	@RequestMapping(value = { "/Page/INFO" })
+	public String loadInfo(Model model,@ModelAttribute("Parents") Parent parents) {
+		List<Parent> parentList = parentRes.findAll();
+		model.addAttribute("List", parentList);
+		return "/jsp/Page/info";
+	}
+
 	
 	
 	

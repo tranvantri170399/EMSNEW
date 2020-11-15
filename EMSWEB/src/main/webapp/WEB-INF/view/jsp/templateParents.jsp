@@ -112,8 +112,8 @@
                       <span class="label label-primary pull-right">4</span>
                   </a>
                   <ul class="treeview-menu">
-                      <li><a href="Page/info.html" target="frame"><i class="fa fa-circle-o"></i>Thông tin tài khoản</a></li>
-                      <li><a href="Page/capnhatPassword.html" target="frame"><i class="fa fa-circle-o"></i>Cập nhật mật khẩu</a></li>
+                      <li><a href="Page/INFO" target="frame"><i class="fa fa-circle-o"></i>Thông tin tài khoản</a></li>
+                      <li><a href="Page/UPDATEPASS" target="frame"><i class="fa fa-circle-o"></i>Cập nhật mật khẩu</a></li>
                   </ul>
               </li>
               <li class="treeview">
