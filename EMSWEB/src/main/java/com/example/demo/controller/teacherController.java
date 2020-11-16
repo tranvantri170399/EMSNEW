@@ -35,6 +35,9 @@ public class teacherController {
 	
 	@Autowired
 	RoleRespository rolerep;
+	
+	@Autowired
+	DepartResponsitory departResponsitory;
 	 
 	
 //	@InitBinder
@@ -59,16 +62,18 @@ public class teacherController {
 	    return "/teacher/teacher-save";
 	  }
 	 
-	 @RequestMapping("/saveTeacher")
+	 @RequestMapping("/saveTeacherr")
 	  public String doSaveUser(@ModelAttribute("addteacher") Teacher teacher, Model model) {
 		 Teacher tc = new Teacher();
 		 tc.setId(teacher.getId());
 		 //doi name sang ID (thao tac  role)
+		 	
 		 Role list = rolerep.findByRoleName(teacher.getRole().getRoleName());
 		 tc.setRole(list);
 		 //
 		 tc.setFname(teacher.getFname());
 //		 tc.setDob(teacher.getDob());
+<<<<<<< HEAD
 //		 LocalDateTime now = LocalDateTime.now();
 //		 System.out.println(now);
 //		 Timestamp sqlnow= Timestamp.valueOf(now);
@@ -76,6 +81,8 @@ public class teacherController {
 //		 Timestamp sqlnow= Timestamp.valueOf(pardate);
 //		 java.sql.Date sqlDate = new java.sql.Date(Teacher,teacher.getDob());
 		 tc.setDob(teacher.getDob());
+=======
+>>>>>>> nvtuandev
 		 teacherResponsitory.save(tc);
 	    model.addAttribute("listTcher", teacherResponsitory.findAll());
 	    return "/teacher/teacher-list";
