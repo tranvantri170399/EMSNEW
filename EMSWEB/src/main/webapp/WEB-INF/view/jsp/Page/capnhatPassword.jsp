@@ -6,56 +6,186 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>AdminLTE 2 | Dashboard</title>
-    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-    <!-- Bootstrap 3.3.2 -->
-    <link href="../../../../resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <!-- Font Awesome Icons -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <!-- Ionicons -->
-    <link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css" />
-    <!-- Morris chart -->
-    <link href="../../../../resources/bootstrap/css/morris.css" rel="stylesheet" type="text/css" />
-    <!-- jvectormap -->
-    <link href="../../../../resources/bootstrap/css/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
-    <!-- Daterange picker -->
-    <link href="../../../../resources/bootstrap/css/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
-    <!-- Theme style -->
-    <link href="../../../../resources/bootstrap/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
-    <!-- AdminLTE Skins. Choose a skin from the css/skins
-         folder instead of downloading all of them to reduce the load. -->
-    <link href="../../../../resources/bootstrap/css/_all-skins.min.css" rel="stylesheet" type="text/css" />
+<meta charset="UTF-8">
+<title>AdminLTE 2 | Dashboard</title>
 
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript"
+	src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<style type="text/css">
+body{
+	background-color: #e1e1ef;
+}
+.row.form-info{
+	margin-left: 15px;
+    margin-top: 10px;
+}
+.info {
+    margin-right: 5px;
+    margin-left: 5px;
+    border-radius: 3px ;
+}
+hr{
+	margin-top:5px !important;
+}
+.title{
+	margin-top: 10px;
+	font-size: 1.2rem;
+	font-weight: 500;
+	color: #48465b;
+}
+.role{
+	font-size: 13px;
+	display: block;
+	color: #74788d;
+}
+.get-info{
+	
+    padding-bottom: 0.5rem;
+}
+.info-student-ct{
+	font-size: 20px;
+	color: inherit;
+	padding-left: 20px;
+}
+.info.col-sm-3{
+	height: fit-content;
+	
+}
+.info-student{
+	margin-bottom: 20px;
+	padding:10px;
+}
+.name-parents{
+	font-size: 19px;
+	font-weight: 500;
+}
+.info-form-label{
+	padding-top: 4px;
+    margin-bottom: 0;
+    font-size: inherit;
+    line-height: 1.5;
+}
+.form-control{
+	font-size: 1rem;
+	font-weight: 400;
+	color: #495057;
+	display: block;
+	
+}
+.form-control[readonly]{
+	background-color: white;
+}
+.save-edit{
+	font-size: 1rem;
+	font-weight: 400;
+	color: #495057;
+	display: block;
+	width: 100%;
+	background-color: #fff;
+	border: 1px solid #ced4da;
+    border-radius: .25rem;;
+    padding: .375rem .75rem;
+}
+.save-edit:hover {
+	font-size: 1rem;
+	font-weight: 400;
+	color: white;
+	display: block;
+	width: 100%;
+	background-color: #0080FF;
+	border: 1px solid #ced4da;
+    border-radius: .25rem;;
+    padding: .375rem .75rem;
+}
+</style>
 </head>
 <body>
-    <script src="../../../../resources/js/jQuery-2.1.3.min.js"></script>
-    <!-- Bootstrap 3.3.2 JS -->
-    <script src="../../../../resources/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-    <!-- FastClick -->
-    <script src='../../../../resources/js/fastclick.min.js'></script>
-    <!-- AdminLTE App -->
-    <script src="../../../../resources/js/app.min.js" type="text/javascript"></script>
-    <!-- Sparkline -->
-    <script src="../../../../resources/js/jquery.sparkline.min.js" type="text/javascript"></script>
-    <!-- jvectormap -->
-    <script src="../../../../resources/js/jquery-jvectormap-1.2.2.min.js" type="text/javascript"></script>
-    <script src="../../../../resources/js/jquery-jvectormap-world-mill-en.js" type="text/javascript"></script>
-    <!-- daterangepicker -->
-    <script src="../../../../resources/js/daterangepicker.js" type="text/javascript"></script>
-    <!-- datepicker -->
-    <script src="../../../../resources/js/bootstrap-datepicker.js" type="text/javascript"></script>
-    <!-- iCheck -->
-    <script src="../../../../resources/js/icheck.min.js" type="text/javascript"></script>
-    <!-- SlimScroll 1.3.0 -->
-    <script src="../../../../resources/js/jquery.slimscroll.min.js" type="text/javascript"></script>
-    <!-- ChartJS 1.0.1 -->
-    <script src=".../../../../resources/js/Chart.min.js" type="text/javascript"></script>
-
-    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="../../../../resources/js/dashboard2.js" type="text/javascript"></script>
-
-    <!-- AdminLTE for demo purposes -->
-    <script src="../../../../resources/js/demo.js" type="text/javascript"></script>
+<div class="row form-info">
+    <div class="info col-sm-3" style="background-color:white;">
+    <div class="title">
+    Thông tin cá nhân
+    </div>
+    <hr>
+    <div class="info-header row">
+    <div class="col-xl-3"></div>
+    <div class="col-lg-9 col-xl-8">
+    <span class="hidden-xs">
+      	<div class="name-parents"><c:forEach var="sp" items="${List}">${sp.fname} ${sp.lname}
+		</c:forEach>
+		</div>
+		<a class="role"> Phụ huynh</a>
+    </span>
+    </div>
+    </div>
+    <div class="info-body">
+    <span class="hidden-xs">
+    <div class="get-info">
+    	<a>Email:</a> 
+    	<div>
+    		<c:forEach var="sp" items="${List}">${sp.email}
+			</c:forEach>
+		</div>
+	</div>
+	<div class="get-info ">
+		<a>Số điện thoại:</a> 
+		<div>
+			<c:forEach var="sp" items="${List}">${sp.phone}
+			</c:forEach>
+		</div>
+	</div>
+    </span>
+    </div>
+    </div>
+    <div class="info col-sm-8" style="background-color:white;">
+	<div class="title">
+	Đổi mật khẩu
+	</div>
+	<hr>
+	<div class="info-student">
+	<div class="form-info row">
+	<label class="col-xl-3 col-lg-3 info-form-label">Tên đăng nhập</label>
+	<div class="col-lg-9 col-xl-6">
+		<input type="text" value="${sp.username}" class="form-control" readonly>
+	</div>
+	</div>
+	<div class="form-info row">
+	<label class="col-xl-3 col-lg-3 info-form-label">Mật khẩu cũ</label>
+	<div class="col-lg-9 col-xl-6">
+		<input type="text" class="form-control">
+	</div>
+	</div>
+	<div class="form-info row">
+	<label class="col-xl-3 col-lg-3 info-form-label">Mật khẩu mới</label>
+	<div class="col-lg-9 col-xl-6">
+		<input type="text" class="form-control">
+	</div>
+	</div>
+	<div class="form-info row">
+	<label class="col-xl-3 col-lg-3 info-form-label">Nhập lại mật khẩu</label>
+	<div class="col-lg-9 col-xl-6">
+		<input type="text" class="form-control">
+	</div>
+	</div>
+	<div class="form-info row">
+	<label class="col-xl-3 col-lg-3 info-form-label"></label>
+	<div class="col-lg-9 col-xl-6">
+		<button type="submit" class="save-edit">Lưu thay đổi</button>
+	</div>
+	</div>
+	
+	
+	</div>
+	</div>
+  </div>
+	
 </body>
-</html>    
+</html>

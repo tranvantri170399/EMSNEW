@@ -98,7 +98,12 @@ public class userController {
 		model.addAttribute("List", parentList);
 		return "/jsp/Page/info";
 	}
-
+	
+	@RequestMapping(value = { "/Page/UPDATEPASS" })
+	public String editPass(@ModelAttribute("User") User user, Model model) {
+		
+		return "/jsp/Page/capnhatPassword";
+	}
 	
 	
 	
