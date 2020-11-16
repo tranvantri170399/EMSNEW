@@ -208,7 +208,7 @@ a {
 							<h1 style="text-align: center">Hướng dẫn</h1>
 							<br>
 							<h5>
-							1. Giảng viên, cán bộ quản lý ở UEH chỉ sử dụng Email EMS (@ems.edu.vn) để đăng nhập.</br>
+							1. Giảng viên, cán bộ quản lý ở EMS chỉ sử dụng Email EMS (@ems.edu.vn) để đăng nhập.</br>
 							2. Sinh viên, học viên sử dụng tài khoản của hệ thống Online để đăng nhập:</br>
 								- Vui lòng chọn role 
 							hoặc có thể dùng Email UEH (@st.ueh.edu.vn) để đăng nhập.</br>
@@ -222,7 +222,8 @@ a {
 				</div>
 				<div class="col-lg-6">
 					<div class="card2 card border-0 px-4 py-5">
-						<div class="row mb-4 px-3">
+						<h1 style="text-align: center;">FPT Polytechnic</h1>
+						<div class="row px-3">
 							<h6 class="mb-0 mr-4 mt-2">Select Your Role:</h6>
 							<div class=" text-center mr-3">
 								<button type="button" class="btn btn-outline-primary">Admin</button>
@@ -242,7 +243,7 @@ a {
 								<h6 class="mb-0 text-sm">User name: tri</h6>
 							</label>
 <!-- 							 <input class="mb-4" type="text" name="email" placeholder="Enter a valid email address"> -->
-								<form:input path="username" cssClass="mb-4" placeholder="Enter a valid email address"/>
+								<form:input path="username" placeholder="Enter a valid email address"/>
 								<span id="nameloc"></span>
 						</div>
 						<div class="row px-3">
@@ -253,7 +254,7 @@ a {
 							 <form:password path="password"   placeholder="Enter password"/>
 								<span id="passwordloc"></span>
 						</div> 
-						<div class="row px-3 mb-4">
+						<div class="row px-3 mb-2">
 							<div class="custom-control custom-checkbox custom-control-inline">
 								<input id="chk1" type="checkbox" name="chk"
 									class="custom-control-input"> <label for="chk1"
@@ -267,12 +268,10 @@ a {
 									>Login</button>
 							
 						</div>
-						<div class="row mb-4 px-3">
-						<div class="row mb-4 px-3">
+						<div class="row mb-2 px-3">
 							<h6 class="mb-0 mr-4 mt-2">Login With:</h6>
 							<button type="submit" class="btn btn-outline-primary"><span
 							class="fa fa-google-plus "></span> Email...</button>
-						</div>
 						</div>
 					</div>
 				</div>
@@ -331,7 +330,7 @@ a {
 			 
 			        if (name.length < 1) {
 			            document.getElementById("nameloc").innerHTML = 
-			                " <span class='fas fa-window-close' style='color:red;'>vui lòng nhập lại Username</span> ";
+			                " <span class='fas fa-window-close' style='color:red;'> Vui lòng nhập lại Username</span> ";
 			            status = false;
 			        } else {
 			            document.getElementById("nameloc").innerHTML = 
@@ -340,7 +339,7 @@ a {
 			        }
 			        if (password.length < 3) {
 			            document.getElementById("passwordloc").innerHTML = 
-			                "  <span class='fas fa-window-close' style='color:red;'>vui lòng nhập lại Password</span> ";
+			                "  <span class='fas fa-window-close' style='color:red;'> Vui lòng nhập lại Password</span> ";
 			            status = false;
 			        } else {
 			            document.getElementById("passwordloc").innerHTML = 
