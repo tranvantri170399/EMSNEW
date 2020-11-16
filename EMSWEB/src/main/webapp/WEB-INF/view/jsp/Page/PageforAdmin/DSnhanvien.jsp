@@ -35,58 +35,8 @@
 </style>
 </head>
 <body>
-	<form:form action="/save" modelAttribute="staff">
-		<!-- The Modal -->
-		<%--   <div class="modal" id="myModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-      
-        Modal Header
-        <div class="modal-header">
-          <h4 class="modal-title">Update Staff</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        
-        Modal body
-        <div class="modal-body">
-          <c:if test="${not empty List}">
-				<c:forEach var="sp" items="${List}">
-					<tr>
-						<td>${sp.id}</td>
-						<td>${sp.fname}</td>
-						<td>${sp.lname}</td>
-						<td>${sp.depart.name}</td>
-						<td>${sp.role.roleName}</td>
-						<td>${sp.image}</td>
-						<td>${sp.email}</td>
-						<td>${sp.dob}</td>
-						<td>${sp.phone}</td>
-						<td>${sp.address}</td>
-						<td>${sp.status}</td>
-						<td>${sp.level}</td>
-						<td>${sp.salary}</td>
-						<td style="text-align: center;">
-							<input type="button" data-toggle="modal" data-target="#myModal" value="update">
-							<input type="button" value="del">
-						</td>
-					</tr>
-				</c:forEach>
-			</c:if>
-          
-        </div>
-        
-        Modal footer
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-        
-      </div>
-    </div>
-  </div>
-   --%>
-		<!--  -->
 
+		<!-- The Modal -->
 		<div class="modal fade" id="gfgmodal" tabindex="-1" role="dialog">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -100,20 +50,22 @@
 					</div>
 					<!-- MODEL BODY -->
 					<div class="modal-body">
+					<form action="/update/staff">
 						<div class="GFGclass" id="divGFG"></div>
 						
 						<div class="modal-footer">
 							<!-- The close button in the bottom of the modal -->
 							<button type="button" class="btn btn-secondary"
 								data-dismiss="modal">Close</button>
-							<button type="button" class="btn btn-primary">Save
-								changes</button>
+								<input type="submit" class="btn btn-primary" value="Save changes"> 
 						</div>
+					</form>
 					</div>
 				</div>
 			</div>
 		</div>
 		<!--Table  -->
+			<form:form action="/save" modelAttribute="staff">
 		<table id="table1" class="display">
 
 			<thead>
@@ -155,7 +107,8 @@
 							<td style="text-align: center;">
 								<!-- <input  type="button" data-toggle="modal" data-target="#myModal" value="update"> -->
 								<input type="button" class="gfgselect" data-toggle="modal"
-								data-target="#gfgmodal" value="update"> <input
+								data-target="#gfgmodal" value="update"> 
+								<input
 								class="gfgselect" data-toggle="modal" data-target="#gfgmodal"
 								type="button" value="del">
 							</td>
@@ -293,12 +246,12 @@
 								p += "<p id='a' name='GFGusername' >GFG UserHandle: "
 										+ a + " </p>";
 
-								p += "<p id='c' name='GFGpp'>Practice Problems: "
-										+ c + "</p>";
-								p += "<p id='d' name='GFGscores' >Coding Score: "
-										+ d + " </p>";
-								p += "<p id='e' name='GFGcoding' >GFG Article: "
-										+ e + " </p>";
+								p += "<p > First Name: <input type='text' name='fname' value='"
+										+ c + "'> </p>";
+								p += "<p > Last Name: <input type='text' name='lname' value='"
+									+ d + "'> </p>";
+								p += "<p > Depart: <input type='text' name='depart' value='"
+									+ e + "'> </p>";
 								//CLEARING THE PREFILLED DATA 
 								$("#divGFG").empty();
 								//WRITING THE DATA ON MODEL 

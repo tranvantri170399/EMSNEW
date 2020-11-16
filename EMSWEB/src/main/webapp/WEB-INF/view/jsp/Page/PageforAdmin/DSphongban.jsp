@@ -46,43 +46,37 @@
 						<td>${sp.id}</td>
 						<td>${sp.name}</td>
 						<td></td>
-						<td style="text-align:center;"><input type="button" value="update"><input type="button" value="del"></td>
+						<td style="text-align: center;"><input type="button"
+							value="update"><input type="button" value="del"></td>
 					</tr>
 				</c:forEach>
 			</c:if>
-					
+
 		</tbody>
 
 
 	</table>
 	<div>
 		<form:form action="/save" modelAttribute="depart">
-				<div style="width: 500px; height: 100px; margin-left: 100px;">
-					<div style="float: none;">id</div>
-					<div style="float: left;">
-						<form:input path="id"  cssStyle="width: 300px; height: 60px;" />
-					</div>
+			<div style="width: 500px; height: 100px; margin-left: 100px;">
+				<div style="float: none;">id</div>
+				<div style="float: left;">
+					<form:input path="id" cssStyle="width: 300px; height: 60px;" />
 				</div>
-				<div style="width: 500px; height: 100px; margin-left: 100px;">
-					<div style="float: none;">name:tritran</div>
-					<div style="float: left;">
-						<form:input path="name"  cssStyle="width: 300px; height: 60px;" />
-					</div>
+			</div>
+			<div style="width: 500px; height: 100px; margin-left: 100px;">
+				<div style="float: none;">name:tritran</div>
+				<div style="float: left;">
+					<form:input path="name" cssStyle="width: 300px; height: 60px;" />
 				</div>
-				<br>
-<%-- 				<div
-					style="width: 500px; height: 60px; margin-bottom: 50px; margin-left: 100px;">
-					<div style="float: none;">desc</div>
-					<div style="float: left;">
-						<form:input  path="desc"  cssStyle="width: 300px; height: 60px;" />
-					</div>
-				</div> --%>
+			</div>
+			<br>
 
-				<div style="margin-left: 50px;">
-					<input type="submit" name="btnsave" value="SAVE">
-		
-				</div>
-			</form:form>
+			<div style="margin-left: 50px;">
+				<input type="submit" name="btnsave" value="SAVE">
+
+			</div>
+		</form:form>
 	</div>
 </body>
 </html>

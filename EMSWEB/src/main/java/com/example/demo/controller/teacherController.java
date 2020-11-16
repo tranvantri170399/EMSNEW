@@ -1,26 +1,12 @@
 package com.example.demo.controller;
 
-import java.lang.reflect.Method;
-import java.sql.Timestamp;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.temporal.TemporalAccessor;
-import java.util.Date;
-import java.util.List;
 
-import org.apache.taglibs.standard.extra.spath.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entities.Role;
 import com.example.demo.entities.Teacher;
@@ -49,17 +35,17 @@ public class teacherController {
 //	}
 //
 //	
-	@RequestMapping(value = {"teacher-list" })
+	@RequestMapping(value = {"/teacher-list" })
 	public String listUser(Model model) {
 		model.addAttribute("listTcher", teacherResponsitory.findAll());
-		return "/teacher/teacher-list";
+		return "teacher/teacher-list";
 	}
 	
 //
 	 @RequestMapping(value = { "/teacher-save" }, method = RequestMethod.POST)
 	  public String insertCustomer(Model model) {
 	    model.addAttribute("addteacher", new Teacher());
-	    return "/teacher/teacher-save";
+	    return "teacher/teacher-save";
 	  }
 	 
 	 @RequestMapping("/saveTeacherr")
