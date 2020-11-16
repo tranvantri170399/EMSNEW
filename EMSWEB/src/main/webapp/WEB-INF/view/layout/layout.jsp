@@ -251,7 +251,7 @@ a {
 								<h6 class="mb-0 text-sm">Password: tran</h6>
 							</label>
 <!-- 							 <input type="password" name="password" placeholder="Enter password"> -->
-							 <form:password path="password"   placeholder="Enter passwords"/>
+							 <form:password path="password"   placeholder="Enter password"/>
 								<span id="passwordloc"></span>
 						</div> 
 						<div class="row px-3 mb-2">
