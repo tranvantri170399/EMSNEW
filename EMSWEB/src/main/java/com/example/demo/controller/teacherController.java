@@ -73,7 +73,6 @@ public class teacherController {
 		 //
 		 tc.setFname(teacher.getFname());
 //		 tc.setDob(teacher.getDob());
-<<<<<<< HEAD
 //		 LocalDateTime now = LocalDateTime.now();
 //		 System.out.println(now);
 //		 Timestamp sqlnow= Timestamp.valueOf(now);
@@ -81,8 +80,7 @@ public class teacherController {
 //		 Timestamp sqlnow= Timestamp.valueOf(pardate);
 //		 java.sql.Date sqlDate = new java.sql.Date(Teacher,teacher.getDob());
 		 tc.setDob(teacher.getDob());
-=======
->>>>>>> nvtuandev
+
 		 teacherResponsitory.save(tc);
 	    model.addAttribute("listTcher", teacherResponsitory.findAll());
 	    return "/teacher/teacher-list";
