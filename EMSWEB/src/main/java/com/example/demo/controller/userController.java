@@ -14,11 +14,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.demo.entities.Depart;
 import com.example.demo.entities.Parent;
-import com.example.demo.entities.Role;
 import com.example.demo.entities.User;
 import com.example.demo.repository.DepartResponsitory;
 import com.example.demo.repository.ParentResponsitory;
-import com.example.demo.repository.RoleRespository;
 import com.example.demo.repository.UserResponsitory;
 
 
@@ -76,14 +74,7 @@ public class userController {
 	}
 	
 
-	
-	@RequestMapping(value = { "/Page/Depart" })
-	public String loadDSPhongban(Model model,@ModelAttribute("depart") Depart depart) {
-		List<Depart> departlist = departRes.findAll();
-		model.addAttribute("List", departlist);
-		return "/jsp/Page/PageforAdmin/DSphongban";
-	}
-	
+
 //	@Autowired
 //	DepartResponsitory departRespo;
 	

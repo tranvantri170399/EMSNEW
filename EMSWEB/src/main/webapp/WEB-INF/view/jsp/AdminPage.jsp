@@ -120,11 +120,11 @@
 							class="fa fa-angle-right pull-right"></i>
 					</a>
 						<ul class="treeview-menu">
-							<li><a href="Y.html" target="frame"><i
+							<li><a href="/DSgiaovien" target="frame"><i
 									class="fa fa-circle-o"></i>Danh Sách Giáo Viên</a></li>
-							<li><a href="Page/capnhatdiachi.html" target="frame"><i
+							<li><a href="/DSnhanvien" target="frame"><i
 									class="fa fa-circle-o"></i>Danh Sách CNVC</a></li> li>
-							<li><a href="Page/capnhatdiachi.html" target="frame"><i
+							<li><a href="/DSphongban" target="frame"><i
 									class="fa fa-circle-o"></i>Danh Sách Phòng Ban</a></li> li>
 				</ul>
 				</li>
