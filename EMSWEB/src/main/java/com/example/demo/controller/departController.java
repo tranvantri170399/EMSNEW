@@ -19,7 +19,7 @@ public class departController {
 	@RequestMapping(value = {"depart-list" })
 	public String listUser(Model model) {
 		model.addAttribute("listDepart", departResponsitory.findAll());
-		return "/depart/depart-list";
+		return "depart/depart-list";
 	}
 	
 	//

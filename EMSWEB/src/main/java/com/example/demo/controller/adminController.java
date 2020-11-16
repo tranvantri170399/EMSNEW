@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entities.Depart;
 import com.example.demo.entities.Staff;
@@ -43,6 +44,10 @@ public class adminController {
 	
 	
 	
-	
+	@RequestMapping(value = { "/update/staff" })
+	public String UpdateDSnhanvien(){
+		String a = "good job";
+		return a;
+	}
 	
 }
