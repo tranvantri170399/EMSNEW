@@ -6,9 +6,8 @@ import org.springframework.stereotype.Repository;
 import com.example.demo.entities.Role;
 @Repository("roleRespository")
 public interface RoleRespository extends JpaRepository<Role, String>{
-<<<<<<< HEAD
+
 	Role findByRoleName(String name);
-=======
-	Role findByRoleName(String name); 
->>>>>>> nvtuandev
+
+
 }
