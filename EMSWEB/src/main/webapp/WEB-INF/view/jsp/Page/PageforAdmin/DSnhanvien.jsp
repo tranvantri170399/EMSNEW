@@ -35,7 +35,86 @@
 </style>
 </head>
 <body>
-
+	    <section class="content-header">
+        <h1>
+            Danh Sách Nhân Viên 
+            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Thêm nhân viên</button>
+        </h1>
+          <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
+            <li class="active">Quản lí nhân viên</li>
+            <li class="active">Danh sách Nhân Viên</li>
+          </ol>
+        </section>
+        <!--Modalthemnhanvien-->
+		<div class="modal fade" id="myModal" role="dialog">
+    		<div class="modal-dialog">
+    
+   		   <!-- Modal content-->
+      			<div class="modal-content">
+        			<div class="modal-header">
+          				<button type="button" class="close" data-dismiss="modal">&times;</button>
+          				<h4 class="modal-title">Thêm Nhân Viên</h4>
+        			</div>
+        		<div class="modal-body">
+          			<div>
+						<form:form action="/save" modelAttribute="depart">
+							<div class="form-group">
+								<form:input path="id" type="hidden" class="form-control" />
+							</div>
+							<div class="form-group">
+								<label for="InputName">Họ và tên:</label>
+                    			<div class="input-group">
+                      				<span class="input-group-addon">Họ</span> 
+                      				<form:input type="text" class="form-control disabled" id="InputLastname" >
+                      				<span class="input-group-addon">Tên</span> 
+                      				<form:input type="text" class="form-control disabled"  id="InputFirstname" >            
+                    </div>
+							</div>
+							<div clas="form-group">
+								<label for="InputID">Ngày sinh</label>
+								<form:input path="id" class="form-control" />
+							</div>
+							<div clas="form-group">
+								<label for="InputID">Số Điện Thoại</label>
+								<form:input path="id" class="form-control" />
+							</div>
+							<div clas="form-group">
+								<label for="InputID">Địa chỉ:</label>
+								<form:input path="id" class="form-control" />
+							</div>
+							<div clas="form-group">
+								<label for="InputID">Trạng Thái:</label>
+								<form:input path="id" class="form-control" />
+							</div>
+							<div clas="form-group">
+								<label for="InputID">Cấp độ:</label>
+								<form:input path="id" class="form-control" />
+							</div>
+							<div clas="form-group">
+								<label for="InputID">Lương</label>
+								<form:input path="id" class="form-control" />
+							</div>
+							<div clas="form-group">
+								<label for="InputID">Phòng Ban:</label>
+								<form:select path="depart" items="${departList}" />
+      							</select>
+							</div>
+							<div clas="form-group">
+								<label for="InputID">Chức vụ</label>	
+								<form:select path="role" items="${roleList}" />
+							</div>												
+						</form:form>
+					</div>
+       			</div>
+        		<div class="modal-footer">
+        			<input type="submit" name="btnsave" class="btn btn-info" value="SAVE">	
+          			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        		</div>
+      		</div>
+      	</div>
+  	</div>        	
+        <!-- -->
 		<!-- The Modal -->
 		<div class="modal fade" id="gfgmodal" tabindex="-1" role="dialog">
 			<div class="modal-dialog">
@@ -106,11 +185,12 @@
 						<td>${sp.salary}</td> --%>
 							<td style="text-align: center;">
 								<!-- <input  type="button" data-toggle="modal" data-target="#myModal" value="update"> -->
-								<input type="button" class="gfgselect" data-toggle="modal"
-								data-target="#gfgmodal" value="update"> 
+								<input type="button" class="gfgselect" data-toggle="modal" href="UpdateNhanvien.jsp"
+								data-target="#gfgmodal" value="Update"> 
 								<input
 								class="gfgselect" data-toggle="modal" data-target="#gfgmodal"
 								type="button" value="del">
+
 							</td>
 						</tr>
 					</c:forEach>
