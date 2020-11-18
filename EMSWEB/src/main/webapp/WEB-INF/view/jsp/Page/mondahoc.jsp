@@ -7,7 +7,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>AdminLTE 2 | Dashboard</title>
+    <title>EMS| Danh Sách Môn Đã Học</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- Bootstrap 3.3.2 -->
     <link href="../../../../resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -29,6 +29,19 @@
 
   </head>
 <body >
+    <section class="content-header">
+        <h1>
+            Danh sách môn học
+        </h1>
+          <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
+            <li class="active">Thống kê học tập</li>
+            <li class="active">Danh sách môn đã học</li>            
+          </ol>         
+    </section>
+    <section class="content">
+        
+    </section>
     <script src="../../../../resources/js/jQuery-2.1.3.min.js"></script>
     <!-- Bootstrap 3.3.2 JS -->
     <script src="../../../../resources/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
