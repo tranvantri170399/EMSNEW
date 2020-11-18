@@ -114,6 +114,7 @@ public class adminController {
 	@Autowired
 	StaffResponsitory staffrep;
 
+	@Autowired RoleRespository rolerepon;
 	@RequestMapping(value = { "/DSnhanvien" })
 	public String loadDSnhanvien(Model model, @ModelAttribute("staff") Staff staff) {
 		List<Staff> stafflist = staffrep.findAll();
@@ -127,7 +128,7 @@ public class adminController {
 
 	@Autowired
 	DepartResponsitory departRes;
-
+	
 	@RequestMapping(value = { "/DSphongban" })
 	public String loadDSPhongban(Model model, @ModelAttribute("depart") Depart depart) {
 		List<Depart> departlist = departRes.findAll();
@@ -140,5 +141,48 @@ public class adminController {
 		String a = "good job";
 		return a;
 	}
+	
+	
+	
+	@RequestMapping(value = { "/save/staff" })
+	public String SaveDSnhanvien(Model model, @ModelAttribute("staff") Staff staff, HttpServletRequest request) {
+		Staff st = new Staff();
+		st.setId(staff.getId());
+		st.setFname(staff.getFname());
+		st.setLname(staff.getLname());
+		st.setEmail(staff.getEmail());
+		st.setDob(staff.getDob());
+		st.setPhone(staff.getPhone());
+		st.setAddress(staff.getAddress());
+		st.setStatus(staff.getStatus());
+		st.setLevel(staff.getLevel());
+		st.setSalary(staff.getSalary());
+		String dp = request.getParameter("depart");
+		System.out.println("=>>" + dp);
+		Depart depart = departRes.findByname(dp);
+		String rl = request.getParameter("role");
+		Role role = rolerepon.findByroleName(rl);
+		st.setRole(role);
+		st.setDepart(depart);
+		staffrep.save(st);
+		List<Staff> stafflist = staffrep.findAll();
+		model.addAttribute("List", stafflist);
+		return "/jsp/Page/PageforAdmin/DSnhanvien";
+	}
 
+	@RequestMapping(value = { "/updatestaff" })
+	public String Updatenhanvien( @ModelAttribute("staff") Staff staff,Model model, HttpServletRequest request,@RequestParam("fname") String fname) {
+//		String id = request.getParameter("fnamesx");
+		System.out.println("===>>>" + fname);
+		Staff sfs = staffrep.findByfname(fname);
+		List<Staff> staffs = new ArrayList<>();
+		staffs.add(sfs);
+		List<Depart> departlist = departRes.findAll();
+		model.addAttribute("Listdp", departlist);
+		List<Role> rolelist = rolerepon.findAll();
+		model.addAttribute("Listr", rolelist);
+		model.addAttribute("List", staffs);
+		return "/jsp/Page/PageforAdmin/Updatenhanvien";
+	}
+	
 }
