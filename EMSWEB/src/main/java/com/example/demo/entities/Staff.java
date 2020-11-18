@@ -28,7 +28,7 @@ public class Staff{
 	private String lname;
 	private String image;
 	private String email;
-	private Date dob;
+	private String dob;
 	private String phone;
 	private String address;
 	private String status;
@@ -40,7 +40,7 @@ public class Staff{
 
 
 	public Staff(String id, Depart depart, Role role, String fname, String lname, String image,
-			String email, Date dob, String phone, String address, String status, Integer level,
+			String email, String dob, String phone, String address, String status, Integer level,
 			Double salary) {
 		this.id = id;
 		this.depart = depart;
@@ -123,13 +123,13 @@ public class Staff{
 		this.email = email;
 	}
 
-	@Temporal(TemporalType.DATE)
+//	@Temporal(TemporalType.DATE)
 	@Column(name = "Dob", nullable = false, length = 10)
-	public Date getDob() {
+	public String getDob() {
 		return this.dob;
 	}
 
-	public void setDob(Date dob) {
+	public void setDob(String dob) {
 		this.dob = dob;
 	}
 
