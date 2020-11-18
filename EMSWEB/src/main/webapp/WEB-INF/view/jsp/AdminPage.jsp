@@ -63,12 +63,12 @@
 						<li class="dropdown user user-menu"><a href="#"
 							class="dropdown-toggle" data-toggle="dropdown"> <img
 								src="dist/img/user2-160x160.jpg" class="user-image"
-								alt="User Image" /> <span class="hidden-xs">
-											<c:forEach var="sp" items="${List}">
+								alt="User Image" /> <span class="hidden-xs"> <c:forEach
+										var="sp" items="${List}">
 													${sp.username}
 												
 											</c:forEach>
-								</span>
+							</span>
 						</a>
 							<ul class="dropdown-menu">
 								<!-- User image -->
@@ -126,33 +126,34 @@
 									class="fa fa-circle-o"></i>Danh Sách CNVC</a></li> li>
 							<li><a href="/DSphongban" target="frame"><i
 									class="fa fa-circle-o"></i>Danh Sách Phòng Ban</a></li> li>
-				</ul>
-				</li>
-				<li>
-				<li class="treeview"><a href="#"> <i class="fa fa-calendar"></i>
-						<span>Quản Lí Sinh Viên</span> <i
-						class="fa fa-angle-right pull-right"></i>
-				</a>
-					<ul class="treeview-menu">
-						<li><a href="Page/thoikhoabieu" target="frame"><i
-								class="fa fa-circle-o"></i>Danh sách sinh viên</a></li>
-						<li><a href="Page/lichthi.html" target="frame"><i
-								class="fa fa-circle-o"></i>Danh sách lớp</a></li>
-						<li><a href="Page/diemdanh.html" target="frame"><i
-								class="fa fa-circle-o"></i>Danh sách môn</a></li>
-						<li><a href="Page/gopy.html" target="frame"><i
-								class="fa fa-circle-o"></i>Danh sách ngành</a></li>
-						<li><a href="Page/hocphi.html" target="frame"><i
-								class="fa fa-circle-o"></i>Quản lý môn học từng kì</a></li>
-					</ul></li>
-				<li class="treeview"><a href="#"> <i class="fa fa-calendar"></i>
-						<span>Quản Lí CSVC</span> <i
-						class="fa fa-angle-right pull-right"></i>
-				</a>
-					 <ul class="treeview-menu">
-                <li><a href="Page/thoikhoabieu.html" target="frame"><i class="fa fa-circle-o"></i>Danh sách phòng học</a></li>
-                <li><a href="Page/lichthi.html" target="frame"><i class="fa fa-circle-o"></i>Danh sách thiết bị từng phòng</a></li>                                            
-              </ul></li>
+						</ul></li>
+					<li>
+					<li class="treeview"><a href="#"> <i
+							class="fa fa-calendar"></i> <span>Quản Lí Sinh Viên</span> <i
+							class="fa fa-angle-right pull-right"></i>
+					</a>
+						<ul class="treeview-menu">
+							<li><a href="Page/thoikhoabieu" target="frame"><i
+									class="fa fa-circle-o"></i>Danh sách sinh viên</a></li>
+							<li><a href="Page/lichthi.html" target="frame"><i
+									class="fa fa-circle-o"></i>Danh sách lớp</a></li>
+							<li><a href="Page/diemdanh.html" target="frame"><i
+									class="fa fa-circle-o"></i>Danh sách môn</a></li>
+							<li><a href="Page/gopy.html" target="frame"><i
+									class="fa fa-circle-o"></i>Danh sách ngành</a></li>
+							<li><a href="Page/hocphi.html" target="frame"><i
+									class="fa fa-circle-o"></i>Quản lý môn học từng kì</a></li>
+						</ul></li>
+					<li class="treeview"><a href="#"> <i
+							class="fa fa-calendar"></i> <span>Quản Lí CSVC</span> <i
+							class="fa fa-angle-right pull-right"></i>
+					</a>
+						<ul class="treeview-menu">
+							<li><a href="Page/thoikhoabieu.html" target="frame"><i
+									class="fa fa-circle-o"></i>Danh sách phòng học</a></li>
+							<li><a href="Page/lichthi.html" target="frame"><i
+									class="fa fa-circle-o"></i>Danh sách thiết bị từng phòng</a></li>
+						</ul></li>
 
 				</ul>
 			</section>
@@ -160,9 +161,10 @@
 		</aside>
 
 		<!-- Right side column. Contains the navbar and content of the page -->
-		<div class="content-wrapper">
+		<div class="content-wrapper"
+			style="overflow: hidden; min-height: 660px; min-width: 86%;">
 			<iframe src="" name="frame"
-				style="min-width: 100%; min-height: 660px" scrolling="no"></iframe>
+				style="width: 100%; min-height: 660px; overflow-y: scroll; padding-right: 20px;"></iframe>
 			<!-- Content Header (Page header) -->
 
 		</div>
