@@ -53,6 +53,9 @@
 </script>
 
 <style type="text/css">
+#InputLastname {
+	border-color: red;
+}
 </style>
 </head>
 <body>
@@ -74,14 +77,14 @@
 
 			<!-- Modal content-->
 			<form:form action="/save/staff" modelAttribute="staff">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">Thêm Nhân Viên</h4>
-				</div>
-				<div class="modal-body">
-					<div>
-						
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Thêm Nhân Viên</h4>
+					</div>
+					<div class="modal-body">
+						<div>
+
 							<div class="form-group">
 								<form:input type="text" path="id" />
 							</div>
@@ -129,9 +132,9 @@
 									idxmlns="sel1">
 									<c:if test="${not empty Listdp}">
 										<c:forEach var="sp" items="${Listdp}">
-											  <form:option value="${sp.name}" />
-                     							<%--  <form:options items="${Listdp}" /> --%>
-                     							 </c:forEach>
+											<form:option value="${sp.name}" />
+											<%--  <form:options items="${Listdp}" /> --%>
+										</c:forEach>
 									</c:if>
 								</form:select>
 							</div>
@@ -146,16 +149,16 @@
 									</c:if>
 								</form:select>
 							</div>
-						
+
+						</div>
 					</div>
+					<div class="modal-footer">
+						<input type="submit" name="btnsave" class="btn btn-info"
+							value="SAVE">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+
 				</div>
-				<div class="modal-footer">
-					<input type="submit" name="btnsave" class="btn btn-info"
-						value="SAVE">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				</div>
-				
-			</div>
 			</form:form>
 		</div>
 	</div>
@@ -297,9 +300,21 @@
 			<tbody>
 				<c:if test="${not empty List}">
 					<c:forEach var="sp" items="${List}">
+
+						<c:url var="updateLink" value="/updatestaff">
+							<c:param name="fname" value="${sp.fname}" />
+						</c:url>
+
+						<!-- construct an "delete" link with customer id -->
+						<c:url var="deleteLink" value="/deleteTeacher">
+							<c:param name="id" value="${list.id}" />
+						</c:url>
+						
 						<tr>
-							<td class="gfgusername">${sp.id}</td>
-							<td class="gfgpp">${sp.fname}</td>
+							<td class="gfgusername"><input name="idstaff"
+								value=" ${sp.id}"></td>
+							<td class="gfgpp"><input name="firstname"
+								value="${sp.fname}"></td>
 							<td class="gfgscores">${sp.lname}</td>
 							<td class="gfgarticles">${sp.depart.name}</td>
 							<%-- <td>${sp.role.roleName}</td>
@@ -313,31 +328,31 @@
 						<td>${sp.salary}</td> --%>
 							<td style="text-align: center;">
 								<!-- <input  type="button" data-toggle="modal" data-target="#myModal" value="update"> -->
-
-								<input type="button" class="gfgselect" data-toggle="modal" href="UpdateNhanvien.jsp"
-								data-target="#gfgmodal" value="Update"> 
-								<input
+								<a href="${updateLink}">UPDATE</a>
+								<!-- <input type="submit" value="Update">  --> <input
 								class="gfgselect" data-toggle="modal" data-target="#gfgmodal"
 								type="button" value="del">
 
 							</td>
 						</tr>
+
 					</c:forEach>
 				</c:if>
 
 			</tbody>
-
 
 		</table>
 
 
 	</form:form>
 
-	<script>
+
+
+	<!-- 	<script>
 		$(function() {
 			// ON SELECTING ROW 
 			$(".gfgselect")
-					.click(
+					 .click( 
 							function() {
 								//FINDING ELEMENTS OF ROWS AND STORING THEM IN VARIABLES 
 								var a = $(this).parents("tr").find(
@@ -353,7 +368,7 @@
 								p += "<p id='a' name='GFGusername' >GFG UserHandle: "
 										+ a + " </p>";
 
-								p += "<p > First Name: <input type='text' name='fname' value='"
+								p += "<p > First Name: <input type='text' name='fnamesx' value='"
 										+ c + "'> </p>";
 								p += "<p > Last Name: <input type='text' name='lname' value='"
 									+ d + "'> </p>";
@@ -365,7 +380,7 @@
 								$("#divGFG").append(p);
 							});
 		});
-	</script>
+	</script> -->
 
 </body>
 </html>

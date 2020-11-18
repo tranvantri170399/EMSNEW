@@ -29,6 +29,20 @@
 
   </head>
 <body >
+    <section class="content-header">
+        <h1>
+            Tình trạng sinh viên
+        </h1>
+          <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
+            <li class="active">Thông tin sinh viên</li>
+            <li class="active">Tình trạng sinh viên</li>            
+          </ol>          
+    </section>
+    <section class="content">
+      
+    </section>
+
     <script src="../../../../resources/js/jQuery-2.1.3.min.js"></script>
     <!-- Bootstrap 3.3.2 JS -->
     <script src="../../../../resources/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>

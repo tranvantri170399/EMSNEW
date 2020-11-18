@@ -8,7 +8,8 @@ import org.springframework.data.jpa.repository.Query;
 import com.example.demo.entities.Staff;
 
 public interface StaffResponsitory extends JpaRepository<Staff, String> {
-	  
-//	@Query("SELECT e FROM Staff e")
-//	    public List<Staff> findcustom();
+	Staff findByfname(String name);
+
+	@Query("SELECT e FROM Staff e where e.id=?1")
+	public List<Staff> findcustom(String id);
 }
