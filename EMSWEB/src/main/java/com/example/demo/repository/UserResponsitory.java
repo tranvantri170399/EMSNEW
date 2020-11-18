@@ -4,9 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
+import com.example.demo.entities.Parent;
 import com.example.demo.entities.User;
 
 public interface UserResponsitory extends JpaRepository<User, String> {
-
+	@Query("SELECT e FROM User e where e.username.id=?1")
+	public List<User> findcustom(String id);
 }

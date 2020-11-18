@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.demo.entities.Depart;
 import com.example.demo.entities.Parent;
+import com.example.demo.entities.Student;
 import com.example.demo.entities.User;
 import com.example.demo.repository.DepartResponsitory;
 import com.example.demo.repository.ParentResponsitory;
+import com.example.demo.repository.StudentResponsitory;
 import com.example.demo.repository.UserResponsitory;
 
 
@@ -91,20 +93,29 @@ public class userController {
 		departRes.save(de);
 		return "/jsp/Page/PageforAdmin/DSphongban";
 	}
-	
+	@Autowired
+	StudentResponsitory sturep;
 	@RequestMapping(value = { "/Page/INFO" })
 	public String loadInfo(Model model,@ModelAttribute("Parents") Parent parents) {
-		List<Parent> parentList = parentRes.findAll();
+		String ids = "PH002";
+		List<Parent> parentList = parentRes.findcustom(ids);
+		List<Student> studentlist= sturep.findcustom(ids);
+		model.addAttribute("Liststudent", studentlist);
 		model.addAttribute("List", parentList);
 		return "/jsp/Page/info";
 	}
 	
+
 	@RequestMapping(value = { "/Page/UPDATEPASS" })
 	public String editPass(@ModelAttribute("User") User user, Model model) {
-		
+		String ids = "PH002";
+		String id= "lap";
+		List<Parent> parentList = parentRes.findcustom(ids);
+		List<User> userList= UserRep.findcustom(id);
+		model.addAttribute("Listuser", userList);
+		model.addAttribute("List", parentList);
 		return "/jsp/Page/capnhatPassword";
 	}
-	
 	
 	
 	
