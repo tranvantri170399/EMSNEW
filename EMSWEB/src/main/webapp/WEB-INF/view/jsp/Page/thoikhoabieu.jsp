@@ -26,6 +26,14 @@
     <!-- AdminLTE Skins. Choose a skin from the css/skins 
          folder instead of downloading all of them to reduce the load. -->
     <link href="../../../../resources/bootstrap/css/_all-skins.min.css" rel="stylesheet" type="text/css" />
+   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+  
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+    <script type="text/javascript">
+      $(document).ready( function () {
+        $('#myTable').DataTable();
+      } );
+    </script>    
 
   </head>
 <body>
@@ -35,8 +43,9 @@
             <small>Version 2.0</small>
         </h1>
           <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Dashboard</li>
+            <li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
+            <li class="active">Học tập</li>
+            <li class="active">Thời khóa biểu</li>            
           </ol>
         </section>
 
@@ -60,32 +69,34 @@
                 <div class="box-body">
                   <div class="row">
                     <div class="col-md-12">
-                      <p class="text-center">
-                        <strong>Sales: 1 Jan, 2014 - 30 Jul, 2014</strong>
-                      </p>
                         <!-- Sales Chart Canvas -->
-                <div class="box-body">
-                  <div class="table-responsive">
-                    <table class="table no-margin">
-                      <thead>
-                        <tr>
+                      <div class="box-body">
+                        <div class="table-responsive">
+                          <table id="table_id" class="display">
+                            <thead>
+                            <tr>
+                          <th>STT</th>
                           <th>Ngày</th>
                           <th>Phòng</th>
-                          <th>Gỉang đường</th>
-                          <th>Mã môn</th>
-                          <th>Lớp</th>
+                          <th>Giản đường</th>
+                          <th>Mã Môn</th>
+                          <th>Môn</th>
                           <th>Giảng Viên</th>
                           <th>Ca</th>
+                          <th>Thời gian</th>                        
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                          <td>Call of Duty IV</td>
-                          <td><span class="label label-success">Shipped</span></td>
-                          <td><div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div></td>
-                          <td></td>
-                          <td></td>
+                          <td>${bd.hk}</td>
+                          <td>${sp.name}</td>
+                          <td>${bd.hk}</td>
+                          <td>${sp.name}</td>
+                          <td>${bd.hk}</td>
+                          <td>${sp.name}</td>  
+                          <td>${sp.name}</td>
+                          <td>${bd.hk}</td>
+                          <td>${sp.name}</td>                          
                         </tr>
                       </tbody>
                     </table>

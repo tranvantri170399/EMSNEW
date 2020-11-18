@@ -21,6 +21,14 @@
     <!-- AdminLTE Skins. Choose a skin from the css/skins 
          folder instead of downloading all of them to reduce the load. -->
     <link href="../../../../resources/bootstrap/css/_all-skins.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+  
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+    <script type="text/javascript">
+      $(document).ready( function () {
+        $('#myTable').DataTable();
+      } );
+    </script>
 
   </head>
 <body >
@@ -54,35 +62,38 @@
                 <div class="box-body">
                   <div class="row">
                     <div class="col-md-12">
-                      <p class="text-center">
-                        <strong>Sales: 1 Jan, 2014 - 30 Jul, 2014</strong>
-                      </p>
                         <!-- Sales Chart Canvas -->
-                <div class="box-body">
-                  <div class="table-responsive">
-                    <table class="table no-margin">
-                      <thead>
-                        <tr>
-                          <th>Ngày</th>
-                          <th>Phòng</th>
-                          <th>Giảng đường</th>
-                          <th>Mã môn</th>
-                          <th>Lớp</th>
-                          <th>Giảng viên</th>
-                          <th>Ca</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                          <td>Call of Duty IV</td>
-                          <td><span class="label label-success">Shipped</span></td>
-                          <td><div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div></td>
-                          <td></td>
-                          <td></td>
-                        </tr>
-                      </tbody>
-                    </table>
+                  <div class="box-body">
+                    <div class="table-responsive">
+                      <table id="table1" class="display">
+                        <thead>
+                          <tr>
+                            <th>Học kỳ</th>
+                            <th>Môn</th>
+                            <th>Lớp</th>
+                            <th>Tên đầu điểm</th>
+                            <th>Trọng số</th>
+                            <th>Điểm</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <c:if test="${not empty List}">
+                            <c:forEach var="sp" items="${List}">
+                              <tr>
+                                <td>${bd.hk}</td>
+                                <td>${sp.name}</td>
+                                <td>${bd.hk}</td>
+                                <td>${sp.name}</td>
+                                <td>${bd.hk}</td>
+                                <td>${sp.name}</td>                               
+                              </tr>
+                            </c:forEach>
+                          </c:if>
+
+                        </tbody>
+
+
+                      </table>
                   </div><!-- /.table-responsive -->
                 </div>
                     </div><!-- /.col -->

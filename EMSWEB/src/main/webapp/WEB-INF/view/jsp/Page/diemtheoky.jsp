@@ -34,8 +34,9 @@
             ĐIỂM THEO KỲ
         </h1>
           <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Dashboard</li>
+            <li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
+            <li class="active">Thống kê học tập</li>
+            <li class="active">Điểm theo kỳ</li>
           </ol>
         </section>
 
