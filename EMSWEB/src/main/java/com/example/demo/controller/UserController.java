@@ -78,19 +78,19 @@ public class UserController {
 //	@Autowired
 //	DepartResponsitory departRespo;
 	
-	@RequestMapping(params = "btnsave",value = { "/save" })
-	public String saveDepart(Model model,@ModelAttribute("depart") Depart d) {
-//		System.out.println("==>"+depart.getName());
-		Depart de= new Depart(d.getId(),d.getName(), null, null);
-		System.out.println(">>> "+d.getId());
-//		de.setId();
-//		de.setName();
-//		de.setDesc();
-//		departRes.delete(depart);
-//		 new Depart(depart.getId(),depart.getName(),depart.getDesc())
-		departRes.save(de);
-		return "/jsp/Page/PageforAdmin/DSphongban";
-	}
+//	@RequestMapping(params = "btnsave",value = { "/save" })
+//	public String saveDepart(Model model,@ModelAttribute("depart") Depart d) {
+////		System.out.println("==>"+depart.getName());
+//		Depart de= new Depart(d.getId(),d.getName(), null, null);
+//		System.out.println(">>> "+d.getId());
+////		de.setId();
+////		de.setName();
+////		de.setDesc();
+////		departRes.delete(depart);
+////		 new Depart(depart.getId(),depart.getName(),depart.getDesc())
+//		departRes.save(de);
+//		return "/jsp/Page/PageforAdmin/DSphongban";
+//	}
 	
 	@RequestMapping(value = { "/Page/INFO" })
 	public String loadInfo(Model model,@ModelAttribute("Parents") Parent parents) {
