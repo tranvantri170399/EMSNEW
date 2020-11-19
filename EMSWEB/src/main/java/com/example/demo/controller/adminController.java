@@ -1,5 +1,9 @@
 package com.example.demo.controller;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -12,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.hibernate.mapping.Array;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.support.StaticApplicationContext;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +27,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.entities.Depart;
 import com.example.demo.entities.Role;
@@ -37,6 +43,7 @@ import com.example.demo.service.TeacherService;
 
 @Controller
 public class adminController {
+	public static String uploadDirectory= System.getProperty("user.dir")+"/src/main/webapp/resources/FileUpload";
 	// teacher
 	@Autowired
 	private TeacherService teacherService;
@@ -145,11 +152,23 @@ public class adminController {
 	
 	
 	@RequestMapping(value = { "/save/staff" })
-	public String SaveDSnhanvien(Model model, @ModelAttribute("staff") Staff staff, HttpServletRequest request) {
+	public String SaveDSnhanvien(Model model, @ModelAttribute("staff") Staff staff, HttpServletRequest request,@RequestParam("files") MultipartFile[] files) {
 		Staff st = new Staff();
 		st.setId(staff.getId());
 		st.setFname(staff.getFname());
 		st.setLname(staff.getLname());
+		StringBuilder filenames= new StringBuilder();
+		for (MultipartFile file : files) {
+			Path fileNameAndPath= Paths.get(uploadDirectory,file.getOriginalFilename());
+			filenames.append(file.getOriginalFilename());
+			try {
+				Files.write(fileNameAndPath,file.getBytes());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}		
+		System.out.println("successfully upload file: "+filenames.toString());
+		st.setImage(filenames.toString());
 		st.setEmail(staff.getEmail());
 		st.setDob(staff.getDob());
 		st.setPhone(staff.getPhone());
@@ -169,10 +188,20 @@ public class adminController {
 		model.addAttribute("List", stafflist);
 		return "/jsp/Page/PageforAdmin/DSnhanvien";
 	}
+	@RequestMapping(value = { "/deleteTeacher" })
+	public String Delnhanvien( @ModelAttribute("staff") Staff staff,Model model, HttpServletRequest request,@RequestParam("fname") String fname) {
+		System.out.println("===>>>" + fname);
+		Staff sfs = staffrep.findByfname(fname);
+		staffrep.delete(sfs);
+		List<Staff> staffs = staffrep.findAll();
+
+		model.addAttribute("List", staffs);
+		return "/jsp/Page/PageforAdmin/DSnhanvien";
+	}
+
 
 	@RequestMapping(value = { "/updatestaff" })
 	public String Updatenhanvien( @ModelAttribute("staff") Staff staff,Model model, HttpServletRequest request,@RequestParam("fname") String fname) {
-//		String id = request.getParameter("fnamesx");
 		System.out.println("===>>>" + fname);
 		Staff sfs = staffrep.findByfname(fname);
 		List<Staff> staffs = new ArrayList<>();
@@ -184,5 +213,36 @@ public class adminController {
 		model.addAttribute("List", staffs);
 		return "/jsp/Page/PageforAdmin/Updatenhanvien";
 	}
+
+	@RequestMapping(value = { "/updatess" })
+	public String Updatenhanvienss( @ModelAttribute("staff") Staff staff,Model model, HttpServletRequest request,@RequestParam("files") MultipartFile[] files,@RequestParam("fname") String fname) {
+		StringBuilder filenames= new StringBuilder();
+		for (MultipartFile file : files) {
+			Path fileNameAndPath= Paths.get(uploadDirectory,file.getOriginalFilename());
+			filenames.append(file.getOriginalFilename());
+			try {
+				Files.write(fileNameAndPath,file.getBytes());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}		
+		System.out.println("successfully upload file: "+filenames.toString());
+		
+		Staff sfs = staffrep.findByfname(fname);
+		sfs.setImage(filenames.toString());
+		sfs.setDob(staff.getDob());
+		sfs.setEmail(staff.getEmail());
+		sfs.setPhone(staff.getPhone());
+		sfs.setAddress(staff.getAddress());
+		sfs.setLevel(staff.getLevel());
+		sfs.setSalary(staff.getSalary());
+		
+		staffrep.save(sfs);
+				
+		List<Staff> stafflist = staffrep.findAll();
+		model.addAttribute("List", stafflist);
+		return "/jsp/Page/PageforAdmin/DSnhanvien";
+	}
+	
 	
 }

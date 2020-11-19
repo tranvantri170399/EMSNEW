@@ -60,15 +60,17 @@
 		<!--Thoi Khoa Bieu -->
 		<div class="row">
 			<div class="col-md-12">
-				<form:form action="/update" modelAttribute="staff">
+				<form:form action="/updatess" modelAttribute="staff" enctype="multipart/form-data">
 					<div class="box box-primary">
-						<img src="" name=""
-							style="background: blue; width: 200px; height: 200px;">
+<!-- 						<img src="../../../../../resources/FileUpload/tri1703.jpg" name=""
+							style="width: 200px; height: 200px;"> -->
 						<!--form  -->
 
 
 						<c:if test="${not empty List}">
 							<c:forEach var="sp" items="${List}">
+							<img src="../../../../../resources/FileUpload/${sp.image}" name=""
+							style="width: 200px; height: 300px;">
 								<div class="box-body">
 									<div class="form-group">
 										<input type="hidden" id="custId" name="custId" value="3487">
@@ -76,7 +78,7 @@
 									<div class="form-group">
 										<label for="exampleInputFile">File input</label>
 										<div class="input-group">
-											<input type="File" class="form-control" id="InputImage">
+											<input type="File" class="form-control" name="files" id="InputImage">
 											<span class="input-group-btn">
 												<button class="btn btn-default" type="submit">Update
 												</button>
@@ -126,11 +128,11 @@
 									</div>
 									<div clas="form-group">
 										<label for="InputID">Cấp độ:</label>
-										<form:input path="id" value="${sp.level}" class="form-control" />
+										<form:input path="level" value="${sp.level}" class="form-control" />
 									</div>
 									<div clas="form-group">
 										<label for="InputID">Lương</label>
-										<form:input path="id" value="${sp.salary}"
+										<form:input path="salary" value="${sp.salary}"
 											class="form-control" />
 									</div>
 									<%-- <div clas="form-group">
