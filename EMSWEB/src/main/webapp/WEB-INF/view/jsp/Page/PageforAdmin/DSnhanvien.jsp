@@ -76,7 +76,7 @@
 		<div class="modal-dialog">
 
 			<!-- Modal content-->
-			<form:form action="/save/staff" modelAttribute="staff">
+			<form:form action="/save/staff" modelAttribute="staff" enctype="multipart/form-data">
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -99,6 +99,17 @@
 										id="InputFirstname" />
 								</div>
 							</div>
+							
+							<div clas="form-group">
+								<label for="InputID">Image:</label>
+								<input type="File" class="form-control" name="files" id="InputImage">
+							</div>
+							<div clas="form-group">
+								<label for="InputID">Email:</label>
+								<form:input type="text" path="email" classxmlns="form-control"
+									id="InputEmail" />
+							</div>
+							
 							<div clas="form-group">
 								<label for="InputID">Ngày sinh</label>
 								<form:input type="date" path="dob" classxmlns="form-control"
@@ -162,118 +173,7 @@
 			</form:form>
 		</div>
 	</div>
-	<!-- The Modal -->
-	<%-- 		<div class="modal fade" id="gfgmodal" tabindex="-1" role="dialog">
-=======
-	    <section class="content-header">
-        <h1>
-            Danh Sách Nhân Viên 
-            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Thêm nhân viên</button>
-        </h1>
-          <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-            <li class="active">Quản lí nhân viên</li>
-            <li class="active">Danh sách Nhân Viên</li>
-          </ol>
-        </section>
-        <!--Modalthemnhanvien-->
-		<div class="modal fade" id="myModal" role="dialog">
-    		<div class="modal-dialog">
-    
-   		   <!-- Modal content-->
-      			<div class="modal-content">
-        			<div class="modal-header">
-          				<button type="button" class="close" data-dismiss="modal">&times;</button>
-          				<h4 class="modal-title">Thêm Nhân Viên</h4>
-        			</div>
-        		<div class="modal-body">
-          			<div>
-						<form:form action="/save" modelAttribute="depart">
-							<div class="form-group">
-								<form:input path="id" type="hidden" class="form-control" />
-							</div>
-							<div class="form-group">
-								<label for="InputName">Họ và tên:</label>
-                    			<div class="input-group">
-                      				<span class="input-group-addon">Họ</span> 
-                      				<form:input type="text" class="form-control disabled" id="InputLastname" >
-                      				<span class="input-group-addon">Tên</span> 
-                      				<form:input type="text" class="form-control disabled"  id="InputFirstname" >            
-                    </div>
-							</div>
-							<div clas="form-group">
-								<label for="InputID">Ngày sinh</label>
-								<form:input path="id" class="form-control" />
-							</div>
-							<div clas="form-group">
-								<label for="InputID">Số Điện Thoại</label>
-								<form:input path="id" class="form-control" />
-							</div>
-							<div clas="form-group">
-								<label for="InputID">Địa chỉ:</label>
-								<form:input path="id" class="form-control" />
-							</div>
-							<div clas="form-group">
-								<label for="InputID">Trạng Thái:</label>
-								<form:input path="id" class="form-control" />
-							</div>
-							<div clas="form-group">
-								<label for="InputID">Cấp độ:</label>
-								<form:input path="id" class="form-control" />
-							</div>
-							<div clas="form-group">
-								<label for="InputID">Lương</label>
-								<form:input path="id" class="form-control" />
-							</div>
-							<div clas="form-group">
-								<label for="InputID">Phòng Ban:</label>
-								<form:select path="depart" items="${departList}" />
-      							</select>
-							</div>
-							<div clas="form-group">
-								<label for="InputID">Chức vụ</label>	
-								<form:select path="role" items="${roleList}" />
-							</div>												
-						</form:form>
-					</div>
-       			</div>
-        		<div class="modal-footer">
-        			<input type="submit" name="btnsave" class="btn btn-info" value="SAVE">	
-          			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        		</div>
-      		</div>
-      	</div>
-  	</div>        	
-        <!-- -->
-		<!-- The Modal -->
-		<div class="modal fade" id="gfgmodal" tabindex="-1" role="dialog">
->>>>>>> master
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<!-- MODEL TITLE -->
-						<h2 class="modal-title" id="gfgmodallabel">Update Staff</h2>
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close">
-							<span aria-hidden="true"> ×</span>
-						</button>
-					</div>
-					<!-- MODEL BODY -->
-					<div class="modal-body">
-					<form action="/update/staff">
-						<div class="GFGclass" id="divGFG"></div>
-						
-						<div class="modal-footer">
-							<!-- The close button in the bottom of the modal -->
-							<button type="button" class="btn btn-secondary"
-								data-dismiss="modal">Close</button>
-								<input type="submit" class="btn btn-primary" value="Save changes"> 
-						</div>
-					</form>
-					</div>
-				</div>
-			</div>
-		</div> --%>
+
 	<!--Table  -->
 	<form:form action="/save" modelAttribute="staff">
 		<table id="table1" class="display">
@@ -284,15 +184,15 @@
 					<th>Firstname</th>
 					<th>Lastname</th>
 					<th>Depart</th>
-					<!-- <th>Role</th>
-				<th>Image</th>
+					<th>Role</th>
+				<!-- <th>Image</th> -->
 				<th>Email</th>
 				<th>Birthday</th>
-				<th>Phone</th> -->
-					<!-- 				<th>Address</th>
-				<th>Status</th>
+				<th>Phone</th>
+									<th>Address</th>
+				<!-- <th>Status</th> -->
 				<th>Level</th>
-				<th>Salary</th> -->
+				<th>Salary</th>
 					<th>Action</th>
 				</tr>
 			</thead>
@@ -307,31 +207,32 @@
 
 						<!-- construct an "delete" link with customer id -->
 						<c:url var="deleteLink" value="/deleteTeacher">
-							<c:param name="id" value="${list.id}" />
+							<c:param name="fname" value="${sp.fname}" />
 						</c:url>
 						
 						<tr>
-							<td class="gfgusername"><input name="idstaff"
+							<td class="gfgusername"><input style="border: none;width: 20%" name="idstaff"
 								value=" ${sp.id}"></td>
-							<td class="gfgpp"><input name="firstname"
+							<td class="gfgpp"><input style="border: none;width: 80%" name="firstname"
 								value="${sp.fname}"></td>
 							<td class="gfgscores">${sp.lname}</td>
 							<td class="gfgarticles">${sp.depart.name}</td>
-							<%-- <td>${sp.role.roleName}</td>
-						<td>${sp.image}</td>
+							<td>${sp.role.roleName}</td>
+						<%-- <td>${sp.image}</td> --%>
 						<td>${sp.email}</td>
 						<td>${sp.dob}</td>
-						<td>${sp.phone}</td> --%>
-							<%-- <td>${sp.address}</td>
-						<td>${sp.status}</td>
+						<td>${sp.phone}</td>
+							<td>${sp.address}</td>
+						<%-- <td>${sp.status}</td> --%>
 						<td>${sp.level}</td>
-						<td>${sp.salary}</td> --%>
+						<td>${sp.salary}</td>
 							<td style="text-align: center;">
 								<!-- <input  type="button" data-toggle="modal" data-target="#myModal" value="update"> -->
 								<a href="${updateLink}">UPDATE</a>
-								<!-- <input type="submit" value="Update">  --> <input
+								<a href="${deleteLink}">DEL</a>
+								<!-- <input type="submit" value="Update">  --> <!-- <input
 								class="gfgselect" data-toggle="modal" data-target="#gfgmodal"
-								type="button" value="del">
+								type="button" value="del"> -->
 
 							</td>
 						</tr>
