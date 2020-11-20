@@ -226,7 +226,7 @@ public class adminController {
 				e.printStackTrace();
 			}
 		}		
-		System.out.println("successfully upload file: "+filenames.toString());
+		System.out.println("successfully upload files: "+filenames.toString());
 		
 		Staff sfs = staffrep.findByfname(fname);
 		sfs.setImage(filenames.toString());
