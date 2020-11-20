@@ -34,10 +34,12 @@ import com.example.demo.entities.Role;
 import com.example.demo.entities.Staff;
 import com.example.demo.entities.Student;
 import com.example.demo.entities.Teacher;
+import com.example.demo.entities.User;
 import com.example.demo.model.dateobject;
 import com.example.demo.repository.DepartResponsitory;
 import com.example.demo.repository.RoleRespository;
 import com.example.demo.repository.StaffResponsitory;
+import com.example.demo.repository.UserResponsitory;
 import com.example.demo.service.StudentService;
 import com.example.demo.service.TeacherService;
 
@@ -121,6 +123,8 @@ public class adminController {
 	@Autowired
 	StaffResponsitory staffrep;
 
+	@Autowired
+	UserResponsitory userrespon;
 	@Autowired RoleRespository rolerepon;
 	@RequestMapping(value = { "/DSnhanvien" })
 	public String loadDSnhanvien(Model model, @ModelAttribute("staff") Staff staff) {
@@ -153,8 +157,22 @@ public class adminController {
 	
 	@RequestMapping(value = { "/save/staff" })
 	public String SaveDSnhanvien(Model model, @ModelAttribute("staff") Staff staff, HttpServletRequest request,@RequestParam("files") MultipartFile[] files) {
+		List<Staff> stafflist = staffrep.findAll();
+		Staff lastid =stafflist.get(stafflist.size()-1);
+		String id= lastid.getId();
+		String splitID=id.substring(2);
+		System.out.println("==> "+splitID);
+		int idNum= Integer.parseInt(splitID)+1;
+		String outID=null;
+		if (idNum<10) {
+			outID="NV00"+idNum;
+		}else if (idNum>=10 && idNum<100) {
+			outID="NV0"+idNum;
+		}else if (idNum>=100 && idNum<1000) {
+			outID="NV"+idNum;
+		}
 		Staff st = new Staff();
-		st.setId(staff.getId());
+		st.setId(outID);
 		st.setFname(staff.getFname());
 		st.setLname(staff.getLname());
 		StringBuilder filenames= new StringBuilder();
@@ -177,14 +195,14 @@ public class adminController {
 		st.setLevel(staff.getLevel());
 		st.setSalary(staff.getSalary());
 		String dp = request.getParameter("depart");
-		System.out.println("=>>" + dp);
 		Depart depart = departRes.findByname(dp);
 		String rl = request.getParameter("role");
 		Role role = rolerepon.findByroleName(rl);
 		st.setRole(role);
 		st.setDepart(depart);
+		User user = new User(st.getEmail(),st.getPhone(),"NV");
+		userrespon.save(user);
 		staffrep.save(st);
-		List<Staff> stafflist = staffrep.findAll();
 		model.addAttribute("List", stafflist);
 		return "/jsp/Page/PageforAdmin/DSnhanvien";
 	}
@@ -194,7 +212,6 @@ public class adminController {
 		Staff sfs = staffrep.findByfname(fname);
 		staffrep.delete(sfs);
 		List<Staff> staffs = staffrep.findAll();
-
 		model.addAttribute("List", staffs);
 		return "/jsp/Page/PageforAdmin/DSnhanvien";
 	}
@@ -229,16 +246,25 @@ public class adminController {
 		System.out.println("successfully upload files: "+filenames.toString());
 		
 		Staff sfs = staffrep.findByfname(fname);
-		sfs.setImage(filenames.toString());
+		if (filenames.toString().isEmpty()) {
+			System.out.println("null");
+		}else{
+			sfs.setImage(filenames.toString());
+		}
 		sfs.setDob(staff.getDob());
 		sfs.setEmail(staff.getEmail());
 		sfs.setPhone(staff.getPhone());
 		sfs.setAddress(staff.getAddress());
 		sfs.setLevel(staff.getLevel());
 		sfs.setSalary(staff.getSalary());
-		
-		staffrep.save(sfs);
-				
+		String dp = request.getParameter("depart");
+		System.out.println("=>>" + dp);
+		Depart depart = departRes.findByname(dp);
+		String rl = request.getParameter("role");
+		Role role = rolerepon.findByroleName(rl);
+		sfs.setRole(role);
+		sfs.setDepart(depart);
+		staffrep.save(sfs);				
 		List<Staff> stafflist = staffrep.findAll();
 		model.addAttribute("List", stafflist);
 		return "/jsp/Page/PageforAdmin/DSnhanvien";
