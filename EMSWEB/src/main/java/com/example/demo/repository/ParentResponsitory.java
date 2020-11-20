@@ -10,4 +10,7 @@ import com.example.demo.entities.Parent;
 public interface ParentResponsitory extends JpaRepository<Parent, String>{
 	@Query("SELECT e FROM Parent e where e.id=?1")
 	public List<Parent> findcustom(String id);
+	
+	@Query("SELECT e FROM Parent e where e.email=?1")
+	public List<Parent> findcustomemail(String email);
 }
