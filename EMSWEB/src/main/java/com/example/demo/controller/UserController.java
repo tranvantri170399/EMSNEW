@@ -118,9 +118,7 @@ public class UserController {
 	public String editPass(@ModelAttribute("User") User user, Model model,@RequestParam("nameuserxxx") String email) {
 		String ids = "PH002";
 		String id= "lap";
-//		List<Parent> parentList = parentRes.findcustom(ids);
 		List<Parent> parentList = parentRes.findcustomemail(email);
-//		Parent parent= parentList.get(parentList.size()-1);
 		
 		List<User> userList= UserRep.findcustom(email);
 		model.addAttribute("Listuser", userList);
