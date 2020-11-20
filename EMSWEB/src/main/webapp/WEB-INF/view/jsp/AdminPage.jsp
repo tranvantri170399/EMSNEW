@@ -39,7 +39,6 @@
          folder instead of downloading all of them to reduce the load. -->
 <link href="../../../resources/bootstrap/css/_all-skins.min.css"
 	rel="stylesheet" type="text/css" />
-
 </head>
 <body class="skin-blue">
 	<div class="wrapper">
@@ -62,8 +61,8 @@
 						<!-- User Account: style can be found in dropdown.less -->
 						<li class="dropdown user user-menu"><a href="#"
 							class="dropdown-toggle" data-toggle="dropdown"> <img
-								src="dist/img/user2-160x160.jpg" class="user-image"
-								alt="User Image" /> <span class="hidden-xs"> <c:forEach
+								src="#" class="user-image"
+								alt="" /> <span class="hidden-xs"> <c:forEach
 										var="sp" items="${List}">
 													${sp.username}
 												
@@ -123,9 +122,9 @@
 							<li><a href="/DSgiaovien" target="frame"><i
 									class="fa fa-circle-o"></i>Danh Sách Giáo Viên</a></li>
 							<li><a href="/DSnhanvien" target="frame"><i
-									class="fa fa-circle-o"></i>Danh Sách CNVC</a></li> li>
+									class="fa fa-circle-o"></i>Danh Sách CNVC</a></li> 
 							<li><a href="/DSphongban" target="frame"><i
-									class="fa fa-circle-o"></i>Danh Sách Phòng Ban</a></li> li>
+									class="fa fa-circle-o"></i>Danh Sách Phòng Ban</a></li>
 						</ul></li>
 					<li>
 					<li class="treeview"><a href="#"> <i

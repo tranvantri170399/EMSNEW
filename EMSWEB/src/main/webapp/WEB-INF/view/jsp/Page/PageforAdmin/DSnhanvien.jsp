@@ -178,7 +178,7 @@
 	<form:form action="/save" modelAttribute="staff">
 		<table id="table1" class="display">
 
-			<thead>
+			<thead style="background-color: aqua;">
 				<tr>
 					<th>ID</th>
 					<th>Firstname</th>
@@ -209,11 +209,12 @@
 						<c:url var="deleteLink" value="/deleteTeacher">
 							<c:param name="fname" value="${sp.fname}" />
 						</c:url>
+
 						
-						<tr>
-							<td class="gfgusername"><input style="border: none;width: 20%" name="idstaff"
+						<tr style="color: red;">
+							<td class="gfgusername"><input style="color: red;border: none;width: 50px" name="idstaff"
 								value=" ${sp.id}"></td>
-							<td class="gfgpp"><input style="border: none;width: 80%" name="firstname"
+							<td class="gfgpp"><input style="color: red;border: none;width: 80%" name="firstname"
 								value="${sp.fname}"></td>
 							<td class="gfgscores">${sp.lname}</td>
 							<td class="gfgarticles">${sp.depart.name}</td>
@@ -228,7 +229,7 @@
 						<td>${sp.salary}</td>
 							<td style="text-align: center;">
 								<!-- <input  type="button" data-toggle="modal" data-target="#myModal" value="update"> -->
-								<a href="${updateLink}">UPDATE</a>
+								<a href="${updateLink}" >UPDATE</a>
 								<a href="${deleteLink}">DEL</a>
 								<!-- <input type="submit" value="Update">  --> <!-- <input
 								class="gfgselect" data-toggle="modal" data-target="#gfgmodal"
