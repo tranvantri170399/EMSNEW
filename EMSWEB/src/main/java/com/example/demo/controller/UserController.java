@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.demo.entities.Depart;
 import com.example.demo.entities.Parent;
+import com.example.demo.entities.Student;
 import com.example.demo.entities.User;
 import com.example.demo.repository.DepartResponsitory;
 import com.example.demo.repository.ParentResponsitory;
+import com.example.demo.repository.StudentResponsitory;
 import com.example.demo.repository.UserResponsitory;
 
 
@@ -78,28 +80,42 @@ public class UserController {
 //	@Autowired
 //	DepartResponsitory departRespo;
 	
-//	@RequestMapping(params = "btnsave",value = { "/save" })
-//	public String saveDepart(Model model,@ModelAttribute("depart") Depart d) {
-////		System.out.println("==>"+depart.getName());
-//		Depart de= new Depart(d.getId(),d.getName(), null, null);
-//		System.out.println(">>> "+d.getId());
-////		de.setId();
-////		de.setName();
-////		de.setDesc();
-////		departRes.delete(depart);
-////		 new Depart(depart.getId(),depart.getName(),depart.getDesc())
-//		departRes.save(de);
-//		return "/jsp/Page/PageforAdmin/DSphongban";
-//	}
-	
+	@RequestMapping(params = "btnsave",value = { "/save" })
+	public String saveDepart(Model model,@ModelAttribute("depart") Depart d) {
+//		System.out.println("==>"+depart.getName());
+		Depart de= new Depart(d.getId(),d.getName(), null, null);
+		System.out.println(">>> "+d.getId());
+//		de.setId();
+//		de.setName();
+//		de.setDesc();
+//		departRes.delete(depart);
+//		 new Depart(depart.getId(),depart.getName(),depart.getDesc())
+		departRes.save(de);
+		return "/jsp/Page/PageforAdmin/DSphongban";
+	}
+	@Autowired
+	StudentResponsitory sturep;
 	@RequestMapping(value = { "/Page/INFO" })
 	public String loadInfo(Model model,@ModelAttribute("Parents") Parent parents) {
-		List<Parent> parentList = parentRes.findAll();
+		String ids = "PH002";
+		List<Parent> parentList = parentRes.findcustom(ids);
+		List<Student> studentlist= sturep.findcustom(ids);
+		model.addAttribute("Liststudent", studentlist);
 		model.addAttribute("List", parentList);
 		return "/jsp/Page/info";
 	}
-
 	
+
+	@RequestMapping(value = { "/Page/UPDATEPASS" })
+	public String editPass(@ModelAttribute("User") User user, Model model) {
+		String ids = "PH002";
+		String id= "lap";
+		List<Parent> parentList = parentRes.findcustom(ids);
+		List<User> userList= UserRep.findcustom(id);
+		model.addAttribute("Listuser", userList);
+		model.addAttribute("List", parentList);
+		return "/jsp/Page/capnhatPassword";
+	}
 	
 	
 	

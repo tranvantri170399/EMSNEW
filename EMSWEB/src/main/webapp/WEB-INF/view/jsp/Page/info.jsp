@@ -84,6 +84,9 @@ hr{
 .form-control[readonly]{
 	background-color: white;
 }
+.parent-info{
+	float: right;
+}
 </style>
 </head>
 <body>
@@ -94,7 +97,11 @@ hr{
     </div>
     <hr>
     <div class="info-header row">
-    <div class="col-xl-3"></div>
+    <div class="col-xl-3" style="margin-left: 20px;"> 
+    	<svg width="50px" height="50px" viewBox="0 0 16 16" class="bi bi-person" fill="currentColor" >
+  			<path fill-rule="evenodd" d="M10 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm6 5c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+		</svg>
+	</div>
     <div class="col-lg-9 col-xl-8">
     <span class="hidden-xs">
       	<div class="name-parents"><c:forEach var="sp" items="${List}">${sp.fname} ${sp.lname}
@@ -108,15 +115,29 @@ hr{
     <span class="hidden-xs">
     <div class="get-info">
     	<a>Email:</a> 
-    	<div>
+    	<div class="parent-info">
     		<c:forEach var="sp" items="${List}">${sp.email}
 			</c:forEach>
 		</div>
 	</div>
 	<div class="get-info ">
 		<a>Số điện thoại:</a> 
-		<div>
+		<div class="parent-info">
 			<c:forEach var="sp" items="${List}">${sp.phone}
+			</c:forEach>
+		</div>
+	</div>
+	<div class="get-info ">
+		<a>Địa chỉ:</a> 
+		<div class="parent-info">
+			<c:forEach var="sp" items="${List}">${sp.address}
+			</c:forEach>
+		</div>
+	</div>
+	<div class="get-info ">
+		<a>Ngày sinh:</a> 
+		<div class="parent-info">
+			<c:forEach var="sp" items="${List}">${sp.dob}
 			</c:forEach>
 		</div>
 	</div>
@@ -132,9 +153,12 @@ hr{
 	<div class="row">
 	<label class="col-xl-3"></label>
 	<div class="col-lg-9 col-xl-6">
-	<h3 class="info-student-ct">Thông tin cá nhân</h3>
+	<h3 class="info-student-ct">Thông tin cá nhân sinh viên</h3>
 	</div>
 	</div>
+	<c:if test="${not empty Liststudent}">
+	<c:forEach var="sp" items="${Liststudent}">
+	 
 	<div class="form-info row">
 	<label class="col-xl-3 col-lg-3 info-form-label">Họ và tên</label>
 	<div class="col-lg-9 col-xl-6">
@@ -166,17 +190,19 @@ hr{
 	</div>
 	</div>
 	<div class="form-info row">
-	<label class="col-xl-3 col-lg-3 info-form-label">Ngày nhập học</label>
+	<label class="col-xl-3 col-lg-3 info-form-label">Email</label>
 	<div class="col-lg-9 col-xl-6">
-		<input type="text" value="" class="form-control" readonly>
+		<input type="text" value="${sp.email}" class="form-control" readonly>
 	</div>
 	</div>
 	<div class="form-info row">
 	<label class="col-xl-3 col-lg-3 info-form-label">Trạng thái học tập</label>
 	<div class="col-lg-9 col-xl-6">
-		<input type="text" value="" class="form-control" readonly>
+		<input type="text" value="${sp.status}" class="form-control" readonly>
 	</div>
 	</div>
+	</c:forEach>
+	</c:if>
 	
 	</div>
 	</div>
