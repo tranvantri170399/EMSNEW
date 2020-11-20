@@ -3,7 +3,10 @@ package com.example.demo.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -11,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entities.Depart;
 import com.example.demo.entities.Parent;
@@ -96,10 +100,14 @@ public class UserController {
 	@Autowired
 	StudentResponsitory sturep;
 	@RequestMapping(value = { "/Page/INFO" })
-	public String loadInfo(Model model,@ModelAttribute("Parents") Parent parents) {
+	public String loadInfo(Model model,@ModelAttribute("Parents") Parent parents, HttpServletRequest request,@RequestParam("nameuserxxx") String email) {
 		String ids = "PH002";
-		List<Parent> parentList = parentRes.findcustom(ids);
-		List<Student> studentlist= sturep.findcustom(ids);
+		System.out.println("=>>11 "+email);
+//		List<Parent> parentList = parentRes.findcustom(ids);
+		List<Parent> parentList = parentRes.findcustomemail(email);
+		Parent parent= parentList.get(parentList.size()-1);
+		
+		List<Student> studentlist= sturep.findcustom(parent.getId());
 		model.addAttribute("Liststudent", studentlist);
 		model.addAttribute("List", parentList);
 		return "/jsp/Page/info";
@@ -107,11 +115,14 @@ public class UserController {
 	
 
 	@RequestMapping(value = { "/Page/UPDATEPASS" })
-	public String editPass(@ModelAttribute("User") User user, Model model) {
+	public String editPass(@ModelAttribute("User") User user, Model model,@RequestParam("nameuserxxx") String email) {
 		String ids = "PH002";
 		String id= "lap";
-		List<Parent> parentList = parentRes.findcustom(ids);
-		List<User> userList= UserRep.findcustom(id);
+//		List<Parent> parentList = parentRes.findcustom(ids);
+		List<Parent> parentList = parentRes.findcustomemail(email);
+//		Parent parent= parentList.get(parentList.size()-1);
+		
+		List<User> userList= UserRep.findcustom(email);
 		model.addAttribute("Listuser", userList);
 		model.addAttribute("List", parentList);
 		return "/jsp/Page/capnhatPassword";

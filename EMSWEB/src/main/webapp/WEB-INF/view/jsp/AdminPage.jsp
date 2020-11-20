@@ -60,14 +60,12 @@
 						<!-- Tasks: style can be found in dropdown.less -->
 						<!-- User Account: style can be found in dropdown.less -->
 						<li class="dropdown user user-menu"><a href="#"
-							class="dropdown-toggle" data-toggle="dropdown"> <img
-								src="#" class="user-image"
-								alt="" /> <span class="hidden-xs"> <c:forEach
-										var="sp" items="${List}">
-													${sp.username}
-												
-											</c:forEach>
-							</span>
+							class="dropdown-toggle" data-toggle="dropdown"> <img src="#"
+								class="user-image" alt="" /> <c:forEach var="sp"
+									items="${List}">
+									<span class="hidden-xs">${sp.username}</span>
+								</c:forEach>
+
 						</a>
 							<ul class="dropdown-menu">
 								<!-- User image -->
@@ -122,7 +120,7 @@
 							<li><a href="/DSgiaovien" target="frame"><i
 									class="fa fa-circle-o"></i>Danh Sách Giáo Viên</a></li>
 							<li><a href="/DSnhanvien" target="frame"><i
-									class="fa fa-circle-o"></i>Danh Sách CNVC</a></li> 
+									class="fa fa-circle-o"></i>Danh Sách CNVC</a></li>
 							<li><a href="/DSphongban" target="frame"><i
 									class="fa fa-circle-o"></i>Danh Sách Phòng Ban</a></li>
 						</ul></li>
@@ -163,7 +161,7 @@
 		<div class="content-wrapper"
 			style="overflow: hidden; min-height: 660px; min-width: 86%;">
 			<iframe src="/DSnhanvien" name="frame"
-				style="width: 100%; min-height: 660px; overflow-y: scroll; overflow-x: scroll;padding-right: 20px;"></iframe>
+				style="width: 100%; min-height: 660px; overflow-y: scroll; overflow-x: scroll; padding-right: 20px;"></iframe>
 			<!-- Content Header (Page header) -->
 
 		</div>
