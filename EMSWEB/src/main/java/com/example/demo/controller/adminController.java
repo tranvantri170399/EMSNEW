@@ -39,24 +39,31 @@ import com.example.demo.model.dateobject;
 import com.example.demo.repository.DepartResponsitory;
 import com.example.demo.repository.RoleRespository;
 import com.example.demo.repository.StaffResponsitory;
+import com.example.demo.repository.TeacherResponsitory;
 import com.example.demo.repository.UserResponsitory;
 import com.example.demo.service.StudentService;
 import com.example.demo.service.TeacherService;
 
 @Controller
 public class adminController {
-	public static String uploadDirectory= System.getProperty("user.dir")+"/src/main/webapp/resources/FileUpload";
+	public static String uploadDirectory = System.getProperty("user.dir") + "/src/main/webapp/resources/FileUpload";
 	// teacher
 	@Autowired
 	private TeacherService teacherService;
+	@Autowired
+	TeacherResponsitory teacherResponsitory;
 	//
 	// student
 	private StudentService studentService;
+
+	//depart
+	@Autowired
+	DepartResponsitory departRes;
 	//
 
 	// controller teacher//
 	@GetMapping("/DSgiaovien")
-	public String listTeacher(Model model) {
+	public String listTeacher(Model model, @ModelAttribute("teacherNew") Teacher teacher) {
 		return findPaginated(1, "id", "asc", model);
 	}
 
@@ -68,40 +75,130 @@ public class adminController {
 		Page<Teacher> page = teacherService.findPaginated(pageNo, pageSize, sortField, sortDir);
 		List<Teacher> listTeacher = page.getContent();
 		model.addAttribute("listTeacher", listTeacher);
+		List<Depart> departlist = departRes.findAll();
+		model.addAttribute("Listdp", departlist);
+		List<Role> rolelist = rolerepon.findAll();
+		model.addAttribute("Listr", rolelist);
 		return "/jsp/Page/PageforAdmin/DSgiaovien";
 	}
 
-	@GetMapping("/updateForm")
-	public String showFormForUpdate(@RequestParam("id") String id, Model theModel) {
+	@RequestMapping(value = "/newTeacher", method = RequestMethod.POST)
+	public String saveTeacher(@ModelAttribute("teacherNew") Teacher teacherNew, HttpServletRequest request, Model model,
+			@RequestParam("files") MultipartFile[] files) {
+		// // lưu giao vien vào cơ sở dữ liệu //
+		List<Teacher> teacherList = teacherResponsitory.findAll();
+		Teacher lastid = teacherList.get(teacherList.size() - 1);
+		String id = lastid.getId();
+		String splitID = id.substring(2);
+		System.out.println("==> " + splitID);
+		int idNum = Integer.parseInt(splitID) + 1;
+		String outID = null;
+		if (idNum < 10) {
+			outID = "GV00" + idNum;
+		} else if (idNum >= 10 && idNum < 100) {
+			outID = "GV0" + idNum;
+		} else if (idNum >= 100 && idNum < 1000) {
+			outID = "GV" + idNum;
+		}
+		Teacher newTeacher = new Teacher();
+		newTeacher.setId(outID);
+		newTeacher.setFname(teacherNew.getFname());
+		newTeacher.setLname(teacherNew.getLname());
+		StringBuilder filenames = new StringBuilder();
+		for (MultipartFile file : files) {
+			Path fileNameAndPath = Paths.get(uploadDirectory, file.getOriginalFilename());
+			filenames.append(file.getOriginalFilename());
+			try {
+				Files.write(fileNameAndPath, file.getBytes());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		newTeacher.setImage(filenames.toString());
+		newTeacher.setEmail(teacherNew.getEmail());
+		newTeacher.setDob(teacherNew.getDob());
+		newTeacher.setPhone(teacherNew.getPhone());
+		newTeacher.setAddress(teacherNew.getAddress());
+		newTeacher.setStatus(teacherNew.getStatus());
+		newTeacher.setLevel(teacherNew.getLevel());
+		newTeacher.setSalary(teacherNew.getSalary());
+		String dp = request.getParameter("depart");
+		Depart depart = departRes.findByname(dp);
+		String rl = request.getParameter("role");
+		Role role = rolerepon.findByroleName(rl);
+		newTeacher.setRole(role);
+		newTeacher.setDepart(depart);
+		User user = new User(newTeacher.getEmail(), newTeacher.getPhone(), "GV");
+		userrespon.save(user);
+		teacherResponsitory.save(newTeacher);
+//		model.addAttribute("List", teacherList);
+		return "redirect:/DSgiaovien";
+	}
+
+	// chuyen form update
+
+	@RequestMapping(value = { "/updateForm" })
+	public String formTeacher(@ModelAttribute("teacherNew") Teacher teacherNew, Model model, HttpServletRequest request,
+			@RequestParam("id") String id) {
 		Teacher theTeacher = teacherService.getTeacherByid(id);
-		theModel.addAttribute("teacher", theTeacher);
+		List<Teacher> teacherlist = new ArrayList<>();
+		teacherlist.add(theTeacher);
+		List<Depart> departlist = departRes.findAll();
+		model.addAttribute("Listdp", departlist);
+		List<Role> rolelist = rolerepon.findAll();
+		model.addAttribute("Listr", rolelist);
+		model.addAttribute("List", teacherlist);
 		return "/jsp/Page/PageforAdmin/formupdateTC";
 	}
 
-	@RequestMapping(value = "/saveTeacher", method = RequestMethod.POST)
-	public String saveTeacher(@ModelAttribute("teacher") Teacher teacher,
-			Model model, BindingResult result) {
-		// // lưu giao vien vào cơ sở dữ liệu //
-		Teacher newteacher = new Teacher(); // newteacher.setId(teacher.getId());
-		//// doi name sang ID (thao tac depart) // Depart listDP =
-//		  departResponsitory.findByname(teacher.getDepart().getName()); //
-//		 newteacher.setDepart(listDP); //// doi name sang ID (thao tac role) // Role
-//		 listRL = roleRespository.findByroleName(teacher.getRole().getRoleName()); //
-//		  newteacher.setRole(listRL); 
-		newteacher.setFname(teacher.getFname());
-		newteacher.setLname(teacher.getLname()); //
-		newteacher.setImage(teacher.getImage()); //
-		newteacher.setEmail(teacher.getEmail()); ////
-		newteacher.setDob(teacher.getDob()); //
-		newteacher.setPhone(teacher.getPhone()); //
-		newteacher.setAddress(teacher.getAddress()); //
-		newteacher.setStatus(teacher.getStatus()); //
-		newteacher.setLevel(teacher.getLevel()); ////
-		newteacher.setSalary(teacher.getSalary()); //
-		teacherService.saveTeacher(newteacher); // return "redirect:/list-teach"; //
-		return "redirect:/DSgiaovien"; 
-	}
+	// update
+	@RequestMapping(value = { "/updateTeacher" })
+	public String updateTeacher(@ModelAttribute("teacherNew") Teacher teacherNew, Model model,
+			HttpServletRequest request, @RequestParam("files") MultipartFile[] files, @RequestParam("id") String id) {
+		
+		StringBuilder filenames = new StringBuilder();
+		for (MultipartFile file : files) {
+			Path fileNameAndPath = Paths.get(uploadDirectory, file.getOriginalFilename());
+			filenames.append(file.getOriginalFilename());
+			try {
+				Files.write(fileNameAndPath, file.getBytes());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		System.out.println("=>>> "+id);
+		Teacher theTeacher = teacherService.getTeacherByid(id);
+		
+		if (filenames.toString().isEmpty()) {
+			System.out.println("null");
+		}else{
+			theTeacher.setImage(filenames.toString());
+		}
+		theTeacher.setEmail(teacherNew.getEmail());
+		theTeacher.setPhone(teacherNew.getPhone());
+		theTeacher.setAddress(teacherNew.getAddress());
+		theTeacher.setStatus(teacherNew.getStatus());
+		theTeacher.setLevel(teacherNew.getLevel());
+		theTeacher.setSalary(teacherNew.getSalary());
+		String dp = request.getParameter("depart");
+		Depart depart = departRes.findByname(dp);
+		String rl = request.getParameter("role");
+		Role role = rolerepon.findByroleName(rl);
+		theTeacher.setRole(role);
+		theTeacher.setDepart(depart);
+		teacherService.saveTeacher(theTeacher);
+		List<Teacher> teacherList = teacherResponsitory.findAll();
+		model.addAttribute("List", teacherList);
+		return "redirect:/DSgiaovien";
 
+	}
+	
+	//delete
+	@GetMapping("/deleteTeacher")
+	public String deleteTeacher(@RequestParam("id") String id) {
+		teacherService.deleteTeacherByid(id);
+		return "redirect:/DSgiaovien";
+	}
 	// controller teacher//
 
 //	// controller student//
@@ -125,7 +222,11 @@ public class adminController {
 
 	@Autowired
 	UserResponsitory userrespon;
-	@Autowired RoleRespository rolerepon;
+	@Autowired
+	RoleRespository rolerepon;
+	
+	
+//nhanvien
 	@RequestMapping(value = { "/DSnhanvien" })
 	public String loadDSnhanvien(Model model, @ModelAttribute("staff") Staff staff) {
 		List<Staff> stafflist = staffrep.findAll();
@@ -137,55 +238,38 @@ public class adminController {
 		return "/jsp/Page/PageforAdmin/DSnhanvien";
 	}
 
-	@Autowired
-	DepartResponsitory departRes;
-	
-	@RequestMapping(value = { "/DSphongban" })
-	public String loadDSPhongban(Model model, @ModelAttribute("depart") Depart depart) {
-		List<Depart> departlist = departRes.findAll();
-		model.addAttribute("List", departlist);
-		return "/jsp/Page/PageforAdmin/DSphongban";
-	}
-
-	@RequestMapping(value = { "/update/staff" })
-	public String UpdateDSnhanvien() {
-		String a = "good job";
-		return a;
-	}
-	
-	
-	
 	@RequestMapping(value = { "/save/staff" })
-	public String SaveDSnhanvien(Model model, @ModelAttribute("staff") Staff staff, HttpServletRequest request,@RequestParam("files") MultipartFile[] files) {
+	public String SaveDSnhanvien(Model model, @ModelAttribute("staff") Staff staff, HttpServletRequest request,
+			@RequestParam("files") MultipartFile[] files) {
 		List<Staff> stafflist = staffrep.findAll();
-		Staff lastid =stafflist.get(stafflist.size()-1);
-		String id= lastid.getId();
-		String splitID=id.substring(2);
-		System.out.println("==> "+splitID);
-		int idNum= Integer.parseInt(splitID)+1;
-		String outID=null;
-		if (idNum<10) {
-			outID="NV00"+idNum;
-		}else if (idNum>=10 && idNum<100) {
-			outID="NV0"+idNum;
-		}else if (idNum>=100 && idNum<1000) {
-			outID="NV"+idNum;
+		Staff lastid = stafflist.get(stafflist.size() - 1);
+		String id = lastid.getId();
+		String splitID = id.substring(2);
+		System.out.println("==> " + splitID);
+		int idNum = Integer.parseInt(splitID) + 1;
+		String outID = null;
+		if (idNum < 10) {
+			outID = "NV00" + idNum;
+		} else if (idNum >= 10 && idNum < 100) {
+			outID = "NV0" + idNum;
+		} else if (idNum >= 100 && idNum < 1000) {
+			outID = "NV" + idNum;
 		}
 		Staff st = new Staff();
 		st.setId(outID);
 		st.setFname(staff.getFname());
 		st.setLname(staff.getLname());
-		StringBuilder filenames= new StringBuilder();
+		StringBuilder filenames = new StringBuilder();
 		for (MultipartFile file : files) {
-			Path fileNameAndPath= Paths.get(uploadDirectory,file.getOriginalFilename());
+			Path fileNameAndPath = Paths.get(uploadDirectory, file.getOriginalFilename());
 			filenames.append(file.getOriginalFilename());
 			try {
-				Files.write(fileNameAndPath,file.getBytes());
+				Files.write(fileNameAndPath, file.getBytes());
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		}		
-		System.out.println("successfully upload file: "+filenames.toString());
+		}
+		System.out.println("successfully upload file: " + filenames.toString());
 		st.setImage(filenames.toString());
 		st.setEmail(staff.getEmail());
 		st.setDob(staff.getDob());
@@ -200,14 +284,17 @@ public class adminController {
 		Role role = rolerepon.findByroleName(rl);
 		st.setRole(role);
 		st.setDepart(depart);
-		User user = new User(st.getEmail(),st.getPhone(),"NV");
+		User user = new User(st.getEmail(), st.getPhone(), "NV");
 		userrespon.save(user);
 		staffrep.save(st);
-		model.addAttribute("List", stafflist);
+		List<Staff> stafflistaffter = staffrep.findAll();
+		model.addAttribute("List", stafflistaffter);
 		return "/jsp/Page/PageforAdmin/DSnhanvien";
 	}
+
 	@RequestMapping(value = { "/deleteTeacher" })
-	public String Delnhanvien( @ModelAttribute("staff") Staff staff,Model model, HttpServletRequest request,@RequestParam("fname") String fname) {
+	public String Delnhanvien(@ModelAttribute("staff") Staff staff, Model model, HttpServletRequest request,
+			@RequestParam("fname") String fname) {
 		System.out.println("===>>>" + fname);
 		Staff sfs = staffrep.findByfname(fname);
 		staffrep.delete(sfs);
@@ -216,9 +303,9 @@ public class adminController {
 		return "/jsp/Page/PageforAdmin/DSnhanvien";
 	}
 
-
 	@RequestMapping(value = { "/updatestaff" })
-	public String Updatenhanvien( @ModelAttribute("staff") Staff staff,Model model, HttpServletRequest request,@RequestParam("fname") String fname) {
+	public String Updatenhanvien(@ModelAttribute("staff") Staff staff, Model model, HttpServletRequest request,
+			@RequestParam("fname") String fname) {
 		System.out.println("===>>>" + fname);
 		Staff sfs = staffrep.findByfname(fname);
 		List<Staff> staffs = new ArrayList<>();
@@ -232,23 +319,24 @@ public class adminController {
 	}
 
 	@RequestMapping(value = { "/updatess" })
-	public String Updatenhanvienss( @ModelAttribute("staff") Staff staff,Model model, HttpServletRequest request,@RequestParam("files") MultipartFile[] files,@RequestParam("fname") String fname) {
-		StringBuilder filenames= new StringBuilder();
+	public String Updatenhanvienss(@ModelAttribute("staff") Staff staff, Model model, HttpServletRequest request,
+			@RequestParam("files") MultipartFile[] files, @RequestParam("fname") String fname) {
+		StringBuilder filenames = new StringBuilder();
 		for (MultipartFile file : files) {
-			Path fileNameAndPath= Paths.get(uploadDirectory,file.getOriginalFilename());
+			Path fileNameAndPath = Paths.get(uploadDirectory, file.getOriginalFilename());
 			filenames.append(file.getOriginalFilename());
 			try {
-				Files.write(fileNameAndPath,file.getBytes());
+				Files.write(fileNameAndPath, file.getBytes());
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		}		
-		System.out.println("successfully upload files: "+filenames.toString());
-		
+		}
+		System.out.println("successfully upload files: " + filenames.toString());
+
 		Staff sfs = staffrep.findByfname(fname);
 		if (filenames.toString().isEmpty()) {
 			System.out.println("null");
-		}else{
+		} else {
 			sfs.setImage(filenames.toString());
 		}
 		sfs.setDob(staff.getDob());
@@ -264,11 +352,21 @@ public class adminController {
 		Role role = rolerepon.findByroleName(rl);
 		sfs.setRole(role);
 		sfs.setDepart(depart);
-		staffrep.save(sfs);				
+		staffrep.save(sfs);
 		List<Staff> stafflist = staffrep.findAll();
 		model.addAttribute("List", stafflist);
 		return "/jsp/Page/PageforAdmin/DSnhanvien";
 	}
+	//nhanvien
 	
-	
+	//depart
+
+	@RequestMapping(value = { "/DSphongban" })
+	public String loadDSPhongban(Model model, @ModelAttribute("depart") Depart depart) {
+		List<Depart> departlist = departRes.findAll();
+		model.addAttribute("List", departlist);
+		return "/jsp/Page/PageforAdmin/DSphongban";
+	}
+
+	//depart
 }

@@ -6,67 +6,222 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<meta charset="UTF-8">
+<title>AdminLTE 2 | Dashboard</title>
+<meta
+	content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
+	name='viewport'>
+<!-- Bootstrap 3.3.2 -->
+<link href="../../../../../resources/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet" type="text/css" />
+<!-- Font Awesome Icons -->
+<link
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css" />
+<!-- Ionicons -->
+<link
+	href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css"
+	rel="stylesheet" type="text/css" />
+<!-- Morris chart -->
+<link href="../../../../../resources/bootstrap/css/morris.css"
+	rel="stylesheet" type="text/css" />
+<!-- jvectormap -->
+<link
+	href="../../../../../resources/bootstrap/css/jquery-jvectormap-1.2.2.css"
+	rel="stylesheet" type="text/css" />
+<!-- Daterange picker -->
+<link
+	href="../../../../../resources/bootstrap/css/daterangepicker-bs3.css"
+	rel="stylesheet" type="text/css" />
+<!-- Theme style -->
+<link href="../../../../../resources/bootstrap/css/AdminLTE.min.css"
+	rel="stylesheet" type="text/css" />
+<!-- AdminLTE Skins. Choose a skin from the css/skins 
+         folder instead of downloading all of them to reduce the load. -->
+<link href="../../../../../resources/bootstrap/css/_all-skins.min.css"
+	rel="stylesheet" type="text/css" />
+
+
 </head>
 <body>
-	<div class="container">
-		<h1>Employee Management System</h1>
-		<hr>
-		<h2>Update Employee</h2>
+	<section class="content-header">
+		<h1>LÍ LỊCH</h1>
+		<ol class="breadcrumb">
+			<li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
+			<li class="active">Quản lí nhân viên</li>
+			<li class="active">Danh sách sinh viên</li>
+			<li class="active">Cập nhật nhân viên</li>
+		</ol>
+	</section>
 
-		<form:form action="/saveTeacher" modelAttribute="teacher"
-			method="POST">
+	<!-- Main content -->
+	<section class="content">
+		<!-- Info boxes -->
+		<!--Thoi Khoa Bieu -->
+		<div class="row">
+			<div class="col-md-12">
+				<form:form action="/updateTeacher" modelAttribute="teacherNew" enctype="multipart/form-data">
+					<div class="box box-primary">
+<!-- 						<img src="../../../../../resources/FileUpload/tri1703.jpg" name=""
+							style="width: 200px; height: 200px;"> -->
+						<!--form  -->
 
-			<!-- Thêm trường biểu mẫu ẩn để xử lý cập nhật -->
-			<form:input type="hidden" path="id" value="${teacher.id}" />
 
-			<form:input type="text" path="depart.name"
-				value="${teacher.depart.name}" placeholder="Employee First Name"
-				class="form-control mb-4 col-4" />
+						<c:if test="${not empty List}">
+							<c:forEach var="sp" items="${List}">
+							<img src="../../../../../resources/FileUpload/${sp.image}" name=""
+							style="width: 200px; height: 300px;">
+								<div class="box-body">
+									<div class="form-group">
+										<input type="hidden" id="custId" name="id" value="${sp.id}">
+									</div>
+									<div class="form-group">
+										<label for="exampleInputFile">File input</label>
+										<div class="input-group">
+											<input type="File" class="form-control" name="files" id="InputImage">
+											<span class="input-group-btn">
+												<button class="btn btn-default" type="submit">Update
+												</button>
+											</span>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="exampleInputName">Họ và Tên</label>
+										<div class="input-group">
+											<span class="input-group-addon">Họ</span>
+											<form:input path="lname" type="text" class="form-control"
+												id="InputLastname" value="${sp.lname}" />
+											<span class="input-group-addon">Tên</span>
+											<form:input path="fname" type="text" value="${sp.fname}"
+												class="form-control" id="InputFirstname" />
+										</div>
+									</div>
+									<!-- 									<script type="text/javascript">
+										var date = new Date("03/25/2015");
+										document.getElementById("InputDob").value =date;
+									</script> -->
+									<div class="form-group">
+										<label for="InputDob">Ngày sinh</label>
+										<form:input path="dob" type="date" class="form-control"
+											id="InputDob" min="1980-1-1" max="2020-12-31"
+											value="${sp.dob}" />
+									</div>
 
-			<form:input type="text" path="role.roleName"
-				value="${teacher.role.roleName}"
-				placeholder="Employee First Name" class="form-control mb-4 col-4" />
+									<div class="form-group">
+										<label for="exampleInputEmail">Email</label>
+										<form:input path="email" value="${sp.email}"
+											class="form-control" id="InputEmail" />
+									</div>
+									<div class="form-group">
+										<label for="InputPhone">Số Điện Thoại</label>
+										<form:input path="phone" value="${sp.phone}" type="text"
+											class="form-control" id="InputPhone" />
+									</div>
+									<div class="form-group">
+										<label for="InputPhone">Địa chỉ</label>
+										<form:input path="address" value="${sp.address}" type="text"
+											class="form-control" id="InputAddress" />
+									</div>
+									<div class="form-group">
+										<label for="InputPhone">Trạng thái:</label> <label
+											id="InputStatus">Học đi</label>
+									</div>
+									<div clas="form-group">
+										<label for="InputID">Cấp độ:</label>
+										<form:input path="level" value="${sp.level}" class="form-control" />
+									</div>
+									<div clas="form-group">
+										<label for="InputID">Lương</label>
+										<form:input path="salary" value="${sp.salary}"
+											class="form-control" />
+									</div>
+									<%-- <div clas="form-group">
+										<label for="InputID">Phòng Ban:</label>
+										<form:select path="depart" items="${sp.depart.name}" />
+									</div> --%>
+									<div clas="form-group">
+										<label for="InputID">Phòng Ban:</label>
+										<form:select path="depart" classxmlxmlns="form-control"
+											idxmlns="sel1">
+											<c:if test="${not empty Listdp}">
+												<c:forEach var="sp" items="${Listdp}">
+													<form:option value="${sp.name}" />
+													<%--  <form:options items="${Listdp}" /> --%>
+												</c:forEach>
+											</c:if>
+										</form:select>
+									</div>
+									<%-- 	<div clas="form-group">
+										<label for="InputID">Chức vụ</label>
+										<form:select path="role" items="" />
+									</div> --%>
 
-			<form:input type="text" path="fname"
-				placeholder="Employee First Name" class="form-control mb-4 col-4" />
+									<div clas="form-group">
+										<label for="InputID">Chức vụ</label>
+										<form:select path="role" classxmlxmlns="form-control"
+											idxmlns="sel1">
+											<c:if test="${not empty Listr}">
+												<c:forEach var="sp" items="${Listr}">
+													<option>${sp.roleName}</option>
+												</c:forEach>
+											</c:if>
+										</form:select>
+									</div>
+								</div>
+							</c:forEach>
+						</c:if>
+					</div>
+					<!-- /.box-body -->
+					<div class="box-footer">
+						<button type="submit" class="btn btn-primary">Xác nhận</button>
+					</div>
+				</form:form>
+			</div>
+			<!-- /.col -->
+		</div>
+		<!-- /.row -->
+	</section>
 
-			<form:input type="text" path="lname"
-				placeholder="Employee last Name" class="form-control mb-4 col-4" />
 
-			<form:input type="text" path="role" value="${teacher.image}"
-				placeholder="Employee First Name" class="form-control mb-4 col-4" />
 
-			<form:input type="text" path="email" value="${teacher.email}"
-				placeholder="Employee First Name" class="form-control mb-4 col-4" />
 
-			<%-- <form:input type="text" path="dob" value="${teacher.dob}"
-				placeholder="Employee First Name" class="form-control mb-4 col-4" /> --%>
+	<script src="../../../../../resources/js/jQuery-2.1.3.min.js"></script>
+	<!-- Bootstrap 3.3.2 JS -->
+	<script src="../../../../../resources/bootstrap/js/bootstrap.min.js"
+		type="text/javascript"></script>
+	<!-- FastClick -->
+	<script src='../../../../../resources/js/fastclick.min.js'></script>
+	<!-- AdminLTE App -->
+	<script src="../../../../../resources/js/app.min.js"
+		type="text/javascript"></script>
+	<!-- Sparkline -->
+	<script src="../../../../../resources/js/jquery.sparkline.min.js"
+		type="text/javascript"></script>
+	<!-- jvectormap -->
+	<script
+		src="../../../../../resources/js/jquery-jvectormap-1.2.2.min.js"
+		type="text/javascript"></script>
+	<script
+		src="../../../../resources/js/jquery-jvectormap-world-mill-en.js"
+		type="text/javascript"></script>
+	<!-- daterangepicker -->
+	<script src="../../../../../resources/js/daterangepicker.js"
+		type="text/javascript"></script>
+	<!-- datepicker -->
+	<script src="../../../../../resources/js/bootstrap-datepicker.js"
+		type="text/javascript"></script>
+	<!-- iCheck -->
+	<script src="../../../../../resources/js/icheck.min.js"
+		type="text/javascript"></script>
+	<!-- SlimScroll 1.3.0 -->
+	<script src="../../../../../resources/js/jquery.slimscroll.min.js"
+		type="text/javascript"></script>
+	<!-- ChartJS 1.0.1 -->
+	<script src="../../../../../resources/js/Chart.min.js"
+		type="text/javascript"></script>
 
-			<form:input type="text" path="phone" value="${teacher.phone}"
-				placeholder="Employee First Name" class="form-control mb-4 col-4" />
-
-			<form:input type="text" path="address" value="${teacher.address}"
-				placeholder="Employee First Name" class="form-control mb-4 col-4" />
-
-			<form:input type="text" path="status" value="${teacher.status}"
-				placeholder="Employee First Name" class="form-control mb-4 col-4" />
-
-			<form:input type="text" path="level" value="${teacher.level}"
-				placeholder="Employee First Name" class="form-control mb-4 col-4" />
-
-		<%-- 	<form:input type="text" path="salary" value="${teacher.salary}"
-				placeholder="Employee First Name" class="form-control mb-4 col-4" /> --%>
-				
-				<button type="submit" class="btn btn-info col-2"> Update Employee</button>
-		</form:form>
-
-		<hr>
-
-		<a href="@{/}"> Back to Employee List</a>
-	</div>
+	<!-- AdminLTE for demo purposes -->
+	<script src="../../../../../resources/js/demo.js"
+		type="text/javascript"></script>
 </body>
 </html>
