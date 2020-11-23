@@ -146,9 +146,11 @@
 							class="fa fa-angle-right pull-right"></i>
 					</a>
 						<ul class="treeview-menu">
-							<li><a href="Page/thoikhoabieu.html" target="frame"><i
+							<li><a href="/DSphonghoc" target="frame"><i
 									class="fa fa-circle-o"></i>Danh sách phòng học</a></li>
-							<li><a href="Page/lichthi.html" target="frame"><i
+									<li><a href="/DSthietbi" target="frame"><i
+									class="fa fa-circle-o"></i>Danh sách thiết bị</a></li>
+							<li><a href="/DSthietbiphonghoc" target="frame"><i
 									class="fa fa-circle-o"></i>Danh sách thiết bị từng phòng</a></li>
 						</ul></li>
 
