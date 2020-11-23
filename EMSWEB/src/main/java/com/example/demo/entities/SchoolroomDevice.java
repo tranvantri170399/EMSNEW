@@ -18,6 +18,7 @@ public class SchoolroomDevice {
 	private int id;
 	private SchoolRoom schoolroom;
 	private Device device;
+	private int amount;
 	
 	
 	public SchoolroomDevice() {
@@ -25,11 +26,12 @@ public class SchoolroomDevice {
 	}
 
 
-	public SchoolroomDevice(int id, SchoolRoom schoolroom, Device device) {
+	public SchoolroomDevice(int id, SchoolRoom schoolroom, Device device, int amount) {
 		super();
 		this.id = id;
 		this.schoolroom = schoolroom;
 		this.device = device;
+		this.amount = amount;
 	}
 
 	@Id
@@ -62,6 +64,14 @@ public class SchoolroomDevice {
 	
 	public void setdevice(Device device) {
 		this.device = device;
+	}
+
+	@Column(name = "Amount")
+	public int getAmount() {
+		return amount;
+	}
+	public void setAmount(int amount) {
+		this.amount = amount;
 	}
 	
 	

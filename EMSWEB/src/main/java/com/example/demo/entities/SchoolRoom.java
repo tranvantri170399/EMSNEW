@@ -18,8 +18,8 @@ public class SchoolRoom {
 
 	private String id;
 	private String name;
-	private String schoolroomNumber;
-	private Double surfaceArea;
+	private String schoolroomnumber;
+	private Double surfacearea;
 	private Set<Schedule> schedule = new HashSet<Schedule>(0);
 	private Set<SchoolroomAmphi> schoolroomamphi = new HashSet<SchoolroomAmphi>(0);
 	private Set<SchoolroomDevice> schoolroomdevice = new HashSet<SchoolroomDevice>(0);
@@ -28,12 +28,12 @@ public class SchoolRoom {
 	}
 
 
-	public SchoolRoom(String id, String name, String schoolroomNumber, Double surfaceArea,
+	public SchoolRoom(String id, String name, String schoolroomnumber, Double surfacearea,
 			Set<Schedule> schedule, Set<SchoolroomAmphi> schoolroomamphi, Set<SchoolroomDevice> schoolroomdevice) {
 		this.id = id;
 		this.name = name;
-		this.schoolroomNumber = schoolroomNumber;
-		this.surfaceArea = surfaceArea;
+		this.schoolroomnumber = schoolroomnumber;
+		this.surfacearea = surfacearea;
 		this.schedule = schedule;
 		this.schoolroomamphi = schoolroomamphi;
 		this.schoolroomdevice = schoolroomdevice;
@@ -58,22 +58,22 @@ public class SchoolRoom {
 		this.name = name;
 	}
 
-	@Column(name = "SchoolroomNumber")
-	public String getSchoolroomNumber() {
-		return this.schoolroomNumber;
+	@Column(name = "Schoolroomnumber")
+	public String getSchoolroomnumber() {
+		return this.schoolroomnumber;
 	}
 
-	public void setSchoolroomNumber(String schoolroomNumber) {
-		this.schoolroomNumber = schoolroomNumber;
+	public void setSchoolroomnumber(String schoolroomnumber) {
+		this.schoolroomnumber = schoolroomnumber;
 	}
 
-	@Column(name = "SurfaceArea", precision = 53, scale = 0)
-	public Double getSurfaceArea() {
-		return this.surfaceArea;
+	@Column(name = "Surfacearea", precision = 53, scale = 0)
+	public Double getSurfacearea() {
+		return this.surfacearea;
 	}
 
-	public void setSurfaceArea(Double surfaceArea) {
-		this.surfaceArea = surfaceArea;
+	public void setSurfacearea(Double surfacearea) {
+		this.surfacearea = surfacearea;
 	}
 
 	@OneToMany(mappedBy = "schoolroom")
@@ -103,4 +103,6 @@ public class SchoolRoom {
 		this.schoolroomdevice = schoolroomdevice;
 	}
 
+	
+	
 }
