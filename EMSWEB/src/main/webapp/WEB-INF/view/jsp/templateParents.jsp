@@ -144,10 +144,8 @@
 							class="label label-primary pull-right">4</span>
 					</a>
 						<ul class="treeview-menu">
-							<li><a href="Page/thanhtich.html" target="frame"><i
+							<li><a href="Page/THANHTICH" target="frame"><i
 									class="fa fa-circle-o"></i>Thành tích học tập</a></li>
-							<li><a href="Page/tinhtrangsinhvien.html" target="frame"><i
-									class="fa fa-circle-o"></i>Tình trạng sinh viên</a></li>
 						</ul></li>
 					<li>
 					<li class="treeview"><a href="#"> <i
