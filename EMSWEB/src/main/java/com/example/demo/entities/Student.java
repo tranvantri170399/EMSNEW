@@ -1,7 +1,6 @@
 package com.example.demo.entities;
 // Generated Oct 24, 2020, 7:32:02 PM by Hibernate Tools 5.1.10.Final
 
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
@@ -28,7 +27,7 @@ public class Student  {
 	private String lname;
 	private String image;
 	private String email;
-	private Date dob;
+	private String dob;
 	private String phone;
 	private String address;
 	private String status;
@@ -41,7 +40,7 @@ public class Student  {
 	public Student() {
 	}
 
-	public Student(String id, String fname, String lname, Date dob) {
+	public Student(String id, String fname, String lname, String dob) {
 		this.id = id;
 		this.fname = fname;
 		this.lname = lname;
@@ -49,7 +48,7 @@ public class Student  {
 	}
 	
 	public Student(String id, Parent parent, String fname, String lname, String image,
-			String email, Date dob, String phone, String address, String status, Integer idcard,
+			String email, String dob, String phone, String address, String status, Integer idcard,
 			String classroomId,Set<ClassroomStudent> classroomStudents, Set<ExamResult> examResults,Set<Attandence> attandences) {
 		this.id = id;
 		this.parent = parent;
@@ -124,13 +123,11 @@ public class Student  {
 		this.email = email;
 	}
 
-	@Temporal(TemporalType.DATE)
-	@Column(name = "Dob", nullable = false, length = 10)
-	public Date getDob() {
+	public String getDob() {
 		return this.dob;
 	}
 
-	public void setDob(Date dob) {
+	public void setDob(String dob) {
 		this.dob = dob;
 	}
 

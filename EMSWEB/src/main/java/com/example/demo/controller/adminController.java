@@ -4,10 +4,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
+
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -29,18 +27,29 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.example.demo.entities.Classroom;
 import com.example.demo.entities.Depart;
+import com.example.demo.entities.Majors;
+import com.example.demo.entities.Parent;
 import com.example.demo.entities.Role;
 import com.example.demo.entities.Staff;
 import com.example.demo.entities.Student;
+import com.example.demo.entities.Subject;
 import com.example.demo.entities.Teacher;
 import com.example.demo.entities.User;
 import com.example.demo.model.dateobject;
+import com.example.demo.repository.ClassroomResponsitory;
+import com.example.demo.repository.ClassroomStudentResponsitory;
 import com.example.demo.repository.DepartResponsitory;
+import com.example.demo.repository.MajorsResponsitory;
+import com.example.demo.repository.ParentResponsitory;
 import com.example.demo.repository.RoleRespository;
 import com.example.demo.repository.StaffResponsitory;
+import com.example.demo.repository.StudentResponsitory;
+import com.example.demo.repository.SubjectResponsitory;
 import com.example.demo.repository.TeacherResponsitory;
 import com.example.demo.repository.UserResponsitory;
+import com.example.demo.service.DepartService;
 import com.example.demo.service.StudentService;
 import com.example.demo.service.TeacherService;
 
@@ -54,12 +63,27 @@ public class adminController {
 	TeacherResponsitory teacherResponsitory;
 	//
 	// student
-	private StudentService studentService;
+	// private StudentService studentService;
 
-	//depart
 	@Autowired
-	DepartResponsitory departRes;
+	StudentResponsitory studentResponsitory;
+
+	// depart
+	// DepartService departService;
+	@Autowired
+	DepartResponsitory departResponsitory;
+
 	//
+	@Autowired
+	ParentResponsitory parentResponsitory;
+	//
+	@Autowired
+	SubjectResponsitory subjectResponsitory;
+	@Autowired
+	MajorsResponsitory majorsResponsitory;
+	//
+	@Autowired
+	ClassroomResponsitory classroomResponsitory;
 
 	// controller teacher//
 	@GetMapping("/DSgiaovien")
@@ -75,7 +99,7 @@ public class adminController {
 		Page<Teacher> page = teacherService.findPaginated(pageNo, pageSize, sortField, sortDir);
 		List<Teacher> listTeacher = page.getContent();
 		model.addAttribute("listTeacher", listTeacher);
-		List<Depart> departlist = departRes.findAll();
+		List<Depart> departlist = departResponsitory.findAll();
 		model.addAttribute("Listdp", departlist);
 		List<Role> rolelist = rolerepon.findAll();
 		model.addAttribute("Listr", rolelist);
@@ -123,7 +147,7 @@ public class adminController {
 		newTeacher.setLevel(teacherNew.getLevel());
 		newTeacher.setSalary(teacherNew.getSalary());
 		String dp = request.getParameter("depart");
-		Depart depart = departRes.findByname(dp);
+		Depart depart = departResponsitory.findByname(dp);
 		String rl = request.getParameter("role");
 		Role role = rolerepon.findByroleName(rl);
 		newTeacher.setRole(role);
@@ -131,7 +155,7 @@ public class adminController {
 		User user = new User(newTeacher.getEmail(), newTeacher.getPhone(), "GV");
 		userrespon.save(user);
 		teacherResponsitory.save(newTeacher);
-//		model.addAttribute("List", teacherList);
+		// model.addAttribute("List", teacherList);
 		return "redirect:/DSgiaovien";
 	}
 
@@ -143,7 +167,7 @@ public class adminController {
 		Teacher theTeacher = teacherService.getTeacherByid(id);
 		List<Teacher> teacherlist = new ArrayList<>();
 		teacherlist.add(theTeacher);
-		List<Depart> departlist = departRes.findAll();
+		List<Depart> departlist = departResponsitory.findAll();
 		model.addAttribute("Listdp", departlist);
 		List<Role> rolelist = rolerepon.findAll();
 		model.addAttribute("Listr", rolelist);
@@ -155,7 +179,7 @@ public class adminController {
 	@RequestMapping(value = { "/updateTeacher" })
 	public String updateTeacher(@ModelAttribute("teacherNew") Teacher teacherNew, Model model,
 			HttpServletRequest request, @RequestParam("files") MultipartFile[] files, @RequestParam("id") String id) {
-		
+
 		StringBuilder filenames = new StringBuilder();
 		for (MultipartFile file : files) {
 			Path fileNameAndPath = Paths.get(uploadDirectory, file.getOriginalFilename());
@@ -166,12 +190,12 @@ public class adminController {
 				e.printStackTrace();
 			}
 		}
-		System.out.println("=>>> "+id);
+		System.out.println("=>>> " + id);
 		Teacher theTeacher = teacherService.getTeacherByid(id);
-		
+
 		if (filenames.toString().isEmpty()) {
 			System.out.println("null");
-		}else{
+		} else {
 			theTeacher.setImage(filenames.toString());
 		}
 		theTeacher.setEmail(teacherNew.getEmail());
@@ -181,7 +205,7 @@ public class adminController {
 		theTeacher.setLevel(teacherNew.getLevel());
 		theTeacher.setSalary(teacherNew.getSalary());
 		String dp = request.getParameter("depart");
-		Depart depart = departRes.findByname(dp);
+		Depart depart = departResponsitory.findByname(dp);
 		String rl = request.getParameter("role");
 		Role role = rolerepon.findByroleName(rl);
 		theTeacher.setRole(role);
@@ -192,8 +216,8 @@ public class adminController {
 		return "redirect:/DSgiaovien";
 
 	}
-	
-	//delete
+
+	// delete
 	@GetMapping("/deleteTeacher")
 	public String deleteTeacher(@RequestParam("id") String id) {
 		teacherService.deleteTeacherByid(id);
@@ -201,22 +225,6 @@ public class adminController {
 	}
 	// controller teacher//
 
-//	// controller student//
-//	@GetMapping("/DShocsinh")
-//	public String listStudent(Model model) {
-//		return findPaginated(1, "id", "asc", model);
-//	}
-//	@GetMapping("/page/{pageNo}")
-//	public String findPaginated1(@PathVariable(value = "pageNo") int pageNo, @RequestParam("sortField") String sortField,
-//			@RequestParam("sortDir") String sortDir, Model model) {
-//		int pageSize = 5;
-//
-//		Page<Student> page = studentService.findPaginated(pageNo, pageSize, sortField, sortDir);
-//		List<Student> listStudent = page.getContent();
-//		model.addAttribute("listTeacher", listStudent);
-//		return "/jsp/Page/PageforAdmin/DSphongban";
-//	}
-//	// controller student//
 	@Autowired
 	StaffResponsitory staffrep;
 
@@ -224,14 +232,13 @@ public class adminController {
 	UserResponsitory userrespon;
 	@Autowired
 	RoleRespository rolerepon;
-	
-	
-//nhanvien
+
+	// nhanvien
 	@RequestMapping(value = { "/DSnhanvien" })
 	public String loadDSnhanvien(Model model, @ModelAttribute("staff") Staff staff) {
 		List<Staff> stafflist = staffrep.findAll();
 		model.addAttribute("List", stafflist);
-		List<Depart> departlist = departRes.findAll();
+		List<Depart> departlist = departResponsitory.findAll();
 		model.addAttribute("Listdp", departlist);
 		List<Role> rolelist = rolerepon.findAll();
 		model.addAttribute("Listr", rolelist);
@@ -279,7 +286,7 @@ public class adminController {
 		st.setLevel(staff.getLevel());
 		st.setSalary(staff.getSalary());
 		String dp = request.getParameter("depart");
-		Depart depart = departRes.findByname(dp);
+		Depart depart = departResponsitory.findByname(dp);
 		String rl = request.getParameter("role");
 		Role role = rolerepon.findByroleName(rl);
 		st.setRole(role);
@@ -310,7 +317,7 @@ public class adminController {
 		Staff sfs = staffrep.findByfname(fname);
 		List<Staff> staffs = new ArrayList<>();
 		staffs.add(sfs);
-		List<Depart> departlist = departRes.findAll();
+		List<Depart> departlist = departResponsitory.findAll();
 		model.addAttribute("Listdp", departlist);
 		List<Role> rolelist = rolerepon.findAll();
 		model.addAttribute("Listr", rolelist);
@@ -347,7 +354,7 @@ public class adminController {
 		sfs.setSalary(staff.getSalary());
 		String dp = request.getParameter("depart");
 		System.out.println("=>>" + dp);
-		Depart depart = departRes.findByname(dp);
+		Depart depart = departResponsitory.findByname(dp);
 		String rl = request.getParameter("role");
 		Role role = rolerepon.findByroleName(rl);
 		sfs.setRole(role);
@@ -357,16 +364,318 @@ public class adminController {
 		model.addAttribute("List", stafflist);
 		return "/jsp/Page/PageforAdmin/DSnhanvien";
 	}
-	//nhanvien
-	
-	//depart
+	// nhanvien
+
+	// depart
 
 	@RequestMapping(value = { "/DSphongban" })
-	public String loadDSPhongban(Model model, @ModelAttribute("depart") Depart depart) {
-		List<Depart> departlist = departRes.findAll();
+	public String loadDSPhongban(Model model, @ModelAttribute("departNew") Depart departNew) {
+		List<Depart> departlist = departResponsitory.findAll();
 		model.addAttribute("List", departlist);
+
 		return "/jsp/Page/PageforAdmin/DSphongban";
 	}
 
-	//depart
+	@RequestMapping(value = "/newDepart", method = RequestMethod.POST)
+	public String newDepart(@ModelAttribute("departNew") Depart departNew, HttpServletRequest request, Model model) {
+		Depart newDepart = new Depart();
+		newDepart.setId(departNew.getId());
+		newDepart.setName(departNew.getName());
+		departResponsitory.save(newDepart);
+		return "redirect:/DSphongban";
+	}
+
+	@RequestMapping(value = { "/updateFormDP" })
+	public String formDepart(@ModelAttribute("departNew") Depart departNew, Model model, HttpServletRequest request,
+			@RequestParam("id") String id) {
+		Depart theDepart = departResponsitory.findByid(id);
+		List<Depart> departlist = new ArrayList<>();
+		departlist.add(theDepart);
+		model.addAttribute("List", departlist);
+		return "/jsp/Page/PageforAdmin/formupdateDP";
+	}
+
+	@RequestMapping(value = { "/updateDepart" })
+	public String updateDepart(@ModelAttribute("departNew") Depart departNew, Model model, HttpServletRequest request,
+			@RequestParam("files") MultipartFile[] files, @RequestParam("id") String id) {
+		Depart depart = departResponsitory.findByid(id);
+		depart.setName(departNew.getName());
+		departResponsitory.save(depart);
+		return "redirect:/DSphongban";
+	}
+
+	// delete
+	@GetMapping("/deleteDepart")
+	public String deleteDP(@RequestParam("id") String id) {
+		departResponsitory.deleteById(id);
+		return "redirect:/DSphongban";
+	}
+
+	// student//
+	@RequestMapping(value = { "/DShocsinh" })
+	public String loadDShocsinh(Model model, @ModelAttribute("student") Student student) {
+		List<Student> studentlist = studentResponsitory.findAll();
+		model.addAttribute("List", studentlist);
+		return "/jsp/Page/PageforAdmin/DShocsinh";
+	}
+
+	@RequestMapping(value = { "/studentNew" })
+	public String SaveDShocsinh(Model model, @ModelAttribute("student") Student student, HttpServletRequest request,
+			@RequestParam("files") MultipartFile[] files, @RequestParam("filess") MultipartFile[] filess) {
+
+		//
+		List<Parent> Parentlist = parentResponsitory.findAll();
+		Parent parent = new Parent();
+		Parent lastidd = Parentlist.get(Parentlist.size() - 1);
+		String idd = lastidd.getId();
+		String splitIDd = idd.substring(2);
+		System.out.println("==> " + splitIDd);
+		int idNumm = Integer.parseInt(splitIDd) + 1;
+		String outIDd = null;
+		if (idNumm < 10) {
+			outIDd = "PH00" + idNumm;
+		} else if (idNumm >= 10 && idNumm < 100) {
+			outIDd = "PH0" + idNumm;
+		} else if (idNumm >= 100 && idNumm < 1000) {
+			outIDd = "PH" + idNumm;
+		}
+
+		parent.setId(outIDd);
+
+		String fnamee = request.getParameter("fnamee");
+		parent.setFname(fnamee);
+		String lnamee = request.getParameter("lnamee");
+		parent.setLname(lnamee);
+
+		StringBuilder filenamess = new StringBuilder();
+		for (MultipartFile file : filess) {
+			Path fileNameAndPath = Paths.get(uploadDirectory, file.getOriginalFilename());
+			filenamess.append(file.getOriginalFilename());
+			try {
+				Files.write(fileNameAndPath, file.getBytes());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		parent.setImage(filenamess.toString());
+		String emaill = request.getParameter("emaill");
+		parent.setLname(emaill);
+		String dobb = request.getParameter("dobb");
+		parent.setDob(dobb);
+		String phonee = request.getParameter("phonee");
+		parent.setPhone(phonee);
+		String addresss = request.getParameter("addresss");
+		parent.setAddress(addresss);
+		String statuss = request.getParameter("statuss");
+		parent.setStatus(statuss);
+		String relationshipp = request.getParameter("relationshipp");
+		parent.setRelationship(relationshipp);
+		User userss = new User(emaill, phonee, "PH");
+		userrespon.save(userss);
+		parentResponsitory.save(parent);
+
+		List<Student> studentlist = studentResponsitory.findAll();
+		Student lastid = studentlist.get(studentlist.size() - 1);
+		System.out.println("==>> " + lastid);
+		String id = lastid.getId();
+		String splitID = id.substring(2);
+		System.out.println("==> " + splitID);
+		int idNum = Integer.parseInt(splitID) + 1;
+		String outID = null;
+		if (idNum < 10) {
+			outID = "PS00" + idNum;
+		} else if (idNum >= 10 && idNum < 100) {
+			outID = "PS0" + idNum;
+		} else if (idNum >= 100 && idNum < 1000) {
+			outID = "PS" + idNum;
+		}
+		Student student2 = new Student();
+		student2.setId(outID);
+		student2.setFname(student.getFname());
+		student2.setLname(student.getLname());
+		StringBuilder filenames = new StringBuilder();
+		for (MultipartFile file : files) {
+			Path fileNameAndPath = Paths.get(uploadDirectory, file.getOriginalFilename());
+			filenames.append(file.getOriginalFilename());
+			try {
+				Files.write(fileNameAndPath, file.getBytes());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		System.out.println("successfully upload file: " + filenames.toString());
+		student2.setImage(filenames.toString());
+		student2.setEmail(student.getEmail());
+		student2.setDob(student.getDob());
+		student2.setPhone(student.getPhone());
+		student2.setAddress(student.getAddress());
+		student2.setStatus(student.getStatus());
+		student2.setIdcard(student.getIdcard());
+		student2.setParent(parent);
+		User userr = new User(student2.getEmail(), student2.getPhone(), "PS");
+		userrespon.save(userr);
+		//
+		studentResponsitory.save(student2);
+		return "redirect:/DShocsinh";
+	}
+	// student//
+
+	// //chuyen form update hocsinh//
+	@RequestMapping(value = { "/updateFormHS" })
+	public String formHocsinh(@ModelAttribute("student") Student student, Model model, HttpServletRequest request,
+			@RequestParam("id") String id) {
+		Student theStudent = studentResponsitory.findByid(id);
+		List<Student> studentlist = new ArrayList<>();
+		studentlist.add(theStudent);
+		model.addAttribute("List", studentlist);
+		// List<Parent> parent = parentResponsitory.findAll();
+		// model.addAttribute("ListPR", parent);
+		return "/jsp/Page/PageforAdmin/formUpdateStudent";
+	}
+	// //chuyen form update hocsinh//
+
+	// //update hoc sinh//
+	@RequestMapping(value = { "/updateStudent" })
+	public String updateStudent(@ModelAttribute("student") Student student, Model model, HttpServletRequest request,
+			@RequestParam("files") MultipartFile[] files, @RequestParam("id") String id) {
+		StringBuilder filenames = new StringBuilder();
+		for (MultipartFile file : files) {
+			Path fileNameAndPath = Paths.get(uploadDirectory, file.getOriginalFilename());
+			filenames.append(file.getOriginalFilename());
+			try {
+				Files.write(fileNameAndPath, file.getBytes());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		Student student1 = studentResponsitory.findByid(id);
+		if (filenames.toString().isEmpty()) {
+			System.out.println("null");
+		} else {
+			student1.setImage(filenames.toString());
+		}
+		student1.setEmail(student.getEmail());
+		student1.setAddress(student.getAddress());
+		student1.setStatus(student.getStatus());
+		student1.setIdcard(student.getIdcard());
+		studentResponsitory.save(student1);
+		return "redirect:/DShocsinh";
+	}
+
+	// update hoc sinh//
+	// deletehs//
+	@GetMapping("/deleteST")
+	public String deleteST(@RequestParam("id") String id) {
+		Student student = studentResponsitory.findByid(id);
+		parentResponsitory.deleteById(student.getParent().getId());
+		studentResponsitory.deleteById(id);
+		return "redirect:/DShocsinh";
+	}
+	// deletehs//
+
+	// list mon hoc//
+	@RequestMapping(value = { "/DSmonhoc" })
+	public String loadDSmonhoc(Model model, @ModelAttribute("subjectNew") Subject subjectNew) {
+		List<Subject> list = subjectResponsitory.findAll();
+		model.addAttribute("List", list);
+		List<Majors> majors = majorsResponsitory.findAll();
+		model.addAttribute("Listmj", majors);
+		return "/jsp/Page/PageforAdmin/DSmonhoc";
+	}
+
+	// new
+	@RequestMapping(value = "/newSubject")
+	public String newSubject(@ModelAttribute("subjectNew") Subject subjectNew, HttpServletRequest request,
+			Model model) {
+		Subject subject = new Subject();
+		subject.setId(subjectNew.getId());
+		subject.setMajors(subjectNew.getMajors());
+		subject.setSubjectname(subjectNew.getSubjectname());
+		subject.setDescription(subjectNew.getDescription());
+		subject.setStatus(subjectNew.getStatus());
+		String mjor = request.getParameter("majors");
+		Majors majors = majorsResponsitory.findByname(mjor);
+		subject.setMajors(majors);
+		subjectResponsitory.save(subject);
+		return "redirect:/DSmonhoc";
+	}
+
+	// chuyen form update môn
+	@RequestMapping(value = { "/updateFormSJ" })
+	public String formSubject(@ModelAttribute("subjectNew") Subject subjectNew, Model model, HttpServletRequest request,
+			@RequestParam("id") String id) {
+		Subject theSubject = subjectResponsitory.findByid(id);
+		List<Subject> subjectlist = new ArrayList<>();
+		subjectlist.add(theSubject);
+		model.addAttribute("List", subjectlist);
+//		List<Majors > majors = majorsResponsitory.findAll();
+//		model.addAttribute("Listmj", majors);
+		return "/jsp/Page/PageforAdmin/formupdateSJ";
+	}
+
+	// button update
+	@RequestMapping(value = { "/updateSubject" })
+	public String updateSubject(@ModelAttribute("subjectNew") Subject subjectNew, Model model,
+			HttpServletRequest request, @RequestParam("id") String id) {
+		Subject theSubject = subjectResponsitory.findByid(id);
+		theSubject.setSubjectname(subjectNew.getSubjectname());
+		theSubject.setDescription(subjectNew.getDescription());
+		theSubject.setStatus(subjectNew.getStatus());
+		subjectResponsitory.save(theSubject);
+		return "redirect:/DSmonhoc";
+	}
+	@GetMapping("/deleteSubject")
+	public String deleteSubject(@RequestParam("id") String id) {
+		subjectResponsitory.deleteById(id);
+		return "redirect:/DSgiaovien";
+	}
+// listmonhoc//
+
+	// classroom//
+	// loadtable
+	@RequestMapping(value = { "/DSphonghoc" })
+	public String loadDSphonghoc(Model model, @ModelAttribute("classroom") Classroom Classroom) {
+		List<Classroom> list = classroomResponsitory.findAll();
+		model.addAttribute("List", list);
+		return "/jsp/Page/PageforAdmin/DSphonghoc";
+	}
+
+	// new
+	@RequestMapping(value = "/newClassroom")
+	public String newClassroom(@ModelAttribute("classroom") Classroom classroom, HttpServletRequest request,
+			Model model) {
+		Classroom classroom2 = new Classroom();
+		classroom2.setId(classroom.getId());
+		classroom2.setName(classroom.getName());
+		classroom2.setDescription(classroom.getDescription());
+		classroom2.setStatus(classroom.getStatus());
+		classroomResponsitory.save(classroom2);
+		return "redirect:/DSphonghoc";
+	}
+	//chuyen form update
+	@RequestMapping(value = { "/updateFormCL" })
+	public String updateFormCLassroom(@ModelAttribute("classroom") Classroom classroom, Model model, HttpServletRequest request,
+			@RequestParam("id") String id) {
+		Classroom theclassroom = classroomResponsitory.findByid(id);
+		List<Classroom> classroomlist = new ArrayList<>();
+		classroomlist.add(theclassroom);
+		model.addAttribute("List", classroomlist);
+		return "/jsp/Page/PageforAdmin/formupdateCL";
+	}
+	
+//	// button update
+//	@RequestMapping(value = { "/updateClassroom" })
+//	public String updateClassroom(@ModelAttribute("subjectNew") Subject subjectNew, Model model,
+//			HttpServletRequest request, @RequestParam("id") String id) {
+//		Classroom theclassroom = classroomResponsitory.findByid(id);
+//		
+//		return null;
+//	}
+	@GetMapping("/deleteClassroom")
+	public String deleteClassroom(@RequestParam("id") String id) {
+		classroomResponsitory.deleteById(id);
+		return "redirect:/DSgiaovien";
+	}
+	
+	// classroom//
 }
