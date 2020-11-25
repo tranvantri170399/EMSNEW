@@ -132,7 +132,7 @@
 						<ul class="treeview-menu">
 							<li><a href="/DShocsinh" target="frame"><i
 									class="fa fa-circle-o"></i>Danh sách sinh viên</a></li>
-							<li><a href="/DSphonghoc" target="frame"><i
+							<li><a href="/DSlophoc" target="frame"><i
 									class="fa fa-circle-o"></i>Danh sách lớp</a></li>
 							<li><a href="/DSmonhoc" target="frame"><i
 									class="fa fa-circle-o"></i>Danh sách môn</a></li>

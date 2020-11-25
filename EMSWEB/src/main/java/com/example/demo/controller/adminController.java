@@ -633,8 +633,8 @@ public class adminController {
 
 	// classroom//
 	// loadtable
-	@RequestMapping(value = { "/DSphonghoc" })
-	public String loadDSphonghoc(Model model, @ModelAttribute("classroom") Classroom Classroom) {
+	@RequestMapping(value = { "/DSlophoc" })
+	public String loadDSlophoc(Model model, @ModelAttribute("classroom") Classroom Classroom) {
 		List<Classroom> list = classroomResponsitory.findAll();
 		model.addAttribute("List", list);
 		return "/jsp/Page/PageforAdmin/DSphonghoc";
@@ -650,7 +650,7 @@ public class adminController {
 		classroom2.setDescription(classroom.getDescription());
 		classroom2.setStatus(classroom.getStatus());
 		classroomResponsitory.save(classroom2);
-		return "redirect:/DSphonghoc";
+		return "redirect:/DSlophoc";
 	}
 	//chuyen form update
 	@RequestMapping(value = { "/updateFormCL" })
