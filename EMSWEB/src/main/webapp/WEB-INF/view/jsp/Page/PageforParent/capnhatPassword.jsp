@@ -171,13 +171,15 @@ hr{
 	Đổi mật khẩu
 	</div>
 	<hr>
+	
+	<form:form action="/updatePass" modelAttribute="passUpdate">
 	<c:if test="${not empty Listuser}">
 	<c:forEach var="sp" items="${Listuser}">
 	<div class="info-student">
 	<div class="form-info row">
 	<label class="col-xl-3 col-lg-3 info-form-label">Tên đăng nhập</label>
 	<div class="col-lg-9 col-xl-6">
-		<input type="text" value="${sp.username}" class="form-control" readonly>
+		<input type="text" value="${sp.username}" name="username" class="form-control" readonly>
 	</div>
 	</div>
 		</c:forEach>
@@ -185,7 +187,7 @@ hr{
 	<div class="form-info row">
 	<label class="col-xl-3 col-lg-3 info-form-label">Mật khẩu cũ</label>
 	<div class="col-lg-9 col-xl-6">
-		<input type="text" class="form-control">
+		<input type="text" class="form-control" name="passwordold">
 	</div>
 	</div>
 	<div class="form-info row">
@@ -197,7 +199,7 @@ hr{
 	<div class="form-info row">
 	<label class="col-xl-3 col-lg-3 info-form-label">Nhập lại mật khẩu</label>
 	<div class="col-lg-9 col-xl-6">
-		<input type="text" class="form-control">
+		<input type="text" class="form-control" name="password">
 	</div>
 	</div>
 	<div class="form-info row">
@@ -206,7 +208,7 @@ hr{
 		<button type="submit" class="save-edit">Lưu thay đổi</button>
 	</div>
 	</div>
-	
+	</form:form>
 	</div>
 	</div>
   </div>
