@@ -676,7 +676,7 @@ public class adminController {
 	@GetMapping("/deleteClassroom")
 	public String deleteClassroom(@RequestParam("id") String id) {
 		classroomResponsitory.deleteById(id);
-		return "redirect:/DSgiaovien";
+		return "redirect:/DSlophoc";
 	}
 
 	// classroom//
