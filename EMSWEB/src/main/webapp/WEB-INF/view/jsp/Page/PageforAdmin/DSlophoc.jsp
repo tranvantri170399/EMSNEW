@@ -8,7 +8,7 @@
 
 <head>
 <meta charset="UTF-8">
-<title>AdminLTE 2 | Dashboard</title>
+<title>EMS | Quản Lí Phòng Học</title>
 
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
@@ -82,7 +82,7 @@ th.image.sorting {
 		<div class="modal-dialog">
 
 			<!-- Modal content-->
-			<form:form action="/newSubject" modelAttribute="classroom"
+			<form:form action="/newClassroom" modelAttribute="classroom"
 				enctype="multipart/form-data">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -97,20 +97,10 @@ th.image.sorting {
 									id="name" />
 							</div>
 						</div>
-						   <div clas="form-group">
-                                                <label for="InputID">Chuyên ngành</label>
-                                                <form:select path="majors" classxmlxmlns="form-control" idxmlns="sel1">
-                                                    <c:if test="${not empty Listmj}">
-                                                        <c:forEach var="sp" items="${Listmj}">
-                                                            <option>${sp.name}</option>
-                                                        </c:forEach>
-                                                    </c:if>
-                                                </form:select>
-                                            </div>
 						<div>
 							<div clas="form-group">
 								<label for="InputID">Tên môn học:</label>
-								<form:input type="text" path="subjectname" classxmlns="form-control"
+								<form:input type="text" path="name" classxmlns="form-control"
 									id="name" />
 							</div>
 						</div>
@@ -146,10 +136,9 @@ th.image.sorting {
 		<thead style="background-color: aqua;">
 			<tr>
 				<th>Mã</th>
-				<th>Chuyên Ngành</th>
-				<th>Tên Môn học</th>
-				<th>Mô tả môn học</th>
-				<th>Trạng thái</th>
+				<th>Tên phòng</th>
+				<th>Mô tả</th>
+				<th>Tình trạng phòng</th>
 				<th>Actions</th>
 			</tr>
 		</thead>
@@ -160,19 +149,18 @@ th.image.sorting {
 
 
 					<!-- construct an "update" link with customer id -->
-					<c:url var="updateLink" value="/updateFormSJ">
+					<c:url var="updateLink" value="/updateFormCL">
 						<c:param name="id" value="${list.id}" />
 					</c:url>
 
 					<!-- construct an "delete" link with customer id -->
-					<c:url var="deleteLink" value="/deleteSubject">
+					<c:url var="deleteLink" value="/deleteClassroom">
 						<c:param name="id" value="${list.id}" />
 					</c:url>
 
 					<tr>
 						<td>${list.id}</td>
-						<td>${list.majors.name}</td>
-						<td>${list.subjectname}</td>
+						<td>${list.name}</td>
 						<td>${list.description}</td>
 						<td>${list.status}</td>
 						<td><a href="${updateLink}" class="btn btn-primary">Update</a>

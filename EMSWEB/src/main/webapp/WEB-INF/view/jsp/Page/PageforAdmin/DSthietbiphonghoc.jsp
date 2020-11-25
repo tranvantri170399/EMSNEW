@@ -76,7 +76,7 @@
 		<div class="modal-dialog">
 
 			<!-- Modal content-->
-			<form:form action="/save/staff" modelAttribute="rooma">
+			<form:form action="/save/staff" modelAttribute="room">
 				<div class="modal-content">
 					<div class="modal-header">
 						<h4 class="modal-title">Thêm Thiết bị</h4>

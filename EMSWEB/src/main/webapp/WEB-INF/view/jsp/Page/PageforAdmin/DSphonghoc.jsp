@@ -5,10 +5,9 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html>
-
 <head>
 <meta charset="UTF-8">
-<title>EMS | Quản Lí Phòng Học</title>
+<title>AdminLTE 2 | Dashboard</title>
 
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
@@ -57,24 +56,19 @@
 #InputLastname {
 	border-color: red;
 }
-
-th.image.sorting {
-	width: 50px;
-}
 </style>
 </head>
-
 <body>
 	<section class="content-header">
 		<h1>
-			Thêm Mới Giáo Viên
+			Danh Sách Phòng Học
 			<button type="button" class="btn btn-info" data-toggle="modal"
-				data-target="#myModal">Thêm nhân viên</button>
+				data-target="#myModal">Thêm Phòng Học</button>
 		</h1>
 		<ol class="breadcrumb">
 			<li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-			<li class="active">Quản lí nhân viên</li>
-			<li class="active">Danh sách Nhân Viên</li>
+			<li class="active">Quản lí CSVC</li>
+			<li class="active">Danh sách Phòng Học</li>
 		</ol>
 	</section>
 	<!--Modalthemnhanvien-->
@@ -82,41 +76,35 @@ th.image.sorting {
 		<div class="modal-dialog">
 
 			<!-- Modal content-->
-			<form:form action="/newClassroom" modelAttribute="classroom"
-				enctype="multipart/form-data">
+			<form:form action="/save/schoolroom" modelAttribute="room">
 				<div class="modal-content">
 					<div class="modal-header">
+						<h4 class="modal-title">Thêm Phòng Học</h4>
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Thêm Môn học</h4>
 					</div>
 					<div class="modal-body">
-					<div>
-							<div clas="form-group">
-								<label for="InputID">Mã Ngành:</label>
-								<form:input type="text" path="id" classxmlns="form-control"
-									id="name" />
-							</div>
-						</div>
 						<div>
-							<div clas="form-group">
-								<label for="InputID">Tên môn học:</label>
-								<form:input type="text" path="name" classxmlns="form-control"
-									id="name" />
+
+							<div class="form-group">
+								<form:input type="hidden" path="id" />
 							</div>
-						</div>
-						<div>
-							<div clas="form-group">
-								<label for="InputID">Chú thích môn:</label>
-								<form:input type="text" path="description" classxmlns="form-control"
-									id="name" />
+							<div Class="form-group">
+								<label for="InputName">Tên phòng</label>
+									<form:input type="text" path="name" class="form-control"
+										id="InputLastname" />
 							</div>
-						</div>
-						<div>
+							
 							<div clas="form-group">
-								<label for="InputID">Trạng thái:</label>
-								<form:input type="text" path="status" classxmlns="form-control"
-									id="name" />
-							</div>
+								<label for="InputID">Số Phòng</label>
+								<form:input type="text" path="schoolroomnumber" class="form-control"
+									id="InputEmail" />
+							</div>	
+							
+							<div clas="form-group">
+								<label for="InputID">Diện Tích</label>
+								<form:input type="text" path="surfacearea" class="form-control"
+									id="InputEmail" />
+							</div>					
 						</div>
 					</div>
 					<div class="modal-footer">
@@ -131,46 +119,56 @@ th.image.sorting {
 	</div>
 
 	<!--Table  -->
-	<table id="table1" class="display">
+	<form:form action="/save" modelAttribute="room">
+		<table id="table1" class="display">
 
-		<thead style="background-color: aqua;">
-			<tr>
-				<th>Mã</th>
-				<th>Tên phòng</th>
-				<th>Mô tả</th>
-				<th>Tình trạng phòng</th>
-				<th>Actions</th>
-			</tr>
-		</thead>
+			<thead style="background-color: aqua;">
+				<tr>
+					<th>ID</th>
+					<th>Tên Phòng</th>
+					<th>Số Phòng</th>	
+					<th>Diện Tích</th>				
+					<th>Action</th>
+				</tr>
+			</thead>
 
-		<tbody>
-			<c:if test="${not empty List}">
-				<c:forEach var="list" items="${List}">
+			<tbody>
+				<c:if test="${not empty List}">
+					<c:forEach var="sp" items="${List}">
+
+						<c:url var="updateLink" value="/updateSchoolRoom">
+							<c:param name="id" value="${sp.id}" />
+						</c:url>
+
+						<!-- construct an "delete" link with customer id -->
+						<c:url var="deleteLink" value="/deleteSchoolRoom">
+							<c:param name="id" value="${sp.id}" />
+						</c:url>
+
+						
+						<tr style="color: red;">
+							<td class="gfgusername"><input style="color: red;border: none;width: 50px" name="idstaff"
+								value=" ${sp.id}"></td>
+							<td class="gfgpp"><input style="color: red;border: none;width: 80%" name="firstname"
+								value="${sp.name}"></td>
+							<td class="gfgscores">${sp.schoolroomnumber}</td>
+							<td class="gfgscores">${sp.surfacearea}</td>
+							<td style="text-align: center;">
+								<a href="${updateLink}" >UPDATE</a>
+								<a href="${deleteLink}">DEL</a>
+							</td>
+						</tr>
+
+					</c:forEach>
+				</c:if>
+
+			</tbody>
+
+		</table>
 
 
-					<!-- construct an "update" link with customer id -->
-					<c:url var="updateLink" value="/updateFormCL">
-						<c:param name="id" value="${list.id}" />
-					</c:url>
+	</form:form>
 
-					<!-- construct an "delete" link with customer id -->
-					<c:url var="deleteLink" value="/deleteClassroom">
-						<c:param name="id" value="${list.id}" />
-					</c:url>
-
-					<tr>
-						<td>${list.id}</td>
-						<td>${list.name}</td>
-						<td>${list.description}</td>
-						<td>${list.status}</td>
-						<td><a href="${updateLink}" class="btn btn-primary">Update</a>
-							<a href="${deleteLink}" class="btn btn-danger">Delete</a></td>
-					</tr>
-				</c:forEach>
-			</c:if>
-		</tbody>
-	</table>
 
 </body>
-
 </html>

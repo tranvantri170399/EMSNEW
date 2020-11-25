@@ -60,7 +60,7 @@
 		<!--Thoi Khoa Bieu -->
 		<div class="row">
 			<div class="col-md-12">
-				<form:form action="/updateSchoolroomDevice" modelAttribute="rooms">
+				<form:form action="/updateSchoolroomDevice" modelAttribute="room">
 					<div class="box box-primary">
 <!-- 						<img src="../../../../../resources/FileUpload/tri1703.jpg" name=""
 							style="width: 200px; height: 200px;"> -->
@@ -89,14 +89,21 @@
 									<div class="form-group">
 										<label for="InputPhone">Tên Thiết Bị</label>
 									
-											<form:select path="device" classxmlxmlns="form-control"
+										<%-- 	<form:select path="device" classxmlxmlns="form-control"
 											idxmlns="sel1">
 											<c:if test="${not empty Listds}">
 												<c:forEach var="s" items="${Listds}">
-													<option>${s.id}</option>
+													<option>${s.deviceName}</option>
 												</c:forEach>
 											</c:if>
-										</form:select>
+										</form:select> --%>
+										<select name="testdevice">
+											<c:if test="${not empty Listds}">
+												<c:forEach var="s" items="${Listds}">
+													<option>${s.deviceName}</option>
+												</c:forEach>
+											</c:if>
+										<select>
 									</div>
 									<div class="form-group">
 										<label for="InputPhone">Số Lượng</label>

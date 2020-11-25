@@ -170,14 +170,14 @@ public class csvcController {
 	
 	/*Xu li phong hoc Thiet bi*/
 	@RequestMapping(value = { "/DSthietbiphonghoc" })
-	public String loadDSthietbiphonghoc(Model model, @ModelAttribute("rooma") SchoolroomDevice room) {
+	public String loadDSthietbiphonghoc(Model model, @ModelAttribute("room") SchoolroomDevice room) {
 		List<SchoolroomDevice> roomDevice= SRDrespon.findAll();
 		model.addAttribute("List", roomDevice);
 		return "/jsp/Page/PageforAdmin/DSthietbiphonghoc";
 	}
 	
 	@RequestMapping(value = { "/updateroomDevice" })
-	public String updateroomDevice(Model model, @ModelAttribute("rooms") SchoolroomDevice room, HttpServletRequest request,
+	public String updateroomDevice(Model model, @ModelAttribute("room") SchoolroomDevice room, HttpServletRequest request,
 			@RequestParam("id") int id) {
 		Optional<SchoolroomDevice> theroom = SRDrespon.findById(id);
 		SchoolroomDevice Sroom=theroom.get();
@@ -195,28 +195,17 @@ public class csvcController {
 	}
 	
 	@RequestMapping(value = { "/updateSchoolroomDevice" })
-	public String updateSchoolroomDevice(Model model, @ModelAttribute("rooma") SchoolroomDevice room, HttpServletRequest request,
+	public String updateSchoolroomDevice(Model model, @ModelAttribute("room") SchoolroomDevice room, HttpServletRequest request,
 			@RequestParam("id") int id) {
 		Optional<SchoolroomDevice> theroom = SRDrespon.findById(id);
-		SchoolroomDevice Sroom=theroom.get();
-		
+		SchoolroomDevice Sroom=theroom.get();		
 		String schoolname= request.getParameter("schoolroom");	
-		SchoolRoom schoolRoom = roomrespo.findByname(schoolname);
-		
-//		String devicename= request.getParameter("device");
-//		System.out.println("test==>> "+devicename);
-//		Device devicess = devicerepo.findBydeviceName(devicename);
-		
-		
-		String deviceid = request.getParameter("device");
-		int x= Integer.parseInt(deviceid);
-		Optional<Device> dvc= devicerepo.findById(x);
-		Device devcasas= dvc.get();
-		
-		
+		SchoolRoom schoolRoom = roomrespo.findByname(schoolname);		
+		String devicename= request.getParameter("testdevice");
+		System.out.println("test==>> "+devicename);
+		Device devicess = devicerepo.findBydeviceName(devicename);		
 		Sroom.setSchoolroom(schoolRoom);
-		Sroom.setdevice(devcasas);
-//		Sroom.setdevice(devicess);
+		Sroom.setdevice(devicess);
 		Sroom.setAmount(room.getAmount());
 		SRDrespon.save(Sroom);
 		List<SchoolroomDevice> listroomss= SRDrespon.findAll();
