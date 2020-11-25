@@ -79,26 +79,36 @@
 			<form:form action="/save/schoolroom" modelAttribute="room">
 				<div class="modal-content">
 					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
 						<h4 class="modal-title">Thêm Phòng Học</h4>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
 					</div>
 					<div class="modal-body">
 						<div>
-							<div Class="form-group">								
+							<div Class="form-group">
+								<label for="InputName">Tên phòng:</label>								
 								<div Class="input-group">
-									<span Class="input-group-addon">Ten</span>
-									<form:input type="text" path="name" classxmlns="form-control"
+									<div class="input-group-prepend">
+									<span Class="input-group-text">Tên</span>
+									</div>
+									<form:input type="text" path="name" class="form-control"
 										id="InputLastname" />
-									<span Class="input-group-addon">So phong</span>
+									<div class="input-group-prepend">
+									<span Class="input-group-text">Số phòng</span>
+									</div>
 									<form:input path="schoolroomnumber" classxmlns="form-control"
 										id="InputFirstname" />
 								</div>
 							</div>
 							
 							<div clas="form-group">
-								<label for="InputID">Dien Tich:</label>
-								<form:input type="text" path="surfacearea" classxmlns="form-control"
+								<label for="InputID">Diện tích:</label>
+								<div class="input-group">
+								<form:input type="text" path="surfacearea" class="form-control"
 									id="InputEmail" />
+								<div class="input-group-prepend">
+									<span Class="input-group-text">m<sup>2</sup></span>
+									</div>	
+								</div>
 							</div>						
 
 						</div>

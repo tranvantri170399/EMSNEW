@@ -79,27 +79,24 @@
 			<form:form action="/save/staff" modelAttribute="room">
 				<div class="modal-content">
 					<div class="modal-header">
+						<h4 class="modal-title">Thêm Thiết bị</h4>
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Thêm Nhân Viên</h4>
 					</div>
 					<div class="modal-body">
 						<div>
 
 							<div class="form-group">
-								<form:input type="text" path="id" />
+								<form:input type="hidden" path="id" />
 							</div>
 							<div Class="form-group">
 								<label for="InputName">Tên phòng</label>
-								<div Class="input-group">
-									<span Class="input-group-addon">Ten</span>
-									<form:input type="text" path="schoolroom" classxmlns="form-control"
+									<form:input type="text" path="schoolroom" class="form-control"
 										id="InputLastname" />
-								</div>
 							</div>
 							
 							<div clas="form-group">
 								<label for="InputID">Thiết Bị:</label>
-								<form:input type="text" path="device" classxmlns="form-control"
+								<form:input type="text" path="device" class="form-control"
 									id="InputEmail" />
 							</div>					
 						</div>
