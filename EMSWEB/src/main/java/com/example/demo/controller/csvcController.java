@@ -160,6 +160,7 @@ public class csvcController {
 		Sroom.setAmount(room.getAmount());
 		Sroom.setStatus(room.getStatus());
 		Sroom.setPrice(room.getPrice());
+		devicerepo.save(Sroom);
 		List<Device> listroom= devicerepo.findAll();
 		model.addAttribute("List", listroom);
 		return "/jsp/Page/PageforAdmin/DSthietbi";
@@ -169,9 +170,57 @@ public class csvcController {
 	
 	/*Xu li phong hoc Thiet bi*/
 	@RequestMapping(value = { "/DSthietbiphonghoc" })
-	public String loadDSthietbiphonghoc(Model model, @ModelAttribute("room") SchoolroomDevice room) {
+	public String loadDSthietbiphonghoc(Model model, @ModelAttribute("rooma") SchoolroomDevice room) {
 		List<SchoolroomDevice> roomDevice= SRDrespon.findAll();
 		model.addAttribute("List", roomDevice);
+		return "/jsp/Page/PageforAdmin/DSthietbiphonghoc";
+	}
+	
+	@RequestMapping(value = { "/updateroomDevice" })
+	public String updateroomDevice(Model model, @ModelAttribute("rooms") SchoolroomDevice room, HttpServletRequest request,
+			@RequestParam("id") int id) {
+		Optional<SchoolroomDevice> theroom = SRDrespon.findById(id);
+		SchoolroomDevice Sroom=theroom.get();
+		List<SchoolroomDevice> listroom= new ArrayList<>();
+		listroom.add(Sroom);
+		model.addAttribute("List", listroom);
+		
+		List<SchoolRoom> list= roomrespo.findAll();
+		model.addAttribute("Lists", list);
+		
+		List<Device> listd= devicerepo.findAll();
+		model.addAttribute("Listds", listd);
+		
+		return "/jsp/Page/PageforAdmin/Updatethietbiphong";
+	}
+	
+	@RequestMapping(value = { "/updateSchoolroomDevice" })
+	public String updateSchoolroomDevice(Model model, @ModelAttribute("rooma") SchoolroomDevice room, HttpServletRequest request,
+			@RequestParam("id") int id) {
+		Optional<SchoolroomDevice> theroom = SRDrespon.findById(id);
+		SchoolroomDevice Sroom=theroom.get();
+		
+		String schoolname= request.getParameter("schoolroom");	
+		SchoolRoom schoolRoom = roomrespo.findByname(schoolname);
+		
+//		String devicename= request.getParameter("device");
+//		System.out.println("test==>> "+devicename);
+//		Device devicess = devicerepo.findBydeviceName(devicename);
+		
+		
+		String deviceid = request.getParameter("device");
+		int x= Integer.parseInt(deviceid);
+		Optional<Device> dvc= devicerepo.findById(x);
+		Device devcasas= dvc.get();
+		
+		
+		Sroom.setSchoolroom(schoolRoom);
+		Sroom.setdevice(devcasas);
+//		Sroom.setdevice(devicess);
+		Sroom.setAmount(room.getAmount());
+		SRDrespon.save(Sroom);
+		List<SchoolroomDevice> listroomss= SRDrespon.findAll();
+		model.addAttribute("List", listroomss);
 		return "/jsp/Page/PageforAdmin/DSthietbiphonghoc";
 	}
 	/*Xu li phong hoc Thiet bi*/

@@ -638,7 +638,7 @@ public class adminController {
 	public String loadDSlophoc(Model model, @ModelAttribute("classroom") Classroom Classroom) {
 		List<Classroom> list = classroomResponsitory.findAll();
 		model.addAttribute("List", list);
-		return "/jsp/Page/PageforAdmin/DSphonghoc";
+		return "/jsp/Page/PageforAdmin/DSlophoc";
 	}
 
 	// new
