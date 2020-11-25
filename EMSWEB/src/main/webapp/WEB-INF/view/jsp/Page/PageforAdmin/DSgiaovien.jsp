@@ -32,10 +32,6 @@
 <link
 	href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css"
 	rel="stylesheet" type="text/css" />
-<!-- Daterange picker -->
-<link
-	href="../../../../../resources/bootstrap/css/daterangepicker-bs3.css"
-	rel="stylesheet" type="text/css" />
 <!-- Theme style -->
 <link href="../../../../../resources/bootstrap/css/AdminLTE.min.css"
 	rel="stylesheet" type="text/css" />

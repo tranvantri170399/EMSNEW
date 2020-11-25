@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>AdminLTE 2 | Dashboard</title>
+<title>EMS | Quản Lí Sinh Viên</title>
 
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
@@ -27,7 +27,16 @@
 </style>
 </head>
 <body>
+	<section class="content-header">
+		<h1>Quản Lí Sinh Viên</h1>
+		<ol class="breadcrumb">
+			<li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
+			<li class="active">Quản lí Sinh Viên</li>
+			<li class="active">Danh sách sinh viên</li>
+		</ol>		
+	</section>
 
+	<section clas="content">
 	<table id="table1" class="display">
 
 		<thead>
@@ -172,5 +181,6 @@
 				</div>
 			</form:form>
 	</div>
+	</section>
 </body>
 </html>
