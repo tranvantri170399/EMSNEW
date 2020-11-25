@@ -76,7 +76,7 @@
 		<div class="modal-dialog">
 
 			<!-- Modal content-->
-			<form:form action="/save/staff" modelAttribute="room">
+			<form:form action="/save/staff" modelAttribute="rooma">
 				<div class="modal-content">
 					<div class="modal-header">
 						<h4 class="modal-title">Thêm Thiết bị</h4>
@@ -130,12 +130,12 @@
 				<c:if test="${not empty List}">
 					<c:forEach var="sp" items="${List}">
 
-						<c:url var="updateLink" value="/updatestaff">
+						<c:url var="updateLink" value="/updateroomDevice">
 							<c:param name="id" value="${sp.id}" />
 						</c:url>
 
 						<!-- construct an "delete" link with customer id -->
-						<c:url var="deleteLink" value="/deleteTeacher">
+						<c:url var="deleteLink" value="/deleteroomDevice">
 							<c:param name="id" value="${sp.id}" />
 						</c:url>
 
