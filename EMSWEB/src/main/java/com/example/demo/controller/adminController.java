@@ -624,6 +624,7 @@ public class adminController {
 		subjectResponsitory.save(theSubject);
 		return "redirect:/DSmonhoc";
 	}
+
 	@GetMapping("/deleteSubject")
 	public String deleteSubject(@RequestParam("id") String id) {
 		subjectResponsitory.deleteById(id);
@@ -652,17 +653,18 @@ public class adminController {
 		classroomResponsitory.save(classroom2);
 		return "redirect:/DSphonghoc";
 	}
-	//chuyen form update
+
+	// chuyen form update
 	@RequestMapping(value = { "/updateFormCL" })
-	public String updateFormCLassroom(@ModelAttribute("classroom") Classroom classroom, Model model, HttpServletRequest request,
-			@RequestParam("id") String id) {
+	public String updateFormCLassroom(@ModelAttribute("classroom") Classroom classroom, Model model,
+			HttpServletRequest request, @RequestParam("id") String id) {
 		Classroom theclassroom = classroomResponsitory.findByid(id);
 		List<Classroom> classroomlist = new ArrayList<>();
 		classroomlist.add(theclassroom);
 		model.addAttribute("List", classroomlist);
 		return "/jsp/Page/PageforAdmin/formupdateCL";
 	}
-	
+
 //	// button update
 //	@RequestMapping(value = { "/updateClassroom" })
 //	public String updateClassroom(@ModelAttribute("subjectNew") Subject subjectNew, Model model,
@@ -676,6 +678,8 @@ public class adminController {
 		classroomResponsitory.deleteById(id);
 		return "redirect:/DSgiaovien";
 	}
-	
+
 	// classroom//
+	
+	//
 }

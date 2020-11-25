@@ -165,8 +165,6 @@
 														</div>
 														<div class="modal-body">
 
-
-
 															<div Class="form-group">
 																<span Class="input-group-addon">Tên<dspan>
 																	<input type="text" name="fnamee"
@@ -174,8 +172,8 @@
 															</div>
 
 															<div Class="form-group">
-																<span Class="input-group-addon">Họ</span>
-																	<input type="text" name="lnamee" id="InputFirstname" />
+																<span Class="input-group-addon">Họ</span> <input
+																	type="text" name="lnamee" id="InputFirstname" />
 															</div>
 
 															<div clas="form-group">
@@ -236,18 +234,18 @@
 									</div>
 								</div>
 							</div>
-						
-						<!-- Modal footer -->
-						<div class="modal-footer">
-							<input type="submit" name="btnsave" class="btn btn-info"
-								value="SAVE">
-							<button type="button" class="btn btn-primary"
-								data-dismiss="modal">Hủy</button>
+
+							<!-- Modal footer -->
+							<div class="modal-footer">
+								<input type="submit" name="btnsave" class="btn btn-info"
+									value="SAVE">
+								<button type="button" class="btn btn-primary"
+									data-dismiss="modal">Hủy</button>
+							</div>
 						</div>
-						</div>
-						</form:form>
+					</form:form>
 				</div>
-				
+
 			</div>
 	</div>
 
@@ -289,7 +287,7 @@
 						<tr>
 							<td>${list.id}</td>
 							<td>${list.lname}&ensp;${list.fname}</td>
-							<td>${list.email}</td>	
+							<td>${list.email}</td>
 							<td>${list.dob}</td>
 							<td>${list.phone}</td>
 							<td>${list.address}</td>
