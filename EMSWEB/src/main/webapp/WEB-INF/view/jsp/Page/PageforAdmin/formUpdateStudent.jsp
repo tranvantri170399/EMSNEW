@@ -60,112 +60,50 @@
 		<!--Thoi Khoa Bieu -->
 		<div class="row">
 			<div class="col-md-12">
-				<form:form action="/updateTeacher" modelAttribute="teacherNew" enctype="multipart/form-data">
+				<form:form action="/updateStudent" modelAttribute="student"
+					enctype="multipart/form-data">
 					<div class="box box-primary">
-<!-- 						<img src="../../../../../resources/FileUpload/tri1703.jpg" name=""
+						<!-- 						<img src="../../../../../resources/FileUpload/tri1703.jpg" name=""
 							style="width: 200px; height: 200px;"> -->
 						<!--form  -->
 
 
 						<c:if test="${not empty List}">
 							<c:forEach var="sp" items="${List}">
-							<img src="../../../../../resources/FileUpload/${sp.image}" name=""
-							style="width: 200px; height: 300px;">
+								<img src="../../../../../resources/FileUpload/${sp.image}"
+									name="" style="width: 200px; height: 300px;">
 								<div class="box-body">
 									<div class="form-group">
 										<input type="hidden" id="id" name="id" value="${sp.id}">
 									</div>
+
 									<div class="form-group">
-										<label for="exampleInputFile">File input</label>
+										<label for="exampleInputFile">Chọn ảnh</label>
 										<div class="input-group">
-											<input type="File" class="form-control" name="files" id="InputImage">
-											<span class="input-group-btn">
-												<button class="btn btn-default" type="submit">Update
-												</button>
+											<input type="File" class="form-control" name="files"
+												id="InputImage"> <span class="input-group-btn">
 											</span>
 										</div>
 									</div>
 									<div class="form-group">
-										<label for="exampleInputName">Họ và Tên</label>
-										<div class="input-group">
-											<span class="input-group-addon">Họ</span>
-											<form:input path="lname" type="text" class="form-control"
-												id="InputLastname" value="${sp.lname}" />
-											<span class="input-group-addon">Tên</span>
-											<form:input path="fname" type="text" value="${sp.fname}"
-												class="form-control" id="InputFirstname" />
-										</div>
-									</div>
-									<!-- 									<script type="text/javascript">
-										var date = new Date("03/25/2015");
-										document.getElementById("InputDob").value =date;
-									</script> -->
-									<div class="form-group">
-										<label for="InputDob">Ngày sinh</label>
-										<form:input path="dob" type="date" class="form-control"
-											id="InputDob" min="1980-1-1" max="2020-12-31"
-											value="${sp.dob}" />
-									</div>
-
-									<div class="form-group">
-										<label for="exampleInputEmail">Email</label>
-										<form:input path="email" value="${sp.email}"
-											class="form-control" id="InputEmail" />
-									</div>
-									<div class="form-group">
-										<label for="InputPhone">Số Điện Thoại</label>
-										<form:input path="phone" value="${sp.phone}" type="text"
-											class="form-control" id="InputPhone" />
-									</div>
-									<div class="form-group">
-										<label for="InputPhone">Địa chỉ</label>
-										<form:input path="address" value="${sp.address}" type="text"
-											class="form-control" id="InputAddress" />
-									</div>
-									<div class="form-group">
-										<label for="InputPhone">Trạng thái:</label> <label
-											id="InputStatus">Học đi</label>
-									</div>
-									<div clas="form-group">
-										<label for="InputID">Cấp độ:</label>
-										<form:input path="level" value="${sp.level}" class="form-control" />
-									</div>
-									<div clas="form-group">
-										<label for="InputID">Lương</label>
-										<form:input path="salary" value="${sp.salary}"
+										<label for="exampleInputEmail">Mail</label>
+										<form:input name="email" path="email" value="${sp.email}"
 											class="form-control" />
 									</div>
-									<%-- <div clas="form-group">
-										<label for="InputID">Phòng Ban:</label>
-										<form:select path="depart" items="${sp.depart.name}" />
-									</div> --%>
-									<div clas="form-group">
-										<label for="InputID">Phòng Ban:</label>
-										<form:select path="depart" classxmlxmlns="form-control"
-											idxmlns="sel1">
-											<c:if test="${not empty Listdp}">
-												<c:forEach var="sp" items="${Listdp}">
-													<form:option value="${sp.name}" />
-													<%--  <form:options items="${Listdp}" /> --%>
-												</c:forEach>
-											</c:if>
-										</form:select>
+									<div class="form-group">
+										<label for="exampleInputEmail">Địa chỉ</label>
+										<form:input path="address" value="${sp.address}"
+											class="form-control" id="address" />
 									</div>
-									<%-- 	<div clas="form-group">
-										<label for="InputID">Chức vụ</label>
-										<form:select path="role" items="" />
-									</div> --%>
-
-									<div clas="form-group">
-										<label for="InputID">Chức vụ</label>
-										<form:select path="role" classxmlxmlns="form-control"
-											idxmlns="sel1">
-											<c:if test="${not empty Listr}">
-												<c:forEach var="sp" items="${Listr}">
-													<option>${sp.roleName}</option>
-												</c:forEach>
-											</c:if>
-										</form:select>
+									<div class="form-group">
+										<label for="exampleInputEmail">Tình trạng</label>
+										<form:input path="status" value="${sp.status}"
+											class="form-control" id="status" />
+									</div>
+									<div class="form-group">
+										<label for="exampleInputEmail">Mã căn cước</label>
+										<form:input path="idcard" value="${sp.idcard}"
+											class="form-control" id="idcard" />
 									</div>
 								</div>
 							</c:forEach>

@@ -130,11 +130,11 @@
 							class="fa fa-angle-right pull-right"></i>
 					</a>
 						<ul class="treeview-menu">
-							<li><a href="Page/thoikhoabieu" target="frame"><i
+							<li><a href="/DShocsinh" target="frame"><i
 									class="fa fa-circle-o"></i>Danh sách sinh viên</a></li>
-							<li><a href="Page/lichthi.html" target="frame"><i
+							<li><a href="/DSphonghoc" target="frame"><i
 									class="fa fa-circle-o"></i>Danh sách lớp</a></li>
-							<li><a href="Page/diemdanh.html" target="frame"><i
+							<li><a href="/DSmonhoc" target="frame"><i
 									class="fa fa-circle-o"></i>Danh sách môn</a></li>
 							<li><a href="Page/gopy.html" target="frame"><i
 									class="fa fa-circle-o"></i>Danh sách ngành</a></li>

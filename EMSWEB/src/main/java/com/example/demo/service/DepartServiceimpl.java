@@ -10,7 +10,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
 import com.example.demo.entities.Depart;
-import com.example.demo.entities.Role;
 import com.example.demo.repository.DepartResponsitory;
 
 public class DepartServiceimpl implements DepartService{
@@ -36,7 +35,7 @@ public class DepartServiceimpl implements DepartService{
 		if (optional.isPresent()) {
 			depart = optional.get();
 		}else {
-			throw new RuntimeException(" role not found for id :: " + id);
+			throw new RuntimeException(" deapart not found for id :: " + id);
 		}
 		return depart;
 	}

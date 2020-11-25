@@ -33,7 +33,7 @@ public class UserController {
 	@Autowired
 	DepartResponsitory departRes;
 	@Autowired
-	ParentResponsitory parentRes;
+	ParentResponsitory parentResponsitory;
 	
 	@RequestMapping(value = { "/login" }, method = RequestMethod.POST)
 	public String login111(ModelMap model, @ModelAttribute("student") User student, BindingResult errors) {
@@ -104,7 +104,7 @@ public class UserController {
 		String ids = "PH002";
 		System.out.println("=>>11 "+email);
 //		List<Parent> parentList = parentRes.findcustom(ids);
-		List<Parent> parentList = parentRes.findcustomemail(email);
+		List<Parent> parentList = parentResponsitory.findcustomemail(email);
 		Parent parent= parentList.get(parentList.size()-1);
 		
 		List<Student> studentlist= sturep.findcustom(parent.getId());
@@ -119,7 +119,7 @@ public class UserController {
 		String ids = "PH002";
 		String id= "lap";
 //		List<Parent> parentList = parentRes.findcustom(ids);
-		List<Parent> parentList = parentRes.findcustomemail(email);
+		List<Parent> parentList = parentResponsitory.findcustomemail(email);
 //		Parent parent= parentList.get(parentList.size()-1);
 		
 		List<User> userList= UserRep.findcustom(email);

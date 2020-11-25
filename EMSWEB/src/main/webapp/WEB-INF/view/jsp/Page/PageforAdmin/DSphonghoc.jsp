@@ -82,25 +82,39 @@ th.image.sorting {
 		<div class="modal-dialog">
 
 			<!-- Modal content-->
-			<form:form action="/newDepart" modelAttribute="departNew"
+			<form:form action="/newClassroom" modelAttribute="classroom"
 				enctype="multipart/form-data">
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Thêm Nhân Viên</h4>
+						<h4 class="modal-title">Thêm Môn học</h4>
 					</div>
 					<div class="modal-body">
-						<div>
+					<div>
 							<div clas="form-group">
-								<label for="InputID">ID:</label>
+								<label for="InputID">Mã Ngành:</label>
 								<form:input type="text" path="id" classxmlns="form-control"
-									id="id" />
+									id="name" />
 							</div>
 						</div>
 						<div>
 							<div clas="form-group">
-								<label for="InputID">Name:</label>
+								<label for="InputID">Tên môn học:</label>
 								<form:input type="text" path="name" classxmlns="form-control"
+									id="name" />
+							</div>
+						</div>
+						<div>
+							<div clas="form-group">
+								<label for="InputID">Chú thích môn:</label>
+								<form:input type="text" path="description" classxmlns="form-control"
+									id="name" />
+							</div>
+						</div>
+						<div>
+							<div clas="form-group">
+								<label for="InputID">Trạng thái:</label>
+								<form:input type="text" path="status" classxmlns="form-control"
 									id="name" />
 							</div>
 						</div>
@@ -117,42 +131,45 @@ th.image.sorting {
 	</div>
 
 	<!--Table  -->
-		<table id="table1" class="display">
+	<table id="table1" class="display">
 
-			<thead style="background-color: aqua;">
-				<tr>
-					<th>Mã</th>
-					<th>Tên Phòng</th>
-					<th>Actions</th>
-				</tr>
-			</thead>
+		<thead style="background-color: aqua;">
+			<tr>
+				<th>Mã</th>
+				<th>Tên phòng</th>
+				<th>Mô tả</th>
+				<th>Tình trạng phòng</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
 
-			<tbody>
-				<c:if test="${not empty List}">
-					<c:forEach var="list" items="${List}">
+		<tbody>
+			<c:if test="${not empty List}">
+				<c:forEach var="list" items="${List}">
 
 
-						<!-- construct an "update" link with customer id -->
-						<c:url var="updateLink" value="/updateFormDP">
-							<c:param name="id" value="${list.id}" />
-						</c:url>
+					<!-- construct an "update" link with customer id -->
+					<c:url var="updateLink" value="/updateFormCL">
+						<c:param name="id" value="${list.id}" />
+					</c:url>
 
-						<!-- construct an "delete" link with customer id -->
-						<c:url var="deleteLink" value="/deleteDepart">
-							<c:param name="id" value="${list.id}" />
-						</c:url>
+					<!-- construct an "delete" link with customer id -->
+					<c:url var="deleteLink" value="/deleteClassroom">
+						<c:param name="id" value="${list.id}" />
+					</c:url>
 
-						<tr>
-							<td>${list.id}</td>
-							<td>${list.name}</td>
-							<td><a href="${updateLink}" class="btn btn-primary">Update</a>
-								<a href="${deleteLink}" class="btn btn-danger">Delete</a></td>
-						</tr>
-					</c:forEach>
-				</c:if>
-			</tbody>
-
-		</table>
+					<tr>
+						<td>${list.id}</td>
+						<td>${list.name}</td>
+						<td>${list.description}</td>
+						<td>${list.status}</td>
+						<td><a href="${updateLink}" class="btn btn-primary">Update</a>
+							<a href="${deleteLink}" class="btn btn-danger">Delete</a></td>
+					</tr>
+				</c:forEach>
+			</c:if>
+		</tbody>
+	</table>
 
 </body>
 
