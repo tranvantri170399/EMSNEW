@@ -638,7 +638,7 @@ public class adminController {
 	public String loadDSlophoc(Model model, @ModelAttribute("classroom") Classroom Classroom) {
 		List<Classroom> list = classroomResponsitory.findAll();
 		model.addAttribute("List", list);
-		return "/jsp/Page/PageforAdmin/DSphonghoc";
+		return "/jsp/Page/PageforAdmin/DSlophoc";
 	}
 
 	// new
@@ -676,7 +676,7 @@ public class adminController {
 	@GetMapping("/deleteClassroom")
 	public String deleteClassroom(@RequestParam("id") String id) {
 		classroomResponsitory.deleteById(id);
-		return "redirect:/DSgiaovien";
+		return "redirect:/DSlophoc";
 	}
 
 	// classroom//
