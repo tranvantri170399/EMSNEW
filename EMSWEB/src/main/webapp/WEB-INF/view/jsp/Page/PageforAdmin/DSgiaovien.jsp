@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>AdminLTE 2 | Dashboard</title>
+<title>EMS | Quản Lí Giáo Viên</title>
 
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
@@ -61,9 +61,7 @@
 <body>
 	<section class="content-header">
 		<h1>
-		Thêm Mới Giáo Viên
-			<button type="button" class="btn btn-info" data-toggle="modal"
-				data-target="#myModal">Thêm nhân viên</button>
+		Quản Lí Giáo Viên
 		</h1>
 		<ol class="breadcrumb">
 			<li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
@@ -80,67 +78,74 @@
 				enctype="multipart/form-data">
 				<div class="modal-content">
 					<div class="modal-header">
+						<h4 class="modal-title">Thêm Giáo Viên</h4>					
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Thêm Nhân Viên</h4>
 					</div>
 					<div class="modal-body">
 						<div>
 
 							<div class="form-group">
-								<form:input type="text" path="id" />
+								<form:input type="hidden" path="id" />
 							</div>
 							<div Class="form-group">
 								<label for="InputName">Họ và tên:</label>
 								<div Class="input-group">
-									<span Class="input-group-addon">Họ</span>
-									<form:input type="text" path="lname" classxmlns="form-control"
+									<div class="input-group-prepend">
+									<span Class="input-group-text">Họ</span>
+									</div>
+									<form:input type="text" path="lname" class="form-control"
 										id="InputLastname" />
-									<span Class="input-group-addon">Tên</span>
-									<form:input type="text" path="fname" classxmlns="form-control"
+									<div class="input-group-prepend">	
+									<span Class="input-group-text">Tên</span>
+									</div>
+									<form:input type="text" path="fname" class="form-control"
 										id="InputFirstname" />
 								</div>
 							</div>
 
 							<div clas="form-group">
-								<label for="InputID">Image:</label> <input type="File"
-									class="form-control" name="files" id="InputImage">
+								<label for="InputID">Image:</label> 								
+								<div class="custom-file">
+    								<input type="file" class="custom-file-input" id="inputGroupFile01" id="InputImage">
+    								<label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+							  	</div>
 							</div>
 							<div clas="form-group">
 								<label for="InputID">Email:</label>
-								<form:input type="text" path="email" classxmlns="form-control"
+								<form:input type="text" path="email" class="form-control"
 									id="InputEmail" />
 							</div>
 
 							<div clas="form-group">
 								<label for="InputID">Ngày sinh</label>
-								<form:input type="date" path="dob" classxmlns="form-control"
+								<form:input type="date" path="dob" class="form-control"
 									id="InputDob" min="1980-1-1" max="2020-12-31" />
 							</div>
 							<div clas="form-group">
 								<label for="InputID">Số Điện Thoại</label>
-								<form:input type="text" path="phone" classxmlns="form-control"
+								<form:input type="text" path="phone" class="form-control"
 									id="InputPhone" />
 							</div>
 							<div clas="form-group">
 								<label for="InputID">Địa chỉ:</label>
-								<form:input type="text" path="address" classxmlns="form-control"
+								<form:input type="text" path="address" class="form-control"
 									id="InputAddress" />
 							</div>
 							<div clas="form-group">
 								<label for="InputID">Trạng Thái:</label>
-								<form:input path="status" classxmlns="form-control" />
+								<form:input path="status" class="form-control" />
 							</div>
 							<div clas="form-group">
 								<label for="InputID">Cấp độ:</label>
-								<form:input path="level" classxmlns="form-control" />
+								<form:input path="level" class="form-control" />
 							</div>
 							<div clas="form-group">
 								<label for="InputID">Lương</label>
-								<form:input path="salary" classxmlns="form-control" />
+								<form:input path="salary" class="form-control" />
 							</div>
 							<div clas="form-group">
 								<label for="InputID">Phòng Ban:</label>
-								<form:select path="depart" classxmlxmlns="form-control"
+								<form:select path="depart" class="custom-select"
 									idxmlns="sel1">
 									<c:if test="${not empty Listdp}">
 										<c:forEach var="sp" items="${Listdp}">
@@ -152,7 +157,7 @@
 							</div>
 							<div clas="form-group">
 								<label for="InputID">Chức vụ</label>
-								<form:select path="role" classxmlxmlns="form-control"
+								<form:select path="role" class="custom-select"
 									idxmlns="sel1">
 									<c:if test="${not empty Listr}">
 										<c:forEach var="sp" items="${Listr}">
@@ -174,10 +179,14 @@
 			</form:form>
 		</div>
 	</div>
-
+	<section class="content">
+	<h6>Danh sách Giáo Viên	
+	<button type="button" class="btn btn-info" data-toggle="modal"
+				data-target="#myModal">Thêm nhân viên</button>
+	</h6>
 	<!--Table  -->
 	<form:form action="/save" modelAttribute="teacher">
-		<table id="table1" class="display">
+		<table id="table1" class="table-bordered table-striped dataTable">
 
 			<thead style="background-color: aqua;">
 				<tr>
@@ -231,7 +240,7 @@
 
 	</form:form>
 
-
+	</section>
 
 	<!-- 	<script>
 		$(function() {
