@@ -15,19 +15,17 @@
                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
                     <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
-                    <!-- modal -->
-                    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-                    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-                    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-                    <!-- Ionicons -->
-                    <link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css" />
-                    <!-- Daterange picker -->
-                    <link href="../../../../../resources/bootstrap/css/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
-                    <!-- Theme style -->
-                    <link href="../../../../../resources/bootstrap/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
-                    <!-- AdminLTE Skins. Choose a skin from the cs/skins 
+<link
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css" />
+<!-- Ionicons -->
+<link
+	href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css"
+	rel="stylesheet" type="text/css" />
+<!-- Theme style -->
+<link href="../../../../../resources/bootstrap/css/AdminLTE.min.css"
+	rel="stylesheet" type="text/css" />
+<!-- AdminLTE Skins. Choose a skin from the cs/skins 
          folder instead of downloading all of them to reduce the load. -->
                     <link href="../../../../../resources/bootstrap/css/_all-skins.min.css" rel="stylesheet" type="text/css" />
 

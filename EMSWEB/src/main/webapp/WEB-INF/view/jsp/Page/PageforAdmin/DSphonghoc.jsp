@@ -8,7 +8,7 @@
 
 <head>
 <meta charset="UTF-8">
-<title>AdminLTE 2 | Dashboard</title>
+<title>EMS | Quản Lí Phòng Học</title>
 
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">

@@ -182,23 +182,36 @@
 
 	<!--Table  -->
 	<form:form action="/save" modelAttribute="staff">
-		<table id="table1" class="display">
-
-			<thead style="background-color: aqua;">
+		<table id="table1" class="display table-bordered" style="width: 100%">
+    	<colgroup>
+       		<col span="1" style="width: 5%;">
+       		<col span="1" style="width: 5%;">
+       		<col span="1" style="width: 6%;">
+       		<col span="1" style="width: 11%;">
+       		<col span="1" style="width: 17%;">
+       		<col span="1" style="width: 10%;">
+       		<col span="1" style="width: 7%;">
+       		<col span="1" style="width: 11%;">
+       		<col span="1" style="width: 9%;">
+       		<col span="1" style="width: 8%;">
+       		<col span="1" style="width: 5%;">
+       		<col span="1" style="width: 6%;">       		       		       		
+    	</colgroup>
+			<thead class="thead-dark">
 				<tr>
 					<th>ID</th>
-					<th>Firstname</th>
-					<th>Lastname</th>
-					<th>Depart</th>
-					<th>Role</th>
+					<th>Tên</th>
+					<th>Họ</th>
+					<th>Ngày sinh</th>	
+					<th>Địa chỉ</th>									
+					<th>Email</th>	
+					<th>SĐT</th>									
+					<th>Phòng Ban</th>
+					<th>Chức Vụ</th>
 				<!-- <th>Image</th> -->
-				<th>Email</th>
-				<th>Birthday</th>
-				<th>Phone</th>
-									<th>Address</th>
 				<!-- <th>Status</th> -->
-				<th>Level</th>
-				<th>Salary</th>
+					<th>Cấp độ</th>
+					<th>Lương</th>
 					<th>Action</th>
 				</tr>
 			</thead>
@@ -217,19 +230,19 @@
 						</c:url>
 
 						
-						<tr style="color: red;">
+						<tr style="color: black;">
 							<td class="gfgusername"><input style="color: red;border: none;width: 50px" name="idstaff"
 								value=" ${sp.id}"></td>
 							<td class="gfgpp"><input style="color: red;border: none;width: 80%" name="firstname"
 								value="${sp.fname}"></td>
 							<td class="gfgscores">${sp.lname}</td>
+							<td>${sp.dob}</td>
+							<td>${sp.address}</td>	
+							<td>${sp.email}</td>	
+							<td>${sp.phone}</td>																			
 							<td class="gfgarticles">${sp.depart.name}</td>
 							<td>${sp.role.roleName}</td>
 						<%-- <td>${sp.image}</td> --%>
-						<td>${sp.email}</td>
-						<td>${sp.dob}</td>
-						<td>${sp.phone}</td>
-							<td>${sp.address}</td>
 						<%-- <td>${sp.status}</td> --%>
 						<td>${sp.level}</td>
 						<td>${sp.salary}</td>

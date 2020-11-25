@@ -32,10 +32,6 @@
 <link
 	href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css"
 	rel="stylesheet" type="text/css" />
-<!-- Daterange picker -->
-<link
-	href="../../../../../resources/bootstrap/css/daterangepicker-bs3.css"
-	rel="stylesheet" type="text/css" />
 <!-- Theme style -->
 <link href="../../../../../resources/bootstrap/css/AdminLTE.min.css"
 	rel="stylesheet" type="text/css" />
@@ -66,9 +62,9 @@
 				data-target="#myModal">Thêm Thiết Bị</button>
 		</h1>
 		<ol class="breadcrumb">
-			<li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-			<li class="active">Quản lí CSVC</li>
-			<li class="active">Danh sách Thiết Bị</li>
+			<li><a href="#"><i class="fa fa-dashboard"></i>Trang Chủ</a></li>
+			<li class="active">Quản Lí CSVC</li>
+			<li class="active">Quản Lí Thiết Bị</li>
 		</ol>
 	</section>
 	<!--Modalthemnhanvien-->

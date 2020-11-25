@@ -211,7 +211,7 @@ a {
 							1. Giảng viên, cán bộ quản lý ở EMS chỉ sử dụng Email EMS (@ems.edu.vn) để đăng nhập.</br>
 							2. Sinh viên, học viên sử dụng tài khoản của hệ thống Online để đăng nhập:</br>
 								- Vui lòng chọn role 
-							hoặc có thể dùng Email UEH (@st.ueh.edu.vn) để đăng nhập.</br>
+							hoặc có thể dùng Email EMS (@ems.edu.vn) để đăng nhập.</br>
 							3. Lưu ý:</br>
 							- Việc đổi mật khẩu được thực hiện tại các trang Online sẽ tự động thay đổi mật khẩu toàn hệ thống</br>
 							- Nếu quên mật khẩu tại trang Online, liên hệ các đơn vị quản lý đào tạo.</br>
