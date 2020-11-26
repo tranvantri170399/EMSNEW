@@ -64,16 +64,17 @@ public class ParentController {
 	
 	@RequestMapping(value = "/updatePass", method = RequestMethod.POST)
 	public String updatePass(@ModelAttribute("passUpdate") User passUpdate, Model model,  HttpServletRequest request
-			,@RequestParam("username") String username,@RequestParam("password") String pass,@RequestParam("passwordold") String passold) {
+			,@RequestParam("username") String username,@RequestParam("password") String pass,
+			@RequestParam("passwordold") String passold) {
 		Optional<User> r= UserRep.findById(username);
 		User user=r.get();
-		
+
 		if (passold.equals(user.getPassword())) {
 			user.setPassword(pass);
 			UserRep.save(user);
-			return "goood";
+			return "/jsp/Page/PageforParent/error";
 		}else {
-			return "sai";
+			return "";
 		}
 		
 		
