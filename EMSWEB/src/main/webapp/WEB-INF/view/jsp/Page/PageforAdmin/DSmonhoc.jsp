@@ -90,41 +90,41 @@ th.image.sorting {
 						<h4 class="modal-title">Thêm Môn học</h4>
 					</div>
 					<div class="modal-body">
-					<div>
+						<div>
 							<div clas="form-group">
 								<label for="InputID">Mã Ngành:</label>
-								<form:input type="text" path="id" classxmlns="form-control"
-									id="name" />
+								<form:input type="text" path="id" class="form-control" id="name" />
 							</div>
 						</div>
-						   <div clas="form-group">
-                                                <label for="InputID">Chuyên ngành</label>
-                                                <form:select path="majors" classxmlxmlns="form-control" idxmlns="sel1">
-                                                    <c:if test="${not empty Listmj}">
-                                                        <c:forEach var="sp" items="${Listmj}">
-                                                            <option>${sp.name}</option>
-                                                        </c:forEach>
-                                                    </c:if>
-                                                </form:select>
-                                            </div>
+						<div clas="form-group">
+							<label for="InputID">Chuyên ngành</label>
+							<form:select path="majors" class="custom-select"
+								idxmlns="sel1">
+								<c:if test="${not empty Listmj}">
+									<c:forEach var="sp" items="${Listmj}">
+										<option>${sp.name}</option>
+									</c:forEach>
+								</c:if>
+							</form:select>
+						</div>
 						<div>
 							<div clas="form-group">
 								<label for="InputID">Tên môn học:</label>
-								<form:input type="text" path="subjectname" classxmlns="form-control"
-									id="name" />
+								<form:input type="text" path="subjectname"
+									class="form-control" id="name" />
 							</div>
 						</div>
 						<div>
 							<div clas="form-group">
 								<label for="InputID">Chú thích môn:</label>
-								<form:input type="text" path="description" classxmlns="form-control"
-									id="name" />
+								<form:input type="text" path="description"
+									class="form-control" id="name" />
 							</div>
 						</div>
 						<div>
 							<div clas="form-group">
 								<label for="InputID">Trạng thái:</label>
-								<form:input type="text" path="status" classxmlns="form-control"
+								<form:input type="text" path="status" class="form-control"
 									id="name" />
 							</div>
 						</div>

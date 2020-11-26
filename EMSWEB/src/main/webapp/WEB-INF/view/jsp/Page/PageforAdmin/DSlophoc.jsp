@@ -86,35 +86,35 @@ th.image.sorting {
 				enctype="multipart/form-data">
 				<div class="modal-content">
 					<div class="modal-header">
+						<h4 class="modal-title">Thêm Môn học</h4>	
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Thêm Môn học</h4>
 					</div>
 					<div class="modal-body">
 					<div>
 							<div clas="form-group">
 								<label for="InputID">Mã Ngành:</label>
-								<form:input type="text" path="id" classxmlns="form-control"
+								<form:input type="text" path="id" class="form-control"
 									id="name" />
 							</div>
 						</div>
 						<div>
 							<div clas="form-group">
 								<label for="InputID">Tên môn học:</label>
-								<form:input type="text" path="name" classxmlns="form-control"
+								<form:input type="text" path="name" class="form-control"
 									id="name" />
 							</div>
 						</div>
 						<div>
 							<div clas="form-group">
 								<label for="InputID">Chú thích môn:</label>
-								<form:input type="text" path="description" classxmlns="form-control"
+								<form:input type="text" path="description" class="form-control"
 									id="name" />
 							</div>
 						</div>
 						<div>
 							<div clas="form-group">
 								<label for="InputID">Trạng thái:</label>
-								<form:input type="text" path="status" classxmlns="form-control"
+								<form:input type="text" path="status" class="form-control"
 									id="name" />
 							</div>
 						</div>
