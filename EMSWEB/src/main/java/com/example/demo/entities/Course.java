@@ -30,7 +30,8 @@ public class Course {
 	private Set<Attandence> attandences = new HashSet<Attandence>(0);
 	private Set<Exam> exams = new HashSet<Exam>(0);
 	private Set<ClassroomStudent> classroomStudents = new HashSet<ClassroomStudent>(0);
-
+	private Set<Schedule> schedule = new HashSet<Schedule>(0);
+	
 	public Course() {
 	}
 
@@ -41,7 +42,7 @@ public class Course {
 
 	public Course(String id, Semester semester, Teacher teacher, String name, String desc,
 			String section, String status, String classroomId, Set<Attandence> attandences,
-			Set<Exam> exams, Set<ClassroomStudent> classroomStudents) {
+			Set<Exam> exams, Set<ClassroomStudent> classroomStudents,Set<Schedule> schedule) {
 		this.id = id;
 		this.semester = semester;
 		this.teacher = teacher;
@@ -53,6 +54,7 @@ public class Course {
 		this.attandences = attandences;
 		this.exams = exams;
 		this.classroomStudents = classroomStudents;
+		this.schedule=schedule;
 	}
 
 	@Id
@@ -156,5 +158,15 @@ public class Course {
 	public void setClassroomStudents(Set<ClassroomStudent> classroomStudents) {
 		this.classroomStudents = classroomStudents;
 	}
+	
+	@OneToMany(mappedBy = "course")
+	public Set<Schedule> getSchedule() {
+		return schedule;
+	}
 
+	public void setSchedule(Set<Schedule> schedule) {
+		this.schedule = schedule;
+	}
+
+	
 }

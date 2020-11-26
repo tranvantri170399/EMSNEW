@@ -21,21 +21,21 @@ public class StudyShift {
 
 	private int id;
 	private String nameShift;
-	private Date startingTime;
-	private Date endTime;
+	private String startingTime;
+	private String endTime;
 	private Set<Schedule> schedules = new HashSet<Schedule>(0);
 
 	public StudyShift() {
 	}
 
-	public StudyShift(int id, String nameShift, Date startingTime, Date endTime) {
+	public StudyShift(int id, String nameShift, String startingTime, String endTime) {
 		this.id = id;
 		this.nameShift = nameShift;
 		this.startingTime = startingTime;
 		this.endTime = endTime;
 	}
 
-	public StudyShift(int id, String nameShift, Date startingTime, Date endTime, Set<Schedule> schedules) {
+	public StudyShift(int id, String nameShift, String startingTime, String endTime, Set<Schedule> schedules) {
 		this.id = id;
 		this.nameShift = nameShift;
 		this.startingTime = startingTime;
@@ -63,23 +63,21 @@ public class StudyShift {
 		this.nameShift = nameShift;
 	}
 
-	@Temporal(TemporalType.TIME)
 	@Column(name = "Starting_time", nullable = false, length = 16)
-	public Date getStartingTime() {
+	public String getStartingTime() {
 		return this.startingTime;
 	}
 
-	public void setStartingTime(Date startingTime) {
+	public void setStartingTime(String startingTime) {
 		this.startingTime = startingTime;
 	}
 
-	@Temporal(TemporalType.TIME)
 	@Column(name = "End_time", nullable = false, length = 16)
-	public Date getEndTime() {
+	public String getEndTime() {
 		return this.endTime;
 	}
 
-	public void setEndTime(Date endTime) {
+	public void setEndTime(String endTime) {
 		this.endTime = endTime;
 	}
 

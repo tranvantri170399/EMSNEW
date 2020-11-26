@@ -21,7 +21,7 @@ public class Subject {
 
 	private String id;
 	private Majors majors;
-	private String subjectName;
+	private String subjectname;
 	private String description;
 	private String status;
 	private Set<MajorsSemester> majorsSemesters = new HashSet<MajorsSemester>(0);
@@ -29,15 +29,12 @@ public class Subject {
 	public Subject() {
 	}
 
-	public Subject(String id) {
-		this.id = id;
-	}
 
-	public Subject(String id, Majors majors, String subjectName, String description,
+	public Subject(String id, Majors majors, String subjectname, String description,
 			String status, Set<MajorsSemester> majorsSemesters) {
 		this.id = id;
 		this.majors = majors;
-		this.subjectName = subjectName;
+		this.subjectname = subjectname;
 		this.description = description;
 		this.status = status;
 		this.majorsSemesters = majorsSemesters;
@@ -64,19 +61,20 @@ public class Subject {
 		this.majors = majors;
 	}
 
-	@Column(name = "SubjectName")
-	public String getSubjectName() {
-		return this.subjectName;
+	@Column(name = "Subjectname")
+	public String getSubjectname() {
+		return subjectname;
 	}
 
-	public void setSubjectName(String subjectName) {
-		this.subjectName = subjectName;
+	public void setSubjectname(String subjectname) {
+		this.subjectname = subjectname;
 	}
 
 	@Column(name = "Description")
 	public String getDescription() {
 		return this.description;
 	}
+
 
 	public void setDescription(String description) {
 		this.description = description;
@@ -99,5 +97,6 @@ public class Subject {
 	public void setMajorsSemesters(Set<MajorsSemester> majorsSemesters) {
 		this.majorsSemesters = majorsSemesters;
 	}
-
+	
+	
 }

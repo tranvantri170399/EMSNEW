@@ -79,28 +79,37 @@
 			<form:form action="/save/schoolroom" modelAttribute="room">
 				<div class="modal-content">
 					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
 						<h4 class="modal-title">Thêm Phòng Học</h4>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
 					</div>
 					<div class="modal-body">
 						<div>
-							<div Class="form-group">								
-								<div Class="input-group">
-									<span Class="input-group-addon">Ten</span>
-									<form:input type="text" path="name" classxmlns="form-control"
-										id="InputLastname" />
-									<span Class="input-group-addon">So phong</span>
-									<form:input path="schoolroomnumber" classxmlns="form-control"
-										id="InputFirstname" />
+
+							<div class="form-group">
+								<form:input type="hidden" path="id" />
+							</div>
+							<div Class="form-group">
+								<label for="InputName">Tên phòng</label>
+								<form:input type="text" path="name" class="form-control"
+									id="InputLastname" />
+							</div>
+
+							<div clas="form-group">
+								<label for="InputID">Số Phòng</label>
+								<form:input type="text" path="schoolroomnumber"
+									class="form-control" id="InputEmail" />
+							</div>
+
+							<div clas="form-group">
+								<label for="InputID">Diện Tích</label>
+								<div class="input-group">
+									<form:input type="text" path="surfacearea" class="form-control"
+										id="InputEmail" />
+									<div class="input-group-prepend">
+										<span Class="input-group-text">m<sup>2</sup></span>
+									</div>
 								</div>
 							</div>
-							
-							<div clas="form-group">
-								<label for="InputID">Dien Tich:</label>
-								<form:input type="text" path="surfacearea" classxmlns="form-control"
-									id="InputEmail" />
-							</div>						
-
 						</div>
 					</div>
 					<div class="modal-footer">
@@ -115,15 +124,15 @@
 	</div>
 
 	<!--Table  -->
-	<form:form action="/save" modelAttribute="room" method="GET">
+	<form:form action="/save" modelAttribute="room">
 		<table id="table1" class="display">
 
 			<thead style="background-color: aqua;">
 				<tr>
 					<th>ID</th>
-					<th>Tên</th>
+					<th>Tên Phòng</th>
 					<th>Số Phòng</th>
-					<th>Diện Tích</th>
+					<th>Diện Tích(m<sup>2</sup>)</th>
 					<th>Action</th>
 				</tr>
 			</thead>
@@ -141,19 +150,18 @@
 							<c:param name="id" value="${sp.id}" />
 						</c:url>
 
-						
+
 						<tr style="color: red;">
-							<td class="gfgusername"><input style="color: red;border: none;width: 50px" name="idstaff"
+							<td class="gfgusername"><input
+								style="color: red; border: none; width: 50px" name="idstaff"
 								value=" ${sp.id}"></td>
-							<td class="gfgpp"><input style="color: red;border: none;width: 80%" name="firstname"
+							<td class="gfgpp"><input
+								style="color: red; border: none; width: 80%" name="firstname"
 								value="${sp.name}"></td>
 							<td class="gfgscores">${sp.schoolroomnumber}</td>
-							<td class="gfgarticles">${sp.surfacearea}</td>
-							<td style="text-align: center;">
-								<a href="${updateLink}" >UPDATE</a>
-								<a href="${deleteLink}">DEL</a>
-
-							</td>
+							<td class="gfgscores">${sp.surfacearea}</td>
+							<td style="text-align: center;"><a href="${updateLink}">UPDATE</a>
+								<a href="${deleteLink}">DEL</a></td>
 						</tr>
 
 					</c:forEach>
@@ -166,41 +174,6 @@
 
 	</form:form>
 
-
-
-	<!-- 	<script>
-		$(function() {
-			// ON SELECTING ROW 
-			$(".gfgselect")
-					 .click( 
-							function() {
-								//FINDING ELEMENTS OF ROWS AND STORING THEM IN VARIABLES 
-								var a = $(this).parents("tr").find(
-										".gfgusername").text();
-								var c = $(this).parents("tr").find(".gfgpp")
-										.text();
-								var d = $(this).parents("tr")
-										.find(".gfgscores").text();
-								var e = $(this).parents("tr").find(
-										".gfgarticles").text();
-								var p = "";
-								// CREATING DATA TO SHOW ON MODEL 
-								p += "<p id='a' name='GFGusername' >GFG UserHandle: "
-										+ a + " </p>";
-
-								p += "<p > First Name: <input type='text' name='fnamesx' value='"
-										+ c + "'> </p>";
-								p += "<p > Last Name: <input type='text' name='lname' value='"
-									+ d + "'> </p>";
-								p += "<p > Depart: <input type='text' name='depart' value='"
-									+ e + "'> </p>";
-								//CLEARING THE PREFILLED DATA 
-								$("#divGFG").empty();
-								//WRITING THE DATA ON MODEL 
-								$("#divGFG").append(p);
-							});
-		});
-	</script> -->
 
 </body>
 </html>

@@ -70,10 +70,10 @@
 						<c:if test="${not empty List}">
 							<c:forEach var="sp" items="${List}">
 							<img src="../../../../../resources/FileUpload/${sp.image}" name=""
-							style="width: 200px; height: 300px;">
+							style="width: 120px; height: 160px;">
 								<div class="box-body">
 									<div class="form-group">
-										<input type="hidden" id="custId" name="id" value="${sp.id}">
+										<input type="hidden" id="id" name="id" value="${sp.id}">
 									</div>
 									<div class="form-group">
 										<label for="exampleInputFile">File input</label>
@@ -126,11 +126,11 @@
 										<label for="InputPhone">Trạng thái:</label> <label
 											id="InputStatus">Học đi</label>
 									</div>
-									<div clas="form-group">
+									<div class="form-group">
 										<label for="InputID">Cấp độ:</label>
 										<form:input path="level" value="${sp.level}" class="form-control" />
 									</div>
-									<div clas="form-group">
+									<div class="form-group">
 										<label for="InputID">Lương</label>
 										<form:input path="salary" value="${sp.salary}"
 											class="form-control" />
@@ -139,9 +139,9 @@
 										<label for="InputID">Phòng Ban:</label>
 										<form:select path="depart" items="${sp.depart.name}" />
 									</div> --%>
-									<div clas="form-group">
+									<div class="form-group">
 										<label for="InputID">Phòng Ban:</label>
-										<form:select path="depart" classxmlxmlns="form-control"
+										<form:select path="depart" class="form-control"
 											idxmlns="sel1">
 											<c:if test="${not empty Listdp}">
 												<c:forEach var="sp" items="${Listdp}">
@@ -156,9 +156,9 @@
 										<form:select path="role" items="" />
 									</div> --%>
 
-									<div clas="form-group">
+									<div class="form-group">
 										<label for="InputID">Chức vụ</label>
-										<form:select path="role" classxmlxmlns="form-control"
+										<form:select path="role" class="form-control"
 											idxmlns="sel1">
 											<c:if test="${not empty Listr}">
 												<c:forEach var="sp" items="${Listr}">

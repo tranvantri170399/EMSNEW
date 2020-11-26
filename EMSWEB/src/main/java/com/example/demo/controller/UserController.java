@@ -33,7 +33,7 @@ public class UserController {
 	@Autowired
 	DepartResponsitory departRes;
 	@Autowired
-	ParentResponsitory parentRes;
+	ParentResponsitory parentResponsitory;
 	
 	@RequestMapping(value = { "/login" }, method = RequestMethod.POST)
 	public String login111(ModelMap model, @ModelAttribute("student") User student, BindingResult errors) {
@@ -97,6 +97,7 @@ public class UserController {
 		departRes.save(de);
 		return "/jsp/Page/PageforAdmin/DSphongban";
 	}
+
 	
 	
 	

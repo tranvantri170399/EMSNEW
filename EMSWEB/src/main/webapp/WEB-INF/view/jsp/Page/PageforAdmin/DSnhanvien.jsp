@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>AdminLTE 2 | Dashboard</title>
+<title>EMS | Danh sách nhân vien</title>
 
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
@@ -33,8 +33,7 @@
 	href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css"
 	rel="stylesheet" type="text/css" />
 <!-- Daterange picker -->
-<link
-	href="../../../../../resources/bootstrap/css/daterangepicker-bs3.css"
+<link	href="../../../../../resources/bootstrap/css/daterangepicker-bs3.css"
 	rel="stylesheet" type="text/css" />
 <!-- Theme style -->
 <link href="../../../../../resources/bootstrap/css/AdminLTE.min.css"
@@ -72,74 +71,81 @@
 		</ol>
 	</section>
 	<!--Modalthemnhanvien-->
-	<div class="modal fade" id="myModal" role="dialog">
+	<div class="modal" id="myModal" role="dialog">
 		<div class="modal-dialog">
 
 			<!-- Modal content-->
 			<form:form action="/save/staff" modelAttribute="staff" enctype="multipart/form-data">
 				<div class="modal-content">
 					<div class="modal-header">
+						<h4 class="modal-title">Thêm Nhân Viên</h4>					
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Thêm Nhân Viên</h4>
 					</div>
 					<div class="modal-body">
 						<div>
 
 							<div class="form-group">
-								<form:input type="text" path="id" />
+								<form:input type="hidden" path="id" />
 							</div>
 							<div Class="form-group">
 								<label for="InputName">Họ và tên:</label>
 								<div Class="input-group">
-									<span Class="input-group-addon">Họ</span>
-									<form:input type="text" path="lname" classxmlns="form-control"
+									<div class="input-group-prepend">
+									<span Class="input-group-text">Họ</span>
+									</div>
+									<form:input type="text" path="lname" class="form-control"
 										id="InputLastname" />
-									<span Class="input-group-addon">Tên</span>
-									<form:input type="text" path="fname" classxmlns="form-control"
+									<div class="input-group-prepend">	
+									<span Class="input-group-text">Tên</span>
+									</div>
+									<form:input type="text" path="fname" class="form-control"
 										id="InputFirstname" />
 								</div>
 							</div>
 							
 							<div clas="form-group">
 								<label for="InputID">Image:</label>
-								<input type="File" class="form-control" name="files" id="InputImage">
+								<div class="custom-file">
+    								<input type="file" class="custom-file-input" id="inputGroupFile01" id="InputImage">
+    								<label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+							  	</div>
 							</div>
 							<div clas="form-group">
 								<label for="InputID">Email:</label>
-								<form:input type="text" path="email" classxmlns="form-control"
+								<form:input type="text" path="email" class="form-control"
 									id="InputEmail" />
 							</div>
 							
 							<div clas="form-group">
 								<label for="InputID">Ngày sinh</label>
-								<form:input type="date" path="dob" classxmlns="form-control"
+								<form:input type="date" path="dob" class="form-control"
 									id="InputDob" min="1980-1-1" max="2020-12-31" />
 							</div>
 							<div clas="form-group">
 								<label for="InputID">Số Điện Thoại</label>
-								<form:input type="text" path="phone" classxmlns="form-control"
+								<form:input type="text" path="phone" class="form-control"
 									id="InputPhone" />
 							</div>
 							<div clas="form-group">
 								<label for="InputID">Địa chỉ:</label>
-								<form:input type="text" path="address" classxmlns="form-control"
+								<form:input type="text" path="address" class="form-control"
 									id="InputAddress" />
 							</div>
 							<div clas="form-group">
 								<label for="InputID">Trạng Thái:</label>
-								<form:input path="status" classxmlns="form-control" />
+								<form:input path="status" class="form-control" />
 							</div>
 							<div clas="form-group">
 								<label for="InputID">Cấp độ:</label>
-								<form:input path="level" classxmlns="form-control" />
+								<form:input path="level" class="form-control" />
 							</div>
 							<div clas="form-group">
 								<label for="InputID">Lương</label>
-								<form:input path="salary" classxmlns="form-control" />
+								<form:input path="salary" class="form-control" />
 							</div>
 							<div clas="form-group">
 								<label for="InputID">Phòng Ban:</label>
-								<form:select path="depart" classxmlxmlns="form-control"
+								<form:select path="depart" class="custom-select"
 									idxmlns="sel1">
 									<c:if test="${not empty Listdp}">
 										<c:forEach var="sp" items="${Listdp}">
@@ -151,7 +157,7 @@
 							</div>
 							<div clas="form-group">
 								<label for="InputID">Chức vụ</label>
-								<form:select path="role" classxmlxmlns="form-control"
+								<form:select path="role" class="custom-select"
 									idxmlns="sel1">
 									<c:if test="${not empty Listr}">
 										<c:forEach var="sp" items="${Listr}">
@@ -176,23 +182,35 @@
 
 	<!--Table  -->
 	<form:form action="/save" modelAttribute="staff">
-		<table id="table1" class="display">
-
-			<thead style="background-color: aqua;">
+		<table id="table1" class="display table-bordered" style="width: 100%">
+    	<colgroup>
+       		<col span="1" style="width: 5%;">
+       		<col span="1" style="width: 5%;">
+       		<col span="1" style="width: 6%;">
+       		<col span="1" style="width: 11%;">
+       		<col span="1" style="width: 17%;">
+       		<col span="1" style="width: 10%;">
+       		<col span="1" style="width: 7%;">
+       		<col span="1" style="width: 11%;">
+       		<col span="1" style="width: 9%;">
+       		<col span="1" style="width: 8%;">
+       		<col span="1" style="width: 5%;">
+       		<col span="1" style="width: 6%;">       		       		       		
+    	</colgroup>
+			<thead class="thead-dark">
 				<tr>
 					<th>ID</th>
-					<th>Firstname</th>
-					<th>Lastname</th>
-					<th>Depart</th>
-					<th>Role</th>
+					<th>Họ Tên</th>
+					<th>Ngày sinh</th>	
+					<th>Địa chỉ</th>									
+					<th>Email</th>	
+					<th>SĐT</th>									
+					<th>Phòng Ban</th>
+					<th>Chức Vụ</th>
 				<!-- <th>Image</th> -->
-				<th>Email</th>
-				<th>Birthday</th>
-				<th>Phone</th>
-									<th>Address</th>
 				<!-- <th>Status</th> -->
-				<th>Level</th>
-				<th>Salary</th>
+					<th>Cấp độ</th>
+					<th>Lương</th>
 					<th>Action</th>
 				</tr>
 			</thead>
@@ -211,19 +229,19 @@
 						</c:url>
 
 						
-						<tr style="color: red;">
+						<tr style="color: black;">
 							<td class="gfgusername"><input style="color: red;border: none;width: 50px" name="idstaff"
 								value=" ${sp.id}"></td>
-							<td class="gfgpp"><input style="color: red;border: none;width: 80%" name="firstname"
-								value="${sp.fname}"></td>
-							<td class="gfgscores">${sp.lname}</td>
+							<td class="gfgpp"><input style="color: red;border: none;max-width: 70px" name="firstname"
+								value="${sp.fname}">${sp.lname}</td>
+							<%-- <td class="gfgscores">${sp.lname}</td> --%>
+							<td>${sp.dob}</td>
+							<td>${sp.address}</td>	
+							<td>${sp.email}</td>	
+							<td>${sp.phone}</td>																			
 							<td class="gfgarticles">${sp.depart.name}</td>
 							<td>${sp.role.roleName}</td>
 						<%-- <td>${sp.image}</td> --%>
-						<td>${sp.email}</td>
-						<td>${sp.dob}</td>
-						<td>${sp.phone}</td>
-							<td>${sp.address}</td>
 						<%-- <td>${sp.status}</td> --%>
 						<td>${sp.level}</td>
 						<td>${sp.salary}</td>

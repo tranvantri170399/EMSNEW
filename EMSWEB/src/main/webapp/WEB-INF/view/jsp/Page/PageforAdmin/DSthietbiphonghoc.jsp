@@ -76,34 +76,55 @@
 		<div class="modal-dialog">
 
 			<!-- Modal content-->
-			<form:form action="/save/staff" modelAttribute="room">
+			<form:form action="/save/SchoolroomDevice" modelAttribute="room">
 				<div class="modal-content">
 					<div class="modal-header">
+						<h4 class="modal-title">Thêm Thiết bị</h4>
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Thêm Nhân Viên</h4>
 					</div>
 					<div class="modal-body">
 						<div>
+								<div class="form-group" >
+										<input type="hidden" id="custId" name="idss" value="${sp.id}" readonly="readonly" >
+									</div>
 
-							<div class="form-group">
-								<form:input type="text" path="id" />
-							</div>
-							<div Class="form-group">
-								<label for="InputName">Tên phòng</label>
-								<div Class="input-group">
-									<span Class="input-group-addon">Ten</span>
-									<form:input type="text" path="schoolroom" classxmlns="form-control"
-										id="InputLastname" />
-								</div>
-							</div>
-							
-							<div clas="form-group">
-								<label for="InputID">Thiết Bị:</label>
-								<form:input type="text" path="device" classxmlns="form-control"
-									id="InputEmail" />
-							</div>					
+									<div class="form-group">
+										<label for="exampleInputEmail">Tên Phòng Học</label>
+										
+										<form:select path="schoolroom" classxmlxmlns="form-control"
+											idxmlns="sel1">
+											<c:if test="${not empty Lists}">
+												<c:forEach var="p" items="${Lists}">
+													<option>${p.name}</option>
+												</c:forEach>
+											</c:if>
+										</form:select>
+									</div>
+									<div class="form-group">
+										<label for="InputPhone">Tên Thiết Bị</label>
+									
+										<%-- 	<form:select path="device" classxmlxmlns="form-control"
+											idxmlns="sel1">
+											<c:if test="${not empty Listds}">
+												<c:forEach var="s" items="${Listds}">
+													<option>${s.deviceName}</option>
+												</c:forEach>
+											</c:if>
+										</form:select> --%>
+										<select name="testdevice">
+											<c:if test="${not empty Listds}">
+												<c:forEach var="s" items="${Listds}">
+													<option>${s.deviceName}</option>
+												</c:forEach>
+											</c:if>
+										<select>
+									</div>
+									<div class="form-group">
+										<label for="InputPhone">Số Lượng</label>
+										<form:input path="amount" value="${sp.amount}" type="text"
+											class="form-control" id="InputAddress" />
+									</div>				
 						</div>
-					</div>
 					<div class="modal-footer">
 						<input type="submit" name="btnsave" class="btn btn-info"
 							value="SAVE">
@@ -133,12 +154,12 @@
 				<c:if test="${not empty List}">
 					<c:forEach var="sp" items="${List}">
 
-						<c:url var="updateLink" value="/updatestaff">
+						<c:url var="updateLink" value="/updateroomDevice">
 							<c:param name="id" value="${sp.id}" />
 						</c:url>
 
 						<!-- construct an "delete" link with customer id -->
-						<c:url var="deleteLink" value="/deleteTeacher">
+						<c:url var="deleteLink" value="/deleteroomDevice">
 							<c:param name="id" value="${sp.id}" />
 						</c:url>
 

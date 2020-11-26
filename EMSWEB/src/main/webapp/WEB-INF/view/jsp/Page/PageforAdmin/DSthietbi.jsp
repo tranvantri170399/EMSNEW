@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>AdminLTE 2 | Dashboard</title>
+<title>EMS | Quản Lí Thiết Bị</title>
 
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
@@ -31,10 +31,6 @@
 <!-- Ionicons -->
 <link
 	href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css"
-	rel="stylesheet" type="text/css" />
-<!-- Daterange picker -->
-<link
-	href="../../../../../resources/bootstrap/css/daterangepicker-bs3.css"
 	rel="stylesheet" type="text/css" />
 <!-- Theme style -->
 <link href="../../../../../resources/bootstrap/css/AdminLTE.min.css"
@@ -66,9 +62,9 @@
 				data-target="#myModal">Thêm Thiết Bị</button>
 		</h1>
 		<ol class="breadcrumb">
-			<li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-			<li class="active">Quản lí CSVC</li>
-			<li class="active">Danh sách Thiết Bị</li>
+			<li><a href="#"><i class="fa fa-dashboard"></i>Trang Chủ</a></li>
+			<li class="active">Quản Lí CSVC</li>
+			<li class="active">Quản Lí Thiết Bị</li>
 		</ol>
 	</section>
 	<!--Modalthemnhanvien-->
@@ -79,8 +75,8 @@
 			<form:form action="/save/device" modelAttribute="room">
 				<div class="modal-content">
 					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
 						<h4 class="modal-title">Thêm Thiết Bị</h4>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
 					</div>
 					<div class="modal-body">
 						<div>
@@ -89,29 +85,36 @@
 								<form:input type="hidden" path="id" />
 							</div>
 							<div Class="form-group">
-								<label for="InputName"></label>
+								<label for="InputName">Thiết bị:</label>
 								<div Class="input-group">
-									<span Class="input-group-addon">Tên Thiết Bị</span>
-									<form:input type="text" path="deviceName" classxmlns="form-control"
+									<div class="input-group-prepend">
+										<span Class="input-group-text">Tên</span>
+									</div>
+									<form:input type="text" path="deviceName" class="form-control"
 										id="InputLastname" />
-									
-								</div>
-							</div>
-							<div clas="form-group">
-								<span Class="input-group-addon">Số Lượng</span>
-									<form:input path="amount" classxmlns="form-control"
+									<div class="input-group-prepend">	
+										<span Class="input-group-text">Số lượng</span>
+									</div>	
+									<form:input type="text" path="amount" class="form-control"
 										id="InputFirstname" />
-							</div>	
+								</div>		
+									
+							</div>
 							
 							<div clas="form-group">
-								<label for="InputID">Tình Trạng</label>
-								<form:input type="text" path="status" classxmlns="form-control"
+								<label for="InputID">Tình Trạng:</label>
+								<form:input type="text" path="status" class="form-control"
 									id="InputEmail" />
 							</div>	
 							<div clas="form-group">
-								<label for="InputID">Giá Thành</label>
-								<form:input type="text" path="price" classxmlns="form-control"
+								<label for="InputID">Giá Thành:</label>
+								<div class="input-group">
+									<form:input type="text" path="price" class="form-control"
 									id="InputEmail" />
+									<div class="input-group-prepend">
+										<span Class="input-group-text">.000 VNĐ</span>
+									</div>
+								</div>	
 							</div>					
 
 						</div>
