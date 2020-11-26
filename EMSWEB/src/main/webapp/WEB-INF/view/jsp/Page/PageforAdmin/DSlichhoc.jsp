@@ -61,14 +61,14 @@
 <body>
 	<section class="content-header">
 		<h1>
-			Danh Sách Thiết Bị
+			Danh Sách Lịch Học
 			<button type="button" class="btn btn-info" data-toggle="modal"
-				data-target="#myModal">Thêm Thiết Bị</button>
+				data-target="#myModal">Thêm Lịch Học</button>
 		</h1>
 		<ol class="breadcrumb">
 			<li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-			<li class="active">Quản lí CSVC</li>
-			<li class="active">Danh sách Thiết Bị</li>
+			<li class="active">Quản lí </li>
+			<li class="active">Danh sách Lịch Học</li>
 		</ol>
 	</section>
 	<!--Modalthemnhanvien-->
@@ -76,55 +76,47 @@
 		<div class="modal-dialog">
 
 			<!-- Modal content-->
-			<form:form action="/save/SchoolroomDevice" modelAttribute="room">
+			<form:form action="/save/schedule" modelAttribute="schedule">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h4 class="modal-title">Thêm Thiết bị</h4>
+						<h4 class="modal-title">Thêm Lịch Học</h4>
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
 					</div>
 					<div class="modal-body">
 						<div>
-								<div class="form-group" >
-										<input type="hidden" id="custId" name="idss" value="${sp.id}" readonly="readonly" >
-									</div>
 
-									<div class="form-group">
-										<label for="exampleInputEmail">Tên Phòng Học</label>
+							<div class="form-group">
+								<form:input type="hidden" path="id" />
+							</div>
+							<div Class="form-group">
+								<label for="InputName">Tên Giảng Đường </label>
+								<form:input type="text" path="amphitheater" class="form-control"
+									id="InputLastname" />
+							</div>
+
+							<div clas="form-group">
+								<label for="InputID">Tên lớp</label>
+								<form:input type="time" path="classroom"
+									class="form-control" id="InputEmail" />
+							</div>
+
+							<div clas="form-group">
+								<label for="InputID">Tên Phòng</label>
+								<div class="input-group">
+									<form:input type="time" path="schoolroom" class="form-control"
+										id="InputEmail" />
+									<div class="input-group-prepend">
 										
-										<form:select path="schoolroom" classxmlxmlns="form-control"
-											idxmlns="sel1">
-											<c:if test="${not empty Lists}">
-												<c:forEach var="p" items="${Lists}">
-													<option>${p.name}</option>
-												</c:forEach>
-											</c:if>
-										</form:select>
 									</div>
-									<div class="form-group">
-										<label for="InputPhone">Tên Thiết Bị</label>
-									
-										<%-- 	<form:select path="device" classxmlxmlns="form-control"
-											idxmlns="sel1">
-											<c:if test="${not empty Listds}">
-												<c:forEach var="s" items="${Listds}">
-													<option>${s.deviceName}</option>
-												</c:forEach>
-											</c:if>
-										</form:select> --%>
-										<select name="testdevice">
-											<c:if test="${not empty Listds}">
-												<c:forEach var="s" items="${Listds}">
-													<option>${s.deviceName}</option>
-												</c:forEach>
-											</c:if>
-										<select>
-									</div>
-									<div class="form-group">
-										<label for="InputPhone">Số Lượng</label>
-										<form:input path="amount" value="${sp.amount}" type="text"
-											class="form-control" id="InputAddress" />
-									</div>				
+								</div>
+							</div>
+							<div clas="form-group">
+								<label for="InputID">Tên Ca Học</label>
+								<form:input type="time" path="studyShift"
+									class="form-control" id="InputEmail" />
+							</div>
 						</div>
+					</div>
 					<div class="modal-footer">
 						<input type="submit" name="btnsave" class="btn btn-info"
 							value="SAVE">
@@ -143,9 +135,14 @@
 			<thead style="background-color: aqua;">
 				<tr>
 					<th>ID</th>
-					<th>Tên Phòng Học</th>
-					<th>Tên Thiết Bị</th>	
-					<th>Số Lượng</th>				
+					<th>Ngày</th>
+					<th>Tên Giảng Đường</th>
+					<th>Tên lớp</th>
+					<th>Tên Phòng</th>
+					<th>Tên Ca</th>
+					<th>Tên Môn</th>
+					<th>Tên Giáo Viên</th>
+					<th>Thời Gian</th>
 					<th>Action</th>
 				</tr>
 			</thead>
@@ -154,27 +151,32 @@
 				<c:if test="${not empty List}">
 					<c:forEach var="sp" items="${List}">
 
-						<c:url var="updateLink" value="/updateroomDevice">
+						<c:url var="updateLink" value="/updatescheduletoform">
 							<c:param name="id" value="${sp.id}" />
 						</c:url>
 
 						<!-- construct an "delete" link with customer id -->
-						<c:url var="deleteLink" value="/deleteroomDevice">
+						<c:url var="deleteLink" value="/deleteschedule">
 							<c:param name="id" value="${sp.id}" />
 						</c:url>
 
-						
+
 						<tr style="color: red;">
-							<td class="gfgusername"><input style="color: red;border: none;width: 50px" name="idstaff"
+							<td class="gfgusername"><input
+								style="color: red; border: none; width: 50px" name="idstaff"
 								value=" ${sp.id}"></td>
-							<td class="gfgpp"><input style="color: red;border: none;width: 80%" name="firstname"
-								value="${sp.schoolroom.name}"></td>
-							<td class="gfgscores">${sp.device.deviceName}</td>
-							<td class="gfgscores">${sp.amount}</td>
-							<td style="text-align: center;">
-								<a href="${updateLink}" >UPDATE</a>
-								<a href="${deleteLink}">DEL</a>
-							</td>
+								<td class="gfgscores">${sp.date}</td>
+							<td class="gfgpp"><input
+								style="color: red; border: none; width: 80%" name="firstname"
+								value="${sp.amphitheater.amphitheaterName}"></td>
+							<td class="gfgscores">${sp.classroom.name}</td>
+							<td class="gfgscores">${sp.schoolroom.name}</td>
+							<td class="gfgscores">${sp.studyShift.nameShift}</td>
+							<td class="gfgscores">${sp.course.name}</td>
+							<td class="gfgscores">${sp.course.teacher.fname}</td>
+							<td class="gfgscores">${sp.studyShift.startingTime}-${sp.studyShift.endTime}</td>
+							<td style="text-align: center;"><a href="${updateLink}">UPDATE</a>
+								<a href="${deleteLink}">DEL</a></td>
 						</tr>
 
 					</c:forEach>

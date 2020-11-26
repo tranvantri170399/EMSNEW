@@ -91,16 +91,16 @@ th.image.sorting {
 					</div>
 					<div class="modal-body">
 						<div>
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">ID:</label>
-								<form:input type="text" path="id" classxmlns="form-control"
+								<form:input type="text" path="id" class="form-control"
 									id="id" />
 							</div>
 						</div>
 						<div>
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">Name:</label>
-								<form:input type="text" path="name" classxmlns="form-control"
+								<form:input type="text" path="name" class="form-control"
 									id="name" />
 							</div>
 						</div>

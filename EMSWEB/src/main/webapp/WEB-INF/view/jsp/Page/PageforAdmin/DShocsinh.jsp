@@ -101,53 +101,50 @@
 															<h4 class="modal-title">Thêm Học Sinh</h4>
 														</div>
 														<div class="modal-body">
-															<div>
-
-																<div class="form-group">
-																	<form:input type="hidden" path="id" />
-																</div>
-																<div Class="form-group">
-																	<label for="InputName">Họ và tên:</label>
-																	<div Class="input-group">
-																		<span Class="input-group-addon">Họ</span>
-																		<form:input type="text" path="lname"
-																			classxmlns="form-control" id="InputLastname" />
-																		<span Class="input-group-addon">Tên</span>
-																		<form:input type="text" path="fname"
-																			classxmlns="form-control" id="InputFirstname" />
+															<form:input type="hidden" path="id" />
+															<div Class="form-group">
+																<label for="InputName">Họ và tên:</label>
+																<div Class="input-group">
+																	<div class="input-group-prepend">
+																		<span Class="input-group-text">Họ</span>
 																	</div>
+																	<form:input type="text" path="lname"
+																		class="form-control" id="InputLastname" />
+																	<div class="input-group-prepend">
+																		<span Class="input-group-text">Tên</span>
+																	</div>
+																	<form:input type="text" path="fname"
+																		class="form-control" id="InputFirstname" />
 																</div>
-																<div clas="form-group">
-																	<label for="InputID">Image:</label> <input type="File"
-																		class="form-control" name="files" id="InputImage">
-																</div>
-																<div clas="form-group">
-																	<label for="InputID">Email:</label>
-																	<form:input type="text" path="email"
-																		classxmlns="form-control" id="InputEmail" />
-																</div>
+															</div>
+															<div class="form-group">
+																<label for="InputID">Image:</label> <input type="File"
+																	class="form-control" name="files" id="InputImage">
+															</div>
+															<div class="form-group">
+																<label for="InputID">Email:</label>
+																<form:input type="text" path="email"
+																	class="form-control" id="InputEmail" />
+															</div>
 
-																<div clas="form-group">
-																	<label for="InputID">Ngày sinh</label>
-																	<form:input type="date" path="dob"
-																		classxmlns="form-control" id="InputDob" min="1980-1-1"
-																		max="2020-12-31" />
-																</div>
-																<div clas="form-group">
-																	<label for="InputID">Số Điện Thoại</label>
-																	<form:input type="text" path="phone"
-																		classxmlns="form-control" id="InputPhone" />
-																</div>
-																<div clas="form-group">
-																	<label for="InputID">Địa chỉ:</label>
-																	<form:input path="address" classxmlns="form-control" />
-																</div>
+															<div class="form-group">
+																<label for="InputID">Ngày sinh</label>
+																<form:input type="date" path="dob" class="form-control"
+																	id="InputDob" min="1980-1-1" max="2020-12-31" />
+															</div>
+															<div class="form-group">
+																<label for="InputID">Số Điện Thoại</label>
+																<form:input type="text" path="phone"
+																	class="form-control" id="InputPhone" />
+															</div>
+															<div class="form-group">
+																<label for="InputID">Địa chỉ:</label>
+																<form:input path="address" class="form-control" />
+															</div>
 
-																<div clas="form-group">
-																	<label for="InputID">Trạng Thái:</label>
-																	<form:input path="status" classxmlns="form-control" />
-																</div>
-
+															<div class="form-group">
+																<label for="InputID">Trạng Thái:</label>
+																<form:input path="status" class="form-control" />
 															</div>
 														</div>
 													</div>
@@ -166,64 +163,60 @@
 														<div class="modal-body">
 
 															<div Class="form-group">
-																<span Class="input-group-addon">Tên<dspan>
-																	<input type="text" name="fnamee"
-																		classxmlns="form-control" />
+																<label>Họ và Tên:</label>
+																<div class="input-group">
+																	<div class="input-group-prepend">
+																		<span Class="input-group-text">Họ</span>
+																	</div>
+																	<input type="text" name="lnamee" class="form-control" />
+																	<div class="input-group-prepend">
+																		<span Class="input-group-text">Tên</span>
+																	</div>
+																	<input type="text" name="fnamee" class="form-control" />
+																</div>
 															</div>
 
-															<div Class="form-group">
-																<span Class="input-group-addon">Họ</span> <input
-																	type="text" name="lnamee" id="InputFirstname" />
-															</div>
-
-															<div clas="form-group">
+															<div class="form-group">
 																<label for="InputID">Image:</label> <input type="File"
 																	class="form-control" name="filess" id="InputImage">
 															</div>
 
 															<div Class="form-group">
-																<span Class="input-group-addon">Email<dspan>
-																	<input type="text" name="emaill"
-																		classxmlns="form-control" id="InputFirstname" />
+																<label Class="input-group-addon">Email</label>> <input
+																	type="text" name="emaill" class="form-control"
+																	id="InputFirstname" />
 															</div>
 
-															<div clas="form-group">
+															<div class="form-group">
 																<label for="InputID">Ngày sinh</label> <input
-																	type="date" name="dobb" classxmlns="form-control"
+																	type="date" name="dobb" class="form-control"
 																	id="InputDob" min="1980-1-1" max="2020-12-31" />
 															</div>
 
 															<div Class="form-group">
-																<span Class="input-group-addon">Phone<dspan>
-																	<input type="text" name="phonee"
-																		classxmlns="form-control" />
+																<label>Phone</label>> <input type="text" name="phonee"
+																	class="form-control" />
 															</div>
 
 															<div Class="form-group">
-																<span Class="input-group-addon">Địa chỉ<dspan>
-																	<input type="text" name="addresss"
-																		classxmlns="form-control" />
+																<label>Địa chỉ</label>> <input type="text"
+																	name="addresss" class="form-control" />
 															</div>
 
 															<div Class="form-group">
 																<span Class="input-group-addon">Tình trạng<dspan>
-																	<input type="text" name="statuss"
-																		classxmlns="form-control" />
+																	<input type="text" name="statuss" class="form-control" />
 															</div>
 
 															<div Class="form-group">
-																<span Class="input-group-addon">Quan hệ<dspan>
-																	<input type="text" name="relationshipp"
-																		classxmlns="form-control" />
+																<label>Quan hệ:</label> 
+																<select class="custom-select" name="relationshipp">
+																	<option value="Ba">Ba</option>
+																	<option value="Me">Mẹ</option>
+																	<option value="Anh/Chi">Anh/Chị</option>
+																	<option value="Co/chu">Cô/chú</option>
+																</select>
 															</div>
-
-															<select name="relationshipp">
-																<option value="volvo">Ba</option>
-																<option value="saab">Mẹ</option>
-																<option value="mercedes">Anh/Chị</option>
-																<option value="audi">Cô/chú</option>
-															</select>
-
 														</div>
 													</div>
 
