@@ -112,7 +112,7 @@
 									<form:input type="text" path="price" class="form-control"
 									id="InputEmail" />
 									<div class="input-group-prepend">
-										<span Class="input-group-text">.000</span>
+										<span Class="input-group-text">.000 VNĐ</span>
 									</div>
 								</div>	
 							</div>					

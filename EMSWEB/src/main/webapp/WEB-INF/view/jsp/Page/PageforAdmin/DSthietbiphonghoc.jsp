@@ -83,7 +83,6 @@
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
 					</div>
 					<div class="modal-body">
-						<div>
 
 							<div class="form-group">
 								<form:input type="hidden" path="id" />
@@ -94,13 +93,22 @@
 										id="InputLastname" />
 							</div>
 							
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">Thiết Bị:</label>
-								<form:input type="text" path="device" class="form-control"
+								<div class="input-group">
+									<div class="input-group-prepend">	
+										<span Class="input-group-text">Tên</span>
+									</div>										
+									<form:input type="text" path="device" class="form-control"
 									id="InputEmail" />
+									<div class="input-group-prepend">	
+										<span Class="input-group-text">Số lượng</span>
+									</div>	
+									<form:input type="text" path="amount" class="form-control"
+									id="InputEmail" />																				
+								</div>	
 							</div>					
 						</div>
-					</div>
 					<div class="modal-footer">
 						<input type="submit" name="btnsave" class="btn btn-info"
 							value="SAVE">

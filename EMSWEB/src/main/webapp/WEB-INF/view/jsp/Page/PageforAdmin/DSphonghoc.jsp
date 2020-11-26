@@ -90,21 +90,26 @@
 							</div>
 							<div Class="form-group">
 								<label for="InputName">Tên phòng</label>
-									<form:input type="text" path="name" class="form-control"
-										id="InputLastname" />
+								<form:input type="text" path="name" class="form-control"
+									id="InputLastname" />
 							</div>
-							
+
 							<div clas="form-group">
 								<label for="InputID">Số Phòng</label>
-								<form:input type="text" path="schoolroomnumber" class="form-control"
-									id="InputEmail" />
-							</div>	
-							
+								<form:input type="text" path="schoolroomnumber"
+									class="form-control" id="InputEmail" />
+							</div>
+
 							<div clas="form-group">
 								<label for="InputID">Diện Tích</label>
-								<form:input type="text" path="surfacearea" class="form-control"
-									id="InputEmail" />
-							</div>					
+								<div class="input-group">
+									<form:input type="text" path="surfacearea" class="form-control"
+										id="InputEmail" />
+									<div class="input-group-prepend">
+										<span Class="input-group-text">m<sup>2</sup></span>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 					<div class="modal-footer">
@@ -126,8 +131,8 @@
 				<tr>
 					<th>ID</th>
 					<th>Tên Phòng</th>
-					<th>Số Phòng</th>	
-					<th>Diện Tích</th>				
+					<th>Số Phòng</th>
+					<th>Diện Tích(m<sup>2</sup>)</th>
 					<th>Action</th>
 				</tr>
 			</thead>
@@ -145,18 +150,18 @@
 							<c:param name="id" value="${sp.id}" />
 						</c:url>
 
-						
+
 						<tr style="color: red;">
-							<td class="gfgusername"><input style="color: red;border: none;width: 50px" name="idstaff"
+							<td class="gfgusername"><input
+								style="color: red; border: none; width: 50px" name="idstaff"
 								value=" ${sp.id}"></td>
-							<td class="gfgpp"><input style="color: red;border: none;width: 80%" name="firstname"
+							<td class="gfgpp"><input
+								style="color: red; border: none; width: 80%" name="firstname"
 								value="${sp.name}"></td>
 							<td class="gfgscores">${sp.schoolroomnumber}</td>
 							<td class="gfgscores">${sp.surfacearea}</td>
-							<td style="text-align: center;">
-								<a href="${updateLink}" >UPDATE</a>
-								<a href="${deleteLink}">DEL</a>
-							</td>
+							<td style="text-align: center;"><a href="${updateLink}">UPDATE</a>
+								<a href="${deleteLink}">DEL</a></td>
 						</tr>
 
 					</c:forEach>
