@@ -71,13 +71,13 @@
 							<c:forEach var="sp" items="${List}">
 								<div class="box-body">
 									<div class="form-group" >
-										<input type="text" id="custId" name="id" value="${sp.id}" readonly="readonly" >
+										<input type="hidden" id="custId" name="id" value="${sp.id}" readonly="readonly" >
 									</div>
 
 									<div class="form-group">
 										<label for="exampleInputEmail">Tên Phòng Học</label>
 										
-										<form:select path="schoolroom" classxmlxmlns="form-control"
+										<form:select path="schoolroom" class="form-control"
 											idxmlns="sel1">
 											<c:if test="${not empty Lists}">
 												<c:forEach var="p" items="${Lists}">
@@ -97,7 +97,7 @@
 												</c:forEach>
 											</c:if>
 										</form:select> --%>
-										<select name="testdevice">
+										<select name="testdevice" class="form-control">
 											<c:if test="${not empty Listds}">
 												<c:forEach var="s" items="${Listds}">
 													<option>${s.deviceName}</option>
@@ -139,16 +139,6 @@
 		type="text/javascript"></script>
 	<!-- Sparkline -->
 	<script src="../../../../../resources/js/jquery.sparkline.min.js"
-		type="text/javascript"></script>
-	<!-- jvectormap -->
-	<script
-		src="../../../../../resources/js/jquery-jvectormap-1.2.2.min.js"
-		type="text/javascript"></script>
-	<script
-		src="../../../../resources/js/jquery-jvectormap-world-mill-en.js"
-		type="text/javascript"></script>
-	<!-- daterangepicker -->
-	<script src="../../../../../resources/js/daterangepicker.js"
 		type="text/javascript"></script>
 	<!-- datepicker -->
 	<script src="../../../../../resources/js/bootstrap-datepicker.js"

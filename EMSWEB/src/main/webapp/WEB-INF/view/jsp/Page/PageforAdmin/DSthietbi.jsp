@@ -112,7 +112,7 @@
 									<form:input type="text" path="price" class="form-control"
 									id="InputEmail" />
 									<div class="input-group-prepend">
-										<span Class="input-group-text">.000 VNĐ</span>
+										<span Class="input-group-text">VNĐ</span>
 									</div>
 								</div>	
 							</div>					
@@ -140,7 +140,7 @@
 					<th>Tên Thiết Bị</th>
 					<th>Số lượng</th>
 					<th>Tình Trạng</th>
-					<th>Giá Thành</th>
+					<th>Giá Thành(VNĐ)</th>
 					<th>Action</th>
 				</tr>
 			</thead>
@@ -160,10 +160,8 @@
 
 						
 						<tr style="color: red;">
-							<td class="gfgusername"><input style="color: red;border: none;width: 50px" name="idstaff"
-								value=" ${sp.id}"></td>
-							<td class="gfgpp"><input style="color: red;border: none;width: 80%" name="firstname"
-								value="${sp.deviceName}"></td>
+							<td class="gfgusername">>${sp.id}</td>
+							<td class="gfgpp">${sp.deviceName}</td>
 							<td class="gfgscores">${sp.amount}</td>
 							<td class="gfgarticles">${sp.status}</td>
 							<td class="gfgarticles">${sp.price}</td>

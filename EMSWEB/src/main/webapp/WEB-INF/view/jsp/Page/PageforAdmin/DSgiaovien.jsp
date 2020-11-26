@@ -186,9 +186,9 @@ th.image.sorting {
 	</div>
 
 	<!--Table  -->
-	<table id="table1" class="display">
+	<table id="table1" class="display thead-dark">
 
-		<thead style="background-color: aqua;">
+		<thead style="">
 			<tr>
 				<th>Mã GV</th>
 				<th>Tên GV</th>

@@ -70,9 +70,7 @@
 						<c:if test="${not empty List}">
 							<c:forEach var="sp" items="${List}">
 								<div class="box-body">
-									<div class="form-group" >
-										<input type="text" id="custId" name="id" value="${sp.id}" readonly="readonly" >
-									</div>
+										<input type="hidden" id="custId" name="id" value="${sp.id}" readonly="readonly" >
 
 									<div class="form-group">
 										<label for="exampleInputEmail">Tên Thiết bị</label>
@@ -91,8 +89,11 @@
 									</div>
 									<div class="form-group">
 										<label for="InputPhone">Giá Thành</label>
+										<div class="input-group">
 										<form:input path="price" value="${sp.price}" type="text"
 											class="form-control" id="InputAddress" />
+											<span class="input-group-addon">VNĐ</span>
+										</div>	
 									</div>
 								</div>
 							</c:forEach>

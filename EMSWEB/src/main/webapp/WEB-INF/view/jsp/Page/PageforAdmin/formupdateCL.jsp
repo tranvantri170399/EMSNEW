@@ -48,9 +48,9 @@
 		<h1>LÍ LỊCH</h1>
 		<ol class="breadcrumb">
 			<li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-			<li class="active">Quản lí nhân viên</li>
-			<li class="active">Danh sách sinh viên</li>
-			<li class="active">Cập nhật nhân viên</li>
+			<li class="active">Quản Lí Nhân Viên</li>
+			<li class="active">Danh sách Giáo Viên</li>
+			<li class="active">Cập nhật Giáo Viên</li>
 		</ol>
 	</section>
 
