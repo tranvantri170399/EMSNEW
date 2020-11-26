@@ -24,7 +24,8 @@ public class Schedule {
 	private Classroom classroom;
 	private SchoolRoom schoolroom;
 	private StudyShift studyShift;
-	private Date date;
+	private String date;
+	private Course course;
 	
 	
 	public Schedule() {
@@ -33,7 +34,7 @@ public class Schedule {
 
 
 	public Schedule(String id, Amphitheater amphitheater, Classroom classroom, SchoolRoom schoolroom,
-			StudyShift studyShift, Date date) {
+			StudyShift studyShift, String date,Course course) {
 		super();
 		this.id = id;
 		this.amphitheater = amphitheater;
@@ -41,6 +42,7 @@ public class Schedule {
 		this.schoolroom = schoolroom;
 		this.studyShift = studyShift;
 		this.date = date;
+		this.course=course;
 	}
 
 	
@@ -87,7 +89,7 @@ public class Schedule {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name = "StudyShiftID")
+	@JoinColumn(name = "Studyshiftid")
 	public StudyShift getStudyShift() {
 		return this.studyShift;
 	}
@@ -96,14 +98,26 @@ public class Schedule {
 		this.studyShift = studyShift;
 	}
 
-	@Temporal(TemporalType.DATE)
 	@Column(name = "Date", length = 10)
-	public Date getDate() {
+	public String getDate() {
 		return this.date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
+
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "courseid")
+	public Course getCourse() {
+		return course;
+	}
+
+
+	public void setCourse(Course course) {
+		this.course = course;
+	}
+	
+	
 
 }
