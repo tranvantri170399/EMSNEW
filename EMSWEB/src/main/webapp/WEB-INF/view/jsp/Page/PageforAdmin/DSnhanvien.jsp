@@ -200,8 +200,7 @@
 			<thead class="thead-dark">
 				<tr>
 					<th>ID</th>
-					<th>Tên</th>
-					<th>Họ</th>
+					<th>Họ Tên</th>
 					<th>Ngày sinh</th>	
 					<th>Địa chỉ</th>									
 					<th>Email</th>	
@@ -233,9 +232,9 @@
 						<tr style="color: black;">
 							<td class="gfgusername"><input style="color: red;border: none;width: 50px" name="idstaff"
 								value=" ${sp.id}"></td>
-							<td class="gfgpp"><input style="color: red;border: none;width: 80%" name="firstname"
-								value="${sp.fname}"></td>
-							<td class="gfgscores">${sp.lname}</td>
+							<td class="gfgpp"><input style="color: red;border: none;max-width: 70px" name="firstname"
+								value="${sp.fname}">${sp.lname}</td>
+							<%-- <td class="gfgscores">${sp.lname}</td> --%>
 							<td>${sp.dob}</td>
 							<td>${sp.address}</td>	
 							<td>${sp.email}</td>	

@@ -136,10 +136,23 @@
 									class="fa fa-circle-o"></i>Danh sách lớp</a></li>
 							<li><a href="/DSmonhoc" target="frame"><i
 									class="fa fa-circle-o"></i>Danh sách môn</a></li>
-							<li><a href="Page/gopy.html" target="frame"><i
+							<li><a href="/DSnganh" target="frame"><i
 									class="fa fa-circle-o"></i>Danh sách ngành</a></li>
-							<li><a href="Page/hocphi.html" target="frame"><i
+							<li><a href="/DSmonhoc" target="frame"><i
+									class="fa fa-circle-o"></i>Danh Sách học kì</a></li>
+							<li><a href="/DSmonhockihoc" target="frame"><i
 									class="fa fa-circle-o"></i>Quản lý môn học từng kì</a></li>
+						</ul></li>
+						<li class="treeview"><a href="#"> <i
+							class="fa fa-calendar"></i> <span>Quản Lí Lịch Học</span> <i
+							class="fa fa-angle-right pull-right"></i>
+					</a>
+						<ul class="treeview-menu">
+							<li><a href="/DScahoc" target="frame"><i
+									class="fa fa-circle-o"></i>Danh sách Ca Học</a></li>
+							<li><a href="/DSlichhoc" target="frame"><i
+									class="fa fa-circle-o"></i>Danh sách Lịch Học</a></li>
+							
 						</ul></li>
 					<li class="treeview"><a href="#"> <i
 							class="fa fa-calendar"></i> <span>Quản Lí CSVC</span> <i

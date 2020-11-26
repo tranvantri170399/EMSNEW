@@ -173,6 +173,11 @@ public class csvcController {
 	public String loadDSthietbiphonghoc(Model model, @ModelAttribute("room") SchoolroomDevice room) {
 		List<SchoolroomDevice> roomDevice= SRDrespon.findAll();
 		model.addAttribute("List", roomDevice);
+		List<SchoolRoom> list= roomrespo.findAll();
+		model.addAttribute("Lists", list);
+		
+		List<Device> listd= devicerepo.findAll();
+		model.addAttribute("Listds", listd);
 		return "/jsp/Page/PageforAdmin/DSthietbiphonghoc";
 	}
 	
@@ -208,6 +213,35 @@ public class csvcController {
 		Sroom.setdevice(devicess);
 		Sroom.setAmount(room.getAmount());
 		SRDrespon.save(Sroom);
+		List<SchoolroomDevice> listroomss= SRDrespon.findAll();
+		model.addAttribute("List", listroomss);
+		return "/jsp/Page/PageforAdmin/DSthietbiphonghoc";
+	}
+	@RequestMapping(value = { "/save/SchoolroomDevice" })
+	public String saveSchoolroomDevice(Model model, @ModelAttribute("room") SchoolroomDevice room, HttpServletRequest request) {
+		List<SchoolroomDevice> theroom = SRDrespon.findAll();
+		SchoolroomDevice lastid=theroom.get(theroom.size()-1);	
+		int d = lastid.getId()+1;
+		SchoolroomDevice Sroom= new SchoolroomDevice();
+		String schoolname= request.getParameter("schoolroom");	
+		SchoolRoom schoolRoom = roomrespo.findByname(schoolname);		
+		String devicename= request.getParameter("testdevice");
+		System.out.println("test==>> "+devicename);
+		Device devicess = devicerepo.findBydeviceName(devicename);		
+		Sroom.setId(d);
+		Sroom.setSchoolroom(schoolRoom);
+		Sroom.setdevice(devicess);
+		Sroom.setAmount(room.getAmount());
+		SRDrespon.save(Sroom);
+		List<SchoolroomDevice> listroomss= SRDrespon.findAll();
+		model.addAttribute("List", listroomss);
+		return "/jsp/Page/PageforAdmin/DSthietbiphonghoc";
+	}
+	
+	@RequestMapping(value = { "/deleteroomDevice" })
+	public String Delthietbiphong(Model model, @ModelAttribute("room") SchoolroomDevice room, HttpServletRequest request,
+			@RequestParam("id") Integer id) {
+		SRDrespon.deleteById(id);
 		List<SchoolroomDevice> listroomss= SRDrespon.findAll();
 		model.addAttribute("List", listroomss);
 		return "/jsp/Page/PageforAdmin/DSthietbiphonghoc";

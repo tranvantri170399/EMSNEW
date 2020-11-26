@@ -679,7 +679,12 @@ public class adminController {
 		return "redirect:/DSlophoc";
 	}
 
-	// classroom//
-	
+	// Danh Sach Nganh	//
+	@RequestMapping(value = { "/DSnganh" })
+	public String loadDSnganh(Model model, @ModelAttribute("major") Majors major) {
+		List<Majors> list = majorsResponsitory.findAll();
+		model.addAttribute("List", list);
+		return "/jsp/Page/PageforAdmin/DSnganh";
+	}
 	//
 }
