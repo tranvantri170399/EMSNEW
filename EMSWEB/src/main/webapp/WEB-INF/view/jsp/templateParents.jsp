@@ -154,11 +154,11 @@
 							class="label label-primary pull-right">4</span>
 					</a>
 						<ul class="treeview-menu">
-							<li><a href="Page/thoikhoabieu.html" target="frame"><i
+							<li><a href="Page/LICHHOC" target="frame"><i
 									class="fa fa-circle-o"></i>Thời khóa biểu</a></li>
-							<li><a href="Page/diemdanh.html" target="frame"><i
+							<li><a href="Page/DIEMDANH" target="frame"><i
 									class="fa fa-circle-o"></i>Điểm danh</a></li>
-							<li><a href="Page/hocphi.html" target="frame"><i
+							<li><a href="Page/HOCPHI" target="frame"><i
 									class="fa fa-circle-o"></i>Kiểm tra học phí</a></li>
 						</ul></li>
 					<li class="treeview"><a href="#"> <i
@@ -166,11 +166,11 @@
 							class="fa fa-angle-left pull-right"></i>
 					</a>
 						<ul class="treeview-menu">
-							<li><a href="Page/diemtheoky.html" target="frame"><i
+							<li><a href="Page/DIEMTHEOKY" target="frame"><i
 									class="fa fa-circle-o"></i>Điểm theo kỳ</a></li>
-							<li><a href="Page/mondahoc.html" target="frame"><i
+							<li><a href="Page/MONDAHOC" target="frame"><i
 									class="fa fa-circle-o"></i>Môn đã học</a></li>
-							<li><a href="Page/bangdiem.html" target="frame"><i
+							<li><a href="Page/BANGDIEM" target="frame"><i
 									class="fa fa-circle-o"></i>Bảng điểm</a></li>
 						</ul></li>
 

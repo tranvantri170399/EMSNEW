@@ -61,7 +61,36 @@ public class ParentController {
 		
 		return "/jsp/Page/PageforParent/thanhtich";
 	}
-	
+	@RequestMapping(value = { "/Page/DIEMDANH" })
+	public String diemdanh(@ModelAttribute("User") User user, Model model) {
+		
+		return "/jsp/Page/PageforParent/diemdanh";
+	}
+	@RequestMapping(value = { "/Page/HOCPHI" })
+	public String ktHocphi(@ModelAttribute("User") User user, Model model) {
+		
+		return "/jsp/Page/PageforParent/hocphi";
+	}
+	@RequestMapping(value = { "/Page/LICHHOC" })
+	public String lichhocSV(@ModelAttribute("User") User user, Model model) {
+		
+		return "/jsp/Page/PageforParent/lichhoc";
+	}
+	@RequestMapping(value = { "/Page/DIEMTHEOKY" })
+	public String diemtheoky(@ModelAttribute("User") User user, Model model) {
+		
+		return "/jsp/Page/PageforParent/diemtheoky";
+	}
+	@RequestMapping(value = { "/Page/MONDAHOC" })
+	public String mondahoc(@ModelAttribute("User") User user, Model model) {
+		
+		return "/jsp/Page/PageforParent/mondahoc";
+	}
+	@RequestMapping(value = { "/Page/BANGDIEM" })
+	public String bangdiem(@ModelAttribute("User") User user, Model model) {
+		
+		return "/jsp/Page/PageforParent/bangdiem";
+	}
 	@RequestMapping(value = "/updatePass", method = RequestMethod.POST)
 	public String updatePass(@ModelAttribute("passUpdate") User passUpdate, Model model,  HttpServletRequest request
 			,@RequestParam("username") String username,@RequestParam("password") String pass,
