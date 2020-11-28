@@ -146,6 +146,17 @@
 																<label for="InputID">Trạng Thái:</label>
 																<form:input path="status" class="form-control" />
 															</div>
+															
+															<div clas="form-group">
+																<label for="InputID">Lớp Học</label>
+																<select name="classroomname" class="custom-select" id="sel1">
+																	<c:if test="${not empty Listsl}">
+																		<c:forEach var="sp" items="${Listsl}">
+																			<option>${sp.name}</option>
+																		</c:forEach>
+																	</c:if>
+																<select>
+															</div>
 														</div>
 													</div>
 												</div>
