@@ -34,6 +34,8 @@ public class UserController {
 	DepartResponsitory departRes;
 	@Autowired
 	ParentResponsitory parentResponsitory;
+	@Autowired
+	StudentResponsitory	studentResponsitory;
 	
 	@RequestMapping(value = { "/login" }, method = RequestMethod.POST)
 	public String login111(ModelMap model, @ModelAttribute("student") User student, BindingResult errors) {
@@ -58,12 +60,23 @@ public class UserController {
 						us.add(uss);
 						model.addAttribute("List", us);
 						return "/jsp/templateParents";
+					}else if (u.getRole().equals("GV")) {
+						List<User> us= new ArrayList<User>();
+						User uss = new User();
+						uss.setUsername(u.getUsername());
+						us.add(uss);
+						model.addAttribute("List", us);
+						return "/jsp/templateTeacher";
 					}else {
 						List<User> us= new ArrayList<User>();
 						User uss = new User();
 						uss.setUsername(u.getUsername());
 						us.add(uss);
 						model.addAttribute("List", us);
+						Student st = studentResponsitory.findByid(u.getUserid());
+						List<Student> listst= new ArrayList<Student>();
+						listst.add(st);
+						model.addAttribute("Listst", listst);
 						return "/jsp/templateStudent";
 					}
 				}else {

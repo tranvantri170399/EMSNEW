@@ -90,11 +90,9 @@
 										<label for="exampleInputName">Họ và Tên</label>
 										<div class="input-group">
 											<span class="input-group-addon">Họ</span>
-											<form:input path="lname" type="text" class="form-control"
-												id="InputLastname" value="${sp.lname}" />
+											<input value="${sp.lname}" readonly class="form-control"/>
 											<span class="input-group-addon">Tên</span>
-											<form:input path="fname" type="text" value="${sp.fname}"
-												class="form-control" id="InputFirstname" />
+											<input name="fname" value="${sp.fname}" readonly class="form-control"/>
 										</div>
 									</div>
 									<!-- 									<script type="text/javascript">

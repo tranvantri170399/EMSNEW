@@ -67,14 +67,14 @@ th.image.sorting {
 <body>
 	<section class="content-header">
 		<h1>
-			Thêm Mới Giáo Viên
+			Danh Sách Phòng Ban
 			<button type="button" class="btn btn-info" data-toggle="modal"
 				data-target="#myModal">Thêm nhân viên</button>
 		</h1>
 		<ol class="breadcrumb">
 			<li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
 			<li class="active">Quản lí nhân viên</li>
-			<li class="active">Danh sách Nhân Viên</li>
+			<li class="active">Danh sách Phòng Ban</li>
 		</ol>
 	</section>
 	<!--Modalthemnhanvien-->
@@ -86,8 +86,8 @@ th.image.sorting {
 				enctype="multipart/form-data">
 				<div class="modal-content">
 					<div class="modal-header">
+						<h4 class="modal-title">Thêm Nhân Viên</h4>					
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Thêm Nhân Viên</h4>
 					</div>
 					<div class="modal-body">
 						<div>
@@ -115,15 +115,15 @@ th.image.sorting {
 			</form:form>
 		</div>
 	</div>
-
+	<section>
 	<!--Table  -->
 		<table id="table1" class="display">
 
-			<thead style="background-color: aqua;">
+			<thead style="background-color:#4876FF ;color: white">
 				<tr>
 					<th>Mã</th>
 					<th>Tên Phòng</th>
-					<th>Actions</th>
+					<th></th>
 				</tr>
 			</thead>
 
@@ -145,15 +145,21 @@ th.image.sorting {
 						<tr>
 							<td>${list.id}</td>
 							<td>${list.name}</td>
-							<td><a href="${updateLink}" class="btn btn-primary">Update</a>
-								<a href="${deleteLink}" class="btn btn-danger">Delete</a></td>
+							<td>
+							<div class="btn-group" role="group" aria-label="Basic example">
+								<button type="button" class="btn btn-info"
+									onclick="location.href='${updateLink}';">Cập nhật</button>
+								<button type="button" class="btn btn-danger"
+									onclick="location.href='${deleteLink}'; ">Xóa</button>
+							</div>
+							</td>
 						</tr>
 					</c:forEach>
 				</c:if>
 			</tbody>
 
 		</table>
-
+	</section>
 </body>
 
 </html>

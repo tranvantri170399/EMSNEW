@@ -51,11 +51,7 @@
 		$('#table1').DataTable();
 	});
 </script>
-
-<style type="text/css">
-#InputLastname {
-	border-color: red;
-}
+nnnhhhhhhhghghghghq3jjjjjjj #InputLastname { border-color: red; }
 </style>
 </head>
 <body>
@@ -94,13 +90,13 @@
 									id="InputLastname" />
 							</div>
 
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">Số Phòng</label>
 								<form:input type="text" path="schoolroomnumber"
 									class="form-control" id="InputEmail" />
 							</div>
 
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">Diện Tích</label>
 								<div class="input-group">
 									<form:input type="text" path="surfacearea" class="form-control"
@@ -114,8 +110,8 @@
 					</div>
 					<div class="modal-footer">
 						<input type="submit" name="btnsave" class="btn btn-info"
-							value="SAVE">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							value="Lưu">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
 					</div>
 
 				</div>
@@ -127,13 +123,14 @@
 	<form:form action="/save" modelAttribute="room">
 		<table id="table1" class="display">
 
-			<thead style="background-color: aqua;">
+			<thead style="background-color: #4876FF; color: white">
 				<tr>
 					<th>ID</th>
 					<th>Tên Phòng</th>
 					<th>Số Phòng</th>
-					<th>Diện Tích(m<sup>2</sup>)</th>
-					<th>Action</th>
+					<th>Diện Tích(m<sup>2</sup>)
+					</th>
+					<th></th>
 				</tr>
 			</thead>
 
@@ -152,16 +149,18 @@
 
 
 						<tr style="color: red;">
-							<td class="gfgusername"><input
-								style="color: red; border: none; width: 50px" name="idstaff"
-								value=" ${sp.id}"></td>
-							<td class="gfgpp"><input
-								style="color: red; border: none; width: 80%" name="firstname"
-								value="${sp.name}"></td>
+							<td class="gfgusername">${sp.id}</td>
+							<td class="gfgpp">${sp.name}</td>
 							<td class="gfgscores">${sp.schoolroomnumber}</td>
 							<td class="gfgscores">${sp.surfacearea}</td>
-							<td style="text-align: center;"><a href="${updateLink}">UPDATE</a>
-								<a href="${deleteLink}">DEL</a></td>
+							<td style="text-align: center;">
+								<div class="btn-group" role="group" aria-label="Basic example">
+									<button type="button" class="btn btn-info"
+										onclick="location.href='${updateLink}';">Cập Nhật</button>
+									<button type="button" class="btn btn-danger"
+										onclick="location.href='${deleteLink}';">Xóa</button>
+								</div>
+							</td>
 						</tr>
 
 					</c:forEach>

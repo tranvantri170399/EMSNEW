@@ -88,51 +88,101 @@
 							<div class="form-group">
 								<form:input type="hidden" path="id" />
 							</div>
-							<div Class="form-group">
-								<label for="InputName">Tên Giảng Đường </label>
-								<form:input type="text" path="amphitheater" class="form-control"
-									id="InputLastname" />
+							<div class="form-group">
+								<label for="exampleInputName">Tên Giảng Đường:</label>
+								<select name="testamphitheater" class="form-control"
+									id="sel1">
+									<c:if test="${not empty Lista}">
+										<c:forEach var="sp" items="${Lista}">
+											<option>${sp.amphitheaterName}</option>
+										</c:forEach>
+									</c:if>
+								</select>
 							</div>
 
-							<div clas="form-group">
-								<label for="InputID">Tên lớp</label>
-								<form:input type="time" path="classroom"
-									class="form-control" id="InputEmail" />
+							<div class="form-group">
+								<label for="exampleInputName">Tên Lớp:</label>
+								<form:select path="classroom" class="form-control"
+									idxmlns="sel1">
+									<c:if test="${not empty Listc}">
+										<c:forEach var="sp" items="${Listc}">
+											<form:option value="${sp.name}" />
+										</c:forEach>
+									</c:if>
+								</form:select>
 							</div>
 
-							<div clas="form-group">
-								<label for="InputID">Tên Phòng</label>
-								<div class="input-group">
-									<form:input type="time" path="schoolroom" class="form-control"
-										id="InputEmail" />
-									<div class="input-group-prepend">
-										
-									</div>
-								</div>
+							<div class="form-group">
+								<label for="exampleInputName">Tên Phòng Học:</label>
+								<form:select path="schoolroom" class="form-control"
+									idxmlns="sel1">
+									<c:if test="${not empty Listsh}">
+										<c:forEach var="sp" items="${Listsh}">
+											<form:option value="${sp.name}" />
+										</c:forEach>
+									</c:if>
+								</form:select>
 							</div>
-							<div clas="form-group">
-								<label for="InputID">Tên Ca Học</label>
-								<form:input type="time" path="studyShift"
-									class="form-control" id="InputEmail" />
+							<div class="form-group">
+							<div class="form-group">
+								<label for="exampleInputName">Tên Ca:</label>
+								<select name="teststudyShift" class="form-control"
+									id="sel1">
+									<c:if test="${not empty Lists}">
+										<c:forEach var="sp" items="${Lists}">
+											<option>${sp.nameShift}</option>
+										</c:forEach>
+									</c:if>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="exampleInputName">Tên Môn:</label>
+								<form:select path="course" class="form-control"
+									idxmlns="sel1">
+									<c:if test="${not empty Listco}">
+										<c:forEach var="sp" items="${Listco}">
+											<form:option value="${sp.name}" />
+										</c:forEach>
+									</c:if>
+								</form:select>
+							</div>
+							<div class="form-group">
+								<label for="InputID">Ngày Học:</label>
+								<form:input type="date" path="date" class="form-control"
+									id="name" />
 							</div>
 						</div>
 					</div>
 					<div class="modal-footer">
 						<input type="submit" name="btnsave" class="btn btn-info"
-							value="SAVE">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							value="Lưu">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
 					</div>
 
+				</div>
 				</div>
 			</form:form>
 		</div>
 	</div>
-
+	<section class="content">
 	<!--Table  -->
 	<form:form action="/save" modelAttribute="room">
-		<table id="table1" class="display">
-
-			<thead style="background-color: aqua;">
+		<table id="table1" class="display" style="width: 100%">
+<colgroup>
+       		<col span="1" style="width: 3%;">
+       		<col span="1" style="width: 14%;">
+       		<col span="1" style="width: 10%;">
+       		<col span="1" style="width: 7%;">
+       		<col span="1" style="width: 10%;">
+       		<col span="1" style="width: 10%;">
+       		<col span="1" style="width: 7%;">
+       		<col span="1" style="width: 11%;">
+       		<col span="1" style="width: 9%;">
+       		<col span="1" style="width: 8%;">
+       		<col span="1" style="width: 5%;">
+       		<col span="1" style="width: 6%;">       		       		       		
+    	</colgroup>
+			<thead style="background-color: #4876FF; color: white">
 				<tr>
 					<th>ID</th>
 					<th>Ngày</th>
@@ -162,21 +212,23 @@
 
 
 						<tr style="color: red;">
-							<td class="gfgusername"><input
-								style="color: red; border: none; width: 50px" name="idstaff"
-								value=" ${sp.id}"></td>
+							<td class="gfgusername">${sp.id}</td>
 								<td class="gfgscores">${sp.date}</td>
-							<td class="gfgpp"><input
-								style="color: red; border: none; width: 80%" name="firstname"
-								value="${sp.amphitheater.amphitheaterName}"></td>
+							<td class="gfgpp">${sp.amphitheater.amphitheaterName}</td>
 							<td class="gfgscores">${sp.classroom.name}</td>
-							<td class="gfgscores">${sp.schoolroom.name}</td>
+							<td class="gfgscores">${sp.schoolroom.name}(${sp.schoolroom.schoolroomnumber})</td>
 							<td class="gfgscores">${sp.studyShift.nameShift}</td>
 							<td class="gfgscores">${sp.course.name}</td>
 							<td class="gfgscores">${sp.course.teacher.fname}</td>
 							<td class="gfgscores">${sp.studyShift.startingTime}-${sp.studyShift.endTime}</td>
-							<td style="text-align: center;"><a href="${updateLink}">UPDATE</a>
-								<a href="${deleteLink}">DEL</a></td>
+							<td style="text-align: center;">
+							<div class="btn-group" role="group" aria-label="Basic example">
+								<button type="button" class="btn btn-info"
+									onclick="location.href='${updateLink}';">Cập Nhật</button>
+								<button type="button" class="btn btn-danger"
+									onclick="location.href='${deleteLink}';">Xóa</button>
+							</div>						
+							</td>
 						</tr>
 
 					</c:forEach>
@@ -188,7 +240,7 @@
 
 
 	</form:form>
-
+</section>
 
 </body>
 </html>
