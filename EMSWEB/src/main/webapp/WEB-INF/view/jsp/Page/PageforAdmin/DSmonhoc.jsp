@@ -53,6 +53,58 @@
 	});
 </script>
 
+<script>
+			    function validate() {
+			        var Id = document.myform.id.value;
+			        var Subjectname = document.myform.subjectname.value;
+			        var Description = document.myform.description.value;
+			        var Statuss = document.myform.status.value;
+			        
+			        var status = false;
+			 
+			        if (Id.length < 1) {
+			            document.getElementById("checkName").innerHTML = 
+			                " <span class='fas fa-window-close' style='color:red;'>Mã ngành không được trống!</span> ";
+			            status = false;
+			        } else if (Subjectname.length < 3) {
+			            document.getElementById("checkSubject").innerHTML = 
+			                "  <span class='fas fa-window-close' style='color:red;'>Tên môn học không được để trống!</span> ";
+			            document.getElementById("checkName").innerHTML = 
+				            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+			            status = false;
+			        } else if (Description.length < 1) {
+			            document.getElementById("checkDescrip").innerHTML = 
+			                "  <span class='fas fa-window-close' style='color:red;'>Chú thích không được để trống!</span> ";
+			            document.getElementById("checkName").innerHTML = 
+					        " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+			            document.getElementById("checkSubject").innerHTML = 
+				            "<span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+			            status = false;
+			        } else if (Statuss.length < 1) {
+			            document.getElementById("checkStatus").innerHTML = 
+			                "  <span class='fas fa-window-close' style='color:red;'>Trạng thái không được để trống!</span> ";
+			            document.getElementById("checkDescrip").innerHTML = 
+				            "<span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+				        document.getElementById("checkName").innerHTML = 
+						    " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+				        document.getElementById("checkSubject").innerHTML = 
+					        "<span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+			            status = false;
+			        } else {
+			            document.getElementById("checkStatus").innerHTML = 
+			                "<span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+			            document.getElementById("checkName").innerHTML = 
+				             " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+				        document.getElementById("checkName").innerHTML = 
+					         " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+					    document.getElementById("checkSubject").innerHTML = 
+						     "<span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+			            status = true;
+			        }
+			        return status;
+			    }
+		</script>
+
 <style type="text/css">
 #InputLastname {
 	border-color: red;
@@ -83,7 +135,7 @@ th.image.sorting {
 
 			<!-- Modal content-->
 			<form:form action="/newSubject" modelAttribute="subjectNew"
-				enctype="multipart/form-data">
+				enctype="multipart/form-data" onsubmit="return validate()" name="myform">
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -94,6 +146,7 @@ th.image.sorting {
 							<div class="form-group">
 								<label for="InputID">Mã Ngành:</label>
 								<form:input type="text" path="id" class="form-control" id="name" />
+								<span id="checkName"></span>
 							</div>
 						</div>
 						<div class="form-group">
@@ -111,6 +164,7 @@ th.image.sorting {
 								<label for="InputID">Tên môn học:</label>
 								<form:input type="text" path="subjectname" class="form-control"
 									id="name" />
+									<span id="checkSubject"></span>
 							</div>
 						</div>
 						<div>
@@ -118,6 +172,7 @@ th.image.sorting {
 								<label for="InputID">Chú thích môn:</label>
 								<form:input type="text" path="description" class="form-control"
 									id="name" />
+									<span id="checkDescrip"></span>
 							</div>
 						</div>
 						<div>
@@ -125,6 +180,7 @@ th.image.sorting {
 								<label for="InputID">Trạng thái:</label>
 								<form:input type="text" path="status" class="form-control"
 									id="name" />
+									<span id="checkStatus"></span>
 							</div>
 						</div>
 					</div>

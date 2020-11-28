@@ -52,11 +52,83 @@
 	});
 </script>
 
-<style type="text/css">
-#InputLastname {
-	border-color: red;
+<script>
+function validate() {
+    var lastnameSt = document.myform.InputLastnameSt.value;
+    var firstnameSt = document.myform.InputFirstnameSt.value;
+    var emailSt = document.myform.InputEmailSt.value;
+    var phoneSt = document.myform.InputPhoneSt.value;
+    var dobSt = document.myform.InputDobSt.value;
+    
+    var regExp = /^(0[234][0-9]{8}|1[89]00[0-9]{4})$/;
+    var atposition = emailSt.indexOf("@");
+    var dotposition = emailSt.lastIndexOf(".");
+    
+    var status = false;
+
+    if (lastnameSt.length == 0) {
+        document.getElementById("checkNameSt").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập họ!</span> ";
+        status = false;
+    }else if(firstnameSt.length == 0){
+    	document.getElementById("checkNameSt").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập tên!</span> ";
+        status = false;
+    }else{
+    	document.getElementById("checkNameSt").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+    	status = true;
+    }
+    
+	if(emailSt.length==0){
+		document.getElementById("checkEmailSt").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Email!</span> ";
+        status = false;
+	}else if(atposition < 1 || dotposition < (atposition + 2)
+            || (dotposition + 2) >= emailSt.length){
+		document.getElementById("checkEmailSt").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Email không đúng định dạng!</span> ";
+        status = false;
+	}
+	else{
+		document.getElementById("checkEmailSt").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+    	status = true;
+	}
+	
+	if(phoneSt.length==0){
+		document.getElementById("checkPhoneSt").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Số điện thoại!</span> ";
+        status = false;
+	}else if(phoneSt.length < 9 ||phoneSt.length > 13 ) {
+		if(regExp.test(phoneSt)){
+			document.getElementById("checkPhoneSt").innerHTML = 
+	            " <span class='fa fa-check-square' style='color:#3FFF00;'></span> ";
+		}else{
+		document.getElementById("checkPhoneSt").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Số điện không đúng định dạng!</span> ";
+        status = false;
+		}
+	}else{
+		document.getElementById("checkPhoneSt").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+    	status = true;
+	}
+	
+	if(dobSt.length < 1){
+		ocument.getElementById("checkDobSt").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Ngày sinh!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkDobSt").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+    	status = true;
+	}
+
+    return status;
 }
-</style>
+</script>
+
 </head>
 <body>
 	<section class="content-header">
@@ -78,7 +150,7 @@
 			<div class="modal fade" id="myModal">
 				<div class="modal-dialog modal-lg">
 					<form:form action="/studentNew" modelAttribute="student"
-						enctype="multipart/form-data">
+						enctype="multipart/form-data" onsubmit="return validate()" name="myform">
 						<div class="modal-content">
 
 							<!-- Modal Header -->
@@ -109,33 +181,39 @@
 																		<span Class="input-group-text">Họ</span>
 																	</div>
 																	<form:input type="text" path="lname"
-																		class="form-control" id="InputLastname" />
+																		class="form-control" id="InputLastnameSt" />
 																	<div class="input-group-prepend">
 																		<span Class="input-group-text">Tên</span>
 																	</div>
 																	<form:input type="text" path="fname"
-																		class="form-control" id="InputFirstname" />
+																		class="form-control" id="InputFirstnameSt" />
 																</div>
+																
+																<span id="checkNameSt"></span>
 															</div>
 															<div class="form-group">
 																<label for="InputID">Image:</label> <input type="File"
 																	class="form-control" name="files" id="InputImage">
+																	
 															</div>
 															<div class="form-group">
 																<label for="InputID">Email:</label>
 																<form:input type="text" path="email"
-																	class="form-control" id="InputEmail" />
+																	class="form-control" id="InputEmailSt" />
+																	<span id="checkEmailSt"></span>
 															</div>
 
 															<div class="form-group">
 																<label for="InputID">Ngày sinh:</label>
 																<form:input type="date" path="dob" class="form-control"
-																	id="InputDob" min="1980-1-1" max="2020-12-31" />
+																	id="InputDobSt" min="1980-1-1" max="2020-12-31" />
+																	<span id="checkDobSt"></span>
 															</div>
 															<div class="form-group">
 																<label for="InputID">Số Điện Thoại:</label>
 																<form:input type="text" path="phone"
-																	class="form-control" id="InputPhone" />
+																	class="form-control" id="InputPhoneSt" />
+																	<span id="checkPhoneSt"></span>
 															</div>
 															<div class="form-group">
 																<label for="InputID">Địa chỉ:</label>
@@ -203,6 +281,7 @@
 																<label for="InputID">Ngày sinh:</label> <input
 																	type="date" name="dobb" class="form-control"
 																	id="InputDob" min="1980-1-1" max="2020-12-31" />
+																	<span id="checkBobSt"></span>
 															</div>
 
 															<div Class="form-group">

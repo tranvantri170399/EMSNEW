@@ -50,7 +50,28 @@
 		$('#table1').DataTable();
 	});
 </script>
-
+<script>
+function validate() {
+    var lastname = document.myform.InputLastname.value;
+    var firstname = document.myform.InputFirstname.value;
+    var email = document.myform.InputEmail.value;
+    
+    var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/; 
+    
+    var status = false;
+    
+    if(lastname.value < 1 || firstname.value <1){
+    	document.getElementById("checkName").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập đủ họ tên!</span> ";
+            status = false;
+    }else{
+    	document.getElementById("checkName").innerHTML = 
+             " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+             status = true;
+    }
+    return status;
+}
+</script>
 <style type="text/css">
 #InputLastname {
 	border-color: red;
@@ -75,8 +96,8 @@
 		<div class="modal-dialog">
 
 			<!-- Modal content-->
-			<form:form action="/save/staff" modelAttribute="staff" enctype="multipart/form-data">
-				<div class="modal-content">
+			<form:form action="/save/staff" modelAttribute="staff" enctype="multipart/form-data"  onsubmit="return validate()" name="myform">
+				<div class="modal-content"> 
 					<div class="modal-header">
 						<h4 class="modal-title">Thêm Nhân Viên</h4>					
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -101,6 +122,7 @@
 									<form:input type="text" path="fname" class="form-control"
 										id="InputFirstname" />
 								</div>
+								<span id="checkName"></span>
 							</div>
 							
 							<div clas="form-group">
@@ -114,6 +136,7 @@
 								<label for="InputID">Email:</label>
 								<form:input type="text" path="email" class="form-control"
 									id="InputEmail" />
+									<span class="checkEmail"></span>
 							</div>
 							
 							<div class="form-group">

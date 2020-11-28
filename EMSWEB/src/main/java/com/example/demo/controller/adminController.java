@@ -657,7 +657,7 @@ public class adminController {
 	@GetMapping("/deleteSubject")
 	public String deleteSubject(@RequestParam("id") String id) {
 		subjectResponsitory.deleteById(id);
-		return "redirect:/DSgiaovien";
+		return "redirect:/DSmonhoc";
 	}
 // listmonhoc//
 
