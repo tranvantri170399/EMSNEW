@@ -65,9 +65,9 @@
 				data-target="#myModal">Thêm nhân viên</button>
 		</h1>
 		<ol class="breadcrumb">
-			<li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-			<li class="active">Quản lí nhân viên</li>
-			<li class="active">Danh sách Nhân Viên</li>
+			<li><a href="#"><i class="fa fa-dashboard"></i>Trang Chủ</a></li>
+			<li class="active">Quản Lí Nhân Viên</li>
+			<li class="active">Danh Sách CNVC</li>
 		</ol>
 	</section>
 	<!--Modalthemnhanvien-->
@@ -110,40 +110,40 @@
     								<label class="custom-file-label" for="inputGroupFile01">Choose file</label>
 							  	</div>
 							</div>
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">Email:</label>
 								<form:input type="text" path="email" class="form-control"
 									id="InputEmail" />
 							</div>
 							
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">Ngày sinh</label>
 								<form:input type="date" path="dob" class="form-control"
 									id="InputDob" min="1980-1-1" max="2020-12-31" />
 							</div>
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">Số Điện Thoại</label>
 								<form:input type="text" path="phone" class="form-control"
 									id="InputPhone" />
 							</div>
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">Địa chỉ:</label>
 								<form:input type="text" path="address" class="form-control"
 									id="InputAddress" />
 							</div>
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">Trạng Thái:</label>
 								<form:input path="status" class="form-control" />
 							</div>
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">Cấp độ:</label>
 								<form:input path="level" class="form-control" />
 							</div>
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">Lương</label>
 								<form:input path="salary" class="form-control" />
 							</div>
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">Phòng Ban:</label>
 								<form:select path="depart" class="custom-select"
 									idxmlns="sel1">
@@ -155,7 +155,7 @@
 									</c:if>
 								</form:select>
 							</div>
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">Chức vụ</label>
 								<form:select path="role" class="custom-select"
 									idxmlns="sel1">
@@ -171,8 +171,8 @@
 					</div>
 					<div class="modal-footer">
 						<input type="submit" name="btnsave" class="btn btn-info"
-							value="SAVE">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							value="Lưu">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
 					</div>
 
 				</div>
@@ -185,19 +185,19 @@
 		<table id="table1" class="display table-bordered" style="width: 100%">
     	<colgroup>
        		<col span="1" style="width: 4%;">
-       		<col span="1" style="width: 11%;">
        		<col span="1" style="width: 10%;">
-       		<col span="1" style="width: 19%;">
+       		<col span="1" style="width: 10%;">
+       		<col span="1" style="width: 18%;">
        		<col span="1" style="width: 10%;">
        		<col span="1" style="width: 6%;">
        		<col span="1" style="width: 11%;">
        		<col span="1" style="width: 9%;">
        		<col span="1" style="width: 8%;">
-       		<col span="1" style="width: 11%;">       		       		       		
+       		<col span="1" style="width: 14%;">       		       		       		
     	</colgroup>
 			<thead style="background-color:#4876FF ;color: white">
 				<tr>
-					<th>ID</th>
+					<th>Mã</th>
 					<th>Họ Tên</th>
 					<th>Ngày sinh</th>	
 					<th>Địa chỉ</th>									
@@ -208,7 +208,7 @@
 				<!-- <th>Image</th> -->
 				<!-- <th>Status</th> -->
 					<th>Cấp độ</th>
-					<th>Action</th>
+					<th></th>
 				</tr>
 			</thead>
 
@@ -244,9 +244,9 @@
 								<!-- <input  type="button" data-toggle="modal" data-target="#myModal" value="update"> -->
 							<div class="btn-group" role="group" aria-label="Basic example">
 								<button type="button" class="btn btn-info"
-									onclick="location.href='${updateLink}';">Update</button>
+									onclick="location.href='${updateLink}';">Cập nhật</button>
 								<button type="button" class="btn btn-danger"
-									onclick="location.href='${deleteLink}';">Del</button>
+									onclick="location.href='${deleteLink}';">Xóa</button>
 							</div>
 								<!-- <input type="submit" value="Update">  --> <!-- <input
 								class="gfgselect" data-toggle="modal" data-target="#gfgmodal"

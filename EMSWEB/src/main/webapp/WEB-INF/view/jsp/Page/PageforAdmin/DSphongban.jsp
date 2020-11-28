@@ -67,14 +67,14 @@ th.image.sorting {
 <body>
 	<section class="content-header">
 		<h1>
-			Thêm Mới Giáo Viên
+			Danh Sách Phòng Ban
 			<button type="button" class="btn btn-info" data-toggle="modal"
 				data-target="#myModal">Thêm nhân viên</button>
 		</h1>
 		<ol class="breadcrumb">
 			<li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
 			<li class="active">Quản lí nhân viên</li>
-			<li class="active">Danh sách Nhân Viên</li>
+			<li class="active">Danh sách Phòng Ban</li>
 		</ol>
 	</section>
 	<!--Modalthemnhanvien-->
@@ -119,7 +119,7 @@ th.image.sorting {
 	<!--Table  -->
 		<table id="table1" class="display">
 
-			<thead style="background-color: aqua;">
+			<thead style="background-color:#4876FF ;color: white">
 				<tr>
 					<th>Mã</th>
 					<th>Tên Phòng</th>

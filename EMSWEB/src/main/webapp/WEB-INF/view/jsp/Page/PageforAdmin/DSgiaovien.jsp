@@ -65,14 +65,14 @@ th.image.sorting {
 <body>
 	<section class="content-header">
 		<h1>
-			Thêm Mới Giáo Viên
-			<button type="button" class="btn btn-info" data-toggle="modal"
-				data-target="#myModal">Thêm nhân viên</button>
+			Quản Lí Giáo Viên
+			<button type="button" class="btn btn-primary" data-toggle="modal"
+				data-target="#myModal">Thêm Giáo Viên</button>
 		</h1>
 		<ol class="breadcrumb">
 			<li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-			<li class="active">Quản lí nhân viên</li>
-			<li class="active">Danh sách Nhân Viên</li>
+			<li class="active">Quản Lí Nhân Viên</li>
+			<li class="active">Danh Sách Giáo Viên</li>
 		</ol>
 	</section>
 	<!--Modalthemnhanvien-->
@@ -84,8 +84,8 @@ th.image.sorting {
 				enctype="multipart/form-data">
 				<div class="modal-content">
 					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
 						<h4 class="modal-title">Thêm Nhân Viên</h4>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
 					</div>
 					<div class="modal-body">
 						<div>
@@ -109,7 +109,7 @@ th.image.sorting {
 								</div>
 							</div>
 
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">Image:</label>
 								<div class="custom-file">
 									<input type="file" class="custom-file-input" name="files"
@@ -117,40 +117,40 @@ th.image.sorting {
 										for="InputImage">Choose file</label>
 								</div>
 							</div>
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">Email:</label>
 								<form:input type="text" path="email" class="form-control"
 									id="InputEmail" />
 							</div>
 
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">Ngày sinh</label>
 								<form:input type="date" path="dob" class="form-control"
 									id="InputDob" min="1980-1-1" max="2020-12-31" />
 							</div>
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">Số Điện Thoại</label>
 								<form:input type="text" path="phone" class="form-control"
 									id="InputPhone" />
 							</div>
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">Địa chỉ:</label>
 								<form:input type="text" path="address" class="form-control"
 									id="InputAddress" />
 							</div>
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">Trạng Thái:</label>
 								<form:input path="status" class="form-control" />
 							</div>
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">Cấp độ:</label>
 								<form:input path="level" class="form-control" />
 							</div>
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">Lương</label>
 								<form:input path="salary" class="form-control" />
 							</div>
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">Phòng Ban:</label>
 								<form:select path="depart" class="form-control" idxmlns="sel1">
 									<c:if test="${not empty Listdp}">
@@ -161,7 +161,7 @@ th.image.sorting {
 									</c:if>
 								</form:select>
 							</div>
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">Chức vụ</label>
 								<form:select path="role" class="custom-select" idxmlns="sel1">
 									<c:if test="${not empty Listr}">
@@ -176,8 +176,8 @@ th.image.sorting {
 					</div>
 					<div class="modal-footer">
 						<input type="submit" name="btnsave" class="btn btn-info"
-							value="SAVE">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							value="Lưu">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
 					</div>
 
 				</div>
@@ -187,18 +187,28 @@ th.image.sorting {
 
 	<!--Table  -->
 	<table id="table1" class="display thead-dark">
-
-		<thead style="background-color:#6699FF; ">
+    	<colgroup>
+       		<col span="1" style="width: 5%;">
+       		<col span="1" style="width: 10%;">
+       		<col span="1" style="width: 10%;">
+       		<col span="1" style="width: 11%;">
+       		<col span="1" style="width: 14%;">
+       		<col span="1" style="width: 10%;">
+       		<col span="1" style="width: 16%;">
+       		<col span="1" style="width: 10%;">
+       		<col span="1" style="width: 14%;">       		       		       		
+    	</colgroup>
+		<thead style="background-color:#4876FF ;color: white">
 			<tr>
-				<th>Mã GV</th>
+				<th>ID</th>
 				<th>Tên GV</th>
 				<th>Chức vụ</th>
 				<th>Phòng Ban</th>
 				<th>Email</th>
-				<th>Phone</th>
+				<th>SĐT</th>
 				<th>Địa chỉ</th>
 				<th>Lương</th>
-				<th>Actions</th>
+				<th></th>
 			</tr>
 		</thead>
 
@@ -229,9 +239,9 @@ th.image.sorting {
 						<td>
 							<div class="btn-group" role="group" aria-label="Basic example">
 								<button type="button" class="btn btn-info"
-									onclick="location.href='${updateLink}';">Update</button>
+									onclick="location.href='${updateLink}';">Cập nhật</button>
 								<button type="button" class="btn btn-danger"
-									onclick="location.href='${deleteLink}'; return confirm('Bạn có chắc muốn xóa');">Del</button>
+									onclick="location.href='${deleteLink}';">Xóa</button>
 							</div>
 						</td>
 					</tr>
