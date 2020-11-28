@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.example.demo.entities.Course;
 
 public interface CourseResponsitory extends JpaRepository<Course,String>{
-
+	Course findByname(String name);
 }

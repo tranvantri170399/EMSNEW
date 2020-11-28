@@ -138,7 +138,7 @@
 									class="fa fa-circle-o"></i>Danh sách môn</a></li>
 							<li><a href="/DSnganh" target="frame"><i
 									class="fa fa-circle-o"></i>Danh sách ngành</a></li>
-							<li><a href="/DSmonhoc" target="frame"><i
+							<li><a href="/DShocki" target="frame"><i
 									class="fa fa-circle-o"></i>Danh Sách học kì</a></li>
 							<li><a href="/DSmonhockihoc" target="frame"><i
 									class="fa fa-circle-o"></i>Quản lý môn học từng kì</a></li>

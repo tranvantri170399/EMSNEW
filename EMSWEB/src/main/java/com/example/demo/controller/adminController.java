@@ -32,6 +32,7 @@ import com.example.demo.entities.Depart;
 import com.example.demo.entities.Majors;
 import com.example.demo.entities.Parent;
 import com.example.demo.entities.Role;
+import com.example.demo.entities.Semester;
 import com.example.demo.entities.Staff;
 import com.example.demo.entities.Student;
 import com.example.demo.entities.Subject;
@@ -44,6 +45,7 @@ import com.example.demo.repository.DepartResponsitory;
 import com.example.demo.repository.MajorsResponsitory;
 import com.example.demo.repository.ParentResponsitory;
 import com.example.demo.repository.RoleRespository;
+import com.example.demo.repository.SemesterResponsitory;
 import com.example.demo.repository.StaffResponsitory;
 import com.example.demo.repository.StudentResponsitory;
 import com.example.demo.repository.SubjectResponsitory;
@@ -84,6 +86,9 @@ public class adminController {
 	//
 	@Autowired
 	ClassroomResponsitory classroomResponsitory;
+	//
+	@Autowired
+	SemesterResponsitory semesterResponsitory;
 
 	// controller teacher//
 	@GetMapping("/DSgiaovien")
@@ -679,7 +684,7 @@ public class adminController {
 		return "redirect:/DSlophoc";
 	}
 
-	// Danh Sach Nganh	//
+	// Danh Sach Nganh //
 	@RequestMapping(value = { "/DSnganh" })
 	public String loadDSnganh(Model model, @ModelAttribute("major") Majors major) {
 		List<Majors> list = majorsResponsitory.findAll();
@@ -687,4 +692,43 @@ public class adminController {
 		return "/jsp/Page/PageforAdmin/DSnganh";
 	}
 	//
+
+	// list hocky//
+	@RequestMapping(value = { "/DShocki" })
+	public String DShocki(Model model, @ModelAttribute("semester") Semester semester) {
+		List<Semester> semester1 = semesterResponsitory.findAll();
+		model.addAttribute("List", semester1);
+		return "/jsp/Page/PageforAdmin/DShocki";
+	}
+
+	// new
+	@RequestMapping(value = "/newSemester", method = RequestMethod.POST)
+	public String newSemester(@ModelAttribute("semester") Semester semester, HttpServletRequest request, Model model,
+			@RequestParam("files") MultipartFile[] files) {
+		Semester newSemester = new Semester();
+		newSemester.setId(semester.getId());
+		newSemester.setName(semester.getName());
+		newSemester.setstarttime(semester.getstarttime());
+		newSemester.setendtime(semester.getendtime());
+		newSemester.setStatus(semester.getStatus());
+		semesterResponsitory.save(newSemester);
+		return "redirect:/DShocki";
+	}
+	
+	//update form
+	@RequestMapping(value = { "/updateFormHK" })
+	public String updateFormHK(@ModelAttribute("semester") Semester semester, Model model, HttpServletRequest request,
+			@RequestParam("id") String id) {
+		Semester semester1 = semesterResponsitory.findByid(id);
+		List<Semester> semesterlist = new ArrayList<>();
+		semesterlist.add(semester1);
+		model.addAttribute("List", semesterlist);
+		return "/jsp/Page/PageforAdmin/formupdateHK";
+	}
+	@GetMapping(value = "/deleteHK")
+	public String deleteHK(@RequestParam("id") String id) {
+		semesterResponsitory.deleteById(id);
+		return "redirect:/DShocki";
+	}
+
 }
