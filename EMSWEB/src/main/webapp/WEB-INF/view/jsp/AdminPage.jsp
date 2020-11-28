@@ -140,7 +140,7 @@
 									class="fa fa-circle-o"></i>Danh sách ngành</a></li>
 							<li><a href="/DShocki" target="frame"><i
 									class="fa fa-circle-o"></i>Danh Sách học kì</a></li>
-							<li><a href="/DSmonhockihoc" target="frame"><i
+							<li><a href="/DSqlhocky" target="frame"><i
 									class="fa fa-circle-o"></i>Quản lý môn học từng kì</a></li>
 						</ul></li>
 						<li class="treeview"><a href="#"> <i
