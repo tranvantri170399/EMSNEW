@@ -40,114 +40,9 @@
 <link href="../../../resources/bootstrap/css/_all-skins.min.css"
 	rel="stylesheet" type="text/css" />
 
-  </head>
-  <body class="skin-blue">
-    <div class="wrapper">
-      
-      <header class="main-header">
-        <!-- Logo -->
-        <a href="index2.html" class="logo"><b>Admin</b>LTE</a>
-        <!-- Header Navbar: style can be found in header.less -->
-        <nav class="navbar navbar-static-top" role="navigation">
-          <!-- Sidebar toggle button-->
-          <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-            <span class="sr-only">Toggle navigation</span>
-          </a>
-          <!-- Navbar Right Menu -->
-          <div class="navbar-custom-menu">
-            <ul class="nav navbar-nav">
-              <!-- Messages: style can be found in dropdown.less-->
-              <!-- Notifications: style can be found in dropdown.less -->
-              <!-- Tasks: style can be found in dropdown.less -->
-              <!-- User Account: style can be found in dropdown.less -->
-              <li class="dropdown user user-menu">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image"/>
-                  <span class="hidden-xs">
-                  
-                  	<c:forEach var="sp" items="${List}">
-													${sp.username}
-												
-											</c:forEach>
-                  </span>
-                </a>
-                <ul class="dropdown-menu">
-                  <!-- User image -->
-                  <li class="user-header">
-                    <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
-                    <p>
-                      Alexander Pierce - Web Developer
-                      <small>Member since Nov. 2012</small>
-                    </p>
-                  </li>
-                  <!-- Menu Body -->
-                  <!-- Menu Footer-->
-                  <li class="user-footer">
-                    <div class="pull-left">
-                      <a href="#" class="btn btn-default btn-flat">Profile</a>
-                    </div>
-                    <div class="pull-right">
-                      <a href="#" class="btn btn-default btn-flat">Sign out</a>
-                    </div>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </header>
-      <!-- Left side column. contains the logo and sidebar -->
-      <aside class="main-sidebar">
-        <!-- sidebar: style can be found in sidebar.less -->
-        <section class="sidebar">
-          <!-- Sidebar user panel -->
-          <!-- sidebar menu: : style can be found in sidebar.less -->
-          <ul class="sidebar-menu">
-            <li class="header">MENU</li>
-            <li class="active treeview">
-              <a href="documentation/index.html">
-                <i class="fa fa-dashboard"></i> <span>TRANG CỦA BẠN</span> <i class="fa fa-angle-left pull-right"></i>
-              </a>
-            </li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-calendar"></i>
-                <span>Thông tin sinh viên</span>
-                <span class="label label-primary pull-right">4</span>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="Y.html" target="frame"><i class="fa fa-circle-o"></i>Lí lịch</a></li>
-                <li><a href="Page/capnhatdiachi.html" target="frame"><i class="fa fa-circle-o"></i>Cập nhật địa chỉ</a></li>
-                <li><a href="Page/tinhtrangsinhvien.html" target="frame"><i class="fa fa-circle-o"></i>Tình trạng sinh viên</a></li>                
-              </ul>
-            </li>
-            <li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-calendar"></i>
-                <span>Học tập</span>
-                <span class="label label-primary pull-right">4</span>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="Page/thoikhoabieu.html" target="frame"><i class="fa fa-circle-o"></i>Thời khóa biểu</a></li>
-                <li><a href="Page/lichthi.html" target="frame"><i class="fa fa-circle-o"></i>Lịch thi</a></li>
-                <li><a href="Page/diemdanh.html" target="frame"><i class="fa fa-circle-o"></i>Điểm danh</a></li>  
-                <li><a href="Page/gopy.html" target="frame"><i class="fa fa-circle-o"></i>Góp ý</a></li>
-                <li><a href="Page/hocphi.html" target="frame"><i class="fa fa-circle-o"></i>Học phí</a></li>                                                
-              </ul>
-            </li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-pie-chart"></i>
-                <span>Thống kê học tập</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="Page/diemtheoky.html" target="frame"><i class="fa fa-circle-o"></i>Điểm theo kỳ</a></li>
-                <li><a href="Page/mondahoc.html" target="frame"><i class="fa fa-circle-o"></i>Môn đã học</a></li>
-                <li><a href="Page/bangdiem.html" target="frame"><i class="fa fa-circle-o"></i>Bảng điểm</a></li>
-              </ul>
-            </li>
+</head>
+<body class="skin-blue">
+	<div class="wrapper">
 
 		<header class="main-header">
 			<!-- Logo -->
@@ -210,17 +105,7 @@
 			<section class="sidebar">
 				<!-- Sidebar user panel -->
 				<!-- search form -->
-				<form action="#" method="get" class="sidebar-form">
-					<div class="input-group">
-						<input type="text" name="q" class="form-control"
-							placeholder="Search..." /> <span class="input-group-btn">
-							<button type='submit' name='search' id='search-btn'
-								class="btn btn-flat">
-								<i class="fa fa-search"></i>
-							</button>
-						</span>
-					</div>
-				</form>
+
 				<!-- /.search form -->
 				<!-- sidebar menu: : style can be found in sidebar.less -->
 				<ul class="sidebar-menu">
@@ -276,12 +161,11 @@
 			<!-- /.sidebar -->
 		</aside>
 
-      <footer class="main-footer">
-        <div class="pull-right hidden-xs">
-          <b>Version</b> Beta
-        </div>
-        <strong>Copyright &copy; 2019-2020 <a href="">4TL Tean</a>.</strong> All rights reserved.
-      </footer>
+		<!-- Right side column. Contains the navbar and content of the page -->
+		<div class="content-wrapper">
+			<iframe src="" name="frame"
+				style="min-width: 100%; min-height: 660px" scrolling="no"></iframe>
+			<!-- Content Header (Page header) -->
 
 		</div>
 		<!-- /.content-wrapper -->

@@ -76,7 +76,7 @@
 		<div class="modal-dialog">
 
 			<!-- Modal content-->
-			<form:form action="/newTeacher" modelAttribute="teacherNew"
+			<form:form action="/newCourse" modelAttribute="course"
 				enctype="multipart/form-data">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -96,9 +96,9 @@
 									id="InputEmail" />
 							</div>
 
-							<div clas="form-group">
-								<label for="InputID">Lớp:</label>
-								<form:select path="classroom" class="form-control"
+							<div class="form-group">
+								<label for="InputID">Học Kì</label>
+								<form:select path="semester" class="form-control"
 									idxmlns="sel1">
 									<c:if test="${not empty Listdp}">
 										<c:forEach var="sp" items="${Listdp}">
@@ -108,9 +108,9 @@
 									</c:if>
 								</form:select>
 							</div>
-							<div clas="form-group">
-								<label for="InputID">Học Kì:</label>
-								<form:select path="classroom" class="form-control"
+							<div class="form-group">
+								<label for="InputID">Giáo Viên</label>
+								<form:select path="teacher" class="form-control"
 									idxmlns="sel1">
 									<c:if test="${not empty Listdp}">
 										<c:forEach var="sp" items="${Listdp}">
@@ -120,45 +120,9 @@
 									</c:if>
 								</form:select>
 							</div>
-							<div clas="form-group">
-								<label for="InputID">Địa chỉ:</label>
-								<form:input type="text" path="address" class="form-control"
-									id="InputAddress" />
-							</div>
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">Trạng Thái:</label>
 								<form:input path="status" class="form-control" />
-							</div>
-							<div clas="form-group">
-								<label for="InputID">Cấp độ:</label>
-								<form:input path="level" class="form-control" />
-							</div>
-							<div clas="form-group">
-								<label for="InputID">Lương</label>
-								<form:input path="salary" class="form-control" />
-							</div>
-							<div clas="form-group">
-								<label for="InputID">Phòng Ban:</label>
-								<form:select path="depart" class="form-control"
-									idxmlns="sel1">
-									<c:if test="${not empty Listdp}">
-										<c:forEach var="sp" items="${Listdp}">
-											<form:option value="${sp.name}" />
-											<%--  <form:options items="${Listdp}" /> --%>
-										</c:forEach>
-									</c:if>
-								</form:select>
-							</div>
-							<div clas="form-group">
-								<label for="InputID">Chức vụ</label>
-								<form:select path="role" class="custom-select"
-									idxmlns="sel1">
-									<c:if test="${not empty Listr}">
-										<c:forEach var="sp" items="${Listr}">
-											<option>${sp.roleName}</option>
-										</c:forEach>
-									</c:if>
-								</form:select>
 							</div>
 
 						</div>
@@ -175,17 +139,15 @@
 	</div>	
 	
 	<section class="content">	<!--Table  -->
-	<form:form action="/save" modelAttribute="student">
+	<form:form action="/save" modelAttribute="course">
 		<table id="table1" class="display">
 
 			<thead style="background-color: aqua;">
 				<tr>
 					<th>ID</th>
 					<th>Tên Khóa Học</th>
-					<th>Lớp</th>
 					<th>Học kì</th>
 					<th>Trạng thái</th>
-					<th>Chú Thích</th>
 					<th>Giáo Viên</th>
 					<th></th>					
 				</tr>
@@ -208,12 +170,10 @@
 
 						<tr>
 							<td>${list.id}</td>
-							<td>${list.lname}</td>
-							<td>${list.email}</td>
-							<td>${list.dob}</td>
-							<td>${list.phone}</td>
-							<td>${list.address}</td>
+							<td>${list.name}</td>
+							<td>${list.semester.name}</td>
 							<td>${list.status}</td>
+							<td>${list.teacher.fname}</td>
 							<td><a href="${updateLink}" class="btn btn-primary">Update</a>
 								<a href="${deleteLink}" class="btn btn-danger">Delete</a></td>
 						</tr>

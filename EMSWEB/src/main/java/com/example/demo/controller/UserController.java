@@ -19,10 +19,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.demo.entities.Depart;
 import com.example.demo.entities.Parent;
 import com.example.demo.entities.Student;
+import com.example.demo.entities.Teacher;
 import com.example.demo.entities.User;
 import com.example.demo.repository.DepartResponsitory;
 import com.example.demo.repository.ParentResponsitory;
 import com.example.demo.repository.StudentResponsitory;
+import com.example.demo.repository.TeacherResponsitory;
 import com.example.demo.repository.UserResponsitory;
 
 
@@ -36,6 +38,8 @@ public class UserController {
 	ParentResponsitory parentResponsitory;
 	@Autowired
 	StudentResponsitory	studentResponsitory;
+	@Autowired
+	TeacherResponsitory teacherResponsitory;
 	
 	@RequestMapping(value = { "/login" }, method = RequestMethod.POST)
 	public String login111(ModelMap model, @ModelAttribute("student") User student, BindingResult errors) {
@@ -59,6 +63,8 @@ public class UserController {
 						uss.setUsername(u.getUsername());
 						us.add(uss);
 						model.addAttribute("List", us);
+						List<Parent> listp= parentResponsitory.findcustom(u.getUserid());
+						model.addAttribute("Listp", listp);
 						return "/jsp/templateParents";
 					}else if (u.getRole().equals("GV")) {
 						List<User> us= new ArrayList<User>();
@@ -66,6 +72,8 @@ public class UserController {
 						uss.setUsername(u.getUsername());
 						us.add(uss);
 						model.addAttribute("List", us);
+						List<Teacher> listt= teacherResponsitory.findcustom(u.getUserid());
+						model.addAttribute("Listt", listt);
 						return "/jsp/templateTeacher";
 					}else {
 						List<User> us= new ArrayList<User>();
