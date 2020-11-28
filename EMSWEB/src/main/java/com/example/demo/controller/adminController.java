@@ -28,6 +28,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.entities.Classroom;
+import com.example.demo.entities.ClassroomStudent;
 import com.example.demo.entities.Depart;
 import com.example.demo.entities.Majors;
 import com.example.demo.entities.Parent;
@@ -89,7 +90,8 @@ public class adminController {
 	//
 	@Autowired
 	SemesterResponsitory semesterResponsitory;
-
+	@Autowired
+	ClassroomStudentResponsitory classroomStudentRespon;
 	// controller teacher//
 	@GetMapping("/DSgiaovien")
 	public String listTeacher(Model model, @ModelAttribute("teacherNew") Teacher teacher) {
@@ -421,6 +423,8 @@ public class adminController {
 	public String loadDShocsinh(Model model, @ModelAttribute("student") Student student) {
 		List<Student> studentlist = studentResponsitory.findAll();
 		model.addAttribute("List", studentlist);
+		List<Classroom> classroomlist= classroomResponsitory.findAll();
+		model.addAttribute("Listsl", classroomlist);
 		return "/jsp/Page/PageforAdmin/DShocsinh";
 	}
 
@@ -518,9 +522,29 @@ public class adminController {
 		student2.setIdcard(student.getIdcard());
 		student2.setParent(parent);
 		User userr = new User(student2.getEmail(), student2.getPhone(), "PS");
-		userrespon.save(userr);
+		userrespon.save(userr);		
 		//
 		studentResponsitory.save(student2);
+		
+		//luu them vao bang ClassroomStudent
+				List<ClassroomStudent> cr= classroomStudentRespon.findAll();
+				ClassroomStudent lastidcr = cr.get(cr.size() - 1);
+				int afterid= lastidcr.getId()+1; 
+				String classroomname= request.getParameter("classroomname");
+				System.out.println(">>>>>>"+classroomname);
+				Classroom newclass=classroomResponsitory.findByname(classroomname);
+				System.out.println(">>>>>>"+newclass.getId());
+				Classroom cls = new Classroom();
+				cls.setId(newclass.getId());
+				cls.setName(newclass.getName());
+				cls.setDescription(newclass.getDescription());
+				cls.setStatus(newclass.getStatus());
+				System.out.println(">>>>>>"+newclass.getId());
+				ClassroomStudent crs= new ClassroomStudent();
+				crs.setId(afterid);
+				crs.setClassroom(cls);
+				crs.setStudent(student2);
+				classroomStudentRespon.save(crs);
 		return "redirect:/DShocsinh";
 	}
 	// student//
@@ -731,4 +755,11 @@ public class adminController {
 		return "redirect:/DShocki";
 	}
 
+	
+	//quan ly mon tung hoc ky//
+	
+	
+	//quan ly mon tung hoc ky//
 }
+
+
