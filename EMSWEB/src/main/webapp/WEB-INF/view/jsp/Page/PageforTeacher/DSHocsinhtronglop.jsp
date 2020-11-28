@@ -8,7 +8,7 @@
 
 <head>
 <meta charset="UTF-8">
-<title>EMS | Quản Lí Phòng Học</title>
+<title>AdminLTE 2 | Dashboard</title>
 
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
@@ -66,79 +66,24 @@ th.image.sorting {
 
 <body>
 	<section class="content-header">
-		<h1>
-			Danh Sách Lớp Học
-			<button type="button" class="btn btn-info" data-toggle="modal"
-				data-target="#myModal">Thêm Lớp Học</button>
-		</h1>
+
 		<ol class="breadcrumb">
 			<li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-			<li class="active">Quản Lý Nhân Viên</li>
-			<li class="active">Danh Sách Lớp Học</li>
+			<li class="active">Quản Lí Học Sinh</li>
+			<li class="active">Danh sách Học Sinh</li>
 		</ol>
 	</section>
-	<!--Modalthemnhanvien-->
-	<div class="modal fade" id="myModal" role="dialog">
-		<div class="modal-dialog">
-
-			<!-- Modal content-->
-			<form:form action="/newClassroom" modelAttribute="classroom"
-				enctype="multipart/form-data">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h4 class="modal-title">Thêm Lớp Học</h4>
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-					</div>
-					<div class="modal-body">
-						<div>
-							<div class="form-group">
-								<label for="InputID">Tên Lớp Học:</label>
-								<form:input type="text" path="name" class="form-control"
-									id="name" />
-							</div>
-						</div>					
-						<div>
-							<div class="form-group">
-								<label for="InputID">Mã Ngành:</label>
-								<form:input type="text" path="id" class="form-control" id="name" />
-							</div>
-						</div>
-						<div>
-							<div class="form-group">
-								<label for="InputID">Chú Thích Lớp:</label>
-								<form:input type="text" path="description" class="form-control"
-									id="name" />
-							</div>
-						</div>
-						<div>
-							<div class="form-group">
-								<label for="InputID">Trạng Thái:</label>
-								<form:input type="text" path="status" class="form-control"
-									id="name" />
-							</div>
-						</div>
-					</div>
-					<div class="modal-footer">
-						<input type="submit" name="btnsave" class="btn btn-info"
-							value="Lưu">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
-					</div>
-
-				</div>
-			</form:form>
-		</div>
-	</div>
-
 	<!--Table  -->
 	<table id="table1" class="display">
 
 		<thead style="background-color:#4876FF ;color: white">
 			<tr>
 				<th>Mã</th>
-				<th>Tên Lớp Học</th>
-				<th>Mô tả</th>
-				<th>Tình trạng</th>
-				<th></th>
+				<th>Chuyên Ngành</th>
+				<th>Tên Môn học</th>
+				<th>Mô tả môn học</th>
+				<th>Trạng thái</th>
+				<th>Actions</th>
 			</tr>
 		</thead>
 
@@ -148,25 +93,25 @@ th.image.sorting {
 
 
 					<!-- construct an "update" link with customer id -->
-					<c:url var="updateLink" value="/updateFormCL">
+					<c:url var="updateLink" value="/updateFormSJ">
 						<c:param name="id" value="${list.id}" />
 					</c:url>
 
 					<!-- construct an "delete" link with customer id -->
-					<c:url var="deleteLink" value="/deleteClassroom">
+					<c:url var="deleteLink" value="/deleteSubject">
 						<c:param name="id" value="${list.id}" />
 					</c:url>
 
 					<tr>
 						<td>${list.id}</td>
-						<td>${list.name}</td>
-						<td>${list.description}</td>
-						<td>${list.status}</td>
-<%-- 						<td>${list.marjorID}</td> --%>						
+						<td>${list.classroom.id}</td>
+						<td>${list.classroom.name}</td>
+						<td>${list.student.fname}</td>
+						<td>${list.student.email}</td>
 						<td>
 							<div class="btn-group" role="group" aria-label="Basic example">
 								<button type="button" class="btn btn-info"
-									onclick="location.href='${updateLink}';">Cập nhật</button>
+									onclick="location.href='${updateLink}';">Cập Nhật</button>
 								<button type="button" class="btn btn-danger"
 									onclick="location.href='${deleteLink}';">Xóa</button>
 							</div>
