@@ -159,7 +159,7 @@ public class adminController {
 		Role role = rolerepon.findByroleName(rl);
 		newTeacher.setRole(role);
 		newTeacher.setDepart(depart);
-		User user = new User(newTeacher.getEmail(), newTeacher.getPhone(), "GV");
+		User user = new User(newTeacher.getEmail(), newTeacher.getPhone(), "GV",outID);
 		userrespon.save(user);
 		teacherResponsitory.save(newTeacher);
 		// model.addAttribute("List", teacherList);
@@ -298,7 +298,7 @@ public class adminController {
 		Role role = rolerepon.findByroleName(rl);
 		st.setRole(role);
 		st.setDepart(depart);
-		User user = new User(st.getEmail(), st.getPhone(), "NV");
+		User user = new User(st.getEmail(), st.getPhone(), "NV",outID);
 		userrespon.save(user);
 		staffrep.save(st);
 		List<Staff> stafflistaffter = staffrep.findAll();
@@ -479,7 +479,7 @@ public class adminController {
 		parent.setStatus(statuss);
 		String relationshipp = request.getParameter("relationshipp");
 		parent.setRelationship(relationshipp);
-		User userss = new User(emaill, phonee, "PH");
+		User userss = new User(emaill, phonee, "PH",outIDd);
 		userrespon.save(userss);
 		parentResponsitory.save(parent);
 
@@ -521,8 +521,8 @@ public class adminController {
 		student2.setStatus(student.getStatus());
 		student2.setIdcard(student.getIdcard());
 		student2.setParent(parent);
-		User userr = new User(student2.getEmail(), student2.getPhone(), "PS");
-		userrespon.save(userr);		
+		User userr = new User(student2.getEmail(), student2.getPhone(), "PS",outID);
+		userrespon.save(userr);
 		//
 		studentResponsitory.save(student2);
 		

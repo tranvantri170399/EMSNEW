@@ -92,7 +92,7 @@
 											<span class="input-group-addon">Họ</span>
 											<input value="${sp.lname}" readonly class="form-control"/>
 											<span class="input-group-addon">Tên</span>
-											<input value="${sp.fname}" readonly class="form-control"/>
+											<input name="fname" value="${sp.fname}" readonly class="form-control"/>
 										</div>
 									</div>
 									<!-- 									<script type="text/javascript">
