@@ -145,8 +145,14 @@ th.image.sorting {
 						<tr>
 							<td>${list.id}</td>
 							<td>${list.name}</td>
-							<td><a href="${updateLink}" class="btn btn-primary">Update</a>
-								<a href="${deleteLink}" class="btn btn-danger">Delete</a></td>
+							<td>
+							<div class="btn-group" role="group" aria-label="Basic example">
+								<button type="button" class="btn btn-info"
+									onclick="location.href='${updateLink}';">Update</button>
+								<button type="button" class="btn btn-danger"
+									onclick="location.href='${deleteLink}'; ">Del</button>
+							</div>
+							</td>
 						</tr>
 					</c:forEach>
 				</c:if>

@@ -83,27 +83,25 @@
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
 					</div>
 					<div class="modal-body">
-						<div>
-								<div class="form-group" >
-										<input type="hidden" id="custId" name="idss" value="${sp.id}" readonly="readonly" >
-									</div>
+							<input type="hidden" id="custId" name="idss" value="${sp.id}"
+								readonly="readonly">
 
-									<div class="form-group">
-										<label for="exampleInputEmail">Tên Phòng Học</label>
-										
-										<form:select path="schoolroom" classxmlxmlns="form-control"
-											idxmlns="sel1">
-											<c:if test="${not empty Lists}">
-												<c:forEach var="p" items="${Lists}">
-													<option>${p.name}</option>
-												</c:forEach>
-											</c:if>
-										</form:select>
-									</div>
-									<div class="form-group">
-										<label for="InputPhone">Tên Thiết Bị</label>
-									
-										<%-- 	<form:select path="device" classxmlxmlns="form-control"
+						<div class="form-group">
+							<label for="exampleInputEmail">Tên Phòng Học</label>
+
+							<form:select path="schoolroom" class="custom-select"
+								idxmlns="sel1">
+								<c:if test="${not empty Lists}">
+									<c:forEach var="p" items="${Lists}">
+										<option>${p.name}</option>
+									</c:forEach>
+								</c:if>
+							</form:select>
+						</div>
+						<div class="form-group">
+							<label for="InputPhone">Tên Thiết Bị</label>
+
+							<%-- 	<form:select path="device" classxmlxmlns="form-control"
 											idxmlns="sel1">
 											<c:if test="${not empty Listds}">
 												<c:forEach var="s" items="${Listds}">
@@ -111,20 +109,20 @@
 												</c:forEach>
 											</c:if>
 										</form:select> --%>
-										<select name="testdevice">
-											<c:if test="${not empty Listds}">
-												<c:forEach var="s" items="${Listds}">
-													<option>${s.deviceName}</option>
-												</c:forEach>
-											</c:if>
-										<select>
-									</div>
-									<div class="form-group">
-										<label for="InputPhone">Số Lượng</label>
-										<form:input path="amount" value="${sp.amount}" type="text"
-											class="form-control" id="InputAddress" />
-									</div>				
+							<select name="testdevice" class="custom-select">
+								<c:if test="${not empty Listds}">
+									<c:forEach var="s" items="${Listds}">
+										<option>${s.deviceName}</option>
+									</c:forEach>
+								</c:if>
+								</select>
 						</div>
+						<div class="form-group">
+							<label for="InputPhone">Số Lượng</label>
+							<form:input path="amount" value="${sp.amount}" type="text"
+								class="form-control" id="InputAddress" />
+						</div>
+					</div>
 					<div class="modal-footer">
 						<input type="submit" name="btnsave" class="btn btn-info"
 							value="SAVE">
@@ -144,8 +142,8 @@
 				<tr>
 					<th>ID</th>
 					<th>Tên Phòng Học</th>
-					<th>Tên Thiết Bị</th>	
-					<th>Số Lượng</th>				
+					<th>Tên Thiết Bị</th>
+					<th>Số Lượng</th>
 					<th>Action</th>
 				</tr>
 			</thead>
@@ -163,18 +161,19 @@
 							<c:param name="id" value="${sp.id}" />
 						</c:url>
 
-						
+
 						<tr style="color: red;">
-							<td class="gfgusername"><input style="color: red;border: none;width: 50px" name="idstaff"
-								value=" ${sp.id}"></td>
-							<td class="gfgpp"><input style="color: red;border: none;width: 80%" name="firstname"
-								value="${sp.schoolroom.name}"></td>
+							<td class="gfgusername"> ${sp.id}</td>
+							<td class="gfgpp">${sp.schoolroom.name}</td>
 							<td class="gfgscores">${sp.device.deviceName}</td>
 							<td class="gfgscores">${sp.amount}</td>
-							<td style="text-align: center;">
-								<a href="${updateLink}" >UPDATE</a>
-								<a href="${deleteLink}">DEL</a>
-							</td>
+							<td>
+							<div class="btn-group" role="group" aria-label="Basic example">
+								<button type="button" class="btn btn-info"
+									onclick="location.href='${updateLink}';">Update</button>
+								<button type="button" class="btn btn-danger"
+									onclick="location.href='${deleteLink}'; ">Del</button>
+							</div>
 						</tr>
 
 					</c:forEach>

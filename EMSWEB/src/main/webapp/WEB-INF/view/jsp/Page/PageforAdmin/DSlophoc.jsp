@@ -86,15 +86,14 @@ th.image.sorting {
 				enctype="multipart/form-data">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h4 class="modal-title">Thêm Môn học</h4>	
+						<h4 class="modal-title">Thêm Môn học</h4>
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
 					</div>
 					<div class="modal-body">
-					<div>
+						<div>
 							<div clas="form-group">
 								<label for="InputID">Mã Ngành:</label>
-								<form:input type="text" path="id" class="form-control"
-									id="name" />
+								<form:input type="text" path="id" class="form-control" id="name" />
 							</div>
 						</div>
 						<div>
@@ -163,8 +162,14 @@ th.image.sorting {
 						<td>${list.name}</td>
 						<td>${list.description}</td>
 						<td>${list.status}</td>
-						<td><a href="${updateLink}" class="btn btn-primary">Update</a>
-							<a href="${deleteLink}" class="btn btn-danger">Delete</a></td>
+						<td>
+							<div class="btn-group" role="group" aria-label="Basic example">
+								<button type="button" class="btn btn-info"
+									onclick="location.href='${updateLink}';">Update</button>
+								<button type="button" class="btn btn-danger"
+									onclick="location.href='${deleteLink}';">Del</button>
+							</div>
+						</td>
 					</tr>
 				</c:forEach>
 			</c:if>

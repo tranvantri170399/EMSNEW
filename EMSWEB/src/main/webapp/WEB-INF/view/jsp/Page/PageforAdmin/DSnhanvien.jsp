@@ -61,7 +61,7 @@
 	<section class="content-header">
 		<h1>
 			Danh Sách Nhân Viên
-			<button type="button" class="btn btn-info" data-toggle="modal"
+			<button type="button" class="btn btn-primary" data-toggle="modal"
 				data-target="#myModal">Thêm nhân viên</button>
 		</h1>
 		<ol class="breadcrumb">
@@ -184,20 +184,18 @@
 	<form:form action="/save" modelAttribute="staff">
 		<table id="table1" class="display table-bordered" style="width: 100%">
     	<colgroup>
-       		<col span="1" style="width: 5%;">
-       		<col span="1" style="width: 5%;">
-       		<col span="1" style="width: 6%;">
+       		<col span="1" style="width: 4%;">
        		<col span="1" style="width: 11%;">
-       		<col span="1" style="width: 17%;">
        		<col span="1" style="width: 10%;">
-       		<col span="1" style="width: 7%;">
+       		<col span="1" style="width: 19%;">
+       		<col span="1" style="width: 10%;">
+       		<col span="1" style="width: 6%;">
        		<col span="1" style="width: 11%;">
        		<col span="1" style="width: 9%;">
        		<col span="1" style="width: 8%;">
-       		<col span="1" style="width: 5%;">
-       		<col span="1" style="width: 6%;">       		       		       		
+       		<col span="1" style="width: 11%;">       		       		       		
     	</colgroup>
-			<thead class="thead-dark">
+			<thead style="background-color:#4876FF ;color: white">
 				<tr>
 					<th>ID</th>
 					<th>Họ Tên</th>
@@ -210,7 +208,6 @@
 				<!-- <th>Image</th> -->
 				<!-- <th>Status</th> -->
 					<th>Cấp độ</th>
-					<th>Lương</th>
 					<th>Action</th>
 				</tr>
 			</thead>
@@ -232,8 +229,7 @@
 						<tr style="color: black;">
 							<td class="gfgusername"><input style="color: red;border: none;width: 50px" name="idstaff"
 								value=" ${sp.id}"></td>
-							<td class="gfgpp"><input style="color: red;border: none;max-width: 70px" name="firstname"
-								value="${sp.fname}">${sp.lname}</td>
+							<td>${sp.fname}&ensp;${sp.lname}</td>
 							<%-- <td class="gfgscores">${sp.lname}</td> --%>
 							<td>${sp.dob}</td>
 							<td>${sp.address}</td>	
@@ -244,11 +240,14 @@
 						<%-- <td>${sp.image}</td> --%>
 						<%-- <td>${sp.status}</td> --%>
 						<td>${sp.level}</td>
-						<td>${sp.salary}</td>
-							<td style="text-align: center;">
+							<td >
 								<!-- <input  type="button" data-toggle="modal" data-target="#myModal" value="update"> -->
-								<a href="${updateLink}" >UPDATE</a>
-								<a href="${deleteLink}">DEL</a>
+							<div class="btn-group" role="group" aria-label="Basic example">
+								<button type="button" class="btn btn-info"
+									onclick="location.href='${updateLink}';">Update</button>
+								<button type="button" class="btn btn-danger"
+									onclick="location.href='${deleteLink}';">Del</button>
+							</div>
 								<!-- <input type="submit" value="Update">  --> <!-- <input
 								class="gfgselect" data-toggle="modal" data-target="#gfgmodal"
 								type="button" value="del"> -->

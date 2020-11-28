@@ -98,8 +98,7 @@ th.image.sorting {
 						</div>
 						<div clas="form-group">
 							<label for="InputID">Chuyên ngành</label>
-							<form:select path="majors" class="custom-select"
-								idxmlns="sel1">
+							<form:select path="majors" class="custom-select" idxmlns="sel1">
 								<c:if test="${not empty Listmj}">
 									<c:forEach var="sp" items="${Listmj}">
 										<option>${sp.name}</option>
@@ -110,15 +109,15 @@ th.image.sorting {
 						<div>
 							<div clas="form-group">
 								<label for="InputID">Tên môn học:</label>
-								<form:input type="text" path="subjectname"
-									class="form-control" id="name" />
+								<form:input type="text" path="subjectname" class="form-control"
+									id="name" />
 							</div>
 						</div>
 						<div>
 							<div clas="form-group">
 								<label for="InputID">Chú thích môn:</label>
-								<form:input type="text" path="description"
-									class="form-control" id="name" />
+								<form:input type="text" path="description" class="form-control"
+									id="name" />
 							</div>
 						</div>
 						<div>
@@ -175,8 +174,14 @@ th.image.sorting {
 						<td>${list.subjectname}</td>
 						<td>${list.description}</td>
 						<td>${list.status}</td>
-						<td><a href="${updateLink}" class="btn btn-primary">Update</a>
-							<a href="${deleteLink}" class="btn btn-danger">Delete</a></td>
+						<td>
+							<div class="btn-group" role="group" aria-label="Basic example">
+								<button type="button" class="btn btn-info"
+									onclick="location.href='${updateLink}';">Update</button>
+								<button type="button" class="btn btn-danger"
+									onclick="location.href='${deleteLink}';">Del</button>
+							</div>
+						</td>
 					</tr>
 				</c:forEach>
 			</c:if>

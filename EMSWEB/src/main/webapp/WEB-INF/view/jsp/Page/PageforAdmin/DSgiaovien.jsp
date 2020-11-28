@@ -32,7 +32,8 @@
 	href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css"
 	rel="stylesheet" type="text/css" />
 <!-- Daterange picker -->
-<link	href="../../../../../resources/bootstrap/css/daterangepicker-bs3.css"
+<link
+	href="../../../../../resources/bootstrap/css/daterangepicker-bs3.css"
 	rel="stylesheet" type="text/css" />
 <!-- Theme style -->
 <link href="../../../../../resources/bootstrap/css/AdminLTE.min.css"
@@ -109,11 +110,12 @@ th.image.sorting {
 							</div>
 
 							<div clas="form-group">
-								<label for="InputID">Image:</label> 
+								<label for="InputID">Image:</label>
 								<div class="custom-file">
-    								<input type="file" class="custom-file-input" name="files" id="InputImage">
-    								<label class="custom-file-label" for="InputImage">Choose file</label>
-							  	</div>								
+									<input type="file" class="custom-file-input" name="files"
+										id="InputImage"> <label class="custom-file-label"
+										for="InputImage">Choose file</label>
+								</div>
 							</div>
 							<div clas="form-group">
 								<label for="InputID">Email:</label>
@@ -150,8 +152,7 @@ th.image.sorting {
 							</div>
 							<div clas="form-group">
 								<label for="InputID">Phòng Ban:</label>
-								<form:select path="depart" class="form-control"
-									idxmlns="sel1">
+								<form:select path="depart" class="form-control" idxmlns="sel1">
 									<c:if test="${not empty Listdp}">
 										<c:forEach var="sp" items="${Listdp}">
 											<form:option value="${sp.name}" />
@@ -162,8 +163,7 @@ th.image.sorting {
 							</div>
 							<div clas="form-group">
 								<label for="InputID">Chức vụ</label>
-								<form:select path="role" class="custom-select"
-									idxmlns="sel1">
+								<form:select path="role" class="custom-select" idxmlns="sel1">
 									<c:if test="${not empty Listr}">
 										<c:forEach var="sp" items="${Listr}">
 											<option>${sp.roleName}</option>
@@ -188,7 +188,7 @@ th.image.sorting {
 	<!--Table  -->
 	<table id="table1" class="display">
 
-		<thead style="background-color: aqua;">
+		<thead style="background-color:#6699FF; ">
 			<tr>
 				<th>Mã GV</th>
 				<th>Tên GV</th>
@@ -226,8 +226,14 @@ th.image.sorting {
 						<td>${list.phone}</td>
 						<td>${list.address}</td>
 						<td>${list.salary}</td>
-						<td><a href="${updateLink}" class="btn btn-primary">Update</a>
-							<a href="${deleteLink}" class="btn btn-danger">Delete</a></td>
+						<td>
+							<div class="btn-group" role="group" aria-label="Basic example">
+								<button type="button" class="btn btn-info"
+									onclick="location.href='${updateLink}';">Update</button>
+								<button type="button" class="btn btn-danger"
+									onclick="location.href='${deleteLink}'; return confirm('Bạn có chắc muốn xóa');">Del</button>
+							</div>
+						</td>
 					</tr>
 				</c:forEach>
 			</c:if>

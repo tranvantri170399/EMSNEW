@@ -92,30 +92,30 @@
 									</div>
 									<form:input type="text" path="deviceName" class="form-control"
 										id="InputLastname" />
-									<div class="input-group-prepend">	
+									<div class="input-group-prepend">
 										<span Class="input-group-text">Số lượng</span>
-									</div>	
+									</div>
 									<form:input type="text" path="amount" class="form-control"
 										id="InputFirstname" />
-								</div>		
-									
+								</div>
+
 							</div>
-							
+
 							<div clas="form-group">
 								<label for="InputID">Tình Trạng:</label>
 								<form:input type="text" path="status" class="form-control"
 									id="InputEmail" />
-							</div>	
+							</div>
 							<div clas="form-group">
 								<label for="InputID">Giá Thành:</label>
 								<div class="input-group">
 									<form:input type="text" path="price" class="form-control"
-									id="InputEmail" />
+										id="InputEmail" />
 									<div class="input-group-prepend">
-										<span Class="input-group-text">.000 VNĐ</span>
+										<span Class="input-group-text">VNĐ</span>
 									</div>
-								</div>	
-							</div>					
+								</div>
+							</div>
 
 						</div>
 					</div>
@@ -140,7 +140,7 @@
 					<th>Tên Thiết Bị</th>
 					<th>Số lượng</th>
 					<th>Tình Trạng</th>
-					<th>Giá Thành</th>
+					<th>Giá Thành(VNĐ)</th>
 					<th>Action</th>
 				</tr>
 			</thead>
@@ -158,18 +158,20 @@
 							<c:param name="id" value="${sp.id}" />
 						</c:url>
 
-						
+
 						<tr style="color: red;">
-							<td class="gfgusername"><input style="color: red;border: none;width: 50px" name="idstaff"
-								value=" ${sp.id}"></td>
-							<td class="gfgpp"><input style="color: red;border: none;width: 80%" name="firstname"
-								value="${sp.deviceName}"></td>
+							<td class="gfgusername">>${sp.id}</td>
+							<td class="gfgpp">${sp.deviceName}</td>
 							<td class="gfgscores">${sp.amount}</td>
 							<td class="gfgarticles">${sp.status}</td>
 							<td class="gfgarticles">${sp.price}</td>
-							<td style="text-align: center;">
-								<a href="${updateLink}" >UPDATE</a>
-								<a href="${deleteLink}">DEL</a>
+							<td>
+								<div class="btn-group" role="group" aria-label="Basic example">
+									<button type="button" class="btn btn-info"
+										onclick="location.href='${updateLink}';">Update</button>
+									<button type="button" class="btn btn-danger"
+										onclick="location.href='${deleteLink}'; ">Del</button>
+								</div>
 
 							</td>
 						</tr>

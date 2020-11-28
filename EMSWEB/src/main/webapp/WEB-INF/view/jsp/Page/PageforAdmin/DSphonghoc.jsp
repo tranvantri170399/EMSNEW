@@ -51,8 +51,7 @@
 		$('#table1').DataTable();
 	});
 </script>
-
-<style type="text/css">
+    nnnhhhhhhhghghghghq3jjjjjjj
 #InputLastname {
 	border-color: red;
 }
@@ -152,12 +151,8 @@
 
 
 						<tr style="color: red;">
-							<td class="gfgusername"><input
-								style="color: red; border: none; width: 50px" name="idstaff"
-								value=" ${sp.id}"></td>
-							<td class="gfgpp"><input
-								style="color: red; border: none; width: 80%" name="firstname"
-								value="${sp.name}"></td>
+							<td class="gfgusername">${sp.id}</td>
+							<td class="gfgpp">${sp.name}</td>
 							<td class="gfgscores">${sp.schoolroomnumber}</td>
 							<td class="gfgscores">${sp.surfacearea}</td>
 							<td style="text-align: center;"><a href="${updateLink}">UPDATE</a>

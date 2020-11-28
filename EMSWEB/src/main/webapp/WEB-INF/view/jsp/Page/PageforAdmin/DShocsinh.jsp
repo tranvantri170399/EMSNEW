@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+s<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
@@ -285,8 +285,12 @@
 							<td>${list.phone}</td>
 							<td>${list.address}</td>
 							<td>${list.status}</td>
-							<td><a href="${updateLink}" class="btn btn-primary">Update</a>
-								<a href="${deleteLink}" class="btn btn-danger">Delete</a></td>
+							<td>
+								<div class="btn-group" role="group" aria-label="Basic example">
+  									<button type="button" class="btn btn-info" onclick="location.href='${updateLink}';">Update</button>
+  									<button type="button" class="btn btn-danger" onclick="location.href='${deleteLink}';">Del</button>
+								</div>
+							</td>
 						</tr>
 					</c:forEach>
 				</c:if>

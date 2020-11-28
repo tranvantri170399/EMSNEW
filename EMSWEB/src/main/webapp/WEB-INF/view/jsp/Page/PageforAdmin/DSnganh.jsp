@@ -153,9 +153,13 @@
 								value="${sp.name}"></td>
 							<td class="gfgscores">${sp.description}</td>
 							<td class="gfgscores">${sp.status}</td>
-							<td style="text-align: center;">
-								<a href="${updateLink}" >UPDATE</a>
-								<a href="${deleteLink}">DEL</a>
+							<td>
+							<div class="btn-group" role="group" aria-label="Basic example">
+								<button type="button" class="btn btn-info"
+									onclick="location.href='${updateLink}';">Update</button>
+								<button type="button" class="btn btn-danger"
+									onclick="location.href='${deleteLink}';">Del</button>
+							</div>
 							</td>
 						</tr>
 
