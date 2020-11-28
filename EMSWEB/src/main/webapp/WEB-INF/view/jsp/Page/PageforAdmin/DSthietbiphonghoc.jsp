@@ -87,7 +87,7 @@
 								readonly="readonly">
 
 						<div class="form-group">
-							<label for="exampleInputEmail">Tên Phòng Học</label>
+							<label for="exampleInputEmail">Tên Phòng Học:</label>
 
 							<form:select path="schoolroom" class="custom-select"
 								idxmlns="sel1">
@@ -99,7 +99,7 @@
 							</form:select>
 						</div>
 						<div class="form-group">
-							<label for="InputPhone">Tên Thiết Bị</label>
+							<label for="InputPhone">Tên Thiết Bị:</label>
 
 							<%-- 	<form:select path="device" classxmlxmlns="form-control"
 											idxmlns="sel1">
@@ -118,22 +118,22 @@
 								</select>
 						</div>
 						<div class="form-group">
-							<label for="InputPhone">Số Lượng</label>
+							<label for="InputPhone">Số Lượng:</label>
 							<form:input path="amount" value="${sp.amount}" type="text"
 								class="form-control" id="InputAddress" />
 						</div>
 					</div>
 					<div class="modal-footer">
 						<input type="submit" name="btnsave" class="btn btn-info"
-							value="SAVE">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							value="Lưu">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
 					</div>
 
 				</div>
 			</form:form>
 		</div>
 	</div>
-
+	<section>
 	<!--Table  -->
 	<form:form action="/save" modelAttribute="room">
 		<table id="table1" class="display">
@@ -170,9 +170,9 @@
 							<td>
 							<div class="btn-group" role="group" aria-label="Basic example">
 								<button type="button" class="btn btn-info"
-									onclick="location.href='${updateLink}';">Update</button>
+									onclick="location.href='${updateLink}';">Cập nhật</button>
 								<button type="button" class="btn btn-danger"
-									onclick="location.href='${deleteLink}'; ">Del</button>
+									onclick="location.href='${deleteLink}'; ">Xóa</button>
 							</div>
 						</tr>
 
@@ -185,7 +185,7 @@
 
 
 	</form:form>
-
+	</section>
 
 </body>
 </html>

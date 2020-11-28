@@ -182,7 +182,8 @@
 															</div>
 
 															<div Class="form-group">
-																<label Class="input-group-addon">Email:</label>> <input
+																<label for="InputID">Email:</label>
+																 <input
 																	type="text" name="emaill" class="form-control"
 																	id="InputFirstname" />
 															</div>

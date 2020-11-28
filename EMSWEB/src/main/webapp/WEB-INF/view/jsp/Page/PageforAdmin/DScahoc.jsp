@@ -67,8 +67,8 @@
 		</h1>
 		<ol class="breadcrumb">
 			<li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-			<li class="active">Quản lí </li>
-			<li class="active">Danh sách Ca Học</li>
+			<li class="active">Quản Lí Lịch Học </li>
+			<li class="active">Danh Sách Ca Học</li>
 		</ol>
 	</section>
 	<!--Modalthemnhanvien-->
@@ -89,19 +89,19 @@
 								<form:input type="hidden" path="id" />
 							</div>
 							<div Class="form-group">
-								<label for="InputName">Tên Ca Học</label>
+								<label for="InputName">Tên Ca Học:</label>
 								<form:input type="text" path="nameShift" class="form-control"
 									id="InputLastname" />
 							</div>
 
 							<div clas="form-group">
-								<label for="InputID">Thời Gian Bắt Đầu</label>
+								<label for="InputID">Thời Gian Bắt Đầu:</label>
 								<form:input type="time" path="startingTime"
 									class="form-control" id="InputEmail" />
 							</div>
 
 							<div clas="form-group">
-								<label for="InputID">Thời Gian Kết Thúc</label>
+								<label for="InputID">Thời Gian Kết Thúc:</label>
 								<div class="input-group">
 									<form:input type="time" path="endTime" class="form-control"
 										id="InputEmail" />
@@ -114,8 +114,8 @@
 					</div>
 					<div class="modal-footer">
 						<input type="submit" name="btnsave" class="btn btn-info"
-							value="SAVE">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							value="Lưu">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
 					</div>
 
 				</div>
@@ -127,7 +127,7 @@
 	<form:form action="/save" modelAttribute="room">
 		<table id="table1" class="display">
 
-			<thead style="background-color: aqua;">
+			<thead style="background-color:#4876FF ;color: white">
 				<tr>
 					<th>ID</th>
 					<th>Tên Ca Học</th>
@@ -160,8 +160,14 @@
 								value="${sp.nameShift}"></td>
 							<td class="gfgscores">${sp.startingTime}</td>
 							<td class="gfgscores">${sp.endTime}</td>
-							<td style="text-align: center;"><a href="${updateLink}">UPDATE</a>
-								<a href="${deleteLink}">DEL</a></td>
+							<td >
+							<div class="btn-group" role="group" aria-label="Basic example">
+								<button type="button" class="btn btn-info"
+									onclick="location.href='${updateLink}';">Cập nhật</button>
+								<button type="button" class="btn btn-danger"
+									onclick="location.href='${deleteLink}';">Xóa</button>
+							</div>
+							</td>							
 						</tr>
 
 					</c:forEach>

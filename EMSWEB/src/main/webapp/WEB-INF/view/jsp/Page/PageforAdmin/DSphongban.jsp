@@ -86,8 +86,8 @@ th.image.sorting {
 				enctype="multipart/form-data">
 				<div class="modal-content">
 					<div class="modal-header">
+						<h4 class="modal-title">Thêm Nhân Viên</h4>					
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Thêm Nhân Viên</h4>
 					</div>
 					<div class="modal-body">
 						<div>
@@ -115,7 +115,7 @@ th.image.sorting {
 			</form:form>
 		</div>
 	</div>
-
+	<section>
 	<!--Table  -->
 		<table id="table1" class="display">
 
@@ -123,7 +123,7 @@ th.image.sorting {
 				<tr>
 					<th>Mã</th>
 					<th>Tên Phòng</th>
-					<th>Actions</th>
+					<th></th>
 				</tr>
 			</thead>
 
@@ -148,9 +148,9 @@ th.image.sorting {
 							<td>
 							<div class="btn-group" role="group" aria-label="Basic example">
 								<button type="button" class="btn btn-info"
-									onclick="location.href='${updateLink}';">Update</button>
+									onclick="location.href='${updateLink}';">Cập nhật</button>
 								<button type="button" class="btn btn-danger"
-									onclick="location.href='${deleteLink}'; ">Del</button>
+									onclick="location.href='${deleteLink}'; ">Xóa</button>
 							</div>
 							</td>
 						</tr>
@@ -159,7 +159,7 @@ th.image.sorting {
 			</tbody>
 
 		</table>
-
+	</section>
 </body>
 
 </html>

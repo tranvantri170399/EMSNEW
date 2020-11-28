@@ -89,19 +89,19 @@
 								<form:input type="hidden" path="id" />
 							</div>
 							<div Class="form-group">
-								<label for="InputName">Tên Ngành</label>
+								<label for="InputName">Tên Ngành:</label>
 									<form:input type="text" path="name" class="form-control"
 										id="InputLastname" />
 							</div>
 							
-							<div clas="form-group">
-								<label for="InputID">Chú Thích</label>
+							<div class="form-group">
+								<label for="InputID">Chú Thích:</label>
 								<form:input type="text" path="description" class="form-control"
 									id="InputEmail" />
 							</div>	
 							
-							<div clas="form-group">
-								<label for="InputID">Trạng Thái</label>
+							<div class="form-group">
+								<label for="InputID">Trạng Thái:</label>
 								<form:input type="text" path="status" class="form-control"
 									id="InputEmail" />
 							</div>					
@@ -117,12 +117,12 @@
 			</form:form>
 		</div>
 	</div>
-
+	<section class="content">
 	<!--Table  -->
 	<form:form action="/save" modelAttribute="room">
 		<table id="table1" class="display">
 
-			<thead style="background-color: aqua;">
+			<thead style="background-color: #4876FF; color: white">
 				<tr>
 					<th>ID</th>
 					<th>Tên Ngành</th>
@@ -156,9 +156,9 @@
 							<td>
 							<div class="btn-group" role="group" aria-label="Basic example">
 								<button type="button" class="btn btn-info"
-									onclick="location.href='${updateLink}';">Update</button>
+									onclick="location.href='${updateLink}';">Cập nhật</button>
 								<button type="button" class="btn btn-danger"
-									onclick="location.href='${deleteLink}';">Del</button>
+									onclick="location.href='${deleteLink}';">Xóa</button>
 							</div>
 							</td>
 						</tr>
@@ -172,7 +172,7 @@
 
 
 	</form:form>
-
+</section>	
 
 </body>
 </html>

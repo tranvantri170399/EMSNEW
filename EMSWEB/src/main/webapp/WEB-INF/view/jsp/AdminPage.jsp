@@ -124,7 +124,7 @@
 							<li><a href="/DSmonhoc" target="frame"><i
 									class="fa fa-circle-o"></i>Danh Sách Môn</a></li>
 							<li><a href="/DSnganh" target="frame"><i
-									class="fa fa-circle-o"></i>Danh Sách Ngành</a></li>
+									class="fa fa-circle-o"></i>Danh Sách Chuyên Ngành</a></li>
 							<li><a href="/DShocki" target="frame"><i
 									class="fa fa-circle-o"></i>Danh Sách Học Kì</a></li>
 							<li><a href="/DSmonhockihoc" target="frame"><i

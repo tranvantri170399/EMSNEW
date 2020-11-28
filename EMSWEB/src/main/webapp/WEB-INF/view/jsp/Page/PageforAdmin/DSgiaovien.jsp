@@ -65,7 +65,7 @@ th.image.sorting {
 <body>
 	<section class="content-header">
 		<h1>
-			Quản Lí Giáo Viên
+			Danh Sách Giáo Viên
 			<button type="button" class="btn btn-primary" data-toggle="modal"
 				data-target="#myModal">Thêm Giáo Viên</button>
 		</h1>
