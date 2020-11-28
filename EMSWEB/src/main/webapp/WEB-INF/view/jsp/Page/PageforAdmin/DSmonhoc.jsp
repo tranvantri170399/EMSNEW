@@ -67,14 +67,14 @@ th.image.sorting {
 <body>
 	<section class="content-header">
 		<h1>
-			Thêm Mới Giáo Viên
+			Danh Sách Môn Học
 			<button type="button" class="btn btn-info" data-toggle="modal"
-				data-target="#myModal">Thêm nhân viên</button>
+				data-target="#myModal">Thêm Môn Học</button>
 		</h1>
 		<ol class="breadcrumb">
 			<li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-			<li class="active">Quản lí nhân viên</li>
-			<li class="active">Danh sách Nhân Viên</li>
+			<li class="active">Quản Lí Lịch Học</li>
+			<li class="active">Danh sách Môn Học</li>
 		</ol>
 	</section>
 	<!--Modalthemnhanvien-->
@@ -91,15 +91,14 @@ th.image.sorting {
 					</div>
 					<div class="modal-body">
 						<div>
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">Mã Ngành:</label>
 								<form:input type="text" path="id" class="form-control" id="name" />
 							</div>
 						</div>
-						<div clas="form-group">
-							<label for="InputID">Chuyên ngành</label>
-							<form:select path="majors" class="custom-select"
-								idxmlns="sel1">
+						<div class="form-group">
+							<label for="InputID">Chuyên ngành:</label>
+							<form:select path="majors" class="custom-select" idxmlns="sel1">
 								<c:if test="${not empty Listmj}">
 									<c:forEach var="sp" items="${Listmj}">
 										<option>${sp.name}</option>
@@ -108,21 +107,21 @@ th.image.sorting {
 							</form:select>
 						</div>
 						<div>
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">Tên môn học:</label>
-								<form:input type="text" path="subjectname"
-									class="form-control" id="name" />
+								<form:input type="text" path="subjectname" class="form-control"
+									id="name" />
 							</div>
 						</div>
 						<div>
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">Chú thích môn:</label>
-								<form:input type="text" path="description"
-									class="form-control" id="name" />
+								<form:input type="text" path="description" class="form-control"
+									id="name" />
 							</div>
 						</div>
 						<div>
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">Trạng thái:</label>
 								<form:input type="text" path="status" class="form-control"
 									id="name" />
@@ -131,8 +130,8 @@ th.image.sorting {
 					</div>
 					<div class="modal-footer">
 						<input type="submit" name="btnsave" class="btn btn-info"
-							value="SAVE">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							value="Lưu">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
 					</div>
 
 				</div>
@@ -143,7 +142,7 @@ th.image.sorting {
 	<!--Table  -->
 	<table id="table1" class="display">
 
-		<thead style="background-color: aqua;">
+		<thead style="background-color:#4876FF ;color: white">
 			<tr>
 				<th>Mã</th>
 				<th>Chuyên Ngành</th>
@@ -175,8 +174,14 @@ th.image.sorting {
 						<td>${list.subjectname}</td>
 						<td>${list.description}</td>
 						<td>${list.status}</td>
-						<td><a href="${updateLink}" class="btn btn-primary">Update</a>
-							<a href="${deleteLink}" class="btn btn-danger">Delete</a></td>
+						<td>
+							<div class="btn-group" role="group" aria-label="Basic example">
+								<button type="button" class="btn btn-info"
+									onclick="location.href='${updateLink}';">Cập Nhật</button>
+								<button type="button" class="btn btn-danger"
+									onclick="location.href='${deleteLink}';">Xóa</button>
+							</div>
+						</td>
 					</tr>
 				</c:forEach>
 			</c:if>

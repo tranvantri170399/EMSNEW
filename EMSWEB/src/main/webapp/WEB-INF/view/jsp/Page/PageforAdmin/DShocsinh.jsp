@@ -61,14 +61,14 @@
 <body>
 	<section class="content-header">
 		<h1>
-			Danh Sách Nhân Viên
+			Danh Sách Sinh Viên
 			<button type="button" class="btn btn-info" data-toggle="modal"
-				data-target="#myModal">Thêm nhân viên</button>
+				data-target="#myModal">Thêm Sinh Viên</button>
 		</h1>
 		<ol class="breadcrumb">
 			<li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-			<li class="active">Quản lí nhân viên</li>
-			<li class="active">Danh sách Nhân Viên</li>
+			<li class="active">Quản Lí Sinh Viên</li>
+			<li class="active">Danh Sách Sinh Viên</li>
 		</ol>
 	</section>
 
@@ -83,7 +83,7 @@
 
 							<!-- Modal Header -->
 							<div class="modal-header">
-								<h4 class="modal-title">ĐĂNG NHẬP & ĐĂNG KÝ TÀI KHOẢN</h4>
+								<h4 class="modal-title">Đăng ký sinh viên</h4>
 								<button type="button" class="close" data-dismiss="modal">&times;</button>
 							</div>
 
@@ -128,12 +128,12 @@
 															</div>
 
 															<div class="form-group">
-																<label for="InputID">Ngày sinh</label>
+																<label for="InputID">Ngày sinh:</label>
 																<form:input type="date" path="dob" class="form-control"
 																	id="InputDob" min="1980-1-1" max="2020-12-31" />
 															</div>
 															<div class="form-group">
-																<label for="InputID">Số Điện Thoại</label>
+																<label for="InputID">Số Điện Thoại:</label>
 																<form:input type="text" path="phone"
 																	class="form-control" id="InputPhone" />
 															</div>
@@ -182,35 +182,36 @@
 															</div>
 
 															<div Class="form-group">
-																<label Class="input-group-addon">Email</label>> <input
+																<label for="InputID">Email:</label>
+																 <input
 																	type="text" name="emaill" class="form-control"
 																	id="InputFirstname" />
 															</div>
 
 															<div class="form-group">
-																<label for="InputID">Ngày sinh</label> <input
+																<label for="InputID">Ngày sinh:</label> <input
 																	type="date" name="dobb" class="form-control"
 																	id="InputDob" min="1980-1-1" max="2020-12-31" />
 															</div>
 
 															<div Class="form-group">
-																<label>Phone</label>> <input type="text" name="phonee"
+																<label>Phone:</label>> <input type="text" name="phonee"
 																	class="form-control" />
 															</div>
 
 															<div Class="form-group">
-																<label>Địa chỉ</label>> <input type="text"
+																<label>Địa chỉ:</label>> <input type="text"
 																	name="addresss" class="form-control" />
 															</div>
 
 															<div Class="form-group">
-																<span Class="input-group-addon">Tình trạng<dspan>
+																<span Class="input-group-addon">Tình trạng:<dspan>
 																	<input type="text" name="statuss" class="form-control" />
 															</div>
 
 															<div Class="form-group">
-																<label>Quan hệ:</label> 
-																<select class="custom-select" name="relationshipp">
+																<label>Quan hệ:</label> <select class="custom-select"
+																	name="relationshipp">
 																	<option value="Ba">Ba</option>
 																	<option value="Me">Mẹ</option>
 																	<option value="Anh/Chi">Anh/Chị</option>
@@ -231,7 +232,7 @@
 							<!-- Modal footer -->
 							<div class="modal-footer">
 								<input type="submit" name="btnsave" class="btn btn-info"
-									value="SAVE">
+									value="Lưu">
 								<button type="button" class="btn btn-primary"
 									data-dismiss="modal">Hủy</button>
 							</div>
@@ -248,17 +249,26 @@
 	<!--Table  -->
 	<form:form action="/save" modelAttribute="student">
 		<table id="table1" class="display">
-
-			<thead style="background-color: aqua;">
+			<colgroup>
+				<col span="1" style="width: 5%;">
+				<col span="1" style="width: 15%;">
+				<col span="1" style="width: 14%;">
+				<col span="1" style="width: 11%;">
+				<col span="1" style="width: 10%;">
+				<col span="1" style="width: 19%;">
+				<col span="1" style="width: 10%;">
+				<col span="1" style="width: 14%;">
+			</colgroup>
+			<thead style="background-color: #4876FF; color: white">
 				<tr>
-					<th>ID</th>
-					<th>Name</th>
+					<th>Mã</th>
+					<th>Họ Tên</th>
 					<th>Email</th>
 					<th>Ngày sinh</th>
 					<th>Số điện thoại</th>
 					<th>Địa chỉ</th>
-					<th>status</th>
-					<th>Action</th>
+					<th>Trạng thái</th>
+					<th></th>
 				</tr>
 			</thead>
 
@@ -285,8 +295,14 @@
 							<td>${list.phone}</td>
 							<td>${list.address}</td>
 							<td>${list.status}</td>
-							<td><a href="${updateLink}" class="btn btn-primary">Update</a>
-								<a href="${deleteLink}" class="btn btn-danger">Delete</a></td>
+							<td class="class">
+								<div class="btn-group" role="group" aria-label="Basic example">
+									<button type="button" class="btn btn-info"
+										onclick="location.href='${updateLink}';">Cập nhật</button>
+									<button type="button" class="btn btn-danger"
+										onclick="location.href='${deleteLink}';">Xóa</button>
+								</div>
+							</td>
 						</tr>
 					</c:forEach>
 				</c:if>
