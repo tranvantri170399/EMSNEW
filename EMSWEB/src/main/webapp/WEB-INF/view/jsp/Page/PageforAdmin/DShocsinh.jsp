@@ -54,25 +54,30 @@
 
 <script>
 function validate() {
+	//Sinh viên
     var lastnameSt = document.myform.InputLastnameSt.value;
     var firstnameSt = document.myform.InputFirstnameSt.value;
     var emailSt = document.myform.InputEmailSt.value;
     var phoneSt = document.myform.InputPhoneSt.value;
     var dobSt = document.myform.InputDobSt.value;
+    var addressSt= document.myform.InputAddressSt.value;
+    var statusSt = document.myform.InputStatusSt.value;
     
+    //Định dạng form
     var regExp = /^(0[234][0-9]{8}|1[89]00[0-9]{4})$/;
-    var atposition = emailSt.indexOf("@");
-    var dotposition = emailSt.lastIndexOf(".");
+    var atpositionSt = emailSt.indexOf("@");
+    var dotpositionSt = emailSt.lastIndexOf(".");
+
     
     var status = false;
 
     if (lastnameSt.length == 0) {
         document.getElementById("checkNameSt").innerHTML = 
-            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập họ!</span> ";
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Họ!</span> ";
         status = false;
     }else if(firstnameSt.length == 0){
     	document.getElementById("checkNameSt").innerHTML = 
-            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập tên!</span> ";
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Tên!</span> ";
         status = false;
     }else{
     	document.getElementById("checkNameSt").innerHTML = 
@@ -80,12 +85,12 @@ function validate() {
     	status = true;
     }
     
-	if(emailSt.length==0){
+	if(emailSt.length < 1){
 		document.getElementById("checkEmailSt").innerHTML = 
             " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Email!</span> ";
         status = false;
-	}else if(atposition < 1 || dotposition < (atposition + 2)
-            || (dotposition + 2) >= emailSt.length){
+	}else if(atpositionSt < 1 || dotpositionSt < (atpositionSt + 2)
+            || (dotpositionSt + 2) >= emailSt.length){
 		document.getElementById("checkEmailSt").innerHTML = 
             " <span class='fas fa-window-close' style='color:red;'>Email không đúng định dạng!</span> ";
         status = false;
@@ -93,7 +98,6 @@ function validate() {
 	else{
 		document.getElementById("checkEmailSt").innerHTML = 
             " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
-    	status = true;
 	}
 	
 	if(phoneSt.length==0){
@@ -112,19 +116,125 @@ function validate() {
 	}else{
 		document.getElementById("checkPhoneSt").innerHTML = 
             " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
-    	status = true;
 	}
 	
 	if(dobSt.length < 1){
-		ocument.getElementById("checkDobSt").innerHTML = 
+		document.getElementById("checkDobSt").innerHTML = 
             " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Ngày sinh!</span> ";
         status = false;
 	}else{
 		document.getElementById("checkDobSt").innerHTML = 
             " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
-    	status = true;
 	}
 
+	if(statusSt.length<1){
+		document.getElementById("checkStatusSt").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Trạng thái!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkStatusSt").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	if(addressSt.length<1){
+		document.getElementById("checkAddressSt").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Địa chỉ!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkAddressSt").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	//Phụ huynh
+	var lnamePr = document.myform.InputLastnamePr.value;
+	var fnamePr = document.myform.InputFirstnamePr.value;
+	var emailPr = document.myform.InputEmailPr.value;
+	var dobPr = document.myform.InputDobPr.value;
+	var phonePr = document.myform.InputPhonePr.value;
+	var addressPr = document.myform.InputAddressPr.value;
+	var statusPr = document.myform.InputStatusPr.value;
+	
+	//Định dạng form
+	var atpositionPr = emailPr.indexOf("@");
+    var dotpositionPr = emailPr.lastIndexOf(".");
+	if(lnamePr.length <1){
+		document.getElementById("checkNamePr").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Họ!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkNamePr").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	if(fnamePr.length <1){
+		document.getElementById("checkNamePr").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Tên!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkNamePr").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+
+	if(emailPr.length==0){
+		document.getElementById("checkEmailPr").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Email!</span> ";
+        status = false;
+	}else if(atpositionPr < 1 || dotpositionPr < (atpositionPr + 2)
+            || (dotpositionPr + 2) >= emailPr.length){
+		document.getElementById("checkEmailPr").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Email không đúng định dạng!</span> ";
+        status = false;
+	}
+	else{
+		document.getElementById("checkEmailPr").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	if(dobPr.length < 1){
+		document.getElementById("checkDobPr").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Ngày sinh!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkDobPr").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	if(phonePr.length==0){
+		document.getElementById("checkPhonePr").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Số điện thoại!</span> ";
+        status = false;
+	}else if(phonePr.length < 9 ||phonePr.length > 13 ) {
+		if(regExp.test(phonePr)){
+			document.getElementById("checkPhonePr").innerHTML = 
+	            " <span class='fa fa-check-square' style='color:#3FFF00;'></span> ";
+		}else{
+		document.getElementById("checkPhonePr").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Số điện không đúng định dạng!</span> ";
+        status = false;
+		}
+	}else{
+		document.getElementById("checkPhonePr").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	if(addressPr.length<1){
+		document.getElementById("checkAddressPr").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Địa chỉ!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkAddressPr").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	if(statusPr.length<1){
+		document.getElementById("checkStatusPr").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Trạng thái!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkStatusPr").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
     return status;
 }
 </script>
@@ -217,15 +327,17 @@ function validate() {
 															</div>
 															<div class="form-group">
 																<label for="InputID">Địa chỉ:</label>
-																<form:input path="address" class="form-control" />
+																<form:input path="address" class="form-control" id="InputAddressSt"/>
+																<span id="checkAddressSt"></span>
 															</div>
 
 															<div class="form-group">
 																<label for="InputID">Trạng Thái:</label>
-																<form:input path="status" class="form-control" />
+																<form:input path="status" class="form-control" id="InputStatusSt"/>
+																<span id="checkStatusSt"></span>
 															</div>
 															
-															<div clas="form-group">
+															<div class="form-group">
 																<label for="InputID">Lớp Học</label>
 																<select name="classroomname" class="custom-select" id="sel1">
 																	<c:if test="${not empty Listsl}">
@@ -257,12 +369,13 @@ function validate() {
 																	<div class="input-group-prepend">
 																		<span Class="input-group-text">Họ</span>
 																	</div>
-																	<input type="text" name="lnamee" class="form-control" />
+																	<input type="text" name="lnamee" class="form-control" id="InputLastnamePr"/>
 																	<div class="input-group-prepend">
 																		<span Class="input-group-text">Tên</span>
 																	</div>
-																	<input type="text" name="fnamee" class="form-control" />
+																	<input type="text" name="fnamee" class="form-control" id="InputFirstnamePr"/>
 																</div>
+																<span id="checkNamePr"></span>
 															</div>
 
 															<div class="form-group">
@@ -274,29 +387,32 @@ function validate() {
 																<label for="InputID">Email:</label>
 																 <input
 																	type="text" name="emaill" class="form-control"
-																	id="InputFirstname" />
+																	id="InputEmailPr" />
+																	<span id="checkEmailPr"></span>
 															</div>
 
 															<div class="form-group">
 																<label for="InputID">Ngày sinh:</label> <input
 																	type="date" name="dobb" class="form-control"
-																	id="InputDob" min="1980-1-1" max="2020-12-31" />
-																	<span id="checkBobSt"></span>
+																	id="InputDobPr" min="1980-1-1" max="2020-12-31" />
+																	<span id="checkDobPr"></span>
 															</div>
 
 															<div Class="form-group">
-																<label>Phone:</label>> <input type="text" name="phonee"
-																	class="form-control" />
+																<label>Số điện thoại:</label> <input type="text" name="phonee"
+																	class="form-control" id="InputPhonePr"/>
+																	<span id="checkPhonePr"></span>															</div>
+
+															<div Class="form-group">
+																<label>Địa chỉ:</label> <input type="text"
+																	name="addresss" class="form-control" id="InputAddressPr"/>
+																	<span id="checkAddressPr"></span>
 															</div>
 
 															<div Class="form-group">
-																<label>Địa chỉ:</label>> <input type="text"
-																	name="addresss" class="form-control" />
-															</div>
-
-															<div Class="form-group">
-																<span Class="input-group-addon">Tình trạng:<dspan>
-																	<input type="text" name="statuss" class="form-control" />
+																<label Class="input-group-addon">Tình trạng:</label>
+																	<input type="text" name="statuss" class="form-control" id="InputStatusPr"/>
+																	<span id="checkStatusPr"></span>
 															</div>
 
 															<div Class="form-group">
