@@ -141,6 +141,10 @@ function validate() {
 		document.getElementById("checkLevel").innerHTML = 
             " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Cấp độ!</span> ";
         status = false;
+	}else if(!levelNv.match(/^\d+/)){
+		document.getElementById("checkLevel").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Cấp độ chỉ được nhập số!</span> ";
+        status = false;
 	}else{
 		document.getElementById("checkLevel").innerHTML = 
             " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
@@ -148,6 +152,10 @@ function validate() {
     if(salaryNv.length<1){
 		document.getElementById("checkSalary").innerHTML = 
             " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Lương!</span> ";
+        status = false;
+	}else if(!salaryNv.match(/^\d+/)){
+		document.getElementById("checkSalary").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Lương chỉ được nhập số!</span> ";
         status = false;
 	}else{
 		document.getElementById("checkSalary").innerHTML = 
