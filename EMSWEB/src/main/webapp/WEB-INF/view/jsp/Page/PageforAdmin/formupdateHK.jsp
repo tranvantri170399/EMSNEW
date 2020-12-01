@@ -41,6 +41,55 @@
 <link href="../../../../../resources/bootstrap/css/_all-skins.min.css"
 	rel="stylesheet" type="text/css" />
 
+<script type="text/javascript">
+function validate(){
+	var name = document.myform.InputName.value;
+	var dSt = document.myform.InputDSt.value;
+	var dEnd = document.myform.InputDEnd.value;
+	var statusCk = document.myform.InputStatus.value;
+	
+	var status = false;
+	
+	if(name.length < 1){
+		document.getElementById("checkName").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Tên học kỳ!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkName").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+            status = true;
+	}
+	
+	if(dSt.length < 1){
+		document.getElementById("checkDSt").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Ngày bắt đầu!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkDSt").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	if(dEnd.length < 1){
+		document.getElementById("checkDEnd").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Ngày kết thúc!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkDEnd").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	if(statusCk.length<1){
+		document.getElementById("checkStatus").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Trạng thái!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkStatus").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	return status;
+}
+</script>
 
 </head>
 <body>
@@ -48,9 +97,9 @@
 		<h1>LÍ LỊCH</h1>
 		<ol class="breadcrumb">
 			<li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-			<li class="active">Quản lí nhân viên</li>
-			<li class="active">Danh sách sinh viên</li>
-			<li class="active">Cập nhật nhân viên</li>
+			<li class="active">Quản Lí Sinh Viên</li>
+			<li class="active">Danh Sách Học Kỳ</li>
+			<li class="active">Cập Nhật Học Kỳ</li>
 		</ol>
 	</section>
 
@@ -61,7 +110,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<form:form action="/newSemester" modelAttribute="semester"
-					enctype="multipart/form-data">
+					enctype="multipart/form-data" onsubmit="return validate()" name="myform">
 					<div class="box box-primary">
 						<!-- 						<img src="../../../../../resources/FileUpload/tri1703.jpg" name=""
 							style="width: 200px; height: 200px;"> -->
@@ -78,24 +127,28 @@
 									<div class="form-group">
 										<label for="InputPhone">Tên học kì</label>
 										<form:input path="name" value="${sp.name}" type="text"
-											class="form-control" id="InputPhone" />
+											class="form-control" id="InputName" />
+											<span id="checkName"></span>
 									</div>
 										<div class="form-group">
 										<label for="InputDob">Thời gian bắt đàu học kì</label>
 										<form:input path="starttime" type="date" class="form-control"
-											id="InputDob" min="1980-1-1" max="2020-12-31"
+											id="InputDSt" min="1980-1-1" max="2020-12-31"
 											value="${sp.starttime}" />
+											<span id="checkDSt"></span>
 									</div>
 									<div class="form-group">
 										<label for="InputDob">Thời gian kết thúc</label>
 										<form:input path="endtime" type="date" class="form-control"
-											id="InputDob" min="1980-1-1" max="2020-12-31"
+											id="InputDEnd" min="1980-1-1" max="2020-12-31"
 											value="${sp.endtime}" />
+											<span id="checkDEnd"></span>
 									</div>
 									<div class="form-group">
 										<label for="InputID">Trạng thái</label>
 										<form:input path="status" value="${sp.status}"
-											class="form-control" />
+											class="form-control" id="InputStatus" />
+											<span id="checkStatus"></span>
 									</div>
 							</c:forEach>
 						</c:if>

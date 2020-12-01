@@ -45,7 +45,66 @@
 <link href="../../../../../resources/bootstrap/css/_all-skins.min.css"
 	rel="stylesheet" type="text/css" />
 
-
+<script type="text/javascript">
+function validate(){
+	var id = document.myform.id.value;
+	var name = document.myform.name.value;
+	var dSt = document.myform.InputDSt.value;
+	var dEnd = document.myform.InputDEnd.value;
+	var statusCk = document.myform.InputStatus.value;
+	
+	var status = false;
+	
+	if(id.length < 1){
+		document.getElementById("checkId").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Mã học kì!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkId").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+    	status = true;
+	}
+	
+	if(name.length < 1){
+		document.getElementById("checkName").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Tên học kỳ!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkName").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	if(dSt.length < 1){
+		document.getElementById("checkDSt").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Ngày bắt đầu!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkDSt").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	if(dEnd.length < 1){
+		document.getElementById("checkDEnd").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Ngày kết thúc!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkDEnd").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	if(statusCk.length<1){
+		document.getElementById("checkStatus").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Trạng thái!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkStatus").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	
+	return status;
+}
+</script>
 
 <script>
 	$(document).ready(function() {
@@ -83,7 +142,7 @@ th.image.sorting {
 
 			<!-- Modal content-->
 			<form:form action="/newSemester" modelAttribute="semester"
-				enctype="multipart/form-data">
+				enctype="multipart/form-data" onsubmit="return validate()" name="myform">
 				<div class="modal-content">
 					<div class="modal-header">
 						<h4 class="modal-title">Thêm Học Kỳ</h4>					
@@ -92,37 +151,42 @@ th.image.sorting {
 					<div class="modal-body">
 						<div>
 							<div class="form-group">
-								<label for="InputID">Mã Ngành:</label>
-								<form:input type="text" path="id" class="form-control" id="name" />
+								<label for="InputID">Mã học kỳ:</label>
+								<form:input type="text" path="id" class="form-control" id="id" />
+								<span id="checkId"></span>
 							</div>
 						</div>
 						
 						<div>
 							<div class="form-group">
-								<label for="InputID">Tên Ngành:</label>
+								<label for="InputID">Tên học kỳ:</label>
 								<form:input type="text" path="name" class="form-control" id="name" />
+								<span id="checkName"></span>
 							</div>
 						</div>
 		
 						<div>
 							<div class="form-group">
-								<label for="InputID">Ngày sinh:</label>
+								<label for="InputID">Ngày bắt đầu:</label>
 								<form:input type="date" path="starttime" class="form-control"
-									id="InputDob" min="1980-1-1" max="2020-12-31" />
+									id="InputDSt" min="1980-1-1" max="2020-12-31" />
+									<span id="checkDSt"></span>
 							</div>
 						</div>
 						<div>
 							<div class="form-group">
-								<label for="InputID">Ngày sinh:</label>
+								<label for="InputID">Ngày kết thúc:</label>
 								<form:input type="date" path="endtime" class="form-control"
-									id="InputDob" min="1980-1-1" max="2020-12-31" />
+									id="InputDEnd" min="1980-1-1" max="2020-12-31" />
+									<span id="checkDEnd"></span>
 							</div>
 						</div>
 						<div>
 							<div class="form-group">
 								<label for="InputID">Trạng thái:</label>
 								<form:input type="text" path="status" class="form-control"
-									id="name" />
+									id="InputStatus" />
+									<span id="checkStatus"></span>
 							</div>
 						</div>
 					</div>
