@@ -44,7 +44,45 @@
 <link href="../../../../../resources/bootstrap/css/_all-skins.min.css"
 	rel="stylesheet" type="text/css" />
 
-
+<script type="text/javascript">
+function validate(){
+	var name = document.myform.InputLastname.value;
+	var noteCk = document.myform.InputNote.value;
+	var statusCk = document.myform.InputStatus.value;
+	
+	var status = false;
+	
+	if(name.length < 1){
+		document.getElementById("checkName").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Tên chuyên ngành!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkName").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+		status = true;
+	}
+	
+	if(noteCk.length < 1){
+		document.getElementById("checkNote").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Chú thích!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkNote").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	if(statusCk.length < 1){
+		document.getElementById("checkStatus").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Trạng thái!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkStatus").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	return status;
+}
+</script>
 
 <script>
 	$(document).ready(function() {
@@ -53,9 +91,7 @@
 </script>
 
 <style type="text/css">
-#InputLastname {
-	border-color: red;
-}
+
 </style>
 </head>
 <body>
@@ -76,7 +112,7 @@
 		<div class="modal-dialog">
 
 			<!-- Modal content-->
-			<form:form action="/save/major" modelAttribute="major">
+			<form:form action="/save/major" modelAttribute="major" onsubmit="return validate()" name="myform">
 				<div class="modal-content">
 					<div class="modal-header">
 						<h4 class="modal-title">Thêm Chuyên Ngành</h4>
@@ -92,18 +128,21 @@
 								<label for="InputName">Tên Ngành:</label>
 									<form:input type="text" path="name" class="form-control"
 										id="InputLastname" />
+										<span id="checkName"></span>
 							</div>
 							
 							<div class="form-group">
 								<label for="InputID">Chú Thích:</label>
 								<form:input type="text" path="description" class="form-control"
-									id="InputEmail" />
+									id="InputNote" />
+									<span id="checkNote"></span>
 							</div>	
 							
 							<div class="form-group">
 								<label for="InputID">Trạng Thái:</label>
 								<form:input type="text" path="status" class="form-control"
-									id="InputEmail" />
+									id="InputStatus" />
+									<span id="checkStatus"></span>
 							</div>					
 						</div>
 					</div>
