@@ -162,7 +162,7 @@ th.image.sorting {
 						<td>${list.name}</td>
 						<td>${list.description}</td>
 						<td>${list.status}</td>
-<%-- 						<td>${list.marjorID}</td> --%>						
+						<td>${list.marjorID}</td>						
 						<td>
 							<div class="btn-group" role="group" aria-label="Basic example">
 								<button type="button" class="btn btn-info"

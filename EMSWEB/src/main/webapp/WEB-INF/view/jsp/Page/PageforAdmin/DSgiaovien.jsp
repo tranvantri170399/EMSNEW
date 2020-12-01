@@ -50,12 +50,131 @@
 		$('#table1').DataTable();
 	});
 </script>
-
-<style type="text/css">
-#InputLastname {
-	border-color: red;
+<script>
+function validate() {
+	var lastname = document.myform.InputLastname.value;
+	var firstname = document.myform.InputFirstname.value;
+	var email = document.myform.InputEmail.value;
+	var dob = document.myform.InputDob.value;
+	var phone = document.myform.InputPhone.value;
+	var address = document.myform.InputAddress.value;
+	var statusCheck = document.myform.InputStatus.value;
+	var level = document.myform.InputLevel.value;
+	var salary = document.myform.InputSalary.value;
+	
+	var regExp = /^(0[234][0-9]{8}|1[89]00[0-9]{4})$/;
+    var atposition = email.indexOf("@");
+    var dotposition = email.lastIndexOf(".");
+    
+	var status = false;
+	
+	if (lastname.length < 1) {
+        document.getElementById("checkName").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Họ!</span> ";
+        status = false;
+    }else if(firstname.length < 1){
+    	document.getElementById("checkName").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Tên!</span> ";
+        status = false;
+    }else{
+    	document.getElementById("checkName").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+    	status = true;
+    }
+	
+	if(email.length < 1){
+		document.getElementById("checkEmail").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Email!</span> ";
+        status = false;
+	}else if(atposition < 1 || dotposition < (atposition + 2)
+            || (dotposition + 2) >= email.length){
+		document.getElementById("checkEmail").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Email không đúng định dạng!</span> ";
+        status = false;
+	}
+	else{
+		document.getElementById("checkEmail").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	if(dob.length < 1){
+		document.getElementById("checkDob").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Ngày sinh!</span> ";
+		status = false;
+	}else{
+		document.getElementById("checkDob").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	if(phone.length < 1){
+		document.getElementById("checkPhone").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Số điện thoại!</span> ";
+        status = false;
+	}else if(phone.length < 9 ||phone.length > 13 ) {
+		if(regExp.test(phone)){
+			document.getElementById("checkPhone").innerHTML = 
+	            " <span class='fa fa-check-square' style='color:#3FFF00;'></span> ";
+		}else{
+		document.getElementById("checkPhone").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Số điện không đúng định dạng!</span> ";
+        status = false;
+		}
+	}else{
+		document.getElementById("checkPhone").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	if(address.length<1){
+		document.getElementById("checkAddress").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Địa chỉ!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkAddress").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	if(statusCheck.length<1){
+		document.getElementById("checkStatus").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Trạng thái!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkStatus").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	if(level.length<1){
+		document.getElementById("checkLevel").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Cấp độ!</span> ";
+        status = false;
+	}else if(!level.match(/^\d+/)){
+		document.getElementById("checkLevel").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Cấp độ chỉ được nhập số!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkLevel").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	if(salary.length<1){
+		document.getElementById("checkSalary").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Lương!</span> ";
+        status = false;
+	}else if(!salary.match(/^\d+/)){
+		document.getElementById("checkSalary").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Lương chỉ được nhập số!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkSalary").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	return status;
+	
 }
 
+</script>
+
+<style type="text/css">
 th.image.sorting {
 	width: 50px;
 }
@@ -81,7 +200,7 @@ th.image.sorting {
 
 			<!-- Modal content-->
 			<form:form action="/newTeacher" modelAttribute="teacherNew"
-				enctype="multipart/form-data">
+				enctype="multipart/form-data" onsubmit="return validate()" name="myform">
 				<div class="modal-content">
 					<div class="modal-header">
 						<h4 class="modal-title">Thêm Nhân Viên</h4>
@@ -107,6 +226,7 @@ th.image.sorting {
 									<form:input type="text" path="fname" class="form-control"
 										id="InputFirstname" />
 								</div>
+								<span id="checkName"></span>
 							</div>
 
 							<div class="form-group">
@@ -121,34 +241,41 @@ th.image.sorting {
 								<label for="InputID">Email:</label>
 								<form:input type="text" path="email" class="form-control"
 									id="InputEmail" />
+									<span id="checkEmail"></span>
 							</div>
 
 							<div class="form-group">
 								<label for="InputID">Ngày sinh</label>
 								<form:input type="date" path="dob" class="form-control"
 									id="InputDob" min="1980-1-1" max="2020-12-31" />
+									<span id="checkDob"></span>
 							</div>
 							<div class="form-group">
 								<label for="InputID">Số Điện Thoại</label>
 								<form:input type="text" path="phone" class="form-control"
 									id="InputPhone" />
+									<span id="checkPhone"></span>
 							</div>
 							<div class="form-group">
 								<label for="InputID">Địa chỉ:</label>
 								<form:input type="text" path="address" class="form-control"
 									id="InputAddress" />
+									<span id="checkAddress"></span>
 							</div>
 							<div class="form-group">
 								<label for="InputID">Trạng Thái:</label>
-								<form:input path="status" class="form-control" />
+								<form:input path="status" class="form-control" id="InputStatus"/>
+								<span id="checkStatus"></span>
 							</div>
 							<div class="form-group">
 								<label for="InputID">Cấp độ:</label>
-								<form:input path="level" class="form-control" />
+								<form:input path="level" class="form-control" id="InputLevel"/>
+								<span id="checkLevel"></span>
 							</div>
 							<div class="form-group">
 								<label for="InputID">Lương</label>
-								<form:input path="salary" class="form-control" />
+								<form:input path="salary" class="form-control" id="InputSalary"/>
+								<span id="checkSalary"></span>
 							</div>
 							<div class="form-group">
 								<label for="InputID">Phòng Ban:</label>

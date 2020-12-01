@@ -51,7 +51,8 @@
 		$('#table1').DataTable();
 	});
 </script>
-
+nnnhhhhhhhghghghghq3jjjjjjj #InputLastname { border-color: red; }
+</style>
 </head>
 <body>
 	<section class="content-header">

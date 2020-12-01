@@ -154,12 +154,5 @@ public class scheduleController {
 		model.addAttribute("List",lists);
 		return "/jsp/Page/PageforAdmin/DSlichhoc";
 	}
-	/*---------------------------------------------------------------------------------*/
-	/*schedule*/
-	@RequestMapping(value = { "/DSKhoahocchitiet" })
-	public String loadDSKhoahocchitiet(Model model, @ModelAttribute("course") Course course) {
-		List<Course> list= courseResponsitory.findAll();
-		model.addAttribute("List",list);
-		return "/jsp/Page/PageforAdmin/DSkhoahoc";
-	}
+	
 }

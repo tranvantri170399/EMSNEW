@@ -58,7 +58,7 @@ public class ClassroomStudent{
 
 
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name = "ClassroomID")
+	@JoinColumn(name = "ClassroomID",insertable = false,updatable = false)
 	public Classroom getClassroom() {
 		return classroom;
 	}

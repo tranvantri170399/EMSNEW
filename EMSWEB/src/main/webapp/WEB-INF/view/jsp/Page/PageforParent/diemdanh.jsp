@@ -5,7 +5,6 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html>
-
 <head>
 <meta charset="UTF-8">
 <title>AdminLTE 2 | Dashboard</title>
@@ -57,71 +56,45 @@
 #InputLastname {
 	border-color: red;
 }
-
-th.image.sorting {
-	width: 50px;
+.title{
+	font-size: 22px;
+    margin-left: 15px;
 }
 </style>
 </head>
-
 <body>
-	<section class="content-header">
+<section class="content-header">
+		<h1>
+		ĐIỂM DANH
+		</h1>
 
-		<ol class="breadcrumb">
-			<li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-			<li class="active">Quản Lí Học Sinh</li>
-			<li class="active">Danh sách Học Sinh</li>
-		</ol>
 	</section>
 	<!--Table  -->
-	<table id="table1" class="display">
+	<div class="title">(Tên môn học)</div>
+	<hr>
+	<form:form modelAttribute="teacher">
+		<table id="table1" class="display">
 
-		<thead style="background-color:#4876FF ;color: white">
-			<tr>
-				<th>Mã</th>
-				<th>Chuyên Ngành</th>
-				<th>Tên Môn học</th>
-				<th>Mô tả môn học</th>
-				<th>Trạng thái</th>
-				<th>Actions</th>
-			</tr>
-		</thead>
+			<thead style="background-color: aqua;">
+				<tr>
+					<th>STT</th>
+					<th>Ngày</th>
+					<th>Ca</th>
+					<th>Giảng viên</th>
+					<th>Nội dung</th>
+					<th>Trạng thái điểm danh</th>
+					<th>Ghi chú</th>
+				</tr>
+			</thead>
 
-		<tbody>
-			<c:if test="${not empty List}">
-				<c:forEach var="list" items="${List}">
+			<tbody>
+				
+			</tbody>
+
+		</table>
 
 
-					<!-- construct an "update" link with customer id -->
-					<c:url var="updateLink" value="/updateFormSJ">
-						<c:param name="id" value="${list.id}" />
-					</c:url>
-
-					<!-- construct an "delete" link with customer id -->
-					<c:url var="deleteLink" value="/deleteSubject">
-						<c:param name="id" value="${list.id}" />
-					</c:url>
-
-					<tr>
-						<td>${list.id}</td>
-						<td>${list.classroom.id}</td>
-						<td>${list.classroom.name}</td>
-						<td>${list.student.fname}</td>
-						<td>${list.student.email}</td>
-						<td>
-							<div class="btn-group" role="group" aria-label="Basic example">
-								<button type="button" class="btn btn-info"
-									onclick="location.href='${updateLink}';">Cập Nhật</button>
-								<button type="button" class="btn btn-danger"
-									onclick="location.href='${deleteLink}';">Xóa</button>
-							</div>
-						</td>
-					</tr>
-				</c:forEach>
-			</c:if>
-		</tbody>
-	</table>
+	</form:form>
 
 </body>
-
 </html>

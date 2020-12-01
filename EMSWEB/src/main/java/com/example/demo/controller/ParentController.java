@@ -14,21 +14,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.example.demo.entities.ClassroomStudent;
 import com.example.demo.entities.Parent;
-import com.example.demo.entities.Schedule;
 import com.example.demo.entities.Student;
 import com.example.demo.entities.Teacher;
 import com.example.demo.entities.User;
-import com.example.demo.repository.AmphiResponsitory;
-import com.example.demo.repository.ClassroomResponsitory;
-import com.example.demo.repository.ClassroomStudentResponsitory;
-import com.example.demo.repository.CourseResponsitory;
 import com.example.demo.repository.ParentResponsitory;
-import com.example.demo.repository.ScheduleResponsitory;
-import com.example.demo.repository.SchoolroomResponsitory;
 import com.example.demo.repository.StudentResponsitory;
-import com.example.demo.repository.StudyShiftResponsitory;
 import com.example.demo.repository.UserResponsitory;
 
 @Controller
@@ -70,7 +61,36 @@ public class ParentController {
 		
 		return "/jsp/Page/PageforParent/thanhtich";
 	}
-	
+	@RequestMapping(value = { "/Page/DIEMDANH" })
+	public String diemdanh(@ModelAttribute("User") User user, Model model) {
+		
+		return "/jsp/Page/PageforParent/diemdanh";
+	}
+	@RequestMapping(value = { "/Page/HOCPHI" })
+	public String ktHocphi(@ModelAttribute("User") User user, Model model) {
+		
+		return "/jsp/Page/PageforParent/hocphi";
+	}
+	@RequestMapping(value = { "/Page/LICHHOC" })
+	public String lichhocSV(@ModelAttribute("User") User user, Model model) {
+		
+		return "/jsp/Page/PageforParent/lichhoc";
+	}
+	@RequestMapping(value = { "/Page/DIEMTHEOKY" })
+	public String diemtheoky(@ModelAttribute("User") User user, Model model) {
+		
+		return "/jsp/Page/PageforParent/diemtheoky";
+	}
+	@RequestMapping(value = { "/Page/MONDAHOC" })
+	public String mondahoc(@ModelAttribute("User") User user, Model model) {
+		
+		return "/jsp/Page/PageforParent/mondahoc";
+	}
+	@RequestMapping(value = { "/Page/BANGDIEM" })
+	public String bangdiem(@ModelAttribute("User") User user, Model model) {
+		
+		return "/jsp/Page/PageforParent/bangdiem";
+	}
 	@RequestMapping(value = "/updatePass", method = RequestMethod.POST)
 	public String updatePass(@ModelAttribute("passUpdate") User passUpdate, Model model,  HttpServletRequest request
 			,@RequestParam("username") String username,@RequestParam("password") String pass,
@@ -87,39 +107,6 @@ public class ParentController {
 		}
 		
 		
-	}
-	
-	
-	@Autowired
-	ScheduleResponsitory scheduleResponsitory;
-	@Autowired
-	AmphiResponsitory amphiResponsitory;
-	@Autowired
-	ClassroomResponsitory classroomResponsitory;
-	@Autowired 
-	CourseResponsitory courseResponsitory;
-	@Autowired
-	SchoolroomResponsitory schoolroomResponsitory;
-	@Autowired
-	StudyShiftResponsitory studyShiftResponsitorys;
-	@Autowired
-	StudentResponsitory studentResponsitory;
-	@Autowired
-	ClassroomStudentResponsitory classroomStudentrespon;
-	
-	@RequestMapping(value = { "parent/thoikhoabieu" })
-	public String loadthoikhoabieu(Model model,@RequestParam("userid") String userid) {
-		System.out.println("out>>>"+userid);
-		List<Student> student= studentResponsitory.findcustom(userid);
-		for (Student student2 : student) {
-			List<ClassroomStudent> classid=classroomStudentrespon.findcustom(student2.getId());
-			for (ClassroomStudent u : classid) {
-				List<Schedule> schedule= scheduleResponsitory.findcustom(u.getClassroom().getId());
-				model.addAttribute("List",schedule);
-			}		
-		}
-		
-		return "/jsp/Page/PageforParent/thoikhoabieu";
 	}
 }
 

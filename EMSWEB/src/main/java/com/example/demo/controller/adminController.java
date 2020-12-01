@@ -532,13 +532,17 @@ public class adminController {
 				int afterid= lastidcr.getId()+1; 
 				String classroomname= request.getParameter("classroomname");
 				System.out.println(">>>>>>"+classroomname);
-				Classroom newclass=classroomResponsitory.findByname(classroomname);		
+				Classroom newclass=classroomResponsitory.findByname(classroomname);
 				System.out.println(">>>>>>"+newclass.getId());
-				System.out.println(">>>>>>"+newclass.getName());
-				System.out.println(">>>>>>"+newclass.getStatus());
+				Classroom cls = new Classroom();
+				cls.setId(newclass.getId());
+				cls.setName(newclass.getName());
+				cls.setDescription(newclass.getDescription());
+				cls.setStatus(newclass.getStatus());
+				System.out.println(">>>>>>"+newclass.getId());
 				ClassroomStudent crs= new ClassroomStudent();
 				crs.setId(afterid);
-				crs.setClassroom(newclass);
+				crs.setClassroom(cls);
 				crs.setStudent(student2);
 				classroomStudentRespon.save(crs);
 		return "redirect:/DShocsinh";
@@ -653,7 +657,7 @@ public class adminController {
 	@GetMapping("/deleteSubject")
 	public String deleteSubject(@RequestParam("id") String id) {
 		subjectResponsitory.deleteById(id);
-		return "redirect:/DSgiaovien";
+		return "redirect:/DSmonhoc";
 	}
 // listmonhoc//
 

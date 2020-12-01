@@ -64,7 +64,7 @@
 							<c:forEach var="sp" items="${List}">
 								<div class="box-body">
 									<div class="form-group" >
-										<input type="hidden" id="custId" name="id" value="${sp.id}" readonly="readonly" >
+										<input type="text" id="custId" name="id" value="${sp.id}" readonly="readonly" >
 									</div>
 
 									<div class="form-group">

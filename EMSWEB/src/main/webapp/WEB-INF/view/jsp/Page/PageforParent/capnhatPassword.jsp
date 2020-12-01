@@ -28,12 +28,19 @@ function checkPass() {
     if(x.value ==""){
     	document.getElementById('oldPass-check').innerHTML="Mật khẩu không được trống!<br>";
     	status = false;
-    }else if(y.value==""){
+    }else{
     	document.getElementById('oldPass-check').innerHTML="";
+    	status = true;
+    }
+    
+    if(y.value==""){
     	document.getElementById('newPass-check').innerHTML="Nhập mật khẩu mới!<br>";
     	status = false;
-    }else if(z.value==""){
+    }else{
     	document.getElementById('newPass-check').innerHTML="";
+    }
+    
+    if(z.value==""){
     	document.getElementById('re-newPass-check').innerHTML="Nhập lại mật khẩu mới!<br>";
     	status = false;
     }else if(y.value != z.value){
@@ -41,7 +48,6 @@ function checkPass() {
 		status = false;
 	}else{
 		document.getElementById('re-newPass-check').innerHTML="";
-		status = true;
 	}
 
     return status;
