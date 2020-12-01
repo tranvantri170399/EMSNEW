@@ -135,6 +135,8 @@
 							class="fa fa-angle-right pull-right"></i>
 					</a>
 						<ul class="treeview-menu">
+						<li><a href="/DSKhoahocchitiet" target="frame"><i
+									class="fa fa-circle-o"></i>Chi Tiết Môn Học</a></li>
 							<li><a href="/DScahoc" target="frame"><i
 									class="fa fa-circle-o"></i>Danh Sách Ca Học</a></li>
 							<li><a href="/DSlichhoc" target="frame"><i

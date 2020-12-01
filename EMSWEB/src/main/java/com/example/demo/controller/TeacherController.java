@@ -43,7 +43,7 @@ public class TeacherController {
 	ClassroomStudentResponsitory classroomStudentrespon;
 	@Autowired
 	TeacherResponsitory teacherResponsitory;
-	
+	//show list schedule
 	@RequestMapping(value = { "teacher/thoikhoabieu" })
 	public String loadthoikhoabieu(Model model,@RequestParam("teacherid") String teacherid) {
 		List<Course> couseid=courseResponsitory.findcustomteacher(teacherid);

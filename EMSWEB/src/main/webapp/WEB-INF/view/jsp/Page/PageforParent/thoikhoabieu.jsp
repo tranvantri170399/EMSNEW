@@ -52,84 +52,48 @@
 	});
 </script>
 
+<style type="text/css">
+#InputLastname {
+	border-color: red;
+}
+</style>
 </head>
 <body>
 	<section class="content-header">
-		<h1>
-			Danh Sách Phòng Học
-			<button type="button" class="btn btn-info" data-toggle="modal"
-				data-target="#myModal">Thêm Phòng Học</button>
-		</h1>
 		<ol class="breadcrumb">
 			<li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-			<li class="active">Quản lí CSVC</li>
-			<li class="active">Danh sách Phòng Học</li>
+			<li class="active">Quản lí </li>
+			<li class="active">Danh sách Lịch Học</li>
 		</ol>
 	</section>
-	<!--Modalthemnhanvien-->
-	<div class="modal fade" id="myModal" role="dialog">
-		<div class="modal-dialog">
-
-			<!-- Modal content-->
-			<form:form action="/save/schoolroom" modelAttribute="room">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h4 class="modal-title">Thêm Phòng Học</h4>
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-					</div>
-					<div class="modal-body">
-						<div>
-
-							<div class="form-group">
-								<form:input type="hidden" path="id" />
-							</div>
-							<div Class="form-group">
-								<label for="InputName">Tên phòng</label>
-								<form:input type="text" path="name" class="form-control"
-									id="InputLastname" />
-							</div>
-
-							<div class="form-group">
-								<label for="InputID">Số Phòng</label>
-								<form:input type="text" path="schoolroomnumber"
-									class="form-control" id="InputEmail" />
-							</div>
-
-							<div class="form-group">
-								<label for="InputID">Diện Tích</label>
-								<div class="input-group">
-									<form:input type="text" path="surfacearea" class="form-control"
-										id="InputEmail" />
-									<div class="input-group-prepend">
-										<span Class="input-group-text">m<sup>2</sup></span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="modal-footer">
-						<input type="submit" name="btnsave" class="btn btn-info"
-							value="Lưu">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
-					</div>
-
-				</div>
-			</form:form>
-		</div>
-	</div>
-
 	<!--Table  -->
 	<form:form action="/save" modelAttribute="room">
-		<table id="table1" class="display">
-
+		<table id="table1" class="display" style="width: 100%">
+<colgroup>
+       		<col span="1" style="width: 3%;">
+       		<col span="1" style="width: 7%;">
+       		<col span="1" style="width: 10%;">
+       		<col span="1" style="width: 7%;">
+       		<col span="1" style="width: 17%;">
+       		<col span="1" style="width: 10%;">
+       		<col span="1" style="width: 7%;">
+       		<col span="1" style="width: 11%;">
+       		<col span="1" style="width: 9%;">
+       		<col span="1" style="width: 8%;">
+       		<col span="1" style="width: 5%;">
+       		<col span="1" style="width: 6%;">       		       		       		
+    	</colgroup>
 			<thead style="background-color: #4876FF; color: white">
 				<tr>
 					<th>ID</th>
+					<th>Ngày</th>
+					<th>Tên Giảng Đường</th>
+					<th>Tên lớp</th>
 					<th>Tên Phòng</th>
-					<th>Số Phòng</th>
-					<th>Diện Tích(m<sup>2</sup>)
-					</th>
-					<th></th>
+					<th>Tên Ca</th>
+					<th>Tên Môn</th>
+					<th>Tên Giáo Viên</th>
+					<th>Thời Gian</th>
 				</tr>
 			</thead>
 
@@ -137,29 +101,27 @@
 				<c:if test="${not empty List}">
 					<c:forEach var="sp" items="${List}">
 
-						<c:url var="updateLink" value="/updateSchoolRoom">
+						<c:url var="updateLink" value="/updatescheduletoform">
 							<c:param name="id" value="${sp.id}" />
 						</c:url>
 
 						<!-- construct an "delete" link with customer id -->
-						<c:url var="deleteLink" value="/deleteSchoolRoom">
+						<c:url var="deleteLink" value="/deleteschedule">
 							<c:param name="id" value="${sp.id}" />
 						</c:url>
 
 
 						<tr style="color: red;">
 							<td class="gfgusername">${sp.id}</td>
-							<td class="gfgpp">${sp.name}</td>
-							<td class="gfgscores">${sp.schoolroomnumber}</td>
-							<td class="gfgscores">${sp.surfacearea}</td>
-							<td style="text-align: center;">
-								<div class="btn-group" role="group" aria-label="Basic example">
-									<button type="button" class="btn btn-info"
-										onclick="location.href='${updateLink}';">Cập Nhật</button>
-									<button type="button" class="btn btn-danger"
-										onclick="location.href='${deleteLink}';">Xóa</button>
-								</div>
-							</td>
+								<td class="gfgscores">${sp.date}</td>
+							<td class="gfgpp">${sp.amphitheater.amphitheaterName}</td>
+							<td class="gfgscores">${sp.classroom.name}</td>
+							<td class="gfgscores">${sp.schoolroom.name}(${sp.schoolroom.schoolroomnumber})</td>
+							<td class="gfgscores">${sp.studyShift.nameShift}</td>
+							<td class="gfgscores">${sp.course.name}</td>
+							<td class="gfgscores">${sp.course.teacher.fname}</td>
+							<td class="gfgscores">${sp.studyShift.startingTime}-${sp.studyShift.endTime}</td>
+							
 						</tr>
 
 					</c:forEach>
@@ -171,7 +133,7 @@
 
 
 	</form:form>
-
+</section>
 
 </body>
 </html>
