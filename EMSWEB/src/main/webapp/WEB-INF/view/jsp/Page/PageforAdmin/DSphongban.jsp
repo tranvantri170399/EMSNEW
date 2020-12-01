@@ -45,7 +45,35 @@
 <link href="../../../../../resources/bootstrap/css/_all-skins.min.css"
 	rel="stylesheet" type="text/css" />
 
-
+<script type="text/javascript">
+function validate(){
+	var id = document.myform.id.value;
+	var name = document.myform.name.value;
+	
+	var status = false;
+	
+	if(id.length < 1){
+		 document.getElementById("checkId").innerHTML = 
+	            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập ID!</span> ";
+	        status = false;
+	}else{
+		document.getElementById("checkId").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+    	status = true;
+	}
+	
+	if(name.length < 1){
+		 document.getElementById("checkName").innerHTML = 
+	            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Tên phòng ban!</span> ";
+	        status = false;
+	}else{
+		document.getElementById("checkName").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	return status;
+}
+</script>
 
 <script>
 	$(document).ready(function() {
@@ -69,7 +97,7 @@ th.image.sorting {
 		<h1>
 			Danh Sách Phòng Ban
 			<button type="button" class="btn btn-info" data-toggle="modal"
-				data-target="#myModal">Thêm nhân viên</button>
+				data-target="#myModal">Thêm phòng ban</button>
 		</h1>
 		<ol class="breadcrumb">
 			<li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
@@ -83,7 +111,7 @@ th.image.sorting {
 
 			<!-- Modal content-->
 			<form:form action="/newDepart" modelAttribute="departNew"
-				enctype="multipart/form-data">
+				enctype="multipart/form-data" onsubmit="return validate()" name="myform">
 				<div class="modal-content">
 					<div class="modal-header">
 						<h4 class="modal-title">Thêm Nhân Viên</h4>					
@@ -95,6 +123,7 @@ th.image.sorting {
 								<label for="InputID">ID:</label>
 								<form:input type="text" path="id" class="form-control"
 									id="id" />
+									<span id="checkId"></span>
 							</div>
 						</div>
 						<div>
@@ -102,6 +131,7 @@ th.image.sorting {
 								<label for="InputID">Name:</label>
 								<form:input type="text" path="name" class="form-control"
 									id="name" />
+									<span id="checkName"></span>
 							</div>
 						</div>
 					</div>

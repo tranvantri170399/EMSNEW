@@ -41,6 +41,22 @@
 <link href="../../../../../resources/bootstrap/css/_all-skins.min.css"
 	rel="stylesheet" type="text/css" />
 
+<script type="text/javascript">
+function validate(){
+	var name = document.myform.name.value;
+	
+	if(name.length < 1){
+		 document.getElementById("checkName").innerHTML = 
+	            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Tên phòng ban!</span> ";
+		return false;
+	}else{
+		document.getElementById("checkName").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+		return true;
+	}
+	
+}
+</script>
 
 </head>
 <body>
@@ -49,8 +65,8 @@
 		<ol class="breadcrumb">
 			<li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
 			<li class="active">Quản lí nhân viên</li>
-			<li class="active">Danh sách sinh viên</li>
-			<li class="active">Cập nhật nhân viên</li>
+			<li class="active">Danh sách phòng ban</li>
+			<li class="active">Cập nhật phòng ban</li>
 		</ol>
 	</section>
 
@@ -61,7 +77,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<form:form action="/updateDepart" modelAttribute="departNew"
-					enctype="multipart/form-data">
+					enctype="multipart/form-data" onsubmit="return validate()" name="myform">
 					<div class="box box-primary">
 						<!-- 						<img src="../../../../../resources/FileUpload/tri1703.jpg" name=""
 							style="width: 200px; height: 200px;"> -->
@@ -80,6 +96,7 @@
 										<label for="exampleInputEmail">Name</label>
 										<form:input path="name" value="${sp.name}"
 											class="form-control" id="name" />
+											<span id="checkName"></span>
 									</div>
 								</div>
 							</c:forEach>
