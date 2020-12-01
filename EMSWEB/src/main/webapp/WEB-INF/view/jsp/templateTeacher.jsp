@@ -45,10 +45,14 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image"/>
                   <span class="hidden-xs">
-                  	<c:forEach var="sp" items="${List}">
-													${sp.username}
-												
-											</c:forEach>
+                  	<c:forEach var="sp" items="${Listt}">${sp.fname}
+						<c:url var="infoschedule" value="teacher/thoikhoabieu">
+							<c:param name="teacherid" value="${sp.id}" />
+						</c:url>
+						<c:url var="infostudent" value="teacher/liststudent">
+							<c:param name="teacherid" value="${sp.id}" />
+						</c:url>				
+					</c:forEach>
                   </span>
                 </a>
                 <ul class="dropdown-menu">
@@ -106,8 +110,8 @@
                       <i class="fa fa-angle-left pull-right"></i>
                   </a>
                   <ul class="treeview-menu">
-                      <li><a href="Page/thanhtich.html" target="frame"><i class="fa fa-circle-o"></i>Thời khóa biểu</a></li>                    
-                      <li><a href="Page/thanhtich.html" target="frame"><i class="fa fa-circle-o"></i>Danh sách lớp học</a></li>
+                      <li><a href="${infoschedule}" target="frame"><i class="fa fa-circle-o"></i>Thời khóa biểu</a></li>                    
+                      <li><a href="${infostudent}" target="frame"><i class="fa fa-circle-o"></i>Danh sách lớp học</a></li>
                   </ul>
               </li>
               <li>
