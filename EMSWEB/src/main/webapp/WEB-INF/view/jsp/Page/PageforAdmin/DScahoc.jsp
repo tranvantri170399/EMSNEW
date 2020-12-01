@@ -44,7 +44,45 @@
 <link href="../../../../../resources/bootstrap/css/_all-skins.min.css"
 	rel="stylesheet" type="text/css" />
 
-
+<script type="text/javascript">
+function validate(){
+	var name = document.myform.InputName.value;
+	var timeSt = document.myform.InputTimeSt.value;
+	var timeEnd = document.myform.InputTimeEnd.value;
+	
+	var status = false;
+	
+	if(name.length < 1){
+		document.getElementById("checkName").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Tên ca học!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkName").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+    	status = true;
+	}
+	
+	if(timeSt.length < 1){
+		document.getElementById("checkTimeSt").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Thời gian bắt đầu!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkTimeSt").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	if(timeEnd.length < 1){
+		document.getElementById("checkTimeEnd").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Thời gian kết thúc!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkTimeEnd").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	return status;
+}
+</script>
 
 <script>
 	$(document).ready(function() {
@@ -53,9 +91,7 @@
 </script>
 
 <style type="text/css">
-#InputLastname {
-	border-color: red;
-}
+
 </style>
 </head>
 <body>
@@ -76,7 +112,7 @@
 		<div class="modal-dialog">
 
 			<!-- Modal content-->
-			<form:form action="/save/studyShift" modelAttribute="studyShift">
+			<form:form action="/save/studyShift" modelAttribute="studyShift" onsubmit="return validate()" name="myform">
 				<div class="modal-content">
 					<div class="modal-header">
 						<h4 class="modal-title">Thêm Ca Học</h4>
@@ -91,26 +127,25 @@
 							<div Class="form-group">
 								<label for="InputName">Tên Ca Học:</label>
 								<form:input type="text" path="nameShift" class="form-control"
-									id="InputLastname" />
+									id="InputName" />
+									<span id="checkName"></span>
 							</div>
 
 							<div clas="form-group">
 								<label for="InputID">Thời Gian Bắt Đầu:</label>
 								<form:input type="time" path="startingTime"
-									class="form-control" id="InputEmail" />
+									class="form-control" id="InputTimeSt" />
+									<span id="checkTimeSt"></span>
 							</div>
 
 							<div clas="form-group">
 								<label for="InputID">Thời Gian Kết Thúc:</label>
-								<div class="input-group">
+								
 									<form:input type="time" path="endTime" class="form-control"
-										id="InputEmail" />
-									<div class="input-group-prepend">
-										
-									</div>
-								</div>
-							</div>
+										id="InputTimeEnd" />
+										<span id="checkTimeEnd"></span>
 						</div>
+					</div>
 					</div>
 					<div class="modal-footer">
 						<input type="submit" name="btnsave" class="btn btn-info"
