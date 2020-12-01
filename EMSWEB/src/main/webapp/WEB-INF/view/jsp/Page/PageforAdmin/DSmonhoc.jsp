@@ -66,40 +66,37 @@
 			            document.getElementById("checkName").innerHTML = 
 			                " <span class='fas fa-window-close' style='color:red;'>Mã ngành không được trống!</span> ";
 			            status = false;
-			        } else if (Subjectname.length < 3) {
+			        } else {
+			        	document.getElementById("checkName").innerHTML = 
+				            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+			        	status = true;
+			        }
+			        
+			        if (Subjectname.length < 3) {
 			            document.getElementById("checkSubject").innerHTML = 
 			                "  <span class='fas fa-window-close' style='color:red;'>Tên môn học không được để trống!</span> ";
-			            document.getElementById("checkName").innerHTML = 
-				            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
 			            status = false;
-			        } else if (Description.length < 1) {
+			        } else{
+			        	document.getElementById("checkSubject").innerHTML = 
+				            "<span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+			        }
+			        
+			        if (Description.length < 1) {
 			            document.getElementById("checkDescrip").innerHTML = 
 			                "  <span class='fas fa-window-close' style='color:red;'>Chú thích không được để trống!</span> ";
-			            document.getElementById("checkName").innerHTML = 
-					        " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
-			            document.getElementById("checkSubject").innerHTML = 
-				            "<span class='fa fa-check-square' style='color:#3FFF00;'></span>";
 			            status = false;
-			        } else if (Statuss.length < 1) {
+			        } else{
+			        	document.getElementById("checkDescrip").innerHTML = 
+				            "<span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+			        } 
+			        	
+			        if (Statuss.length < 1) {
 			            document.getElementById("checkStatus").innerHTML = 
 			                "  <span class='fas fa-window-close' style='color:red;'>Trạng thái không được để trống!</span> ";
-			            document.getElementById("checkDescrip").innerHTML = 
-				            "<span class='fa fa-check-square' style='color:#3FFF00;'></span>";
-				        document.getElementById("checkName").innerHTML = 
-						    " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
-				        document.getElementById("checkSubject").innerHTML = 
-					        "<span class='fa fa-check-square' style='color:#3FFF00;'></span>";
 			            status = false;
 			        } else {
 			            document.getElementById("checkStatus").innerHTML = 
 			                "<span class='fa fa-check-square' style='color:#3FFF00;'></span>";
-			            document.getElementById("checkName").innerHTML = 
-				             " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
-				        document.getElementById("checkName").innerHTML = 
-					         " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
-					    document.getElementById("checkSubject").innerHTML = 
-						     "<span class='fa fa-check-square' style='color:#3FFF00;'></span>";
-			            status = true;
 			        }
 			        return status;
 			    }

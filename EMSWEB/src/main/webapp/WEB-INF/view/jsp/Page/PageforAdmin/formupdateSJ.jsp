@@ -53,28 +53,28 @@ function validate() {
         document.getElementById("checkName").innerHTML = 
             " <span class='fas fa-window-close' style='color:red;'>Tên môn không được trống!</span> ";
         status = false;
-    } else if (Name.length < 3) {
+    } else{
+    	document.getElementById("checkName").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+        status = true;
+    } 
+    	
+    if (Name.length < 3) {
         document.getElementById("checkST").innerHTML = 
             "  <span class='fas fa-window-close' style='color:red;'>Mô tả không được để trống!</span> ";
-        document.getElementById("checkName").innerHTML = 
-            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
         status = false;
-    } else if (Address.length < 1) {
+    } else{
+    	document.getElementById("checkST").innerHTML = 
+            "<span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+    }
+    	
+    if (Address.length < 1) {
         document.getElementById("checkStatuss").innerHTML = 
             "  <span class='fas fa-window-close' style='color:red;'>Trạng thái không được để trống!</span> ";
-        document.getElementById("checkST").innerHTML = 
-            "<span class='fa fa-check-square' style='color:#3FFF00;'></span>";
-        document.getElementById("checkName").innerHTML = 
-            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
         status = false;
     } else {
         document.getElementById("checkStatuss").innerHTML = 
             "<span class='fa fa-check-square' style='color:#3FFF00;'></span>";
-        document.getElementById("checkST").innerHTML = 
-             "<span class='fa fa-check-square' style='color:#3FFF00;'></span>";
-        document.getElementById("checkName").innerHTML = 
-             " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
-        status = true;
     }
 
     return status;
