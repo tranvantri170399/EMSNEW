@@ -40,7 +40,64 @@
 <link href="../../../../../resources/bootstrap/css/_all-skins.min.css"
 	rel="stylesheet" type="text/css" />
 
-
+<script type="text/javascript">
+function validate(){
+	var name = document.myform.InputName.value;
+	var number = document.myform.InputNumber.value;
+	var statusCk = document.myform.InputStatus.value;
+	var price = document.myform.InputPrice.value;
+	
+	
+	var status = false;
+	
+	if(name.length < 1){
+		document.getElementById("checkName").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Tên thiết bị!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkName").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+            status = true;
+	}
+	
+	if(number.length < 1 || number == "0"){
+		document.getElementById("checkNumber").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Số lượng!</span> ";
+        status = false;
+	}else if(!number.match(/^\d+/)){
+		document.getElementById("checkNumber").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Số lượng chỉ nhập bằng số!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkNumber").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	if(statusCk.length < 1){
+		document.getElementById("checkStatus").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Tình trạng!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkStatus").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	if(price.length < 1){
+		document.getElementById("checkPrice").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Giá thành!</span> ";
+        status = false;
+	}else if(!price.match(/^\d+/)){
+		document.getElementById("checkPrice").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Giá thành chỉ nhập bằng số!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkPrice").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	return status;
+}
+</script>
 
 <script>
 	$(document).ready(function() {
@@ -49,8 +106,7 @@
 </script>
 
 <style type="text/css">
-#InputLastname {
-	border-color: red;
+
 }
 </style>
 </head>
@@ -72,7 +128,7 @@
 		<div class="modal-dialog">
 
 			<!-- Modal content-->
-			<form:form action="/save/device" modelAttribute="room">
+			<form:form action="/save/device" modelAttribute="room" onsubmit="return validate()" name="myform">
 				<div class="modal-content">
 					<div class="modal-header">
 						<h4 class="modal-title">Thêm Thiết Bị</h4>
@@ -91,12 +147,17 @@
 										<span Class="input-group-text">Tên</span>
 									</div>
 									<form:input type="text" path="deviceName" class="form-control"
-										id="InputLastname" />
+										id="InputName" />
+										
 									<div class="input-group-prepend">
 										<span Class="input-group-text">Số lượng</span>
 									</div>
 									<form:input type="text" path="amount" class="form-control"
-										id="InputFirstname" />
+										id="InputNumber" />
+								</div>
+								<div class="row">
+								<span id="checkName" class="col-sm-5" style=" padding-right: 0px !important;"></span>
+								<span id="checkNumber" class="col-sm-7" style=" padding-left: 25px;"></span>
 								</div>
 
 							</div>
@@ -104,17 +165,19 @@
 							<div class="form-group">
 								<label for="InputID">Tình Trạng:</label>
 								<form:input type="text" path="status" class="form-control"
-									id="InputEmail" />
+									id="InputStatus" />
+									<span id="checkStatus"></span>
 							</div>
 							<div class="form-group">
 								<label for="InputID">Giá Thành:</label>
 								<div class="input-group">
 									<form:input type="text" path="price" class="form-control"
-										id="InputEmail" />
+										id="InputPrice" />
 									<div class="input-group-prepend">
 										<span Class="input-group-text">VNĐ</span>
 									</div>
 								</div>
+								<span id="checkPrice"></span>
 							</div>
 
 						</div>
