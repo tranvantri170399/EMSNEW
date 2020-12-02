@@ -44,7 +44,23 @@
 <link href="../../../../../resources/bootstrap/css/_all-skins.min.css"
 	rel="stylesheet" type="text/css" />
 
+<script type="text/javascript">
+function validate(){
+	var date = document.myform.InputDate.value;
+	
+	if(date.length < 1){
+		document.getElementById("checkDate").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Ngày học!</span> ";
+        return false;
+	}else{
+		document.getElementById("checkDate").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+            return true;
+	}
+	
+}
 
+</script>
 
 <script>
 	$(document).ready(function() {
@@ -53,9 +69,7 @@
 </script>
 
 <style type="text/css">
-#InputLastname {
-	border-color: red;
-}
+
 </style>
 </head>
 <body>
@@ -76,7 +90,7 @@
 		<div class="modal-dialog">
 
 			<!-- Modal content-->
-			<form:form action="/save/schedule" modelAttribute="schedule">
+			<form:form action="/save/schedule" modelAttribute="schedule" onsubmit="return validate()" name="myform">
 				<div class="modal-content">
 					<div class="modal-header">
 						<h4 class="modal-title">Thêm Lịch Học</h4>
@@ -149,7 +163,8 @@
 							<div class="form-group">
 								<label for="InputID">Ngày Học:</label>
 								<form:input type="date" path="date" class="form-control"
-									id="name" />
+									id="InputDate" />
+									<span id="checkDate"></span>
 							</div>
 						</div>
 					</div>
