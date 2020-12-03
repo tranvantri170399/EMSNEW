@@ -41,6 +41,26 @@
 <link href="../../../../../resources/bootstrap/css/_all-skins.min.css"
 	rel="stylesheet" type="text/css" />
 
+<script type="text/javascript">
+function validate(){
+	var number = document.myform.InputNumber.value;
+	
+	if(number.length < 1){
+		document.getElementById("checkNumber").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Số lượng!</span> ";
+		return false;
+	}else if(!number.match(/^\d+/)){
+		document.getElementById("checkNumber").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Số lượng chỉ nhập bằng số!</span> ";
+		return false;
+	}else{
+		document.getElementById("checkNumber").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+		return true;
+	}
+}
+
+</script>
 
 </head>
 <body>
@@ -60,7 +80,7 @@
 		<!--Thoi Khoa Bieu -->
 		<div class="row">
 			<div class="col-md-12">
-				<form:form action="/updateSchoolroomDevice" modelAttribute="room">
+				<form:form action="/updateSchoolroomDevice" modelAttribute="room" onsubmit="return validate()" name="myform">
 					<div class="box box-primary">
 <!-- 						<img src="../../../../../resources/FileUpload/tri1703.jpg" name=""
 							style="width: 200px; height: 200px;"> -->
@@ -108,7 +128,8 @@
 									<div class="form-group">
 										<label for="InputPhone">Số Lượng</label>
 										<form:input path="amount" value="${sp.amount}" type="text"
-											class="form-control" id="InputAddress" />
+											class="form-control" id="InputNumber" />
+											<span id="checkNumber"></span>
 									</div>
 								</div>
 							</c:forEach>

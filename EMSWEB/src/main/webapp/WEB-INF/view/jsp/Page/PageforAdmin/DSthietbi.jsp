@@ -60,7 +60,7 @@ function validate(){
             status = true;
 	}
 	
-	if(number.length < 1 || number == "0"){
+	if(number.length < 1){
 		document.getElementById("checkNumber").innerHTML = 
             " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Số lượng!</span> ";
         status = false;
