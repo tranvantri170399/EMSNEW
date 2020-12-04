@@ -86,13 +86,17 @@
 									<!-- Menu Body -->
 									<!-- Menu Footer-->
 									<li class="user-footer">
-										<div class="pull-left">
-											<a href="#" class="btn btn-default btn-flat">Profile</a>
-										</div>
-										<div class="pull-right">
-											<a href="#" class="btn btn-default btn-flat">Sign out</a>
-										</div>
-									</li>
+									<div class="pull-left">
+										<form:form method="POST" modelAttribute="student" >
+										<button onclick="#'">Profile</button>
+										</form:form>
+									</div>
+									<div class="pull-right">
+										<form:form method="POST" modelAttribute="student" >
+										<button onclick="/logout'">Sign out</button>
+										</form:form>
+									</div>
+								</li>
 								</ul>
 							</c:forEach></li>
 					</ul>
