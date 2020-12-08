@@ -43,7 +43,9 @@
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image"/>
+                <c:forEach var="sp" items="${Listt}">
+                  <img src="../../../../../resources/FileUpload/${sp.image}" class="user-image" alt="User Image"/>
+                  </c:forEach>
                   <span class="hidden-xs">
                   	<c:forEach var="sp" items="${Listt}">${sp.fname}
 						<c:url var="infoschedule" value="teacher/thoikhoabieu">
@@ -51,14 +53,22 @@
 						</c:url>
 						<c:url var="infostudent" value="teacher/liststudent">
 							<c:param name="teacherid" value="${sp.id}" />
-						</c:url>				
+						</c:url>		
+						<c:url var="infoteacher" value="Page/INFOTeacher">
+							<c:param name="teacherid" value="${sp.id}" />
+						</c:url>	
+						<!--  -->
+						<c:url var="updatepass" value="Page/UpdatepassTeacher">
+							<c:param name="teacherid" value="${sp.id}" />
+						</c:url>	
 					</c:forEach>
                   </span>
                 </a>
+                <c:forEach var="sp" items="${Listt}">
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
-                    <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
+                    <img src="../../../../../resources/FileUpload/${sp.image}" class="img-circle" alt="User Image" />
                     <p>
                       Alexander Pierce - Web Developer
                       <small>Member since Nov. 2012</small>
@@ -68,8 +78,8 @@
                   <!-- Menu Footer-->
                   <li class="user-footer">
 									<div class="pull-left">
-										<form:form method="POST" modelAttribute="student" >
-										<button onclick="#'">Profile</button>
+										<form:form>
+										<a href="${infoteacher}">Profile</a>
 										</form:form>
 									</div>
 									<div class="pull-right">
@@ -78,7 +88,7 @@
 										</form:form>
 									</div>
 								</li>
-                </ul>
+                </ul></c:forEach>
               </li>
             </ul>
           </div>
@@ -103,8 +113,8 @@
                       <i class="fa fa-angle-left pull-right"></i>
                   </a>
                   <ul class="treeview-menu">
-                      <li><a href="Page/INFO" target="frame"><i class="fa fa-circle-o"></i>Thông tin người dùng</a></li>
-                      <li><a href="Page/UPDATEPASS" target="frame"><i class="fa fa-circle-o"></i>Cập nhật mật khẩu</a></li>
+                      <li><a href="${infoteacher}" target="frame"><i class="fa fa-circle-o"></i>Thông tin người dùng</a></li>
+                      <li><a href="${updatepass}" target="frame"><i class="fa fa-circle-o"></i>Cập nhật mật khẩu</a></li>
                   </ul>
               </li>
               <li class="treeview">

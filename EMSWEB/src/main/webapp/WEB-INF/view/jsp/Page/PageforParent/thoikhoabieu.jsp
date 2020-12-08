@@ -133,7 +133,7 @@
 
 
 	</form:form>
-</section>
-
+<!-- </section>
+ -->
 </body>
 </html>

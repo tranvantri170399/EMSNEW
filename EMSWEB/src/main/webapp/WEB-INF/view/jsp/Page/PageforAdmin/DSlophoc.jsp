@@ -138,6 +138,7 @@ th.image.sorting {
 				<th>Tên Lớp Học</th>
 				<th>Mô tả</th>
 				<th>Tình trạng</th>
+				<!-- <th>Chuyên Ngành</th> -->
 				<th></th>
 			</tr>
 		</thead>
@@ -162,7 +163,7 @@ th.image.sorting {
 						<td>${list.name}</td>
 						<td>${list.description}</td>
 						<td>${list.status}</td>
-						<td>${list.marjorID}</td>						
+						<%-- <td>${list.majorId}</td> --%>						
 						<td>
 							<div class="btn-group" role="group" aria-label="Basic example">
 								<button type="button" class="btn btn-info"

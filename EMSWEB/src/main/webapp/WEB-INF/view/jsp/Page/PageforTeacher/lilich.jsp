@@ -31,13 +31,11 @@
 <body >
     <section class="content-header">
         <h1>
-            LÍ LỊCH
+            THÔNG TIN
         </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-            <li class="active">Quản lí nhân viên</li>
-            <li class="active">Danh sách sinh viên</li>   
-            <li class="active">Cập nhật nhân viên</li>                        
+            <li class="active">Thông Tin Người Dùng</li>                     
           </ol>        
     </section>
 
@@ -45,79 +43,70 @@
         <section class="content">
           <!-- Info boxes -->
           <!--Thoi Khoa Bieu -->
+          <c:forEach var="sp" items="${List}">
           <div class="row">
             <div class="col-md-12">
               <div class="box box-primary">
-                <img src="" name="" style="background: blue;width: 200px;height: 200px;">
+                <img src="../../../../../resources/FileUpload/${sp.image}" name="" style="background: blue;width: 200px;height: 200px;">
               <form:form role="form">
+             	 
                 <div class="box-body">
                   <div class="form-group">
                     <input type="hidden" id="custId" name="custId" value="3487">
-                  </div>                     
-                  <div class="form-group">
-                    <label for="exampleInputFile">File input</label>
-                    <div class="input-group">
-                      <input type="File" class="form-control" id="InputImage">
-                      <span class="input-group-btn">
-                        <button class="btn btn-default" type="submit" >Update
-                        </button>
-                      </span>                    
-                    </div>  
-                  </div>                  
+                  </div>                                   
                   <div class="form-group">
                     <label for="exampleInputName">Họ và Tên</label>
                     <div class="input-group">
                       <span class="input-group-addon">Họ</span> 
-                      <form:input type="text" class="form-control" id="InputLastname" disabled >
+                      <input type="text" class="form-control" id="InputLastname" name="" value="${sp.lname}" />
                       <span class="input-group-addon">Tên</span> 
-                      <form:input type="text" class="form-control"  id="InputFirstname" disabled >            
+                      <input type="text" class="form-control"  id="InputFirstname" name="" value="${sp.fname}"/>            
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="InputDob">Ngày sinh</label>
-                    <form:input type="date" class="form-control" id="InputDob" min="1980-1-1" max="2020-12-31">
+                    <input type="date" class="form-control" id="InputDob" min="1980-1-1" max="2020-12-31" name="" value="${sp.dob}"/>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail">Email</label>
-                    <form:input type="password" class="form-control" id="InputEmail">
+                    <input type="text" class="form-control" id="InputEmail" name="" value="${sp.email}"/>
                   </div>        
                   <div class="form-group">
                     <label for="InputPhone">Số Điện Thoại</label>
-                    <form:input type="text" class="form-control" id="InputPhone">
+                    <input type="text" class="form-control" id="InputPhone" name="" value="${sp.phone}"/>
                   </div>      
                   <div class="form-group">
                     <label for="InputPhone">Địa chỉ</label>
-                    <form:input type="text" class="form-control" id="InputAddress">
+                    <input type="text" class="form-control" id="InputAddress" name="" value="${sp.address}"/>
                   </div>                                               
                   <div class="form-group">
                     <label for="InputPhone">Trạng thái:</label>
-                    <label  id="InputStatus">Học đi</label>
+                    <label  id="InputStatus">${sp.status}</label>
                   </div>   
                   <div clas="form-group">
                     <label for="InputID">Cấp độ:</label>
-                    <form:input path="id" class="form-control" />
+                    <input name="id" class="form-control" value="${sp.level}"/>
                    </div>
                   <div clas="form-group">
                     <label for="InputID">Lương</label>
-                    <form:input path="id" class="form-control" />
+                    <input name="id" class="form-control" value="${sp.salary}"/>
                   </div>  
                   <div clas="form-group">
-                    <label for="InputID">Phòng Ban:</label>
-                    <form:select path="depart" items="${departList}" />
+                    <label for="InputID">Phòng Ban: ${sp.depart.name}</label>
+                    <%-- <select name="depart" items="${departList}" /> --%>
                   </div>  
                   <div clas="form-group">
-                    <label for="InputID">Chức vụ</label>
-                    <form:select path="role" items="${roleList}" />
+                    <label for="InputID">Chức vụ:  ${sp.role.roleName}</label>
+                    <%-- <form:select name="role" items="${roleList}" /> --%>
                   </div>
 
                 </div>
-              <!-- /.box-body -->
-                <div class="box-footer">
-                  <button type="submit" class="btn btn-primary">Xác nhận</button>
-                </div>
+                
               </form:form>
             </div><!-- /.col -->
           </div><!-- /.row -->
+          </div>
+          </c:forEach>
           </section>    
     <script src="../../../../../resources/js/jQuery-2.1.3.min.js"></script>
     <!-- Bootstrap 3.3.2 JS -->
