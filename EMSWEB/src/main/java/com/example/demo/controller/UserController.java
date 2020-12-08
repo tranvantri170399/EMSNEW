@@ -119,6 +119,10 @@ public class UserController {
 		return "/jsp/Page/PageforAdmin/DSphongban";
 	}
 
+	@RequestMapping("/logout")
+	public String logout() {
+		return "redirect:/login";
+	}
 	
 	
 	

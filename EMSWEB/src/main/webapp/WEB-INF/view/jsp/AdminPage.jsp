@@ -80,10 +80,14 @@
 								<!-- Menu Footer-->
 								<li class="user-footer">
 									<div class="pull-left">
-										<a href="#" class="btn btn-default btn-flat">Profile</a>
+										<form:form method="POST" modelAttribute="student" >
+										<button onclick="#'">Profile</button>
+										</form:form>
 									</div>
 									<div class="pull-right">
-										<a href="#" class="btn btn-default btn-flat">Sign out</a>
+										<form:form method="POST" modelAttribute="student" >
+										<button onclick="/logout">Sign out</button>
+										</form:form>
 									</div>
 								</li>
 							</ul></li>
@@ -221,5 +225,13 @@
 
 	<!-- AdminLTE for demo purposes -->
 	<script src="../../../resources/js/demo.js" type="text/javascript"></script>
+	
+	
+	
+<script>
+function myFunction() {
+  confirm("Press a button!");
+}
+</script>
 </body>
 </html>

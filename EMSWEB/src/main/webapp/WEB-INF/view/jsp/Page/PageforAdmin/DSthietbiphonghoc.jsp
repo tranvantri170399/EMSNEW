@@ -44,6 +44,26 @@
 <link href="../../../../../resources/bootstrap/css/_all-skins.min.css"
 	rel="stylesheet" type="text/css" />
 
+<script type="text/javascript">
+function validate(){
+	var number = document.myform.InputNumber.value;
+	
+	if(number.length < 1){
+		document.getElementById("checkNumber").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Số lượng!</span> ";
+		return false;
+	}else if(!number.match(/^\d+/)){
+		document.getElementById("checkNumber").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Số lượng chỉ nhập bằng số!</span> ";
+		return false;
+	}else{
+		document.getElementById("checkNumber").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+		return true;
+	}
+}
+
+</script>
 
 
 <script>
@@ -53,9 +73,7 @@
 </script>
 
 <style type="text/css">
-#InputLastname {
-	border-color: red;
-}
+
 </style>
 </head>
 <body>
@@ -76,7 +94,7 @@
 		<div class="modal-dialog">
 
 			<!-- Modal content-->
-			<form:form action="/save/SchoolroomDevice" modelAttribute="room">
+			<form:form action="/save/SchoolroomDevice" modelAttribute="room" onsubmit="return validate()" name="myform">
 				<div class="modal-content">
 					<div class="modal-header">
 						<h4 class="modal-title">Thêm Thiết bị</h4>
@@ -120,7 +138,8 @@
 						<div class="form-group">
 							<label for="InputPhone">Số Lượng:</label>
 							<form:input path="amount" value="${sp.amount}" type="text"
-								class="form-control" id="InputAddress" />
+								class="form-control" id="InputNumber" />
+								<span id="checkNumber"></span>
 						</div>
 					</div>
 					<div class="modal-footer">
