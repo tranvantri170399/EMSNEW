@@ -157,14 +157,10 @@
 							class="label label-primary pull-right">4</span>
 					</a>
 						<ul class="treeview-menu">
-<<<<<<< HEAD
-							<li><a href="Page/LICHHOC" target="frame"><i
-=======
-							<li><a href="${thoikhoabieu}" target="frame"><i
->>>>>>> 79cfce8ba0a7b4717f450a5f2287fe8550874c89
-									class="fa fa-circle-o"></i>Thời khóa biểu</a></li>
-							<li><a href="Page/DIEMDANH" target="frame"><i
-									class="fa fa-circle-o"></i>Điểm danh</a></li>
+<!-- 							<li><a href="Page/LICHHOC" target="frame">lich học</a></li> -->
+							<li><a href="${thoikhoabieu}" target="frame">
+							<i class="fa fa-circle-o"></i>Thời khóa biểu</a></li>
+							<li><a href="Page/DIEMDANH" target="frame"><i class="fa fa-circle-o"></i>Điểm danh</a></li>
 							<li><a href="Page/HOCPHI" target="frame"><i
 									class="fa fa-circle-o"></i>Kiểm tra học phí</a></li>
 						</ul></li>
