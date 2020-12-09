@@ -44,7 +44,23 @@
 <link href="../../../../../resources/bootstrap/css/_all-skins.min.css"
 	rel="stylesheet" type="text/css" />
 
+<script type="text/javascript">
+function validate(){
+	var date = document.myform.InputDate.value;
+	
+	if(date.length < 1){
+		document.getElementById("checkDate").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Ngày học!</span> ";
+        return false;
+	}else{
+		document.getElementById("checkDate").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+            return true;
+	}
+	
+}
 
+</script>
 
 <script>
 	$(document).ready(function() {
@@ -53,9 +69,7 @@
 </script>
 
 <style type="text/css">
-#InputLastname {
-	border-color: red;
-}
+
 </style>
 </head>
 <body>
@@ -76,7 +90,7 @@
 		<div class="modal-dialog">
 
 			<!-- Modal content-->
-			<form:form action="/save/schedule" modelAttribute="schedule">
+			<form:form action="/save/schedule" modelAttribute="schedule" onsubmit="return validate()" name="myform">
 				<div class="modal-content">
 					<div class="modal-header">
 						<h4 class="modal-title">Thêm Lịch Học</h4>
@@ -149,14 +163,15 @@
 							<div class="form-group">
 								<label for="InputID">Ngày Học:</label>
 								<form:input type="date" path="date" class="form-control"
-									id="name" />
+									id="InputDate" />
+									<span id="checkDate"></span>
 							</div>
 						</div>
 					</div>
 					<div class="modal-footer">
 						<input type="submit" name="btnsave" class="btn btn-info"
-							value="SAVE">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							value="Lưu">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
 					</div>
 
 				</div>
@@ -164,7 +179,7 @@
 			</form:form>
 		</div>
 	</div>
-
+	<section class="content">
 	<!--Table  -->
 	<form:form action="/save" modelAttribute="room">
 		<table id="table1" class="display" style="width: 100%">
@@ -182,7 +197,7 @@
        		<col span="1" style="width: 5%;">
        		<col span="1" style="width: 6%;">       		       		       		
     	</colgroup>
-			<thead style="background-color: aqua;">
+			<thead style="background-color: #4876FF; color: white">
 				<tr>
 					<th>ID</th>
 					<th>Ngày</th>
@@ -221,8 +236,14 @@
 							<td class="gfgscores">${sp.course.name}</td>
 							<td class="gfgscores">${sp.course.teacher.fname}</td>
 							<td class="gfgscores">${sp.studyShift.startingTime}-${sp.studyShift.endTime}</td>
-							<td style="text-align: center;"><a href="${updateLink}">UPDATE</a>
-								<a href="${deleteLink}">DEL</a></td>
+							<td style="text-align: center;">
+							<div class="btn-group" role="group" aria-label="Basic example">
+								<button type="button" class="btn btn-info"
+									onclick="location.href='${updateLink}';">Cập Nhật</button>
+								<button type="button" class="btn btn-danger"
+									onclick="location.href='${deleteLink}';">Xóa</button>
+							</div>						
+							</td>
 						</tr>
 
 					</c:forEach>
@@ -234,7 +255,7 @@
 
 
 	</form:form>
-
+</section>
 
 </body>
 </html>

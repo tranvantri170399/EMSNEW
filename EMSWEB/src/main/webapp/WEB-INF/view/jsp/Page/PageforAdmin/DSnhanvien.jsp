@@ -44,7 +44,126 @@
 	rel="stylesheet" type="text/css" />
 
 
+<script>
+function validate() {
+    var lastname = document.myform.InputLastname.value;
+    var firstname = document.myform.InputFirstname.value;
+    var emailNv = document.myform.InputEmail.value;
+    var dobNv = document.myform.InputDob.value;
+    var phoneNv = document.myform.InputPhone.value;
+    var addressNv = document.myform.InputAddress.value;
+    var statusNv = document.myform.InputStatus.value;
+    var levelNv = document.myform.InputLevel.value;
+    var salaryNv = document.myform.InputSalary.value;
+    
+    var atposition = emailNv.indexOf("@");
+    var dotposition = emailNv.lastIndexOf(".");
+    var regExp = /^(0[234][0-9]{8}|1[89]00[0-9]{4})$/;
 
+    
+    var status = false;
+    
+    if (lastname.length < 1) {
+        document.getElementById("checkName").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Họ!</span> ";
+        status = false;
+    }else if(firstname.length < 1){
+    	document.getElementById("checkName").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Tên!</span> ";
+        status = false;
+    }else{
+    	document.getElementById("checkName").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+    	status = true;
+    }
+    
+    if(emailNv.length < 1){
+    	document.getElementById("checkEmail").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Email!</span> ";
+        status = false;
+	}else if(atposition < 1 || dotposition < (atposition + 2)
+            || (dotposition + 2) >= emailNv.length){
+		document.getElementById("checkEmail").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Email không đúng định dạng!</span> ";
+        status = false;
+	}
+	else{
+		document.getElementById("checkEmail").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+
+    if(dobNv.length < 1){
+		document.getElementById("checkDob").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Ngày sinh!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkDob").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+    
+    if(phoneNv.length < 1){
+		document.getElementById("checkPhone").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Số điện thoại!</span> ";
+        status = false;
+	}else if(phoneNv.length < 9 ||phoneNv.length > 13 ) {
+		if(regExp.test(phoneNv)){
+			document.getElementById("checkPhone").innerHTML = 
+	            " <span class='fa fa-check-square' style='color:#3FFF00;'></span> ";
+		}else{
+		document.getElementById("checkPhone").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Số điện không đúng định dạng!</span> ";
+        status = false;
+		}
+	}else{
+		document.getElementById("checkPhone").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+    
+    if(addressNv.length<1){
+		document.getElementById("checkAddress").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Địa chỉ!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkAddress").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+    
+    if(statusNv.length<1){
+		document.getElementById("checkStatus").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Trạng thái!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkStatus").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+    
+    if(levelNv.length<1){
+		document.getElementById("checkLevel").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Cấp độ!</span> ";
+        status = false;
+	}else if(!levelNv.match(/^\d+/)){
+		document.getElementById("checkLevel").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Cấp độ chỉ được nhập số!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkLevel").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+    if(salaryNv.length<1){
+		document.getElementById("checkSalary").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Lương!</span> ";
+        status = false;
+	}else if(!salaryNv.match(/^\d+/)){
+		document.getElementById("checkSalary").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Lương chỉ được nhập số!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkSalary").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+    return status;
+}
+</script>
 <script>
 	$(document).ready(function() {
 		$('#table1').DataTable();
@@ -52,22 +171,20 @@
 </script>
 
 <style type="text/css">
-#InputLastname {
-	border-color: red;
-}
+
 </style>
 </head>
 <body>
 	<section class="content-header">
 		<h1>
 			Danh Sách Nhân Viên
-			<button type="button" class="btn btn-info" data-toggle="modal"
+			<button type="button" class="btn btn-primary" data-toggle="modal"
 				data-target="#myModal">Thêm nhân viên</button>
 		</h1>
 		<ol class="breadcrumb">
-			<li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-			<li class="active">Quản lí nhân viên</li>
-			<li class="active">Danh sách Nhân Viên</li>
+			<li><a href="#"><i class="fa fa-dashboard"></i>Trang Chủ</a></li>
+			<li class="active">Quản Lí Nhân Viên</li>
+			<li class="active">Danh Sách CNVC</li>
 		</ol>
 	</section>
 	<!--Modalthemnhanvien-->
@@ -75,8 +192,8 @@
 		<div class="modal-dialog">
 
 			<!-- Modal content-->
-			<form:form action="/save/staff" modelAttribute="staff" enctype="multipart/form-data">
-				<div class="modal-content">
+			<form:form action="/save/staff" modelAttribute="staff" enctype="multipart/form-data"  onsubmit="return validate()" name="myform">
+				<div class="modal-content"> 
 					<div class="modal-header">
 						<h4 class="modal-title">Thêm Nhân Viên</h4>					
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -101,6 +218,7 @@
 									<form:input type="text" path="fname" class="form-control"
 										id="InputFirstname" />
 								</div>
+								<span id="checkName"></span>
 							</div>
 							
 							<div clas="form-group">
@@ -110,40 +228,46 @@
     								<label class="custom-file-label" for="inputGroupFile01">Choose file</label>
 							  	</div>
 							</div>
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">Email:</label>
-								<form:input type="text" path="email" class="form-control"
-									id="InputEmail" />
+								<form:input type="text" path="email" class="form-control" id="InputEmail" />
+								<span id="checkEmail"></span>
 							</div>
 							
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">Ngày sinh</label>
 								<form:input type="date" path="dob" class="form-control"
-									id="InputDob" min="1980-1-1" max="2020-12-31" />
+									id="InputDob" min="1980-1-1" max="2020-12-31"/>
+									<span id="checkDob"></span>
 							</div>
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">Số Điện Thoại</label>
 								<form:input type="text" path="phone" class="form-control"
 									id="InputPhone" />
+									<span id="checkPhone"></span>
 							</div>
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">Địa chỉ:</label>
 								<form:input type="text" path="address" class="form-control"
 									id="InputAddress" />
+									<span id="checkAddress"></span>
 							</div>
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">Trạng Thái:</label>
-								<form:input path="status" class="form-control" />
+								<form:input path="status" class="form-control" id="InputStatus"/>
+								<span id="checkStatus"></span>
 							</div>
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">Cấp độ:</label>
-								<form:input path="level" class="form-control" />
+								<form:input path="level" class="form-control" id="InputLevel"/>
+								<span id="checkLevel"></span>
 							</div>
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">Lương</label>
-								<form:input path="salary" class="form-control" />
+								<form:input path="salary" class="form-control" id="InputSalary"/>
+								<span id="checkSalary"></span>
 							</div>
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">Phòng Ban:</label>
 								<form:select path="depart" class="custom-select"
 									idxmlns="sel1">
@@ -155,7 +279,7 @@
 									</c:if>
 								</form:select>
 							</div>
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">Chức vụ</label>
 								<form:select path="role" class="custom-select"
 									idxmlns="sel1">
@@ -171,8 +295,8 @@
 					</div>
 					<div class="modal-footer">
 						<input type="submit" name="btnsave" class="btn btn-info"
-							value="SAVE">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							value="Lưu">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
 					</div>
 
 				</div>
@@ -185,19 +309,19 @@
 		<table id="table1" class="display table-bordered" style="width: 100%">
     	<colgroup>
        		<col span="1" style="width: 4%;">
-       		<col span="1" style="width: 11%;">
        		<col span="1" style="width: 10%;">
-       		<col span="1" style="width: 19%;">
+       		<col span="1" style="width: 10%;">
+       		<col span="1" style="width: 18%;">
        		<col span="1" style="width: 10%;">
        		<col span="1" style="width: 6%;">
        		<col span="1" style="width: 11%;">
        		<col span="1" style="width: 9%;">
        		<col span="1" style="width: 8%;">
-       		<col span="1" style="width: 11%;">       		       		       		
+       		<col span="1" style="width: 14%;">       		       		       		
     	</colgroup>
-			<thead class="thead-dark">
+			<thead style="background-color:#4876FF ;color: white">
 				<tr>
-					<th>ID</th>
+					<th>Mã</th>
 					<th>Họ Tên</th>
 					<th>Ngày sinh</th>	
 					<th>Địa chỉ</th>									
@@ -208,7 +332,7 @@
 				<!-- <th>Image</th> -->
 				<!-- <th>Status</th> -->
 					<th>Cấp độ</th>
-					<th>Action</th>
+					<th></th>
 				</tr>
 			</thead>
 
@@ -240,10 +364,14 @@
 						<%-- <td>${sp.image}</td> --%>
 						<%-- <td>${sp.status}</td> --%>
 						<td>${sp.level}</td>
-							<td style="text-align: center;">
+							<td >
 								<!-- <input  type="button" data-toggle="modal" data-target="#myModal" value="update"> -->
-								<a href="${updateLink}" class="">UPDATE</a>
-								<a href="${deleteLink}" class="">DEL</a>
+							<div class="btn-group" role="group" aria-label="Basic example">
+								<button type="button" class="btn btn-info"
+									onclick="location.href='${updateLink}';">Cập nhật</button>
+								<button type="button" class="btn btn-danger"
+									onclick="location.href='${deleteLink}';">Xóa</button>
+							</div>
 								<!-- <input type="submit" value="Update">  --> <!-- <input
 								class="gfgselect" data-toggle="modal" data-target="#gfgmodal"
 								type="button" value="del"> -->

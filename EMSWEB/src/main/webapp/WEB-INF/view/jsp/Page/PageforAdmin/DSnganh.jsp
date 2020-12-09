@@ -44,7 +44,45 @@
 <link href="../../../../../resources/bootstrap/css/_all-skins.min.css"
 	rel="stylesheet" type="text/css" />
 
-
+<script type="text/javascript">
+function validate(){
+	var name = document.myform.InputLastname.value;
+	var noteCk = document.myform.InputNote.value;
+	var statusCk = document.myform.InputStatus.value;
+	
+	var status = false;
+	
+	if(name.length < 1){
+		document.getElementById("checkName").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Tên chuyên ngành!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkName").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+		status = true;
+	}
+	
+	if(noteCk.length < 1){
+		document.getElementById("checkNote").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Chú thích!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkNote").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	if(statusCk.length < 1){
+		document.getElementById("checkStatus").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Trạng thái!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkStatus").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	return status;
+}
+</script>
 
 <script>
 	$(document).ready(function() {
@@ -53,9 +91,7 @@
 </script>
 
 <style type="text/css">
-#InputLastname {
-	border-color: red;
-}
+
 </style>
 </head>
 <body>
@@ -76,7 +112,7 @@
 		<div class="modal-dialog">
 
 			<!-- Modal content-->
-			<form:form action="/save/major" modelAttribute="major">
+			<form:form action="/save/major" modelAttribute="major" onsubmit="return validate()" name="myform">
 				<div class="modal-content">
 					<div class="modal-header">
 						<h4 class="modal-title">Thêm Chuyên Ngành</h4>
@@ -89,21 +125,24 @@
 								<form:input type="hidden" path="id" />
 							</div>
 							<div Class="form-group">
-								<label for="InputName">Tên Ngành</label>
+								<label for="InputName">Tên Ngành:</label>
 									<form:input type="text" path="name" class="form-control"
 										id="InputLastname" />
+										<span id="checkName"></span>
 							</div>
 							
-							<div clas="form-group">
-								<label for="InputID">Chú Thích</label>
+							<div class="form-group">
+								<label for="InputID">Chú Thích:</label>
 								<form:input type="text" path="description" class="form-control"
-									id="InputEmail" />
+									id="InputNote" />
+									<span id="checkNote"></span>
 							</div>	
 							
-							<div clas="form-group">
-								<label for="InputID">Trạng Thái</label>
+							<div class="form-group">
+								<label for="InputID">Trạng Thái:</label>
 								<form:input type="text" path="status" class="form-control"
-									id="InputEmail" />
+									id="InputStatus" />
+									<span id="checkStatus"></span>
 							</div>					
 						</div>
 					</div>
@@ -117,12 +156,12 @@
 			</form:form>
 		</div>
 	</div>
-
+	<section class="content">
 	<!--Table  -->
 	<form:form action="/save" modelAttribute="room">
 		<table id="table1" class="display">
 
-			<thead style="background-color: aqua;">
+			<thead style="background-color: #4876FF; color: white">
 				<tr>
 					<th>ID</th>
 					<th>Tên Ngành</th>
@@ -153,9 +192,13 @@
 								value="${sp.name}"></td>
 							<td class="gfgscores">${sp.description}</td>
 							<td class="gfgscores">${sp.status}</td>
-							<td style="text-align: center;">
-								<a href="${updateLink}" >UPDATE</a>
-								<a href="${deleteLink}">DEL</a>
+							<td>
+							<div class="btn-group" role="group" aria-label="Basic example">
+								<button type="button" class="btn btn-info"
+									onclick="location.href='${updateLink}';">Cập nhật</button>
+								<button type="button" class="btn btn-danger"
+									onclick="location.href='${deleteLink}';">Xóa</button>
+							</div>
 							</td>
 						</tr>
 
@@ -168,7 +211,7 @@
 
 
 	</form:form>
-
+</section>	
 
 </body>
 </html>

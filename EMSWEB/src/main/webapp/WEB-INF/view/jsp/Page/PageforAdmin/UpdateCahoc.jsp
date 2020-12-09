@@ -34,6 +34,45 @@
 <link href="../../../../../resources/bootstrap/css/_all-skins.min.css"
 	rel="stylesheet" type="text/css" />
 
+<script type="text/javascript">
+function validate(){
+	var name = document.myform.InputName.value;
+	var timeSt = document.myform.InputTimeSt.value;
+	var timeEnd = document.myform.InputTimeEnd.value;
+	
+	var status = false;
+	
+	if(name.length < 1){
+		document.getElementById("checkName").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Tên ca học!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkName").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+    	status = true;
+	}
+	
+	if(timeSt.length < 1){
+		document.getElementById("checkTimeSt").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Thời gian bắt đầu!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkTimeSt").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	if(timeEnd.length < 1){
+		document.getElementById("checkTimeEnd").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Thời gian kết thúc!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkTimeEnd").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	return status;
+}
+</script>
 
 </head>
 <body>
@@ -53,7 +92,7 @@
 		<!--Thoi Khoa Bieu -->
 		<div class="row">
 			<div class="col-md-12">
-				<form:form action="/updateStudyShift" modelAttribute="studyShift">
+				<form:form action="/updateStudyShift" modelAttribute="studyShift" onsubmit="return validate()" name="myform">
 					<div class="box box-primary">
 <!-- 						<img src="../../../../../resources/FileUpload/tri1703.jpg" name=""
 							style="width: 200px; height: 200px;"> -->
@@ -64,23 +103,26 @@
 							<c:forEach var="sp" items="${List}">
 								<div class="box-body">
 									<div class="form-group" >
-										<input type="text" id="custId" name="id" value="${sp.id}" readonly="readonly" >
+										<input type="hidden" id="custId" name="id" value="${sp.id}" readonly="readonly" >
 									</div>
 
 									<div class="form-group">
 										<label for="exampleInputEmail">Tên Ca Học</label>
 										<form:input path="nameShift" value="${sp.nameShift}"
-											class="form-control" id="InputEmail" />
+											class="form-control" id="InputName" />
+											<span id="checkName"></span>
 									</div>
 									<div class="form-group">
 										<label for="InputPhone">Thời Gian Bắt Đầu</label>
 										<form:input path="startingTime" value="${sp.startingTime}" type="text"
-											class="form-control" id="InputPhone" />
+											class="form-control" id="InputTimeSt" />
+											<span id="checkTimeSt"></span>
 									</div>
 									<div class="form-group">
 										<label for="InputPhone">Thời Gian Kết Thúc</label>
 										<form:input path="endTime" value="${sp.endTime}" type="text"
-											class="form-control" id="InputAddress" />
+											class="form-control" id="InputTimeEnd" />
+											<span id="checkTimeEnd"></span>
 									</div>
 								</div>
 							</c:forEach>

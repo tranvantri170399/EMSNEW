@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>EMS</title>
+<title>AdminLTE 2 | Dashboard</title>
 
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
@@ -60,23 +60,21 @@
 </head>
 <body>
 	<section class="content-header">
-		<H1>Thoi Khoa Bieu</H1>
 		<ol class="breadcrumb">
 			<li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-			<li class="active">Học Tập</li>
-			<li class="active">Thời Khóa Biểu</li>
+			<li class="active">Quản lí </li>
+			<li class="active">Danh sách Lịch Học</li>
 		</ol>
 	</section>
-<div>
 	<!--Table  -->
-	<form:form action="/save" modelAttribute="hocsinh">
+	<form:form action="/save" modelAttribute="room">
 		<table id="table1" class="display" style="width: 100%">
-		<colgroup>
+<colgroup>
        		<col span="1" style="width: 3%;">
-       		<col span="1" style="width: 14%;">
-       		<col span="1" style="width: 10%;">
        		<col span="1" style="width: 7%;">
        		<col span="1" style="width: 10%;">
+       		<col span="1" style="width: 7%;">
+       		<col span="1" style="width: 17%;">
        		<col span="1" style="width: 10%;">
        		<col span="1" style="width: 7%;">
        		<col span="1" style="width: 11%;">
@@ -85,7 +83,7 @@
        		<col span="1" style="width: 5%;">
        		<col span="1" style="width: 6%;">       		       		       		
     	</colgroup>
-			<thead style="background-color: aqua;">
+			<thead style="background-color: #4876FF; color: white">
 				<tr>
 					<th>ID</th>
 					<th>Ngày</th>
@@ -93,10 +91,9 @@
 					<th>Tên lớp</th>
 					<th>Tên Phòng</th>
 					<th>Tên Ca</th>
-					<th>Tên Môn</th>	
+					<th>Tên Môn</th>
 					<th>Tên Giáo Viên</th>
 					<th>Thời Gian</th>
-					
 				</tr>
 			</thead>
 
@@ -126,6 +123,7 @@
 							<td class="gfgscores">${sp.studyShift.startingTime}-${sp.studyShift.endTime}</td>
 							
 						</tr>
+
 					</c:forEach>
 				</c:if>
 
@@ -135,7 +133,7 @@
 
 
 	</form:form>
-</div>
-
+<!-- </section>
+ -->
 </body>
 </html>

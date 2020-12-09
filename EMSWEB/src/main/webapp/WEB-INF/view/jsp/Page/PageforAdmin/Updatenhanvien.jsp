@@ -40,7 +40,103 @@
          folder instead of downloading all of them to reduce the load. -->
 <link href="../../../../../resources/bootstrap/css/_all-skins.min.css"
 	rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+function validate(){
+	var dobUp = document.myform.InputDob.value;
+	var emailUp = document.myform.InputEmail.value;
+	var phoneUp = document.myform.InputPhone.value;
+	var addressUp = document.myform.InputAddress.value;
+	var levelUp = document.myform.InputLevel.value;
+	var salaryUp = document.myform.InputSalary.value;
+	
+	var regExp = /^(0[234][0-9]{8}|1[89]00[0-9]{4})$/;
+    var atposition = emailUp.indexOf("@");
+    var dotposition = emailUp.lastIndexOf(".");
+	
+	var status = false;
 
+	if(dobUp.length < 1){
+		document.getElementById("checkDob").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Ngày sinh!</span> ";
+		status = false;
+	}else{
+		document.getElementById("checkDob").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+		status = true;
+	}
+	
+	if(emailUp.length < 1){
+		document.getElementById("checkEmail").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Email!</span> ";
+        status = false;
+	}else if(atposition < 1 || dotposition < (atposition + 2)
+            || (dotposition + 2) >= emailUp.length){
+		document.getElementById("checkEmail").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Email không đúng định dạng!</span> ";
+        status = false;
+	}
+	else{
+		document.getElementById("checkEmail").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	if(phoneUp.length==0){
+		document.getElementById("checkPhone").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Số điện thoại!</span> ";
+        status = false;
+	}else if(phoneUp.length < 9 ||phoneUp.length > 13 ) {
+		if(regExp.test(phoneUp)){
+			document.getElementById("checkPhone").innerHTML = 
+	            " <span class='fa fa-check-square' style='color:#3FFF00;'></span> ";
+		}else{
+		document.getElementById("checkPhone").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Số điện không đúng định dạng!</span> ";
+        status = false;
+		}
+	}else{
+		document.getElementById("checkPhone").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	if(addressUp.length<1){
+		document.getElementById("checkAddress").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Địa chỉ!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkAddress").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	if(levelUp.length<1){
+		document.getElementById("checkLevel").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Cấp độ!</span> ";
+        status = false;
+	}else if(!levelUp.match(/^\d+/)){
+		document.getElementById("checkLevel").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Cấp độ chỉ được nhập số!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkLevel").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	if(salaryUp.length<1){
+		document.getElementById("checkSalary").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Lương!</span> ";
+        status = false;
+	}else if(!salaryUp.match(/^\d+/)){
+		document.getElementById("checkSalary").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Lương chỉ được nhập số!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkSalary").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	return status;
+}
+
+</script>
 
 </head>
 <body>
@@ -61,7 +157,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<form:form action="/updatess" modelAttribute="staff"
-					enctype="multipart/form-data">
+					enctype="multipart/form-data" onsubmit="return validate()" name="myform">
 					<div class="box box-primary">
 						<!-- 						<img src="../../../../../resources/FileUpload/tri1703.jpg" name=""
 							style="width: 200px; height: 200px;"> -->
@@ -92,7 +188,7 @@
 											<span class="input-group-addon">Họ</span>
 											<input value="${sp.lname}" readonly class="form-control"/>
 											<span class="input-group-addon">Tên</span>
-											<input value="${sp.fname}" readonly class="form-control"/>
+											<input name="fname" value="${sp.fname}" readonly class="form-control"/>
 										</div>
 									</div>
 									<!-- 									<script type="text/javascript">
@@ -104,22 +200,26 @@
 										<form:input path="dob" type="date" class="form-control"
 											id="InputDob" min="1980-1-1" max="2020-12-31"
 											value="${sp.dob}" />
+											<span id="checkDob"></span>
 									</div>
 
 									<div class="form-group">
 										<label for="exampleInputEmail">Email</label>
 										<form:input path="email" value="${sp.email}"
 											class="form-control" id="InputEmail" />
+											<span id="checkEmail"></span>
 									</div>
 									<div class="form-group">
 										<label for="InputPhone">Số Điện Thoại</label>
 										<form:input path="phone" value="${sp.phone}" type="text"
 											class="form-control" id="InputPhone" />
+											<span id="checkPhone"></span>
 									</div>
 									<div class="form-group">
 										<label for="InputPhone">Địa chỉ</label>
 										<form:input path="address" value="${sp.address}" type="text"
 											class="form-control" id="InputAddress" />
+											<span id="checkAddress"></span>
 									</div>
 									<div class="form-group">
 										<label for="InputPhone">Trạng thái:</label> <label
@@ -128,12 +228,14 @@
 									<div class="form-group">
 										<label for="InputID">Cấp độ:</label>
 										<form:input path="level" value="${sp.level}"
-											class="form-control" />
+											class="form-control" id="InputLevel"/>
+											<span id="checkLevel"></span>
 									</div>
 									<div class="form-group">
 										<label for="InputID">Lương</label>
 										<form:input path="salary" value="${sp.salary}"
-											class="form-control" />
+											class="form-control" id="InputSalary"/>
+											<span id="checkSalary"></span>
 									</div>
 									<%-- <div clas="form-group">
 										<label for="InputID">Phòng Ban:</label>

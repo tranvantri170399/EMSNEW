@@ -67,8 +67,8 @@
 									style="float: left; margin-right: 10px;">
   			<path fill-rule="evenodd"
 										d="M10 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm6 5c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
-		</svg> <span class="hidden-xs"> <c:forEach var="sp" items="${List}">
-													${sp.username}
+		</svg> <span class="hidden-xs"> <c:forEach var="sp" items="${Listp}">
+													${sp.fname}<%-- 
 											<input name="nameuser" value="${sp.username}" type="hidden">
 										<c:url var="infoLink" value="Page/INFO">
 											<c:param name="nameuserxxx" value="${sp.username}" />
@@ -76,7 +76,19 @@
 										<c:url var="updatepassLink" value="Page/UPDATEPASS">
 											<c:param name="nameuserxxx" value="${sp.username}" />
 										</c:url>
-										
+										<c:url var="thoikhoabieu" value="parent/thoikhoabieu">
+											<c:param name="userid" value="${sp.userid}" />
+										</c:url> --%>
+										<input name="nameuser" value="${sp.email}" type="hidden">
+										<c:url var="infoLink" value="Page/INFO">
+											<c:param name="nameuserxxx" value="${sp.email}" />
+										</c:url>
+										<c:url var="updatepassLink" value="Page/UPDATEPASS">
+											<c:param name="nameuserxxx" value="${sp.email}" />
+										</c:url>
+										<c:url var="thoikhoabieu" value="parent/thoikhoabieu">
+											<c:param name="userid" value="${sp.id}" />
+										</c:url>
 										
 									</c:forEach>
 							</span>
@@ -94,10 +106,14 @@
 								<!-- Menu Footer-->
 								<li class="user-footer">
 									<div class="pull-left">
-										<a href="#" class="btn btn-default btn-flat">Profile</a>
+										<form:form method="POST" modelAttribute="student" >
+										<button onclick="#'">Profile</button>
+										</form:form>
 									</div>
 									<div class="pull-right">
-										<a href="#" class="btn btn-default btn-flat">Sign out</a>
+										<form:form method="POST" modelAttribute="student" >
+										<button onclick="/logout'">Sign out</button>
+										</form:form>
 									</div>
 								</li>
 							</ul></li>
@@ -110,19 +126,6 @@
 			<!-- sidebar: style can be found in sidebar.less -->
 			<section class="sidebar">
 				<!-- Sidebar user panel -->
-				<!-- search form -->
-				<form action="#" method="get" class="sidebar-form">
-					<div class="input-group">
-						<input type="text" name="q" class="form-control"
-							placeholder="Search..." /> <span class="input-group-btn">
-							<button type='submit' name='search' id='search-btn'
-								class="btn btn-flat">
-								<i class="fa fa-search"></i>
-							</button>
-						</span>
-					</div>
-				</form>
-				<!-- /.search form -->
 				<!-- sidebar menu: : style can be found in sidebar.less -->
 				<ul class="sidebar-menu">
 					<li class="header">MENU</li>
@@ -154,11 +157,11 @@
 							class="label label-primary pull-right">4</span>
 					</a>
 						<ul class="treeview-menu">
-							<li><a href="Page/thoikhoabieu.html" target="frame"><i
-									class="fa fa-circle-o"></i>Thời khóa biểu</a></li>
-							<li><a href="Page/diemdanh.html" target="frame"><i
-									class="fa fa-circle-o"></i>Điểm danh</a></li>
-							<li><a href="Page/hocphi.html" target="frame"><i
+<!-- 							<li><a href="Page/LICHHOC" target="frame">lich học</a></li> -->
+							<li><a href="${thoikhoabieu}" target="frame">
+							<i class="fa fa-circle-o"></i>Thời khóa biểu</a></li>
+							<li><a href="Page/DIEMDANH" target="frame"><i class="fa fa-circle-o"></i>Điểm danh</a></li>
+							<li><a href="Page/HOCPHI" target="frame"><i
 									class="fa fa-circle-o"></i>Kiểm tra học phí</a></li>
 						</ul></li>
 					<li class="treeview"><a href="#"> <i
@@ -166,11 +169,11 @@
 							class="fa fa-angle-left pull-right"></i>
 					</a>
 						<ul class="treeview-menu">
-							<li><a href="Page/diemtheoky.html" target="frame"><i
+							<li><a href="Page/DIEMTHEOKY" target="frame"><i
 									class="fa fa-circle-o"></i>Điểm theo kỳ</a></li>
-							<li><a href="Page/mondahoc.html" target="frame"><i
+							<li><a href="Page/MONDAHOC" target="frame"><i
 									class="fa fa-circle-o"></i>Môn đã học</a></li>
-							<li><a href="Page/bangdiem.html" target="frame"><i
+							<li><a href="Page/BANGDIEM" target="frame"><i
 									class="fa fa-circle-o"></i>Bảng điểm</a></li>
 						</ul></li>
 
@@ -190,10 +193,10 @@
 
 		<footer class="main-footer">
 			<div class="pull-right hidden-xs">
-				<b>Version</b> 2.0
+				<b>Version</b> Beta
 			</div>
-			<strong>Copyright &copy; 2014-2015 <a
-				href="http://almsaeedstudio.com">Almsaeed Studio</a>.
+			<strong>Copyright &copy; 2019-2020 <a>
+				href="">4TL Team</a>.
 			</strong> All rights reserved.
 		</footer>
 

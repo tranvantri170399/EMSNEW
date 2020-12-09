@@ -34,6 +34,49 @@
 <link href="../../../../../resources/bootstrap/css/_all-skins.min.css"
 	rel="stylesheet" type="text/css" />
 
+<script type="text/javascript">
+function validate(){
+	var name = document.myform.InputName.value;
+	var number = document.myform.InputClassNumber.value;
+	var dt = document.myform.InputDt.value;
+	
+	var status = false;
+	
+	if(name.length < 1){
+		 document.getElementById("checkName").innerHTML = 
+	            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Tên phòng!</span> ";
+	        status = false;
+	}else{
+		document.getElementById("checkName").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+    	status = true;
+	}
+	
+	if(number.length < 1){
+		document.getElementById("checkNumber").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Số phòng!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkNumber").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	if(dt.length < 1){
+		document.getElementById("checkDt").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Diện tích!</span> ";
+        status = false;
+	}else if(!dt.match(/^\d+/)){
+		document.getElementById("checkDt").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Diện tích chỉ nhập bằng số!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkDt").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	return status;
+}
+</script>
 
 </head>
 <body>
@@ -53,7 +96,7 @@
 		<!--Thoi Khoa Bieu -->
 		<div class="row">
 			<div class="col-md-12">
-				<form:form action="/updateSchoolRooms" modelAttribute="room">
+				<form:form action="/updateSchoolRooms" modelAttribute="room" onsubmit="return validate()" name="myform">
 					<div class="box box-primary">
 <!-- 						<img src="../../../../../resources/FileUpload/tri1703.jpg" name=""
 							style="width: 200px; height: 200px;"> -->
@@ -67,20 +110,23 @@
 									<div class="form-group">
 										<label for="exampleInputEmail">Tên</label>
 										<form:input path="name" value="${sp.name}"
-											class="form-control" id="InputEmail" />
+											class="form-control" id="InputName" />
+											<span id="checkName"></span>
 									</div>
 									<div class="form-group">
 										<label for="InputPhone">Số Phòng</label>
 										<form:input path="schoolroomnumber" value="${sp.schoolroomnumber}" type="text"
-											class="form-control" id="InputPhone" />
+											class="form-control" id="InputClassNumber" />
+											<span id="checkNumber"></span>
 									</div>
 									<div class="form-group">
 										<label for="InputPhone">Diện Tích</label>
 										<div class="input-group">
 										<form:input path="surfacearea" value="${sp.surfacearea}" type="text"
-											class="form-control" id="InputAddress" />
+											class="form-control" id="InputDt" />
 										<span class="input-group-addon">m<sup>2</sup></span>	
 										</div>	
+										<span id="checkDt"></span>
 									</div>
 								</div>
 							</c:forEach>

@@ -44,7 +44,45 @@
 <link href="../../../../../resources/bootstrap/css/_all-skins.min.css"
 	rel="stylesheet" type="text/css" />
 
-
+<script type="text/javascript">
+function validate(){
+	var name = document.myform.InputName.value;
+	var timeSt = document.myform.InputTimeSt.value;
+	var timeEnd = document.myform.InputTimeEnd.value;
+	
+	var status = false;
+	
+	if(name.length < 1){
+		document.getElementById("checkName").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Tên ca học!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkName").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+    	status = true;
+	}
+	
+	if(timeSt.length < 1){
+		document.getElementById("checkTimeSt").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Thời gian bắt đầu!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkTimeSt").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	if(timeEnd.length < 1){
+		document.getElementById("checkTimeEnd").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Thời gian kết thúc!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkTimeEnd").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	return status;
+}
+</script>
 
 <script>
 	$(document).ready(function() {
@@ -53,9 +91,7 @@
 </script>
 
 <style type="text/css">
-#InputLastname {
-	border-color: red;
-}
+
 </style>
 </head>
 <body>
@@ -67,8 +103,8 @@
 		</h1>
 		<ol class="breadcrumb">
 			<li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-			<li class="active">Quản lí </li>
-			<li class="active">Danh sách Ca Học</li>
+			<li class="active">Quản Lí Lịch Học </li>
+			<li class="active">Danh Sách Ca Học</li>
 		</ol>
 	</section>
 	<!--Modalthemnhanvien-->
@@ -76,7 +112,7 @@
 		<div class="modal-dialog">
 
 			<!-- Modal content-->
-			<form:form action="/save/studyShift" modelAttribute="studyShift">
+			<form:form action="/save/studyShift" modelAttribute="studyShift" onsubmit="return validate()" name="myform">
 				<div class="modal-content">
 					<div class="modal-header">
 						<h4 class="modal-title">Thêm Ca Học</h4>
@@ -89,33 +125,32 @@
 								<form:input type="hidden" path="id" />
 							</div>
 							<div Class="form-group">
-								<label for="InputName">Tên Ca Học</label>
+								<label for="InputName">Tên Ca Học:</label>
 								<form:input type="text" path="nameShift" class="form-control"
-									id="InputLastname" />
+									id="InputName" />
+									<span id="checkName"></span>
 							</div>
 
 							<div clas="form-group">
-								<label for="InputID">Thời Gian Bắt Đầu</label>
+								<label for="InputID">Thời Gian Bắt Đầu:</label>
 								<form:input type="time" path="startingTime"
-									class="form-control" id="InputEmail" />
+									class="form-control" id="InputTimeSt" />
+									<span id="checkTimeSt"></span>
 							</div>
 
 							<div clas="form-group">
-								<label for="InputID">Thời Gian Kết Thúc</label>
-								<div class="input-group">
+								<label for="InputID">Thời Gian Kết Thúc:</label>
+								
 									<form:input type="time" path="endTime" class="form-control"
-										id="InputEmail" />
-									<div class="input-group-prepend">
-										
-									</div>
-								</div>
-							</div>
+										id="InputTimeEnd" />
+										<span id="checkTimeEnd"></span>
 						</div>
+					</div>
 					</div>
 					<div class="modal-footer">
 						<input type="submit" name="btnsave" class="btn btn-info"
-							value="SAVE">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							value="Lưu">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
 					</div>
 
 				</div>
@@ -127,7 +162,7 @@
 	<form:form action="/save" modelAttribute="room">
 		<table id="table1" class="display">
 
-			<thead style="background-color: aqua;">
+			<thead style="background-color:#4876FF ;color: white">
 				<tr>
 					<th>ID</th>
 					<th>Tên Ca Học</th>
@@ -160,8 +195,14 @@
 								value="${sp.nameShift}"></td>
 							<td class="gfgscores">${sp.startingTime}</td>
 							<td class="gfgscores">${sp.endTime}</td>
-							<td style="text-align: center;"><a href="${updateLink}">UPDATE</a>
-								<a href="${deleteLink}">DEL</a></td>
+							<td >
+							<div class="btn-group" role="group" aria-label="Basic example">
+								<button type="button" class="btn btn-info"
+									onclick="location.href='${updateLink}';">Cập nhật</button>
+								<button type="button" class="btn btn-danger"
+									onclick="location.href='${deleteLink}';">Xóa</button>
+							</div>
+							</td>							
 						</tr>
 
 					</c:forEach>

@@ -44,7 +44,49 @@
 <link href="../../../../../resources/bootstrap/css/_all-skins.min.css"
 	rel="stylesheet" type="text/css" />
 
-
+<script type="text/javascript">
+function validate(){
+	var name = document.myform.InputName.value;
+	var number = document.myform.InputClassNumber.value;
+	var dt = document.myform.InputDt.value;
+	
+	var status = false;
+	
+	if(name.length < 1){
+		 document.getElementById("checkName").innerHTML = 
+	            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Tên phòng!</span> ";
+	        status = false;
+	}else{
+		document.getElementById("checkName").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+    	status = true;
+	}
+	
+	if(number.length < 1){
+		document.getElementById("checkNumber").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Số phòng!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkNumber").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	if(dt.length < 1){
+		document.getElementById("checkDt").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Diện tích!</span> ";
+        status = false;
+	}else if(!dt.match(/^\d+/)){
+		document.getElementById("checkDt").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Diện tích chỉ nhập bằng số!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkDt").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	return status;
+}
+</script>
 
 <script>
 	$(document).ready(function() {
@@ -52,11 +94,6 @@
 	});
 </script>
 
-<style type="text/css">
-#InputLastname {
-	border-color: red;
-}
-</style>
 </head>
 <body>
 	<section class="content-header">
@@ -76,7 +113,7 @@
 		<div class="modal-dialog">
 
 			<!-- Modal content-->
-			<form:form action="/save/schoolroom" modelAttribute="room">
+			<form:form action="/save/schoolroom" modelAttribute="room" onsubmit="return validate()" name="myform">
 				<div class="modal-content">
 					<div class="modal-header">
 						<h4 class="modal-title">Thêm Phòng Học</h4>
@@ -91,31 +128,35 @@
 							<div Class="form-group">
 								<label for="InputName">Tên phòng</label>
 								<form:input type="text" path="name" class="form-control"
-									id="InputLastname" />
+									id="InputName" />
+									<span id="checkName"></span>
 							</div>
 
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">Số Phòng</label>
 								<form:input type="text" path="schoolroomnumber"
-									class="form-control" id="InputEmail" />
+									class="form-control" id="InputClassNumber" />
+									<span id="checkNumber"></span>
 							</div>
 
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">Diện Tích</label>
 								<div class="input-group">
 									<form:input type="text" path="surfacearea" class="form-control"
-										id="InputEmail" />
+										id="InputDt" />
 									<div class="input-group-prepend">
 										<span Class="input-group-text">m<sup>2</sup></span>
 									</div>
+									
 								</div>
+								<span id="checkDt"></span>
 							</div>
 						</div>
 					</div>
 					<div class="modal-footer">
 						<input type="submit" name="btnsave" class="btn btn-info"
-							value="SAVE">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							value="Lưu">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
 					</div>
 
 				</div>
@@ -127,13 +168,14 @@
 	<form:form action="/save" modelAttribute="room">
 		<table id="table1" class="display">
 
-			<thead style="background-color: aqua;">
+			<thead style="background-color: #4876FF; color: white">
 				<tr>
 					<th>ID</th>
 					<th>Tên Phòng</th>
 					<th>Số Phòng</th>
-					<th>Diện Tích(m<sup>2</sup>)</th>
-					<th>Action</th>
+					<th>Diện Tích(m<sup>2</sup>)
+					</th>
+					<th></th>
 				</tr>
 			</thead>
 
@@ -156,8 +198,14 @@
 							<td class="gfgpp">${sp.name}</td>
 							<td class="gfgscores">${sp.schoolroomnumber}</td>
 							<td class="gfgscores">${sp.surfacearea}</td>
-							<td style="text-align: center;"><a href="${updateLink}">UPDATE</a>
-								<a href="${deleteLink}">DEL</a></td>
+							<td style="text-align: center;">
+								<div class="btn-group" role="group" aria-label="Basic example">
+									<button type="button" class="btn btn-info"
+										onclick="location.href='${updateLink}';">Cập Nhật</button>
+									<button type="button" class="btn btn-danger"
+										onclick="location.href='${deleteLink}';">Xóa</button>
+								</div>
+							</td>
 						</tr>
 
 					</c:forEach>

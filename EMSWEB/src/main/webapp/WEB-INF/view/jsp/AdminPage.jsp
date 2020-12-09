@@ -80,10 +80,14 @@
 								<!-- Menu Footer-->
 								<li class="user-footer">
 									<div class="pull-left">
-										<a href="#" class="btn btn-default btn-flat">Profile</a>
+										<form:form method="POST" modelAttribute="student" >
+										<button onclick="#'">Profile</button>
+										</form:form>
 									</div>
 									<div class="pull-right">
-										<a href="#" class="btn btn-default btn-flat">Sign out</a>
+										<form:form method="POST" modelAttribute="student" >
+										<button onclick="/logout">Sign out</button>
+										</form:form>
 									</div>
 								</li>
 							</ul></li>
@@ -96,19 +100,6 @@
 			<!-- sidebar: style can be found in sidebar.less -->
 			<section class="sidebar">
 				<!-- Sidebar user panel -->
-				<!-- search form -->
-				<form action="#" method="get" class="sidebar-form">
-					<div class="input-group">
-						<input type="text" name="q" class="form-control"
-							placeholder="Search..." /> <span class="input-group-btn">
-							<button type='submit' name='search' id='search-btn'
-								class="btn btn-flat">
-								<i class="fa fa-search"></i>
-							</button>
-						</span>
-					</div>
-				</form>
-				<!-- /.search form -->
 				<!-- sidebar menu: : style can be found in sidebar.less -->
 				<ul class="sidebar-menu">
 					<li class="header">MENU</li>
@@ -131,13 +122,13 @@
 					</a>
 						<ul class="treeview-menu">
 							<li><a href="/DShocsinh" target="frame"><i
-									class="fa fa-circle-o"></i>Danh sách sinh viên</a></li>
+									class="fa fa-circle-o"></i>Danh Sách Sinh Viên</a></li>
 							<li><a href="/DSlophoc" target="frame"><i
-									class="fa fa-circle-o"></i>Danh sách lớp</a></li>
+									class="fa fa-circle-o"></i>Danh Sách Lớp</a></li>
 							<li><a href="/DSmonhoc" target="frame"><i
-									class="fa fa-circle-o"></i>Danh sách môn</a></li>
+									class="fa fa-circle-o"></i>Danh Sách Môn</a></li>
 							<li><a href="/DSnganh" target="frame"><i
-									class="fa fa-circle-o"></i>Danh sách ngành</a></li>
+									class="fa fa-circle-o"></i>Danh Sách Chuyên Ngành</a></li>
 							<li><a href="/DShocki" target="frame"><i
 									class="fa fa-circle-o"></i>Danh Sách học kì</a></li>
 							<li><a href="/DSqlhocky" target="frame"><i
@@ -148,10 +139,12 @@
 							class="fa fa-angle-right pull-right"></i>
 					</a>
 						<ul class="treeview-menu">
+						<li><a href="/DSKhoahocchitiet" target="frame"><i
+									class="fa fa-circle-o"></i>Chi Tiết Môn Học</a></li>
 							<li><a href="/DScahoc" target="frame"><i
-									class="fa fa-circle-o"></i>Danh sách Ca Học</a></li>
+									class="fa fa-circle-o"></i>Danh Sách Ca Học</a></li>
 							<li><a href="/DSlichhoc" target="frame"><i
-									class="fa fa-circle-o"></i>Danh sách Lịch Học</a></li>
+									class="fa fa-circle-o"></i>Danh Sách Lịch Học</a></li>
 							
 						</ul></li>
 					<li class="treeview"><a href="#"> <i
@@ -160,11 +153,11 @@
 					</a>
 						<ul class="treeview-menu">
 							<li><a href="/DSphonghoc" target="frame"><i
-									class="fa fa-circle-o"></i>Danh sách phòng học</a></li>
+									class="fa fa-circle-o"></i>Danh Sách Phòng Học</a></li>
 									<li><a href="/DSthietbi" target="frame"><i
-									class="fa fa-circle-o"></i>Danh sách thiết bị</a></li>
+									class="fa fa-circle-o"></i>Danh Sách Thiết Bị</a></li>
 							<li><a href="/DSthietbiphonghoc" target="frame"><i
-									class="fa fa-circle-o"></i>Danh sách thiết bị từng phòng</a></li>
+									class="fa fa-circle-o"></i>Danh Sách Thiết Bị Từng Phòng</a></li>
 						</ul></li>
 
 				</ul>
@@ -184,10 +177,10 @@
 
 		<footer class="main-footer">
 			<div class="pull-right hidden-xs">
-				<b>Version</b> 2.0
+				<b>Version</b> Beta
 			</div>
-			<strong>Copyright &copy; 2014-2015 <a
-				href="http://almsaeedstudio.com">Almsaeed Studio</a>.
+			<strong>Copyright &copy; 2019-2020 <a
+				href="">4TL Team</a>.
 			</strong> All rights reserved.
 		</footer>
 
@@ -232,5 +225,13 @@
 
 	<!-- AdminLTE for demo purposes -->
 	<script src="../../../resources/js/demo.js" type="text/javascript"></script>
+	
+	
+	
+<script>
+function myFunction() {
+  confirm("Press a button!");
+}
+</script>
 </body>
 </html>

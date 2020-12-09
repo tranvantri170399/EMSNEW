@@ -53,6 +53,55 @@
 	});
 </script>
 
+<script>
+			    function validate() {
+			        var Id = document.myform.id.value;
+			        var Subjectname = document.myform.subjectname.value;
+			        var Description = document.myform.description.value;
+			        var Statuss = document.myform.status.value;
+			        
+			        var status = false;
+			 
+			        if (Id.length < 1) {
+			            document.getElementById("checkName").innerHTML = 
+			                " <span class='fas fa-window-close' style='color:red;'>Mã ngành không được trống!</span> ";
+			            status = false;
+			        } else {
+			        	document.getElementById("checkName").innerHTML = 
+				            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+			        	status = true;
+			        }
+			        
+			        if (Subjectname.length < 3) {
+			            document.getElementById("checkSubject").innerHTML = 
+			                "  <span class='fas fa-window-close' style='color:red;'>Tên môn học không được để trống!</span> ";
+			            status = false;
+			        } else{
+			        	document.getElementById("checkSubject").innerHTML = 
+				            "<span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+			        }
+			        
+			        if (Description.length < 1) {
+			            document.getElementById("checkDescrip").innerHTML = 
+			                "  <span class='fas fa-window-close' style='color:red;'>Chú thích không được để trống!</span> ";
+			            status = false;
+			        } else{
+			        	document.getElementById("checkDescrip").innerHTML = 
+				            "<span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+			        } 
+			        	
+			        if (Statuss.length < 1) {
+			            document.getElementById("checkStatus").innerHTML = 
+			                "  <span class='fas fa-window-close' style='color:red;'>Trạng thái không được để trống!</span> ";
+			            status = false;
+			        } else {
+			            document.getElementById("checkStatus").innerHTML = 
+			                "<span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+			        }
+			        return status;
+			    }
+		</script>
+
 <style type="text/css">
 #InputLastname {
 	border-color: red;
@@ -67,14 +116,14 @@ th.image.sorting {
 <body>
 	<section class="content-header">
 		<h1>
-			Thêm Mới Giáo Viên
+			Danh Sách Môn Học
 			<button type="button" class="btn btn-info" data-toggle="modal"
-				data-target="#myModal">Thêm nhân viên</button>
+				data-target="#myModal">Thêm Môn Học</button>
 		</h1>
 		<ol class="breadcrumb">
 			<li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-			<li class="active">Quản lí nhân viên</li>
-			<li class="active">Danh sách Nhân Viên</li>
+			<li class="active">Quản Lí Lịch Học</li>
+			<li class="active">Danh sách Môn Học</li>
 		</ol>
 	</section>
 	<!--Modalthemnhanvien-->
@@ -83,7 +132,7 @@ th.image.sorting {
 
 			<!-- Modal content-->
 			<form:form action="/newSubject" modelAttribute="subjectNew"
-				enctype="multipart/form-data">
+				enctype="multipart/form-data" onsubmit="return validate()" name="myform">
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -91,15 +140,15 @@ th.image.sorting {
 					</div>
 					<div class="modal-body">
 						<div>
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">Mã Ngành:</label>
 								<form:input type="text" path="id" class="form-control" id="name" />
+								<span id="checkName"></span>
 							</div>
 						</div>
-						<div clas="form-group">
-							<label for="InputID">Chuyên ngành</label>
-							<form:select path="majors" class="custom-select"
-								idxmlns="sel1">
+						<div class="form-group">
+							<label for="InputID">Chuyên ngành:</label>
+							<form:select path="majors" class="custom-select" idxmlns="sel1">
 								<c:if test="${not empty Listmj}">
 									<c:forEach var="sp" items="${Listmj}">
 										<option>${sp.name}</option>
@@ -108,31 +157,34 @@ th.image.sorting {
 							</form:select>
 						</div>
 						<div>
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">Tên môn học:</label>
-								<form:input type="text" path="subjectname"
-									class="form-control" id="name" />
+								<form:input type="text" path="subjectname" class="form-control"
+									id="name" />
+									<span id="checkSubject"></span>
 							</div>
 						</div>
 						<div>
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">Chú thích môn:</label>
-								<form:input type="text" path="description"
-									class="form-control" id="name" />
+								<form:input type="text" path="description" class="form-control"
+									id="name" />
+									<span id="checkDescrip"></span>
 							</div>
 						</div>
 						<div>
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">Trạng thái:</label>
 								<form:input type="text" path="status" class="form-control"
 									id="name" />
+									<span id="checkStatus"></span>
 							</div>
 						</div>
 					</div>
 					<div class="modal-footer">
 						<input type="submit" name="btnsave" class="btn btn-info"
-							value="SAVE">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							value="Lưu">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
 					</div>
 
 				</div>
@@ -143,7 +195,7 @@ th.image.sorting {
 	<!--Table  -->
 	<table id="table1" class="display">
 
-		<thead style="background-color: aqua;">
+		<thead style="background-color:#4876FF ;color: white">
 			<tr>
 				<th>Mã</th>
 				<th>Chuyên Ngành</th>
@@ -175,8 +227,14 @@ th.image.sorting {
 						<td>${list.subjectname}</td>
 						<td>${list.description}</td>
 						<td>${list.status}</td>
-						<td><a href="${updateLink}" class="btn btn-primary">Update</a>
-							<a href="${deleteLink}" class="btn btn-danger">Delete</a></td>
+						<td>
+							<div class="btn-group" role="group" aria-label="Basic example">
+								<button type="button" class="btn btn-info"
+									onclick="location.href='${updateLink}';">Cập Nhật</button>
+								<button type="button" class="btn btn-danger"
+									onclick="location.href='${deleteLink}';">Xóa</button>
+							</div>
+						</td>
 					</tr>
 				</c:forEach>
 			</c:if>

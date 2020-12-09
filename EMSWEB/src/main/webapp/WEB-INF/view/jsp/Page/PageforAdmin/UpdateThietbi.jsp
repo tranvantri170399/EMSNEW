@@ -41,6 +41,64 @@
 <link href="../../../../../resources/bootstrap/css/_all-skins.min.css"
 	rel="stylesheet" type="text/css" />
 
+<script type="text/javascript">
+function validate(){
+	var name = document.myform.InputName.value;
+	var number = document.myform.InputNumber.value;
+	var statusCk = document.myform.InputStatus.value;
+	var price = document.myform.InputPrice.value;
+	
+	
+	var status = false;
+	
+	if(name.length < 1){
+		document.getElementById("checkName").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Tên thiết bị!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkName").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+            status = true;
+	}
+	
+	if(number.length < 1){
+		document.getElementById("checkNumber").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Số lượng!</span> ";
+        status = false;
+	}else if(!number.match(/^\d+/)){
+		document.getElementById("checkNumber").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Số lượng chỉ nhập bằng số!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkNumber").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	if(statusCk.length < 1){
+		document.getElementById("checkStatus").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Tình trạng!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkStatus").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	if(price.length < 1){
+		document.getElementById("checkPrice").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Giá thành!</span> ";
+        status = false;
+	}else if(!price.match(/^\d+/)){
+		document.getElementById("checkPrice").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Giá thành chỉ nhập bằng số!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkPrice").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	return status;
+}
+</script>
 
 </head>
 <body>
@@ -60,7 +118,7 @@
 		<!--Thoi Khoa Bieu -->
 		<div class="row">
 			<div class="col-md-12">
-				<form:form action="/updateFormDevice" modelAttribute="room">
+				<form:form action="/updateFormDevice" modelAttribute="room" onsubmit="return validate()" name="myform">
 					<div class="box box-primary">
 <!-- 						<img src="../../../../../resources/FileUpload/tri1703.jpg" name=""
 							style="width: 200px; height: 200px;"> -->
@@ -75,25 +133,29 @@
 									<div class="form-group">
 										<label for="exampleInputEmail">Tên Thiết bị</label>
 										<form:input path="deviceName" value="${sp.deviceName}"
-											class="form-control" id="InputEmail" />
+											class="form-control" id="InputName" />
+											<span id="checkName"></span>
 									</div>
 									<div class="form-group">
 										<label for="InputPhone">Số Lượng</label>
 										<form:input path="amount" value="${sp.amount}" type="text"
-											class="form-control" id="InputPhone" />
+											class="form-control" id="InputNumber" />
+											<span id="checkNumber"></span>
 									</div>
 									<div class="form-group">
 										<label for="InputPhone">Trạng Thái</label>
 										<form:input path="status" value="${sp.status}" type="text"
-											class="form-control" id="InputAddress" />
+											class="form-control" id="InputStatus" />
+											<span id="checkStatus"></span>
 									</div>
 									<div class="form-group">
 										<label for="InputPhone">Giá Thành</label>
 										<div class="input-group">
 										<form:input path="price" value="${sp.price}" type="text"
-											class="form-control" id="InputAddress" />
+											class="form-control" id="InputPrice" />
 											<span class="input-group-addon">VNĐ</span>
 										</div>	
+										<span id="checkPrice"></span>
 									</div>
 								</div>
 							</c:forEach>

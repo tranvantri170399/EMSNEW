@@ -45,7 +45,66 @@
 <link href="../../../../../resources/bootstrap/css/_all-skins.min.css"
 	rel="stylesheet" type="text/css" />
 
-
+<script type="text/javascript">
+function validate(){
+	var id = document.myform.id.value;
+	var name = document.myform.name.value;
+	var dSt = document.myform.InputDSt.value;
+	var dEnd = document.myform.InputDEnd.value;
+	var statusCk = document.myform.InputStatus.value;
+	
+	var status = false;
+	
+	if(id.length < 1){
+		document.getElementById("checkId").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Mã học kì!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkId").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+    	status = true;
+	}
+	
+	if(name.length < 1){
+		document.getElementById("checkName").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Tên học kỳ!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkName").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	if(dSt.length < 1){
+		document.getElementById("checkDSt").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Ngày bắt đầu!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkDSt").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	if(dEnd.length < 1){
+		document.getElementById("checkDEnd").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Ngày kết thúc!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkDEnd").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	if(statusCk.length<1){
+		document.getElementById("checkStatus").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Trạng thái!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkStatus").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	
+	return status;
+}
+</script>
 
 <script>
 	$(document).ready(function() {
@@ -67,14 +126,14 @@ th.image.sorting {
 <body>
 	<section class="content-header">
 		<h1>
-			Thêm Mới Giáo Viên
+			Danh Sách Học Kỳ
 			<button type="button" class="btn btn-info" data-toggle="modal"
-				data-target="#myModal">Thêm nhân viên</button>
+				data-target="#myModal">Thêm Học Kì</button>
 		</h1>
 		<ol class="breadcrumb">
 			<li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-			<li class="active">Quản lí nhân viên</li>
-			<li class="active">Danh sách Nhân Viên</li>
+			<li class="active">Quản Lí Sinh Viên</li>
+			<li class="active">Danh Sách Học Kỳ</li>
 		</ol>
 	</section>
 	<!--Modalthemnhanvien-->
@@ -83,71 +142,76 @@ th.image.sorting {
 
 			<!-- Modal content-->
 			<form:form action="/newSemester" modelAttribute="semester"
-				enctype="multipart/form-data">
+				enctype="multipart/form-data" onsubmit="return validate()" name="myform">
 				<div class="modal-content">
 					<div class="modal-header">
+						<h4 class="modal-title">Thêm Học Kỳ</h4>					
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Thêm Môn học</h4>
 					</div>
 					<div class="modal-body">
 						<div>
-							<div clas="form-group">
-								<label for="InputID">Mã Ngành:</label>
-								<form:input type="text" path="id" class="form-control" id="name" />
+							<div class="form-group">
+								<label for="InputID">Mã học kỳ:</label>
+								<form:input type="text" path="id" class="form-control" id="id" />
+								<span id="checkId"></span>
 							</div>
 						</div>
 						
 						<div>
-							<div clas="form-group">
-								<label for="InputID">Tên Ngành:</label>
+							<div class="form-group">
+								<label for="InputID">Tên học kỳ:</label>
 								<form:input type="text" path="name" class="form-control" id="name" />
+								<span id="checkName"></span>
 							</div>
 						</div>
 		
 						<div>
-							<div clas="form-group">
-								<label for="InputID">Ngày sinh</label>
+							<div class="form-group">
+								<label for="InputID">Ngày bắt đầu:</label>
 								<form:input type="date" path="starttime" class="form-control"
-									id="InputDob" min="1980-1-1" max="2020-12-31" />
+									id="InputDSt" min="1980-1-1" max="2020-12-31" />
+									<span id="checkDSt"></span>
 							</div>
 						</div>
 						<div>
-							<div clas="form-group">
-								<label for="InputID">Ngày sinh</label>
+							<div class="form-group">
+								<label for="InputID">Ngày kết thúc:</label>
 								<form:input type="date" path="endtime" class="form-control"
-									id="InputDob" min="1980-1-1" max="2020-12-31" />
+									id="InputDEnd" min="1980-1-1" max="2020-12-31" />
+									<span id="checkDEnd"></span>
 							</div>
 						</div>
 						<div>
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">Trạng thái:</label>
 								<form:input type="text" path="status" class="form-control"
-									id="name" />
+									id="InputStatus" />
+									<span id="checkStatus"></span>
 							</div>
 						</div>
 					</div>
 					<div class="modal-footer">
 						<input type="submit" name="btnsave" class="btn btn-info"
-							value="SAVE">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							value="Lưu">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
 					</div>
 
 				</div>
 			</form:form>
 		</div>
 	</div>
-
+	<section class="content">
 	<!--Table  -->
 	<table id="table1" class="display">
 
-		<thead style="background-color: aqua;">
+		<thead style="background-color: #4876FF; color: white">
 			<tr>
 				<th>Mã</th>
 				<th>Chuyên Ngành</th>
 				<th>Tên Môn học</th>
 				<th>Mô tả môn học</th>
 				<th>Trạng thái</th>
-				<th>Actions</th>
+				<th></th>
 			</tr>
 		</thead>
 
@@ -172,14 +236,20 @@ th.image.sorting {
 						<td>${list.starttime}</td>
 						<td>${list.endtime}</td>
 						<td>${list.status}</td>
-						<td><a href="${updateLink}" class="btn btn-primary">Update</a>
-							<a href="${deleteLink}" class="btn btn-danger">Delete</a></td>
+						<td>
+							<div class="btn-group" role="group" aria-label="Basic example">
+								<button type="button" class="btn btn-info"
+									onclick="location.href='${updateLink}';">Cập nhật</button>
+								<button type="button" class="btn btn-danger"
+									onclick="location.href='${deleteLink}';">Xóa</button>
+							</div>
+							</td>
 					</tr>
 				</c:forEach>
 			</c:if>
 		</tbody>
 	</table>
-
+	</section>
 </body>
 
 </html>

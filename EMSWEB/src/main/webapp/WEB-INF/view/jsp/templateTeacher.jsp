@@ -43,18 +43,32 @@
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image"/>
+                <c:forEach var="sp" items="${Listt}">
+                  <img src="../../../../../resources/FileUpload/${sp.image}" class="user-image" alt="User Image"/>
+                  </c:forEach>
                   <span class="hidden-xs">
-                  	<c:forEach var="sp" items="${List}">
-													${sp.username}
-												
-											</c:forEach>
+                  	<c:forEach var="sp" items="${Listt}">${sp.fname}
+						<c:url var="infoschedule" value="teacher/thoikhoabieu">
+							<c:param name="teacherid" value="${sp.id}" />
+						</c:url>
+						<c:url var="infostudent" value="teacher/liststudent">
+							<c:param name="teacherid" value="${sp.id}" />
+						</c:url>		
+						<c:url var="infoteacher" value="Page/INFOTeacher">
+							<c:param name="teacherid" value="${sp.id}" />
+						</c:url>	
+						<!--  -->
+						<c:url var="updatepass" value="Page/UpdatepassTeacher">
+							<c:param name="teacherid" value="${sp.id}" />
+						</c:url>	
+					</c:forEach>
                   </span>
                 </a>
+                <c:forEach var="sp" items="${Listt}">
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
-                    <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
+                    <img src="../../../../../resources/FileUpload/${sp.image}" class="img-circle" alt="User Image" />
                     <p>
                       Alexander Pierce - Web Developer
                       <small>Member since Nov. 2012</small>
@@ -63,14 +77,18 @@
                   <!-- Menu Body -->
                   <!-- Menu Footer-->
                   <li class="user-footer">
-                    <div class="pull-left">
-                      <a href="#" class="btn btn-default btn-flat">Profile</a>
-                    </div>
-                    <div class="pull-right">
-                      <a href="#" class="btn btn-default btn-flat">Sign out</a>
-                    </div>
-                  </li>
-                </ul>
+									<div class="pull-left">
+										<form:form>
+										<a href="${infoteacher}">Profile</a>
+										</form:form>
+									</div>
+									<div class="pull-right">
+										<form:form method="POST" modelAttribute="student" >
+										<button onclick="/logout'">Sign out</button>
+										</form:form>
+									</div>
+								</li>
+                </ul></c:forEach>
               </li>
             </ul>
           </div>
@@ -82,14 +100,6 @@
         <section class="sidebar">
           <!-- Sidebar user panel -->
           <!-- search form -->
-          <form action="#" method="get" class="sidebar-form">
-            <div class="input-group">
-              <input type="text" name="q" class="form-control" placeholder="Search..."/>
-              <span class="input-group-btn">
-                <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
-              </span>
-            </div>
-          </form>
           <!-- /.search form -->
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
@@ -103,8 +113,8 @@
                       <i class="fa fa-angle-left pull-right"></i>
                   </a>
                   <ul class="treeview-menu">
-                      <li><a href="Page/INFO" target="frame"><i class="fa fa-circle-o"></i>Thông tin người dùng</a></li>
-                      <li><a href="Page/UPDATEPASS" target="frame"><i class="fa fa-circle-o"></i>Cập nhật mật khẩu</a></li>
+                      <li><a href="${infoteacher}" target="frame"><i class="fa fa-circle-o"></i>Thông tin người dùng</a></li>
+                      <li><a href="${updatepass}" target="frame"><i class="fa fa-circle-o"></i>Cập nhật mật khẩu</a></li>
                   </ul>
               </li>
               <li class="treeview">
@@ -114,8 +124,8 @@
                       <i class="fa fa-angle-left pull-right"></i>
                   </a>
                   <ul class="treeview-menu">
-                      <li><a href="Page/thanhtich.html" target="frame"><i class="fa fa-circle-o"></i>Thời khóa biểu</a></li>                    
-                      <li><a href="Page/thanhtich.html" target="frame"><i class="fa fa-circle-o"></i>Danh sách lớp học</a></li>
+                      <li><a href="${infoschedule}" target="frame"><i class="fa fa-circle-o"></i>Thời khóa biểu</a></li>                    
+                      <li><a href="${infostudent}" target="frame"><i class="fa fa-circle-o"></i>Danh sách lớp học</a></li>
                   </ul>
               </li>
               <li>
@@ -146,9 +156,9 @@
 
       <footer class="main-footer">
         <div class="pull-right hidden-xs">
-          <b>Version</b> 2.0
+          <b>Version</b> Beta
         </div>
-        <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
+        <strong>Copyright &copy; 2014-2015 <a href="">4TL Team</a>.</strong> All rights reserved.
       </footer>
 
     </div><!-- ./wrapper -->

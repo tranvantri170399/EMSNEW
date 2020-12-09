@@ -40,7 +40,69 @@
          folder instead of downloading all of them to reduce the load. -->
 <link href="../../../../../resources/bootstrap/css/_all-skins.min.css"
 	rel="stylesheet" type="text/css" />
+<script>
+function validate(){
+	var emailUp = document.myform.InputEmail.value;
+	var addressUp = document.myform.InputAddress.value;
+	var statusUp = document.myform.status.value;
+	var idcardUp = document.myform.idcard.value;
+	
+	var atposition = emailUp.indexOf("@");
+    var dotposition = emailUp.lastIndexOf(".");
+    
+	var status = false;
+	
+	if(emailUp.length < 1){
+		document.getElementById("checkEmail").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Email!</span> ";
+        status = false;
+	}else if(atposition < 1 || dotposition < (atposition + 2)
+            || (dotposition + 2) >= emailUp.length){
+		document.getElementById("checkEmail").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Email không đúng định dạng!</span> ";
+        status = false;
+	}
+	else{
+		document.getElementById("checkEmail").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+        status = true;
+	}
+	
+	if(addressUp.length<1){
+		document.getElementById("checkAddress").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Địa chỉ!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkAddress").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	if(statusUp.length<1){
+		document.getElementById("checkStatus").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Trạng thái!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkStatus").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	if(idcardUp.length<1){
+		document.getElementById("checkIdcard").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Mã căn cước!</span> ";
+        status = false;
+	}else if(!idcardUp.match(/^\d+/)){
+		document.getElementById("checkIdcard").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Mã căn cước chỉ bằng số!</span> ";
+        status = false;
+	}
+	else{
+		document.getElementById("checkIdcard").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	return status;
+}
 
+</script>
 
 </head>
 <body>
@@ -61,7 +123,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<form:form action="/updateStudent" modelAttribute="student"
-					enctype="multipart/form-data">
+					enctype="multipart/form-data" onsubmit="return validate()" name="myform">
 					<div class="box box-primary">
 						<!-- 						<img src="../../../../../resources/FileUpload/tri1703.jpg" name=""
 							style="width: 200px; height: 200px;"> -->
@@ -88,22 +150,26 @@
 									<div class="form-group">
 										<label for="exampleInputEmail">Mail</label>
 										<form:input name="email" path="email" value="${sp.email}"
-											class="form-control" />
+											class="form-control" id="InputEmail"/>
+											<span id="checkEmail"></span>
 									</div>
 									<div class="form-group">
 										<label for="exampleInputEmail">Địa chỉ</label>
 										<form:input path="address" value="${sp.address}"
-											class="form-control" id="address" />
+											class="form-control" id="InputAddress" />
+											<span id="checkAddress"></span>
 									</div>
 									<div class="form-group">
 										<label for="exampleInputEmail">Tình trạng</label>
 										<form:input path="status" value="${sp.status}"
 											class="form-control" id="status" />
+											<span id="checkStatus"></span>
 									</div>
 									<div class="form-group">
 										<label for="exampleInputEmail">Mã căn cước</label>
 										<form:input path="idcard" value="${sp.idcard}"
 											class="form-control" id="idcard" />
+											<span id="checkIdcard"></span>
 									</div>
 								</div>
 							</c:forEach>

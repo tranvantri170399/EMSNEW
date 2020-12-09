@@ -41,7 +41,45 @@
 <link href="../../../../../resources/bootstrap/css/_all-skins.min.css"
 	rel="stylesheet" type="text/css" />
 
+<script>
+function validate() {
+    var Id = document.myform.InputEmail.value;
+    var Name = document.myform.InputPhone.value;
+    var Address = document.myform.InputAddress.value;
+    
+    var status = false;
 
+    if (Id.length < 1) {
+        document.getElementById("checkName").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Tên môn không được trống!</span> ";
+        status = false;
+    } else{
+    	document.getElementById("checkName").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+        status = true;
+    } 
+    	
+    if (Name.length < 3) {
+        document.getElementById("checkST").innerHTML = 
+            "  <span class='fas fa-window-close' style='color:red;'>Mô tả không được để trống!</span> ";
+        status = false;
+    } else{
+    	document.getElementById("checkST").innerHTML = 
+            "<span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+    }
+    	
+    if (Address.length < 1) {
+        document.getElementById("checkStatuss").innerHTML = 
+            "  <span class='fas fa-window-close' style='color:red;'>Trạng thái không được để trống!</span> ";
+        status = false;
+    } else {
+        document.getElementById("checkStatuss").innerHTML = 
+            "<span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+    }
+
+    return status;
+}
+</script>
 </head>
 <body>
 	<section class="content-header">
@@ -61,7 +99,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<form:form action="/updateSubject" modelAttribute="subjectNew"
-					enctype="multipart/form-data">
+					enctype="multipart/form-data" onsubmit="return validate()" name="myform">
 					<div class="box box-primary">
 						<!-- 						<img src="../../../../../resources/FileUpload/tri1703.jpg" name=""
 							style="width: 200px; height: 200px;"> -->
@@ -73,22 +111,26 @@
 								<div class="box-body">
 									<div class="form-group">
 										<input type="hidden" id="id" name="id" value="${sp.id}">
+										
 									</div>
 
 									<div class="form-group">
 										<label for="exampleInputEmail">Tên môn học</label>
 										<form:input path="subjectname" value="${sp.subjectname}"
 											class="form-control" id="InputEmail" />
+											<span id="checkName"></span>
 									</div>
 									<div class="form-group">
 										<label for="InputPhone">Mô tả môn học</label>
 										<form:input path="description" value="${sp.description}" type="text"
 											class="form-control" id="InputPhone" />
+											<span id="checkST"></span>
 									</div>
 									<div class="form-group">
 										<label for="InputPhone">Trạng thái</label>
 										<form:input path="status" value="${sp.status}" type="text"
 											class="form-control" id="InputAddress" />
+											<span id="checkStatuss"></span>
 									</div>
 								</div>
 							</c:forEach>
