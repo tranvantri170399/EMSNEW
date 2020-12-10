@@ -22,8 +22,8 @@ public class Attandence{
 	private String id;
 	private Course course;
 	private Student student;
-	private Date date;
-	private Boolean status;
+	private String date;
+	private String status;
 	private String remark;
 
 	public Attandence() {
@@ -33,7 +33,7 @@ public class Attandence{
 		this.id = id;
 	}
 	 
-	public Attandence(String id,Course course, Student student, Date date, Boolean status, String remark) {
+	public Attandence(String id,Course course, Student student, String date, String status, String remark) {
 		this.id = id;
 		this.course = course;
 		this.student = student;
@@ -72,22 +72,21 @@ public class Attandence{
 		this.student = student;
 	}
 
-	@Temporal(TemporalType.DATE)
 	@Column(name = "Date", length = 10)
-	public Date getDate() {
+	public String getDate() {
 		return this.date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 
 	@Column(name = "Status")
-	public Boolean getStatus() {
+	public String getStatus() {
 		return this.status;
 	}
 
-	public void setStatus(Boolean status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 

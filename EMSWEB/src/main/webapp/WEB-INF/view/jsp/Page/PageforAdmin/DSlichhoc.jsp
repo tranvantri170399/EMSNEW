@@ -166,6 +166,15 @@ function validate(){
 									id="InputDate" />
 									<span id="checkDate"></span>
 							</div>
+							
+							<div class="form-group">
+								<label for="exampleInputName">Chú ý:</label>
+								<form:select path="des" class="form-control"
+									idxmlns="sel1">
+											<form:option value="Lịch Thi" />
+											<form:option value="Lịch Học" />
+								</form:select>
+							</div>
 						</div>
 					</div>
 					<div class="modal-footer">
@@ -173,7 +182,7 @@ function validate(){
 							value="Lưu">
 						<button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
 					</div>
-
+					
 				</div>
 				</div>
 			</form:form>

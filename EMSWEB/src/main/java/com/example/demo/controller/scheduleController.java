@@ -148,6 +148,7 @@ public class scheduleController {
 		schedulenew.setschoolroom(schoolRoom);
 		schedulenew.setStudyShift(shift);
 		schedulenew.setCourse(course);
+		schedulenew.setDes(schedule.getDes());
 		
 		scheduleResponsitory.save(schedulenew);
 		List<Schedule> lists= scheduleResponsitory.findAll();

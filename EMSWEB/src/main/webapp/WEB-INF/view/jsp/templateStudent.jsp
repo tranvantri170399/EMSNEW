@@ -71,6 +71,15 @@
 										<c:url var="infoschedule" value="Student/thoikhoabieu">
 											<c:param name="Studentid" value="${sp.id}" />
 										</c:url>
+										<c:url var="lilich" value="Student/lilich">
+											<c:param name="Studentid" value="${sp.id}" />
+										</c:url>
+										<c:url var="tinhtrang" value="Student/Tinhtrangsinhvien">
+											<c:param name="Studentid" value="${sp.id}" />
+										</c:url>
+										<c:url var="lichthi" value="Student/lichthi">
+											<c:param name="Studentid" value="${sp.id}" />
+										</c:url>
 									</c:forEach>
 							</span>
 						</a> <c:forEach var="s" items="${Listst}">
@@ -123,11 +132,11 @@
 							class="label label-primary pull-right">4</span>
 					</a>
 						<ul class="treeview-menu">
-							<li><a href="Y.html" target="frame"><i
+							<li><a href="${lilich}" target="frame"><i
 									class="fa fa-circle-o"></i>Lí lịch</a></li>
-							<li><a href="Page/capnhatdiachi.html" target="frame"><i
-									class="fa fa-circle-o"></i>Cập nhật địa chỉ</a></li>
-							<li><a href="Page/tinhtrangsinhvien.html" target="frame"><i
+							<!-- <li><a href="Page/capnhatdiachi.html" target="frame"><i
+									class="fa fa-circle-o"></i>Cập nhật địa chỉ</a></li> -->
+							<li><a href="${tinhtrang}" target="frame"><i
 									class="fa fa-circle-o"></i>Tình trạng sinh viên</a></li>
 						</ul></li>
 					<li>
@@ -138,14 +147,14 @@
 						<ul class="treeview-menu">
 							<li><a href="${infoschedule}" target="frame"><i
 									class="fa fa-circle-o"></i>Thời khóa biểu</a></li>
-							<li><a href="Page/lichthi.html" target="frame"><i
+							<li><a href="${lichthi}" target="frame"><i
 									class="fa fa-circle-o"></i>Lịch thi</a></li>
 							<li><a href="Page/diemdanh.html" target="frame"><i
 									class="fa fa-circle-o"></i>Điểm danh</a></li>
 							<li><a href="Page/gopy.html" target="frame"><i
 									class="fa fa-circle-o"></i>Góp ý</a></li>
-							<li><a href="Page/hocphi.html" target="frame"><i
-									class="fa fa-circle-o"></i>Học phí</a></li>
+							<!-- <li><a href="Page/hocphi.html" target="frame"><i
+									class="fa fa-circle-o"></i>Học phí</a></li> -->
 						</ul></li>
 					<li class="treeview"><a href="#"> <i
 							class="fa fa-pie-chart"></i> <span>Thống kê học tập</span> <i
