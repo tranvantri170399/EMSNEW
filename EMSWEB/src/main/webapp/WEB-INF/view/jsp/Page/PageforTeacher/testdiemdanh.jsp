@@ -138,7 +138,7 @@ table tr td:first-child::before {
 					<th>id hoc sinh</th>
 					<th>course</th>
 					<th>status</th>
-					
+				
 				</tr>
 
 			</thead>
@@ -160,13 +160,13 @@ table tr td:first-child::before {
 						<tr>
 							<td><form:input path="id" value="${sp.id}" type="hidden" /></td>
 							<td>${sp.date}</td>
-						<td>${sp.student.fname}</td>
+							<td>${sp.student.fname}</td>
 							<td>${sp.course.name}</td>
 							<td>
 								<%-- <form:input path="status" value="${sp.status}"/> --%> <select
-								name="statusxx" class="form-control" id="sel1" style="width:60%">
-									<option>${sp.status}</option>
-									
+								name="statusxx" class="form-control" id="sel1" style="width: 60%">
+									<option>có mặt</option>
+									<option>vắng mặt</option>
 							</select>
 							</td>
 							

@@ -15,4 +15,7 @@ public interface ScheduleResponsitory extends JpaRepository<Schedule, String>{
 	
 	@Query("SELECT e FROM Schedule e where e.course.id=?1")
 	public List<Schedule> findcustomCouse(String couseid);
+	
+	@Query("SELECT e FROM Schedule e where e.classroom.id=?1 and e.des=?2")
+	public List<Schedule> findcustomlichthi(String classroomid,String des);
 }

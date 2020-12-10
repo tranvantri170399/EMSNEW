@@ -96,7 +96,7 @@
 					<th>Tên Môn</th>	
 					<th>Tên Giáo Viên</th>
 					<th>Thời Gian</th>
-					
+					<th>Chi Tiết</th>
 				</tr>
 			</thead>
 
@@ -124,7 +124,7 @@
 							<td class="gfgscores">${sp.course.name}</td>
 							<td class="gfgscores">${sp.course.teacher.fname}</td>
 							<td class="gfgscores">${sp.studyShift.startingTime}-${sp.studyShift.endTime}</td>
-							
+							<td class="gfgscores">${sp.des}</td>
 						</tr>
 					</c:forEach>
 				</c:if>
