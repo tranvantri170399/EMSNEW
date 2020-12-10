@@ -1,7 +1,7 @@
 package com.example.demo.entities;
 // Generated Oct 24, 2020, 7:32:02 PM by Hibernate Tools 5.1.10.Final
 
-import java.util.Date;
+
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
@@ -21,8 +21,8 @@ public class Semester{
 
 	private String id;
 	private String name;
-	private Date startTime;
-	private Date endTime;
+	private String starttime;
+	private String endtime;
 	private String status;
 	private Set<Course> courses = new HashSet<Course>(0);
 	private Set<MajorsSemester> majorsSemesters = new HashSet<MajorsSemester>(0);
@@ -34,12 +34,12 @@ public class Semester{
 		this.id = id;
 	}
 
-	public Semester(String id, String name, Date startTime, Date endTime, String status,
+	public Semester(String id, String name, String starttime, String endtime, String status,
 			Set<Course> courses, Set<MajorsSemester> majorsSemesters) {
 		this.id = id;
 		this.name = name;
-		this.startTime = startTime;
-		this.endTime = endTime;
+		this.starttime = starttime;
+		this.endtime = endtime;
 		this.status = status;
 		this.courses = courses;
 		this.majorsSemesters = majorsSemesters;
@@ -64,24 +64,22 @@ public class Semester{
 		this.name = name;
 	}
 
-	@Temporal(TemporalType.DATE)
-	@Column(name = "StartTime", length = 10)
-	public Date getStartTime() {
-		return this.startTime;
+	@Column(name = "starttime")
+	public String getstarttime() {
+		return this.starttime;
 	}
 
-	public void setStartTime(Date startTime) {
-		this.startTime = startTime;
+	public void setstarttime(String starttime) {
+		this.starttime = starttime;
 	}
 
-	@Temporal(TemporalType.DATE)
-	@Column(name = "EndTime", length = 10)
-	public Date getEndTime() {
-		return this.endTime;
+	@Column(name = "endtime")
+	public String getendtime() {
+		return this.endtime;
 	}
 
-	public void setEndTime(Date endTime) {
-		this.endTime = endTime;
+	public void setendtime(String endtime) {
+		this.endtime = endtime;
 	}
 
 	@Column(name = "Status")

@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>AdminLTE 2 | Dashboard</title>
+<title>EMS | Danh sách nhân vien</title>
 
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
@@ -33,8 +33,7 @@
 	href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css"
 	rel="stylesheet" type="text/css" />
 <!-- Daterange picker -->
-<link
-	href="../../../../../resources/bootstrap/css/daterangepicker-bs3.css"
+<link	href="../../../../../resources/bootstrap/css/daterangepicker-bs3.css"
 	rel="stylesheet" type="text/css" />
 <!-- Theme style -->
 <link href="../../../../../resources/bootstrap/css/AdminLTE.min.css"
@@ -45,7 +44,126 @@
 	rel="stylesheet" type="text/css" />
 
 
+<script>
+function validate() {
+    var lastname = document.myform.InputLastname.value;
+    var firstname = document.myform.InputFirstname.value;
+    var emailNv = document.myform.InputEmail.value;
+    var dobNv = document.myform.InputDob.value;
+    var phoneNv = document.myform.InputPhone.value;
+    var addressNv = document.myform.InputAddress.value;
+    var statusNv = document.myform.InputStatus.value;
+    var levelNv = document.myform.InputLevel.value;
+    var salaryNv = document.myform.InputSalary.value;
+    
+    var atposition = emailNv.indexOf("@");
+    var dotposition = emailNv.lastIndexOf(".");
+    var regExp = /^(0[234][0-9]{8}|1[89]00[0-9]{4})$/;
 
+    
+    var status = false;
+    
+    if (lastname.length < 1) {
+        document.getElementById("checkName").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Họ!</span> ";
+        status = false;
+    }else if(firstname.length < 1){
+    	document.getElementById("checkName").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Tên!</span> ";
+        status = false;
+    }else{
+    	document.getElementById("checkName").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+    	status = true;
+    }
+    
+    if(emailNv.length < 1){
+    	document.getElementById("checkEmail").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Email!</span> ";
+        status = false;
+	}else if(atposition < 1 || dotposition < (atposition + 2)
+            || (dotposition + 2) >= emailNv.length){
+		document.getElementById("checkEmail").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Email không đúng định dạng!</span> ";
+        status = false;
+	}
+	else{
+		document.getElementById("checkEmail").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+
+    if(dobNv.length < 1){
+		document.getElementById("checkDob").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Ngày sinh!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkDob").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+    
+    if(phoneNv.length < 1){
+		document.getElementById("checkPhone").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Số điện thoại!</span> ";
+        status = false;
+	}else if(phoneNv.length < 9 ||phoneNv.length > 13 ) {
+		if(regExp.test(phoneNv)){
+			document.getElementById("checkPhone").innerHTML = 
+	            " <span class='fa fa-check-square' style='color:#3FFF00;'></span> ";
+		}else{
+		document.getElementById("checkPhone").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Số điện không đúng định dạng!</span> ";
+        status = false;
+		}
+	}else{
+		document.getElementById("checkPhone").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+    
+    if(addressNv.length<1){
+		document.getElementById("checkAddress").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Địa chỉ!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkAddress").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+    
+    if(statusNv.length<1){
+		document.getElementById("checkStatus").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Trạng thái!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkStatus").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+    
+    if(levelNv.length<1){
+		document.getElementById("checkLevel").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Cấp độ!</span> ";
+        status = false;
+	}else if(!levelNv.match(/^\d+/)){
+		document.getElementById("checkLevel").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Cấp độ chỉ được nhập số!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkLevel").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+    if(salaryNv.length<1){
+		document.getElementById("checkSalary").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Lương!</span> ";
+        status = false;
+	}else if(!salaryNv.match(/^\d+/)){
+		document.getElementById("checkSalary").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Lương chỉ được nhập số!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkSalary").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+    return status;
+}
+</script>
 <script>
 	$(document).ready(function() {
 		$('#table1').DataTable();
@@ -53,93 +171,105 @@
 </script>
 
 <style type="text/css">
-#InputLastname {
-	border-color: red;
-}
+
 </style>
 </head>
 <body>
 	<section class="content-header">
 		<h1>
 			Danh Sách Nhân Viên
-			<button type="button" class="btn btn-info" data-toggle="modal"
+			<button type="button" class="btn btn-primary" data-toggle="modal"
 				data-target="#myModal">Thêm nhân viên</button>
 		</h1>
 		<ol class="breadcrumb">
-			<li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-			<li class="active">Quản lí nhân viên</li>
-			<li class="active">Danh sách Nhân Viên</li>
+			<li><a href="#"><i class="fa fa-dashboard"></i>Trang Chủ</a></li>
+			<li class="active">Quản Lí Nhân Viên</li>
+			<li class="active">Danh Sách CNVC</li>
 		</ol>
 	</section>
 	<!--Modalthemnhanvien-->
-	<div class="modal fade" id="myModal" role="dialog">
+	<div class="modal" id="myModal" role="dialog">
 		<div class="modal-dialog">
 
 			<!-- Modal content-->
-			<form:form action="/save/staff" modelAttribute="staff" enctype="multipart/form-data">
-				<div class="modal-content">
+			<form:form action="/save/staff" modelAttribute="staff" enctype="multipart/form-data"  onsubmit="return validate()" name="myform">
+				<div class="modal-content"> 
 					<div class="modal-header">
+						<h4 class="modal-title">Thêm Nhân Viên</h4>					
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Thêm Nhân Viên</h4>
 					</div>
 					<div class="modal-body">
 						<div>
 
 							<div class="form-group">
-								<form:input type="text" path="id" />
+								<form:input type="hidden" path="id" />
 							</div>
 							<div Class="form-group">
 								<label for="InputName">Họ và tên:</label>
 								<div Class="input-group">
-									<span Class="input-group-addon">Họ</span>
-									<form:input type="text" path="lname" classxmlns="form-control"
+									<div class="input-group-prepend">
+									<span Class="input-group-text">Họ</span>
+									</div>
+									<form:input type="text" path="lname" class="form-control"
 										id="InputLastname" />
-									<span Class="input-group-addon">Tên</span>
-									<form:input type="text" path="fname" classxmlns="form-control"
+									<div class="input-group-prepend">	
+									<span Class="input-group-text">Tên</span>
+									</div>
+									<form:input type="text" path="fname" class="form-control"
 										id="InputFirstname" />
 								</div>
+								<span id="checkName"></span>
 							</div>
 							
 							<div clas="form-group">
 								<label for="InputID">Image:</label>
-								<input type="File" class="form-control" name="files" id="InputImage">
+								<div class="custom-file">
+    								<input type="file" class="custom-file-input" id="inputGroupFile01" id="InputImage">
+    								<label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+							  	</div>
 							</div>
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">Email:</label>
-								<form:input type="text" path="email" classxmlns="form-control"
-									id="InputEmail" />
+								<form:input type="text" path="email" class="form-control" id="InputEmail" />
+								<span id="checkEmail"></span>
 							</div>
 							
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">Ngày sinh</label>
-								<form:input type="date" path="dob" classxmlns="form-control"
-									id="InputDob" min="1980-1-1" max="2020-12-31" />
+								<form:input type="date" path="dob" class="form-control"
+									id="InputDob" min="1980-1-1" max="2020-12-31"/>
+									<span id="checkDob"></span>
 							</div>
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">Số Điện Thoại</label>
-								<form:input type="text" path="phone" classxmlns="form-control"
+								<form:input type="text" path="phone" class="form-control"
 									id="InputPhone" />
+									<span id="checkPhone"></span>
 							</div>
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">Địa chỉ:</label>
-								<form:input type="text" path="address" classxmlns="form-control"
+								<form:input type="text" path="address" class="form-control"
 									id="InputAddress" />
+									<span id="checkAddress"></span>
 							</div>
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">Trạng Thái:</label>
-								<form:input path="status" classxmlns="form-control" />
+								<form:input path="status" class="form-control" id="InputStatus"/>
+								<span id="checkStatus"></span>
 							</div>
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">Cấp độ:</label>
-								<form:input path="level" classxmlns="form-control" />
+								<form:input path="level" class="form-control" id="InputLevel"/>
+								<span id="checkLevel"></span>
 							</div>
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">Lương</label>
-								<form:input path="salary" classxmlns="form-control" />
+								<form:input path="salary" class="form-control" id="InputSalary"/>
+								<span id="checkSalary"></span>
 							</div>
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">Phòng Ban:</label>
-								<form:select path="depart" classxmlxmlns="form-control"
+								<form:select path="depart" class="custom-select"
 									idxmlns="sel1">
 									<c:if test="${not empty Listdp}">
 										<c:forEach var="sp" items="${Listdp}">
@@ -149,9 +279,9 @@
 									</c:if>
 								</form:select>
 							</div>
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">Chức vụ</label>
-								<form:select path="role" classxmlxmlns="form-control"
+								<form:select path="role" class="custom-select"
 									idxmlns="sel1">
 									<c:if test="${not empty Listr}">
 										<c:forEach var="sp" items="${Listr}">
@@ -165,8 +295,8 @@
 					</div>
 					<div class="modal-footer">
 						<input type="submit" name="btnsave" class="btn btn-info"
-							value="SAVE">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							value="Lưu">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
 					</div>
 
 				</div>
@@ -176,24 +306,33 @@
 
 	<!--Table  -->
 	<form:form action="/save" modelAttribute="staff">
-		<table id="table1" class="display">
-
-			<thead style="background-color: aqua;">
+		<table id="table1" class="display table-bordered" style="width: 100%">
+    	<colgroup>
+       		<col span="1" style="width: 4%;">
+       		<col span="1" style="width: 10%;">
+       		<col span="1" style="width: 10%;">
+       		<col span="1" style="width: 18%;">
+       		<col span="1" style="width: 10%;">
+       		<col span="1" style="width: 6%;">
+       		<col span="1" style="width: 11%;">
+       		<col span="1" style="width: 9%;">
+       		<col span="1" style="width: 8%;">
+       		<col span="1" style="width: 14%;">       		       		       		
+    	</colgroup>
+			<thead style="background-color:#4876FF ;color: white">
 				<tr>
-					<th>ID</th>
-					<th>Firstname</th>
-					<th>Lastname</th>
-					<th>Depart</th>
-					<th>Role</th>
+					<th>Mã</th>
+					<th>Họ Tên</th>
+					<th>Ngày sinh</th>	
+					<th>Địa chỉ</th>									
+					<th>Email</th>	
+					<th>SĐT</th>									
+					<th>Phòng Ban</th>
+					<th>Chức Vụ</th>
 				<!-- <th>Image</th> -->
-				<th>Email</th>
-				<th>Birthday</th>
-				<th>Phone</th>
-									<th>Address</th>
 				<!-- <th>Status</th> -->
-				<th>Level</th>
-				<th>Salary</th>
-					<th>Action</th>
+					<th>Cấp độ</th>
+					<th></th>
 				</tr>
 			</thead>
 
@@ -211,26 +350,28 @@
 						</c:url>
 
 						
-						<tr style="color: red;">
+						<tr style="color: black;">
 							<td class="gfgusername"><input style="color: red;border: none;width: 50px" name="idstaff"
 								value=" ${sp.id}"></td>
-							<td class="gfgpp"><input style="color: red;border: none;width: 80%" name="firstname"
-								value="${sp.fname}"></td>
-							<td class="gfgscores">${sp.lname}</td>
+							<td>${sp.fname}&ensp;${sp.lname}</td>
+							<%-- <td class="gfgscores">${sp.lname}</td> --%>
+							<td>${sp.dob}</td>
+							<td>${sp.address}</td>	
+							<td>${sp.email}</td>	
+							<td>${sp.phone}</td>																			
 							<td class="gfgarticles">${sp.depart.name}</td>
 							<td>${sp.role.roleName}</td>
 						<%-- <td>${sp.image}</td> --%>
-						<td>${sp.email}</td>
-						<td>${sp.dob}</td>
-						<td>${sp.phone}</td>
-							<td>${sp.address}</td>
 						<%-- <td>${sp.status}</td> --%>
 						<td>${sp.level}</td>
-						<td>${sp.salary}</td>
-							<td style="text-align: center;">
+							<td >
 								<!-- <input  type="button" data-toggle="modal" data-target="#myModal" value="update"> -->
-								<a href="${updateLink}" >UPDATE</a>
-								<a href="${deleteLink}">DEL</a>
+							<div class="btn-group" role="group" aria-label="Basic example">
+								<button type="button" class="btn btn-info"
+									onclick="location.href='${updateLink}';">Cập nhật</button>
+								<button type="button" class="btn btn-danger"
+									onclick="location.href='${deleteLink}';">Xóa</button>
+							</div>
 								<!-- <input type="submit" value="Update">  --> <!-- <input
 								class="gfgselect" data-toggle="modal" data-target="#gfgmodal"
 								type="button" value="del"> -->

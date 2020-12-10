@@ -19,10 +19,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.demo.entities.Depart;
 import com.example.demo.entities.Parent;
 import com.example.demo.entities.Student;
+import com.example.demo.entities.Teacher;
 import com.example.demo.entities.User;
 import com.example.demo.repository.DepartResponsitory;
 import com.example.demo.repository.ParentResponsitory;
 import com.example.demo.repository.StudentResponsitory;
+import com.example.demo.repository.TeacherResponsitory;
 import com.example.demo.repository.UserResponsitory;
 
 
@@ -33,7 +35,11 @@ public class UserController {
 	@Autowired
 	DepartResponsitory departRes;
 	@Autowired
-	ParentResponsitory parentRes;
+	ParentResponsitory parentResponsitory;
+	@Autowired
+	StudentResponsitory	studentResponsitory;
+	@Autowired
+	TeacherResponsitory teacherResponsitory;
 	
 	@RequestMapping(value = { "/login" }, method = RequestMethod.POST)
 	public String login111(ModelMap model, @ModelAttribute("student") User student, BindingResult errors) {
@@ -57,13 +63,28 @@ public class UserController {
 						uss.setUsername(u.getUsername());
 						us.add(uss);
 						model.addAttribute("List", us);
+						List<Parent> listp= parentResponsitory.findcustom(u.getUserid());
+						model.addAttribute("Listp", listp);
 						return "/jsp/templateParents";
+					}else if (u.getRole().equals("GV")) {
+						List<User> us= new ArrayList<User>();
+						User uss = new User();
+						uss.setUsername(u.getUsername());
+						us.add(uss);
+						model.addAttribute("List", us);
+						List<Teacher> listt= teacherResponsitory.findcustom(u.getUserid());
+						model.addAttribute("Listt", listt);
+						return "/jsp/templateTeacher";
 					}else {
 						List<User> us= new ArrayList<User>();
 						User uss = new User();
 						uss.setUsername(u.getUsername());
 						us.add(uss);
 						model.addAttribute("List", us);
+						Student st = studentResponsitory.findByid(u.getUserid());
+						List<Student> listst= new ArrayList<Student>();
+						listst.add(st);
+						model.addAttribute("Listst", listst);
 						return "/jsp/templateStudent";
 					}
 				}else {
@@ -97,39 +118,11 @@ public class UserController {
 		departRes.save(de);
 		return "/jsp/Page/PageforAdmin/DSphongban";
 	}
-	@Autowired
-	StudentResponsitory sturep;
-	@RequestMapping(value = { "/Page/INFO" })
-	public String loadInfo(Model model,@ModelAttribute("Parents") Parent parents, HttpServletRequest request,@RequestParam("nameuserxxx") String email) {
-		String ids = "PH002";
-		System.out.println("=>>11 "+email);
-//		List<Parent> parentList = parentRes.findcustom(ids);
-		List<Parent> parentList = parentRes.findcustomemail(email);
-		Parent parent= parentList.get(parentList.size()-1);
-		
-		List<Student> studentlist= sturep.findcustom(parent.getId());
-		model.addAttribute("Liststudent", studentlist);
-		model.addAttribute("List", parentList);
-		return "/jsp/Page/info";
-	}
-	
 
-	@RequestMapping(value = { "/Page/UPDATEPASS" })
-	public String editPass(@ModelAttribute("User") User user, Model model,@RequestParam("nameuserxxx") String email) {
-		String ids = "PH002";
-		String id= "lap";
-//		List<Parent> parentList = parentRes.findcustom(ids);
-		List<Parent> parentList = parentRes.findcustomemail(email);
-//		Parent parent= parentList.get(parentList.size()-1);
-		
-		List<User> userList= UserRep.findcustom(email);
-		model.addAttribute("Listuser", userList);
-		model.addAttribute("List", parentList);
-		return "/jsp/Page/capnhatPassword";
+	@RequestMapping("/logout")
+	public String logout() {
+		return "redirect:/login";
 	}
-	
-	
-	
 	
 	
 	

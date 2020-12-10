@@ -19,7 +19,40 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+function checkPass() {
+	var x = document.getElementById("oldPass");
+    var y = document.getElementById("newPass");
+    var z = document.getElementById("re-newPass")
+    var status = false;
+    if(x.value ==""){
+    	document.getElementById('oldPass-check').innerHTML="Mật khẩu không được trống!<br>";
+    	status = false;
+    }else{
+    	document.getElementById('oldPass-check').innerHTML="";
+    	status = true;
+    }
+    
+    if(y.value==""){
+    	document.getElementById('newPass-check').innerHTML="Nhập mật khẩu mới!<br>";
+    	status = false;
+    }else{
+    	document.getElementById('newPass-check').innerHTML="";
+    }
+    
+    if(z.value==""){
+    	document.getElementById('re-newPass-check').innerHTML="Nhập lại mật khẩu mới!<br>";
+    	status = false;
+    }else if(y.value != z.value){
+    	document.getElementById('re-newPass-check').innerHTML="Mật khẩu không khớp!<br>";
+		status = false;
+	}else{
+		document.getElementById('re-newPass-check').innerHTML="";
+	}
 
+    return status;
+  }
+</script>
 <style type="text/css">
 body{
 	background-color: #e1e1ef;
@@ -171,13 +204,16 @@ hr{
 	Đổi mật khẩu
 	</div>
 	<hr>
+	
+	<form:form action="/updatePass" modelAttribute="passUpdate" onsubmit="return checkPass()">
 	<c:if test="${not empty Listuser}">
 	<c:forEach var="sp" items="${Listuser}">
 	<div class="info-student">
 	<div class="form-info row">
 	<label class="col-xl-3 col-lg-3 info-form-label">Tên đăng nhập</label>
 	<div class="col-lg-9 col-xl-6">
-		<input type="text" value="${sp.username}" class="form-control" readonly>
+		<input type="text" value="${sp.username}" name="username" class="form-control" readonly>
+		
 	</div>
 	</div>
 		</c:forEach>
@@ -185,19 +221,22 @@ hr{
 	<div class="form-info row">
 	<label class="col-xl-3 col-lg-3 info-form-label">Mật khẩu cũ</label>
 	<div class="col-lg-9 col-xl-6">
-		<input type="text" class="form-control">
+		<input type="password" class="form-control" name="passwordold" id="oldPass">
+		<span id="oldPass-check"></span>
 	</div>
 	</div>
 	<div class="form-info row">
 	<label class="col-xl-3 col-lg-3 info-form-label">Mật khẩu mới</label>
 	<div class="col-lg-9 col-xl-6">
-		<input type="text" class="form-control">
+		<input type="password" class="form-control" name="password" id="newPass">
+		<span id="newPass-check"></span>
 	</div>
 	</div>
 	<div class="form-info row">
 	<label class="col-xl-3 col-lg-3 info-form-label">Nhập lại mật khẩu</label>
 	<div class="col-lg-9 col-xl-6">
-		<input type="text" class="form-control">
+		<input type="password" class="form-control" id="re-newPass">
+		<span id="re-newPass-check"></span>
 	</div>
 	</div>
 	<div class="form-info row">
@@ -206,7 +245,7 @@ hr{
 		<button type="submit" class="save-edit">Lưu thay đổi</button>
 	</div>
 	</div>
-	
+	</form:form>
 	</div>
 	</div>
   </div>

@@ -41,7 +41,102 @@
 <link href="../../../../../resources/bootstrap/css/_all-skins.min.css"
 	rel="stylesheet" type="text/css" />
 
-
+<script type="text/javascript">
+function validate(){
+	var dob = document.myform.InputDob.value;
+	var email = document.myform.InputEmail.value;
+	var phone = document.myform.InputPhone.value;
+	var address = document.myform.InputAddress.value;
+	var level = document.myform.InputLevel.value;
+	var salary = document.myform.InputSalary.value;
+	
+	var regExp = /^(0[234][0-9]{8}|1[89]00[0-9]{4})$/;
+    var atposition = email.indexOf("@");
+    var dotposition = email.lastIndexOf(".");
+    
+	var status = false;
+	
+	if(dob.length < 1){
+		document.getElementById("checkDob").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Ngày sinh!</span> ";
+		status = false;
+	}else{
+		document.getElementById("checkDob").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+            status = true;
+	}
+	
+	if(email.length < 1){
+		document.getElementById("checkEmail").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Email!</span> ";
+        status = false;
+	}else if(atposition < 1 || dotposition < (atposition + 2)
+            || (dotposition + 2) >= email.length){
+		document.getElementById("checkEmail").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Email không đúng định dạng!</span> ";
+        status = false;
+	}
+	else{
+		document.getElementById("checkEmail").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	if(phone.length < 1){
+		document.getElementById("checkPhone").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Số điện thoại!</span> ";
+        status = false;
+	}else if(phone.length < 9 ||phone.length > 13 ) {
+		if(regExp.test(phone)){
+			document.getElementById("checkPhone").innerHTML = 
+	            " <span class='fa fa-check-square' style='color:#3FFF00;'></span> ";
+		}else{
+		document.getElementById("checkPhone").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Số điện không đúng định dạng!</span> ";
+        status = false;
+		}
+	}else{
+		document.getElementById("checkPhone").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	if(address.length<1){
+		document.getElementById("checkAddress").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Địa chỉ!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkAddress").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	if(level.length<1){
+		document.getElementById("checkLevel").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Cấp độ!</span> ";
+        status = false;
+	}else if(!level.match(/^\d+/)){
+		document.getElementById("checkLevel").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Cấp độ chỉ được nhập số!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkLevel").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	if(salary.length<1){
+		document.getElementById("checkSalary").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Lương!</span> ";
+        status = false;
+	}else if(!salary.match(/^\d+/)){
+		document.getElementById("checkSalary").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Lương chỉ được nhập số!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkSalary").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	return status;
+}
+</script>
 </head>
 <body>
 	<section class="content-header">
@@ -60,7 +155,7 @@
 		<!--Thoi Khoa Bieu -->
 		<div class="row">
 			<div class="col-md-12">
-				<form:form action="/updateTeacher" modelAttribute="teacherNew" enctype="multipart/form-data">
+				<form:form action="/updateTeacher" modelAttribute="teacherNew" enctype="multipart/form-data" onsubmit="return validate()" name="myform">
 					<div class="box box-primary">
 <!-- 						<img src="../../../../../resources/FileUpload/tri1703.jpg" name=""
 							style="width: 200px; height: 200px;"> -->
@@ -70,10 +165,10 @@
 						<c:if test="${not empty List}">
 							<c:forEach var="sp" items="${List}">
 							<img src="../../../../../resources/FileUpload/${sp.image}" name=""
-							style="width: 200px; height: 300px;">
+							style="width: 120px; height: 160px;">
 								<div class="box-body">
 									<div class="form-group">
-										<input type="hidden" id="custId" name="id" value="${sp.id}">
+										<input type="hidden" id="id" name="id" value="${sp.id}">
 									</div>
 									<div class="form-group">
 										<label for="exampleInputFile">File input</label>
@@ -89,11 +184,11 @@
 										<label for="exampleInputName">Họ và Tên</label>
 										<div class="input-group">
 											<span class="input-group-addon">Họ</span>
-											<form:input path="lname" type="text" class="form-control"
-												id="InputLastname" value="${sp.lname}" />
+											<input  class="form-control"
+												 value="${sp.lname}" readonly />
 											<span class="input-group-addon">Tên</span>
-											<form:input path="fname" type="text" value="${sp.fname}"
-												class="form-control" id="InputFirstname" />
+											<input value="${sp.fname}"
+												class="form-control" readonly />
 										</div>
 									</div>
 									<!-- 									<script type="text/javascript">
@@ -105,43 +200,49 @@
 										<form:input path="dob" type="date" class="form-control"
 											id="InputDob" min="1980-1-1" max="2020-12-31"
 											value="${sp.dob}" />
+											<span id="checkDob"></span>
 									</div>
 
 									<div class="form-group">
 										<label for="exampleInputEmail">Email</label>
 										<form:input path="email" value="${sp.email}"
 											class="form-control" id="InputEmail" />
+											<span id="checkEmail"></span>
 									</div>
 									<div class="form-group">
 										<label for="InputPhone">Số Điện Thoại</label>
 										<form:input path="phone" value="${sp.phone}" type="text"
 											class="form-control" id="InputPhone" />
+											<span id="checkPhone"></span>
 									</div>
 									<div class="form-group">
 										<label for="InputPhone">Địa chỉ</label>
 										<form:input path="address" value="${sp.address}" type="text"
 											class="form-control" id="InputAddress" />
+											<span id="checkAddress"></span>
 									</div>
 									<div class="form-group">
 										<label for="InputPhone">Trạng thái:</label> <label
 											id="InputStatus">Học đi</label>
 									</div>
-									<div clas="form-group">
+									<div class="form-group">
 										<label for="InputID">Cấp độ:</label>
-										<form:input path="level" value="${sp.level}" class="form-control" />
+										<form:input path="level" value="${sp.level}" class="form-control" id="InputLevel"/>
+										<span id="checkLevel"></span>
 									</div>
-									<div clas="form-group">
+									<div class="form-group">
 										<label for="InputID">Lương</label>
 										<form:input path="salary" value="${sp.salary}"
-											class="form-control" />
+											class="form-control" id="InputSalary"/>
+											<span id="checkSalary"></span>
 									</div>
 									<%-- <div clas="form-group">
 										<label for="InputID">Phòng Ban:</label>
 										<form:select path="depart" items="${sp.depart.name}" />
 									</div> --%>
-									<div clas="form-group">
+									<div class="form-group">
 										<label for="InputID">Phòng Ban:</label>
-										<form:select path="depart" classxmlxmlns="form-control"
+										<form:select path="depart" class="form-control"
 											idxmlns="sel1">
 											<c:if test="${not empty Listdp}">
 												<c:forEach var="sp" items="${Listdp}">
@@ -156,9 +257,9 @@
 										<form:select path="role" items="" />
 									</div> --%>
 
-									<div clas="form-group">
+									<div class="form-group">
 										<label for="InputID">Chức vụ</label>
-										<form:select path="role" classxmlxmlns="form-control"
+										<form:select path="role" class="form-control"
 											idxmlns="sel1">
 											<c:if test="${not empty Listr}">
 												<c:forEach var="sp" items="${Listr}">
