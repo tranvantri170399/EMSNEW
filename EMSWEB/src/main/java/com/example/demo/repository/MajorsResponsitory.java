@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 import com.example.demo.entities.Majors;
 @Repository("majorsResponsitory")
 public interface MajorsResponsitory extends JpaRepository<Majors, String>{
-	Majors findByname(String name); 
+	Majors findByname(String name);
 }

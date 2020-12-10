@@ -6,4 +6,5 @@ import com.example.demo.entities.Semester;
 
 public interface SemesterResponsitory extends JpaRepository<Semester, String>{
 	Semester findByid(String id);
+	Semester findByname(String name); 
 }
