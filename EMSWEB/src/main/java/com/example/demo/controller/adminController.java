@@ -772,9 +772,24 @@ public class adminController {
 	@RequestMapping(value = { "/NewQLhocky" })
 	public String NewQLhocky(Model model, @ModelAttribute("majorSemester") MajorsSemester majorSemester, HttpServletRequest request) {
 		MajorsSemester NewQLhocky = new MajorsSemester();
-		String sster = request.getParameter("name");
+		List<MajorsSemester> studentlist = majorSemesterResponsitory.findAll();
+		MajorsSemester lastid = studentlist.get(studentlist.size() - 1);
+		System.out.println("==>> " + lastid);
+		int idNum = lastid.getId() + 1;
+		NewQLhocky.setId(idNum);
+		
+		String sster = request.getParameter("semesters");
 		Semester semester = semesterResponsitory.findByname(sster);
+		System.out.println("test: "+semester.getId());
 		NewQLhocky.setSemester(semester);
+		
+		String majs = request.getParameter("majors");
+		Majors majors = majorsResponsitory.findByname(majs);
+		NewQLhocky.setMajors(majors);
+		
+		String sujt= request.getParameter("subjectname");
+		Subject subject = subjectResponsitory.findBysubjectname(sujt);
+		NewQLhocky.setSubject(subject);
 		majorSemesterResponsitory.save(NewQLhocky);
 		return "redirect:/QLMhocky";
 	}

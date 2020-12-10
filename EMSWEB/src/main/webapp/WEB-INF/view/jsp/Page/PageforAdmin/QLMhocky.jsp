@@ -100,14 +100,40 @@ table tr td:first-child::before {
 						<div>
 							<div clas="form-group">
 								<label for="InputID">Học Kì:</label>
-								<form:select path="semester" class="form-control"
-									idxmlns="sel1">
+								<select name="semesters" class="form-control"
+									id="sel1">
 									<c:if test="${not empty listST}">
 										<c:forEach var="sp" items="${listST}">
-											<form:option value="${sp.semester.name}" />
+											<option>${sp.name}</option>
 										</c:forEach>
 									</c:if>
-								</form:select>
+								</select>
+							</div>
+						</div>
+						<div>
+							<div clas="form-group">
+								<label for="InputID">Học kì:</label>
+								<select name="majors" class="form-control"
+									id="sel1">
+									<c:if test="${not empty listMJ}">
+										<c:forEach var="sp" items="${listMJ}">
+											<option>${sp.name}</option>
+										</c:forEach>
+									</c:if>
+								</select>
+							</div>
+						</div>
+						<div>
+							<div clas="form-group">
+								<label for="InputID">Tên môn học:</label>
+								<select name="subjectname" class="form-control"
+									id="sel1">
+									<c:if test="${not empty listSB}">
+										<c:forEach var="sp" items="${listSB}">
+											<option>${sp.subjectname}</option>
+										</c:forEach>
+									</c:if>
+								</select>
 							</div>
 						</div>
 					</div>

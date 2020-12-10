@@ -8,4 +8,5 @@ import com.example.demo.entities.Subject;
 @Repository("subjectResponsitory")
 public interface SubjectResponsitory extends JpaRepository<Subject, String>{
 	Subject findByid(String id);
+	Subject findBysubjectname (String subjectname);
 }
