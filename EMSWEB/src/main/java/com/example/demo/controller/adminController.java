@@ -31,6 +31,7 @@ import com.example.demo.entities.Classroom;
 import com.example.demo.entities.ClassroomStudent;
 import com.example.demo.entities.Depart;
 import com.example.demo.entities.Majors;
+import com.example.demo.entities.MajorsSemester;
 import com.example.demo.entities.Parent;
 import com.example.demo.entities.Role;
 import com.example.demo.entities.Semester;
@@ -43,6 +44,7 @@ import com.example.demo.model.dateobject;
 import com.example.demo.repository.ClassroomResponsitory;
 import com.example.demo.repository.ClassroomStudentResponsitory;
 import com.example.demo.repository.DepartResponsitory;
+import com.example.demo.repository.MajorSemesterResponsitory;
 import com.example.demo.repository.MajorsResponsitory;
 import com.example.demo.repository.ParentResponsitory;
 import com.example.demo.repository.RoleRespository;
@@ -92,6 +94,8 @@ public class adminController {
 	SemesterResponsitory semesterResponsitory;
 	@Autowired
 	ClassroomStudentResponsitory classroomStudentRespon;
+	@Autowired
+	MajorSemesterResponsitory majorSemesterResponsitory;
 	// controller teacher//
 	@GetMapping("/DSgiaovien")
 	public String listTeacher(Model model, @ModelAttribute("teacherNew") Teacher teacher) {
@@ -753,7 +757,27 @@ public class adminController {
 
 	
 	//quan ly mon tung hoc ky//
-	
+	@RequestMapping(value = { "/QLMhocky" })
+	public String QLMhocky(Model model, @ModelAttribute("majorSemester") MajorsSemester majorSemester) {
+		List<MajorsSemester> listMJS = majorSemesterResponsitory.findAll();
+		model.addAttribute("majorSemester", listMJS);
+		List<Semester> listST = semesterResponsitory.findAll();
+		model.addAttribute("listST", listST);
+		List<Majors> listMJ = majorsResponsitory.findAll();
+		model.addAttribute("listMJ", listMJ);
+		List<Subject> listSB = subjectResponsitory.findAll();
+		model.addAttribute("listSB", listSB);
+		return "/jsp/Page/PageforAdmin/QLMhocky";
+	}
+	@RequestMapping(value = { "/NewQLhocky" })
+	public String NewQLhocky(Model model, @ModelAttribute("majorSemester") MajorsSemester majorSemester, HttpServletRequest request) {
+		MajorsSemester NewQLhocky = new MajorsSemester();
+		String sster = request.getParameter("name");
+		Semester semester = semesterResponsitory.findByname(sster);
+		NewQLhocky.setSemester(semester);
+		majorSemesterResponsitory.save(NewQLhocky);
+		return "redirect:/QLMhocky";
+	}
 	
 	//quan ly mon tung hoc ky//
 }
