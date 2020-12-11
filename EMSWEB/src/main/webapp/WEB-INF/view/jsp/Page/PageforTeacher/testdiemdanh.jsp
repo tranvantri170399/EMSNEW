@@ -135,7 +135,7 @@ table tr td:first-child::before {
 				<tr>
 					<th>STT</th>
 					<th>date</th>
-					<th>id hoc sinh</th>
+					<th>student name</th>
 					<th>course</th>
 					<th>status</th>
 				

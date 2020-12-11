@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>AdminLTE 2 | Dashboard lap</title>
+  <title>Education Management System-Parent</title>
 <meta
 	content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
 	name='viewport'>
@@ -89,7 +89,9 @@
 										<c:url var="thoikhoabieu" value="parent/thoikhoabieu">
 											<c:param name="userid" value="${sp.id}" />
 										</c:url>
-										
+										<c:url var="diemdanh" value="parent/diemdanh">
+											<c:param name="userid" value="${sp.id}" />
+										</c:url>
 									</c:forEach>
 							</span>
 						</a>
@@ -143,14 +145,14 @@
 							<li><a href="${updatepassLink}" target="frame"><i
 									class="fa fa-circle-o"></i>Cập nhật mật khẩu</a></li>
 						</ul></li>
-					<li class="treeview"><a href="#"> <i
+					<!-- <li class="treeview"><a href="#"> <i
 							class="fa fa-calendar"></i> <span>Thông tin sinh viên</span> <span
 							class="label label-primary pull-right">4</span>
 					</a>
 						<ul class="treeview-menu">
 							<li><a href="Page/THANHTICH" target="frame"><i
 									class="fa fa-circle-o"></i>Thành tích học tập</a></li>
-						</ul></li>
+						</ul></li> -->
 					<li>
 					<li class="treeview"><a href="#"> <i
 							class="fa fa-calendar"></i> <span>Học tập</span> <span
@@ -160,9 +162,9 @@
 <!-- 							<li><a href="Page/LICHHOC" target="frame">lich học</a></li> -->
 							<li><a href="${thoikhoabieu}" target="frame">
 							<i class="fa fa-circle-o"></i>Thời khóa biểu</a></li>
-							<li><a href="Page/DIEMDANH" target="frame"><i class="fa fa-circle-o"></i>Điểm danh</a></li>
-							<li><a href="Page/HOCPHI" target="frame"><i
-									class="fa fa-circle-o"></i>Kiểm tra học phí</a></li>
+							<li><a href="${diemdanh}" target="frame"><i class="fa fa-circle-o"></i>Điểm danh</a></li>
+							<!-- <li><a href="Page/HOCPHI" target="frame"><i
+									class="fa fa-circle-o"></i>Kiểm tra học phí</a></li> -->
 						</ul></li>
 					<li class="treeview"><a href="#"> <i
 							class="fa fa-pie-chart"></i> <span>Thống kê học tập</span> <i

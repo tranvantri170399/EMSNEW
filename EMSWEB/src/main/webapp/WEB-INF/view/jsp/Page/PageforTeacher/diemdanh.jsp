@@ -28,18 +28,13 @@
 <link href="../../../../../resources/bootstrap/css/_all-skins.min.css"
 	rel="stylesheet" type="text/css" />
 
-  </head>
-<body >
-    <section class="content-header">
-        <h1>
-            ĐIỂM DANH
-        </h1>
-          <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-            <li class="active">Học tập</li>
-            <li class="active">Điểm danh</li>            
-          </ol>        
-    </section>
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript"
+	src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
 
 <script>
@@ -131,7 +126,7 @@ table tr td:first-child::before {
 				<tr>
 					<th>STT</th>
 					<th>date</th>
-					<th>id hoc sinh</th>
+					<th>student name</th>
 					<th>course</th>
 					<th>status</th>
 					
