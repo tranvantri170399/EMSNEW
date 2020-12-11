@@ -94,11 +94,11 @@ F<%@ page language="java" contentType="text/html; charset=utf-8"
 										</c:url>
 									</c:forEach>
 							</span>
-						</a>
+						</a> <c:forEach var="sp" items="${Listp}">
 							<ul class="dropdown-menu">
 								<!-- User image -->
 								<li class="user-header"><img
-									src="dist/img/user2-160x160.jpg" class="img-circle"
+									src="../../../../../resources/FileUpload/${sp.image}" class="img-circle"
 									alt="User Image" />
 									<p>
 										Alexander Pierce - Web Developer <small>Member since
@@ -118,7 +118,7 @@ F<%@ page language="java" contentType="text/html; charset=utf-8"
 										</form:form>
 									</div>
 								</li>
-							</ul></li>
+							</ul></c:forEach></li>
 					</ul>
 				</div>
 			</nav>
