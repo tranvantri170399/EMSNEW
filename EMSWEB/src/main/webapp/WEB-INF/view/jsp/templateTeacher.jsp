@@ -140,7 +140,8 @@
                   </a>
                   <ul class="treeview-menu">
                       <!-- <li><a href="Page/diemdanh.html" target="frame"><i class="fa fa-circle-o"></i>Tài liệu học tập</a></li> -->
-                      <li><a href="Page/bangdiem.html" target="frame"><i class="fa fa-circle-o"></i>Bảng điểm</a></li>
+                     <!--  đánh dấu lại làm sao -->
+                    <!--   <li><a href="Page/bangdiem.html" target="frame"><i class="fa fa-circle-o"></i>Bảng điểm</a></li> -->
                       <li><a href="${diemdanh}" target="frame"><i class="fa fa-circle-o"></i>Điểm Danh</a></li>
                   </ul>
               </li>

@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Education Management System</title>
+<title>Education Management System-Student</title>
 <meta
 	content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
 	name='viewport'>
@@ -80,6 +80,9 @@
 										<c:url var="lichthi" value="Student/lichthi">
 											<c:param name="Studentid" value="${sp.id}" />
 										</c:url>
+										<c:url var="diemdanh" value="Student/diemdanh">
+											<c:param name="Studentid" value="${sp.id}" />
+										</c:url>
 									</c:forEach>
 							</span>
 						</a> <c:forEach var="s" items="${Listst}">
@@ -149,7 +152,7 @@
 									class="fa fa-circle-o"></i>Thời khóa biểu</a></li>
 							<li><a href="${lichthi}" target="frame"><i
 									class="fa fa-circle-o"></i>Lịch thi</a></li>
-							<li><a href="Page/diemdanh.html" target="frame"><i
+							<li><a href="${diemdanh}" target="frame"><i
 									class="fa fa-circle-o"></i>Điểm danh</a></li>
 							<li><a href="Page/gopy.html" target="frame"><i
 									class="fa fa-circle-o"></i>Góp ý</a></li>

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.example.demo.entities.Attandence;
 import com.example.demo.entities.ClassroomStudent;
 import com.example.demo.entities.Parent;
 import com.example.demo.entities.Schedule;
@@ -21,6 +22,7 @@ import com.example.demo.entities.Student;
 import com.example.demo.entities.Teacher;
 import com.example.demo.entities.User;
 import com.example.demo.repository.AmphiResponsitory;
+import com.example.demo.repository.AttandenceResponsitory;
 import com.example.demo.repository.ClassroomResponsitory;
 import com.example.demo.repository.ClassroomStudentResponsitory;
 import com.example.demo.repository.CourseResponsitory;
@@ -135,7 +137,8 @@ public class ParentController {
 	StudentResponsitory studentResponsitory;
 	@Autowired
 	ClassroomStudentResponsitory classroomStudentrespon;
-	
+	@Autowired
+	AttandenceResponsitory attandenceResponsitory;
 	@RequestMapping(value = { "parent/thoikhoabieu" })
 	public String loadthoikhoabieu(Model model,@RequestParam("userid") String userid) {
 		System.out.println("out>>>"+userid);
@@ -150,5 +153,20 @@ public class ParentController {
 		
 		return "/jsp/Page/PageforParent/thoikhoabieu";
 	}
+	
+//	parent/diemdanh
+	@RequestMapping(value = { "parent/diemdanh" })
+	public String loaddiemdanh(Model model,@RequestParam("userid") String userid,@ModelAttribute("attandence") Attandence attan) {
+		List<Student> student= studentResponsitory.findcustom(userid);
+		for (Student student2 : student) {
+			List<ClassroomStudent> classroomStudents= classroomStudentrespon.findcustom(student2.getId());
+			model.addAttribute("Lists", classroomStudents);
+			List<Attandence>  attandences = attandenceResponsitory.findcustomstudent(student2.getId());
+			model.addAttribute("List", attandences	);	
+		}
+		
+		return "/jsp/Page/PageforParent/diemdanh";
+	}
+	
 }
 

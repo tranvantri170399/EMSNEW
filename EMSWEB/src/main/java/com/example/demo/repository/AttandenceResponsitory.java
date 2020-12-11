@@ -11,4 +11,7 @@ public interface AttandenceResponsitory extends JpaRepository<Attandence, String
 	Attandence findByid(String id);
 	@Query("SELECT e FROM Attandence e where e.date=?1")
 	public List<Attandence> findcustomdate(String date);
+	
+	@Query("SELECT e FROM Attandence e where e.student.id=?1")
+	public List<Attandence> findcustomstudent(String studentid);
 }

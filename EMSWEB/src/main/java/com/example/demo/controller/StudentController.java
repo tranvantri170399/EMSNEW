@@ -7,14 +7,17 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.entities.Attandence;
 import com.example.demo.entities.ClassroomStudent;
 import com.example.demo.entities.Parent;
 import com.example.demo.entities.Schedule;
 import com.example.demo.entities.Student;
 import com.example.demo.repository.AmphiResponsitory;
+import com.example.demo.repository.AttandenceResponsitory;
 import com.example.demo.repository.ClassroomResponsitory;
 import com.example.demo.repository.ClassroomStudentResponsitory;
 import com.example.demo.repository.CourseResponsitory;
@@ -45,7 +48,8 @@ public class StudentController {
 	ClassroomStudentResponsitory classroomStudentrespon;
 	@Autowired
 	ParentResponsitory parentResponsitory;
-	
+	@Autowired
+	AttandenceResponsitory attandenceResponsitory;
 	@RequestMapping(value = { "Student/thoikhoabieu" })
 	public String loadthoikhoabieu(Model model,@RequestParam("Studentid") String studentid) {
 		Student student= studentResponsitory.findByid(studentid);
@@ -86,5 +90,14 @@ public class StudentController {
 		model.addAttribute("Liststudent", studentlist);
 		model.addAttribute("List", parentList);
 		return "/jsp/Page/tinhtrangsinhvien";
+	}
+	//diem danh
+	@RequestMapping(value = { "Student/diemdanh" })
+	public String loaddiemdanh(Model model,@RequestParam("Studentid") String studentid,@ModelAttribute("attandence") Attandence attan) {
+		List<ClassroomStudent> classroomStudents= classroomStudentrespon.findcustom(studentid);
+		model.addAttribute("Lists", classroomStudents);
+		List<Attandence>  attandences = attandenceResponsitory.findcustomstudent(studentid);
+		model.addAttribute("List", attandences	);
+		return "/jsp/Page/diemdanh";
 	}
 }
