@@ -163,7 +163,7 @@ function validate(){
 			</form:form>
 		</div>
 	</div>
-
+	<section class="content">
 	<!--Table  -->
 	<form:form action="/save" modelAttribute="room">
 		<table id="table1" class="display">
@@ -217,7 +217,7 @@ function validate(){
 
 
 	</form:form>
-
+</section>
 
 </body>
 </html>

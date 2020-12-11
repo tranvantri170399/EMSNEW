@@ -103,7 +103,7 @@ function validate(){
 		</h1>
 		<ol class="breadcrumb">
 			<li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-			<li class="active">Quản lí </li>
+			<li class="active">Quản lí Sinh Viên</li>
 			<li class="active">Danh sách Chuyên Ngành</li>
 		</ol>
 	</section>

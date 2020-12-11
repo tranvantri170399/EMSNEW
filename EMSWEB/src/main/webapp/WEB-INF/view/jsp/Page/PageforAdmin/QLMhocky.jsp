@@ -5,7 +5,6 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html>
-
 <head>
 <meta charset="UTF-8">
 <title>AdminLTE 2 | Dashboard</title>
@@ -45,35 +44,7 @@
 <link href="../../../../../resources/bootstrap/css/_all-skins.min.css"
 	rel="stylesheet" type="text/css" />
 
-<script type="text/javascript">
-function validate(){
-	var id = document.myform.id.value;
-	var name = document.myform.name.value;
-	
-	var status = false;
-	
-	if(id.length < 1){
-		 document.getElementById("checkId").innerHTML = 
-	            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập ID!</span> ";
-	        status = false;
-	}else{
-		document.getElementById("checkId").innerHTML = 
-            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
-    	status = true;
-	}
-	
-	if(name.length < 1){
-		 document.getElementById("checkName").innerHTML = 
-	            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Tên phòng ban!</span> ";
-	        status = false;
-	}else{
-		document.getElementById("checkName").innerHTML = 
-            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
-	}
-	
-	return status;
-}
-</script>
+
 
 <script>
 	$(document).ready(function() {
@@ -86,52 +57,83 @@ function validate(){
 	border-color: red;
 }
 
-th.image.sorting {
-	width: 50px;
+table {
+	width: 50%;
+	counter-reset: row-num;
+}
+
+table tr {
+	counter-increment: row-num-1;
+}
+
+table tr td:first-child::before {
+	content: counter(row-num-1) " ";
 }
 </style>
 </head>
-
 <body>
 	<section class="content-header">
 		<h1>
-			Danh Sách Phòng Ban
+			Danh Sách Nhân Viên
 			<button type="button" class="btn btn-info" data-toggle="modal"
-				data-target="#myModal">Thêm phòng ban</button>
+				data-target="#myModal">Thêm nhân viên</button>
 		</h1>
 		<ol class="breadcrumb">
 			<li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
 			<li class="active">Quản lí nhân viên</li>
-			<li class="active">Danh sách Phòng Ban</li>
+			<li class="active">Danh sách Nhân Viên</li>
 		</ol>
 	</section>
-	<!--Modalthemnhanvien-->
+	<!--Modal-->
 	<div class="modal fade" id="myModal" role="dialog">
 		<div class="modal-dialog">
 
 			<!-- Modal content-->
-			<form:form action="/newDepart" modelAttribute="departNew"
-				enctype="multipart/form-data" onsubmit="return validate()" name="myform">
+			<form:form action="/NewQLhocky" modelAttribute="majorSemester"
+				enctype="multipart/form-data">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h4 class="modal-title">Thêm Nhân Viên</h4>					
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Thêm Nhân Viên</h4>
 					</div>
 					<div class="modal-body">
 						<div>
-							<div class="form-group">
-								<label for="InputID">ID:</label>
-								<form:input type="text" path="id" class="form-control"
-									id="id" />
-									<span id="checkId"></span>
+							<div clas="form-group">
+								<label for="InputID">Học Kì:</label>
+								<select name="semesters" class="form-control"
+									id="sel1">
+									<c:if test="${not empty listST}">
+										<c:forEach var="sp" items="${listST}">
+											<option>${sp.name}</option>
+										</c:forEach>
+									</c:if>
+								</select>
 							</div>
 						</div>
 						<div>
-							<div class="form-group">
-								<label for="InputID">Name:</label>
-								<form:input type="text" path="name" class="form-control"
-									id="name" />
-									<span id="checkName"></span>
+							<div clas="form-group">
+								<label for="InputID">Học kì:</label>
+								<select name="majors" class="form-control"
+									id="sel1">
+									<c:if test="${not empty listMJ}">
+										<c:forEach var="sp" items="${listMJ}">
+											<option>${sp.name}</option>
+										</c:forEach>
+									</c:if>
+								</select>
+							</div>
+						</div>
+						<div>
+							<div clas="form-group">
+								<label for="InputID">Tên môn học:</label>
+								<select name="subjectname" class="form-control"
+									id="sel1">
+									<c:if test="${not empty listSB}">
+										<c:forEach var="sp" items="${listSB}">
+											<option>${sp.subjectname}</option>
+										</c:forEach>
+									</c:if>
+								</select>
 							</div>
 						</div>
 					</div>
@@ -145,51 +147,49 @@ th.image.sorting {
 			</form:form>
 		</div>
 	</div>
-	<section class="content">
+	
 	<!--Table  -->
-		<table id="table1" class="display">
+	<table id="table1" class="display">
 
-			<thead style="background-color:#4876FF ;color: white">
-				<tr>
-					<th>Mã</th>
-					<th>Tên Phòng</th>
-					<th></th>
-				</tr>
-			</thead>
+		<thead style="background-color: aqua;">
+			<tr>
+				<th>STT</th>
+				<th>Học kỳ</th>
+				<th>Chuyên ngành</th>
+				<th>Tên môn học</th>
+				<th>Action</th>
+			</tr>
+		</thead>
 
-			<tbody>
-				<c:if test="${not empty List}">
-					<c:forEach var="list" items="${List}">
+		<tbody>
+			<c:if test="${not empty majorSemester}">
+				<c:forEach var="list" items="${majorSemester}">
 
 
-						<!-- construct an "update" link with customer id -->
-						<c:url var="updateLink" value="/updateFormDP">
-							<c:param name="id" value="${list.id}" />
-						</c:url>
+					<!-- construct an "update" link with customer id -->
+					<c:url var="updateLink" value="/updateFormHS">
+						<c:param name="id" value="${list.id}" />
+					</c:url>
 
-						<!-- construct an "delete" link with customer id -->
-						<c:url var="deleteLink" value="/deleteDepart">
-							<c:param name="id" value="${list.id}" />
-						</c:url>
+					<!-- construct an "delete" link with customer id -->
+					<c:url var="deleteLink" value="/deleteST">
+						<c:param name="id" value="${list.id}" />
+					</c:url>
 
-						<tr>
-							<td>${list.id}</td>
-							<td>${list.name}</td>
-							<td>
-							<div class="btn-group" role="group" aria-label="Basic example">
-								<button type="button" class="btn btn-info"
-									onclick="location.href='${updateLink}';">Cập nhật</button>
-								<button type="button" class="btn btn-danger"
-									onclick="location.href='${deleteLink}'; ">Xóa</button>
-							</div>
-							</td>
-						</tr>
-					</c:forEach>
-				</c:if>
-			</tbody>
+					<tr>
+						<td></td>
+						<td>${list.semester.name}</td>
+						<td>${list.majors.name}</td>
+						<td>${list.subject.subjectname}</td>
+						<td><a href="${updateLink}" class="btn btn-primary">Update</a>
+							<a href="${deleteLink}" class="btn btn-danger">Delete</a></td>
+					</tr>
+				</c:forEach>
+			</c:if>
+		</tbody>
 
-		</table>
-	</section>
+	</table>
+
+
 </body>
-
 </html>

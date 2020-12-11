@@ -6,44 +6,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>AdminLTE 2 | Dashboard</title>
-
-<link rel="stylesheet" type="text/css"
-	href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
-
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<script type="text/javascript"
-	src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-
-<!-- modal -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-<link
-	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css" />
-<!-- Ionicons -->
-<link
-	href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css"
-	rel="stylesheet" type="text/css" />
-<!-- Daterange picker -->
-<link
-	href="../../../../../resources/bootstrap/css/daterangepicker-bs3.css"
-	rel="stylesheet" type="text/css" />
-<!-- Theme style -->
-<link href="../../../../../resources/bootstrap/css/AdminLTE.min.css"
-	rel="stylesheet" type="text/css" />
-<!-- AdminLTE Skins. Choose a skin from the cs/skins 
+    <meta charset="UTF-8" >
+    <title>EMS | Lí Lịch</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <!-- Bootstrap 3.3.2 -->
+    <link href="../../../../resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- Font Awesome Icons -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <!-- Ionicons -->
+    <link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+    <!-- Morris chart -->
+    <link href="../../../../resources/bootstrap/css/morris.css" rel="stylesheet" type="text/css" />
+    <!-- jvectormap -->
+    <link href="../../../../resources/bootstrap/css/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
+    <!-- Daterange picker -->
+    <link href="../../../../resources/bootstrap/css/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
+    <!-- Theme style -->
+    <link href="../../../../resources/bootstrap/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+    <!-- AdminLTE Skins. Choose a skin from the css/skins 
          folder instead of downloading all of them to reduce the load. -->
 <link href="../../../../../resources/bootstrap/css/_all-skins.min.css"
 	rel="stylesheet" type="text/css" />
 
+  </head>
+<body >
+    <section class="content-header">
+        <h1>
+            ĐIỂM DANH
+        </h1>
+          <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
+            <li class="active">Học tập</li>
+            <li class="active">Điểm danh</li>            
+          </ol>        
+    </section>
 
 
 <script>

@@ -43,7 +43,7 @@ public class MajorsSemester{
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY,optional = false)
-	@JoinColumn(name = "majorsID", insertable = false, updatable = false)
+	@JoinColumn(name = "majorsID")
 	public Majors getMajors() {
 		return this.majors;
 	}
@@ -53,7 +53,7 @@ public class MajorsSemester{
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY,optional = false)
-	@JoinColumn(name = "semesterID", insertable = false, updatable = false)
+	@JoinColumn(name = "semesterID")
 	public Semester getSemester() {
 		return this.semester;
 	}
@@ -63,7 +63,7 @@ public class MajorsSemester{
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY,optional = false)
-	@JoinColumn(name = "subjectID", insertable = false, updatable = false)
+	@JoinColumn(name = "subjectID")
 	public Subject getSubject() {
 		return this.subject;
 	}

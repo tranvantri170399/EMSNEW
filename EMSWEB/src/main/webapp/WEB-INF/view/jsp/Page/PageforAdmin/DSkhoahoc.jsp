@@ -142,7 +142,7 @@
 	<form:form action="/save" modelAttribute="course">
 		<table id="table1" class="display">
 
-			<thead style="background-color: aqua;">
+			<thead style="background-color: #4876FF; color: white">
 				<tr>
 					<th>ID</th>
 					<th>Tên Khóa Học</th>
@@ -174,8 +174,14 @@
 							<td>${list.semester.name}</td>
 							<td>${list.status}</td>
 							<td>${list.teacher.fname}</td>
-							<td><a href="${updateLink}" class="btn btn-primary">Update</a>
-								<a href="${deleteLink}" class="btn btn-danger">Delete</a></td>
+							<td>
+								<div class="btn-group" role="group" aria-label="Basic example">
+								<button type="button" class="btn btn-info"
+									onclick="location.href='${updateLink}';">Cập nhật</button>
+								<button type="button" class="btn btn-danger"
+									onclick="location.href='${deleteLink}';">Xóa</button>
+								</div>
+							</td>
 						</tr>
 					</c:forEach>
 				</c:if>

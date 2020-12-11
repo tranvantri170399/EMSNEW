@@ -152,12 +152,12 @@ function validate(){
 			</form:form>
 		</div>
 	</div>
-	<section>
+	<section class="content">
 	<!--Table  -->
 	<form:form action="/save" modelAttribute="room">
 		<table id="table1" class="display">
 
-			<thead style="background-color: aqua;">
+			<thead style="background-color:#4876FF ;color: white">
 				<tr>
 					<th>ID</th>
 					<th>Tên Phòng Học</th>

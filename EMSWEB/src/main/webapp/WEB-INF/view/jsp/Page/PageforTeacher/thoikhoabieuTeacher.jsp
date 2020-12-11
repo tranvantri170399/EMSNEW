@@ -66,6 +66,7 @@
 			<li class="active">Danh sách Lịch Học</li>
 		</ol>
 	</section>
+	<section class="content">
 	<!--Table  -->
 	<form:form action="/save" modelAttribute="room">
 		<table id="table1" class="display" style="width: 100%">

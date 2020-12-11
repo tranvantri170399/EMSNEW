@@ -221,7 +221,7 @@ function validate() {
 								<span id="checkName"></span>
 							</div>
 							
-							<div clas="form-group">
+							<div class="form-group">
 								<label for="InputID">Image:</label>
 								<div class="custom-file">
     								<input type="file" class="custom-file-input" id="inputGroupFile01" id="InputImage">
@@ -303,7 +303,7 @@ function validate() {
 			</form:form>
 		</div>
 	</div>
-
+	<section class="content">
 	<!--Table  -->
 	<form:form action="/save" modelAttribute="staff">
 		<table id="table1" class="display table-bordered" style="width: 100%">
@@ -389,7 +389,7 @@ function validate() {
 
 	</form:form>
 
-
+</section>
 
 	<!-- 	<script>
 		$(function() {

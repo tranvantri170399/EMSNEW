@@ -81,7 +81,7 @@ function validate(){
 </head>
 <body>
 	<section class="content-header">
-		<h1>THÔNG TIN</h1>
+		<h1>Thông Tin Phòng Học</h1>
 		<ol class="breadcrumb">
 			<li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
 			<li class="active">Quản lí CSVC</li>

@@ -73,7 +73,7 @@ th.image.sorting {
 		</h1>
 		<ol class="breadcrumb">
 			<li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-			<li class="active">Quản Lý Nhân Viên</li>
+			<li class="active">Quản Lý Sinh Viên</li>
 			<li class="active">Danh Sách Lớp Học</li>
 		</ol>
 	</section>
