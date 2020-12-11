@@ -80,9 +80,9 @@ function validate(){
 				data-target="#myModal">Thêm Lịch Học</button>
 		</h1>
 		<ol class="breadcrumb">
-			<li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-			<li class="active">Quản lí </li>
-			<li class="active">Danh sách Lịch Học</li>
+			<li><a href="#"><i class="fa fa-dashboard"></i>Trang Chủ</a></li>
+			<li class="active">Quản Lí Lịch Học</li>
+			<li class="active">Danh Sách Lịch Học</li>
 		</ol>
 	</section>
 	<!--Modalthemnhanvien-->

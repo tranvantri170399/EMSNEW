@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>AdminLTE 2 | Dashboard</title>
+<title>Education Management System</title>
 <meta
 	content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
 	name='viewport'>
@@ -46,7 +46,7 @@
 
 		<header class="main-header">
 			<!-- Logo -->
-			<a href="index2.html" class="logo"><b>Admin</b>LTE</a>
+			<a href="index2.html" class="logo"><b>EMS</b></a>
 			<!-- Header Navbar: style can be found in header.less -->
 			<nav class="navbar navbar-static-top" role="navigation">
 				<!-- Sidebar toggle button-->
@@ -131,9 +131,9 @@
 									class="fa fa-circle-o"></i>Tình trạng sinh viên</a></li>
 						</ul></li>
 					<li>
-					<li class="treeview"><a href="#"> <i
-							class="fa fa-calendar"></i> <span>Học tập</span> <span
-							class="label label-primary pull-right">4</span>
+					<li class="treeview"><a href="#"> 
+						<i	class="fa fa-calendar"></i> <span>Học tập</span>
+						<i class="fa fa-angle-right pull-right"></i>
 					</a>
 						<ul class="treeview-menu">
 							<li><a href="${infoschedule}" target="frame"><i
@@ -176,10 +176,10 @@
 
 		<footer class="main-footer">
 			<div class="pull-right hidden-xs">
-				<b>Version</b> 2.0
+				<b>Version</b>beta
 			</div>
-			<strong>Copyright &copy; 2014-2015 <a
-				href="http://almsaeedstudio.com">Almsaeed Studio</a>.
+			<strong>Copyright &copy; 2019-2020 <a
+				href="">4TL Group</a>.
 			</strong> All rights reserved.
 		</footer>
 
@@ -197,20 +197,6 @@
 	<script src="../../../resources/js/app.min.js" type="text/javascript"></script>
 	<!-- Sparkline -->
 	<script src="../../../resources/js/jquery.sparkline.min.js"
-		type="text/javascript"></script>
-	<!-- jvectormap -->
-	<script src="../../../resources/js/jquery-jvectormap-1.2.2.min.js"
-		type="text/javascript"></script>
-	<script src="../../../resources/js/jquery-jvectormap-world-mill-en.js"
-		type="text/javascript"></script>
-	<!-- daterangepicker -->
-	<script src="../../../resources/js/daterangepicker.js"
-		type="text/javascript"></script>
-	<!-- datepicker -->
-	<script src="../../../resources/js/bootstrap-datepicker.js"
-		type="text/javascript"></script>
-	<!-- iCheck -->
-	<script src="../../../resources/js/icheck.min.js"
 		type="text/javascript"></script>
 	<!-- SlimScroll 1.3.0 -->
 	<script src="../../../resources/js/jquery.slimscroll.min.js"

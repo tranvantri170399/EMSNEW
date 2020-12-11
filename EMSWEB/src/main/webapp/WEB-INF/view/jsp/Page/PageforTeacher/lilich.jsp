@@ -83,19 +83,19 @@
                     <label for="InputPhone">Trạng thái:</label>
                     <label  id="InputStatus">${sp.status}</label>
                   </div>   
-                  <div clas="form-group">
+                  <div class="form-group">
                     <label for="InputID">Cấp độ:</label>
                     <input name="id" class="form-control" value="${sp.level}"/>
                    </div>
-                  <div clas="form-group">
+                  <div class="form-group">
                     <label for="InputID">Lương</label>
                     <input name="id" class="form-control" value="${sp.salary}"/>
                   </div>  
-                  <div clas="form-group">
+                  <div class="form-group">
                     <label for="InputID">Phòng Ban: ${sp.depart.name}</label>
                     <%-- <select name="depart" items="${departList}" /> --%>
                   </div>  
-                  <div clas="form-group">
+                  <div class="form-group">
                     <label for="InputID">Chức vụ:  ${sp.role.roleName}</label>
                     <%-- <form:select name="role" items="${roleList}" /> --%>
                   </div>
@@ -117,20 +117,8 @@
     <script src="../../../../../resources/js/app.min.js" type="text/javascript"></script>
     <!-- Sparkline -->
     <script src="../../../../../resources/js/jquery.sparkline.min.js" type="text/javascript"></script>
-    <!-- jvectormap -->
-    <script src="../../../../../resources/js/jquery-jvectormap-1.2.2.min.js" type="text/javascript"></script>
-    <script src="../../../../resources/js/jquery-jvectormap-world-mill-en.js" type="text/javascript"></script>
-    <!-- daterangepicker -->
-    <script src="../../../../../resources/js/daterangepicker.js" type="text/javascript"></script>
-    <!-- datepicker -->
-    <script src="../../../../../resources/js/bootstrap-datepicker.js" type="text/javascript"></script>
-    <!-- iCheck -->
-    <script src="../../../../../resources/js/icheck.min.js" type="text/javascript"></script>
     <!-- SlimScroll 1.3.0 -->
     <script src="../../../../../resources/js/jquery.slimscroll.min.js" type="text/javascript"></script>
-    <!-- ChartJS 1.0.1 -->
-    <script src="../../../../../resources/js/Chart.min.js" type="text/javascript"></script>
-
     <!-- AdminLTE for demo purposes -->
     <script src="../../../../../resources/js/demo.js" type="text/javascript"></script>        
 </body>

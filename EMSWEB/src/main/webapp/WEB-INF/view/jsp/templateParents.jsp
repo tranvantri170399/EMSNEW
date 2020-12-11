@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
+F<%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>AdminLTE 2 | Dashboard lap</title>
+<title>Education Management System</title>
 <meta
 	content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
 	name='viewport'>
@@ -46,7 +46,7 @@
 
 		<header class="main-header">
 			<!-- Logo -->
-			<a href="index2.html" class="logo"><b>Admin</b>LTE</a>
+			<a href="index2.html" class="logo"><b>EMS</b></a>
 			<!-- Header Navbar: style can be found in header.less -->
 			<nav class="navbar navbar-static-top" role="navigation">
 				<!-- Sidebar toggle button-->
@@ -89,7 +89,7 @@
 										<c:url var="thoikhoabieu" value="parent/thoikhoabieu">
 											<c:param name="userid" value="${sp.id}" />
 										</c:url>
-										
+
 									</c:forEach>
 							</span>
 						</a>
@@ -106,13 +106,13 @@
 								<!-- Menu Footer-->
 								<li class="user-footer">
 									<div class="pull-left">
-										<form:form method="POST" modelAttribute="student" >
-										<button onclick="#'">Profile</button>
+										<form:form method="POST" modelAttribute="student">
+											<button onclick="#'">Profile</button>
 										</form:form>
 									</div>
 									<div class="pull-right">
-										<form:form method="POST" modelAttribute="student" >
-										<button onclick="/logout'">Sign out</button>
+										<form:form method="POST" modelAttribute="student">
+											<button onclick="/logout'">Sign out</button>
 										</form:form>
 									</div>
 								</li>
@@ -135,7 +135,7 @@
 					</a></li>
 					<li class="treeview"><a href="#"> <i class="fa fa-user"></i>
 							<span>Tài khoản</span> <span
-							class="label label-primary pull-right">4</span>
+							class="label label-primary pull-right"></span>
 					</a>
 						<ul class="treeview-menu">
 							<li><a href="${infoLink}" target="frame"><i
@@ -144,8 +144,8 @@
 									class="fa fa-circle-o"></i>Cập nhật mật khẩu</a></li>
 						</ul></li>
 					<li class="treeview"><a href="#"> <i
-							class="fa fa-calendar"></i> <span>Thông tin sinh viên</span> <span
-							class="label label-primary pull-right">4</span>
+							class="fa fa-calendar"></i> <span>Thông tin sinh viên</span>
+							<span class="label label-primary pull-right"></span>
 					</a>
 						<ul class="treeview-menu">
 							<li><a href="Page/THANHTICH" target="frame"><i
@@ -153,14 +153,16 @@
 						</ul></li>
 					<li>
 					<li class="treeview"><a href="#"> <i
-							class="fa fa-calendar"></i> <span>Học tập</span> <span
-							class="label label-primary pull-right">4</span>
+							class="fa fa-calendar"></i> <span>Học tập</span>
+							<span class="label label-primary pull-right"></span>
 					</a>
 						<ul class="treeview-menu">
-<!-- 							<li><a href="Page/LICHHOC" target="frame">lich học</a></li> -->
-							<li><a href="${thoikhoabieu}" target="frame">
-							<i class="fa fa-circle-o"></i>Thời khóa biểu</a></li>
-							<li><a href="Page/DIEMDANH" target="frame"><i class="fa fa-circle-o"></i>Điểm danh</a></li>
+							<!-- 							<li><a href="Page/LICHHOC" target="frame">lich học</a></li> -->
+							<li><a href="${thoikhoabieu}" target="frame"> <i
+									class="fa fa-circle-o"></i>Thời khóa biểu
+							</a></li>
+							<li><a href="Page/DIEMDANH" target="frame"><i
+									class="fa fa-circle-o"></i>Điểm danh</a></li>
 							<li><a href="Page/HOCPHI" target="frame"><i
 									class="fa fa-circle-o"></i>Kiểm tra học phí</a></li>
 						</ul></li>
@@ -175,7 +177,8 @@
 									class="fa fa-circle-o"></i>Môn đã học</a></li>
 							<li><a href="Page/BANGDIEM" target="frame"><i
 									class="fa fa-circle-o"></i>Bảng điểm</a></li>
-						</ul></li>
+						</ul>
+					</li>
 
 				</ul>
 			</section>
@@ -195,8 +198,7 @@
 			<div class="pull-right hidden-xs">
 				<b>Version</b> Beta
 			</div>
-			<strong>Copyright &copy; 2019-2020 <a>
-				href="">4TL Team</a>.
+			<strong>Copyright &copy; 2019-2020 <a> href="">4TL Team</a>.
 			</strong> All rights reserved.
 		</footer>
 
@@ -212,28 +214,9 @@
 	<script src='../../../resources/js/fastclick.min.js'></script>
 	<!-- AdminLTE App -->
 	<script src="../../../resources/js/app.min.js" type="text/javascript"></script>
-	<!-- Sparkline -->
-	<script src="../../../resources/js/jquery.sparkline.min.js"
-		type="text/javascript"></script>
-	<!-- jvectormap -->
-	<script src="../../../resources/js/jquery-jvectormap-1.2.2.min.js"
-		type="text/javascript"></script>
-	<script src="../../../resources/js/jquery-jvectormap-world-mill-en.js"
-		type="text/javascript"></script>
-	<!-- daterangepicker -->
-	<script src="../../../resources/js/daterangepicker.js"
-		type="text/javascript"></script>
-	<!-- datepicker -->
-	<script src="../../../resources/js/bootstrap-datepicker.js"
-		type="text/javascript"></script>
-	<!-- iCheck -->
-	<script src="../../../resources/js/icheck.min.js"
-		type="text/javascript"></script>
 	<!-- SlimScroll 1.3.0 -->
 	<script src="../../../resources/js/jquery.slimscroll.min.js"
 		type="text/javascript"></script>
-	<!-- ChartJS 1.0.1 -->
-	<script src="../../../resources/js/Chart.min.js" type="text/javascript"></script>
 
 	<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 	<script src="../../../resources/js/dashboard2.js"

@@ -451,7 +451,7 @@ function validate() {
 
 	</article>
 	</div>
-
+	<section class="content">
 	<!--Table  -->
 	<form:form action="/save" modelAttribute="student">
 		<table id="table1" class="display">
@@ -501,7 +501,7 @@ function validate() {
 							<td>${list.phone}</td>
 							<td>${list.address}</td>
 							<td>${list.status}</td>
-							<td class="class">
+							<td>
 								<div class="btn-group" role="group" aria-label="Basic example">
 									<button type="button" class="btn btn-info"
 										onclick="location.href='${updateLink}';">Cập nhật</button>
@@ -519,6 +519,6 @@ function validate() {
 
 	</form:form>
 
-
+</section>
 </body>
 </html>

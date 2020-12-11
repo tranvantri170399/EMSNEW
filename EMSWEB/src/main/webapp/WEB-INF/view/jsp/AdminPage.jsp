@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>EMS</title>
+<title>Education Management System</title>
 <meta
 	content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
 	name='viewport'>
@@ -130,9 +130,9 @@
 							<li><a href="/DSnganh" target="frame"><i
 									class="fa fa-circle-o"></i>Danh Sách Chuyên Ngành</a></li>
 							<li><a href="/DShocki" target="frame"><i
-									class="fa fa-circle-o"></i>Danh Sách học kì</a></li>
+									class="fa fa-circle-o"></i>Danh Sách Học Kì</a></li>
 							<li><a href="/DSqlhocky" target="frame"><i
-									class="fa fa-circle-o"></i>Quản lý môn học từng kì</a></li>
+									class="fa fa-circle-o"></i>Quản lý Môn Học Từng Kì</a></li>
 						</ul></li>
 						<li class="treeview"><a href="#"> <i
 							class="fa fa-calendar"></i> <span>Quản Lí Lịch Học</span> <i
@@ -199,25 +199,12 @@
 	<!-- Sparkline -->
 	<script src="../../../resources/js/jquery.sparkline.min.js"
 		type="text/javascript"></script>
-	<!-- jvectormap -->
-	<script src="../../../resources/js/jquery-jvectormap-1.2.2.min.js"
-		type="text/javascript"></script>
-	<script src="../../../resources/js/jquery-jvectormap-world-mill-en.js"
-		type="text/javascript"></script>
-	<!-- daterangepicker -->
-	<script src="../../../resources/js/daterangepicker.js"
-		type="text/javascript"></script>
-	<!-- datepicker -->
-	<script src="../../../resources/js/bootstrap-datepicker.js"
-		type="text/javascript"></script>
 	<!-- iCheck -->
 	<script src="../../../resources/js/icheck.min.js"
 		type="text/javascript"></script>
 	<!-- SlimScroll 1.3.0 -->
 	<script src="../../../resources/js/jquery.slimscroll.min.js"
 		type="text/javascript"></script>
-	<!-- ChartJS 1.0.1 -->
-	<script src="../../../resources/js/Chart.min.js" type="text/javascript"></script>
 
 	<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 	<script src="../../../resources/js/dashboard2.js"
