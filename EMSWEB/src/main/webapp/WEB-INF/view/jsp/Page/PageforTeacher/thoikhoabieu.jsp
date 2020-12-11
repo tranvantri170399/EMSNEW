@@ -96,8 +96,7 @@
     <script src="../../../../resources/js/icheck.min.js" type="text/javascript"></script>
     <!-- SlimScroll 1.3.0 -->
     <script src="../../../../resources/js/jquery.slimscroll.min.js" type="text/javascript"></script>
-    <!-- ChartJS 1.0.1 -->
-    <script src=".../../../../resources/js/Chart.min.js" type="text/javascript"></script>
+
 
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="../../../../resources/js/dashboard2.js" type="text/javascript"></script>

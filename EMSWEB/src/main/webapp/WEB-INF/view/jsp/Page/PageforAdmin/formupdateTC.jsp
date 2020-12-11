@@ -140,12 +140,12 @@ function validate(){
 </head>
 <body>
 	<section class="content-header">
-		<h1>LÍ LỊCH</h1>
+		<h1>Lí Lịch Nhân Viên</h1>
 		<ol class="breadcrumb">
 			<li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-			<li class="active">Quản lí nhân viên</li>
-			<li class="active">Danh sách sinh viên</li>
-			<li class="active">Cập nhật nhân viên</li>
+			<li class="active">Quản Lí Nhân Viên</li>
+			<li class="active">Danh sách Ninh Viên</li>
+			<li class="active">Cập Nhật Nhân Viên</li>
 		</ol>
 	</section>
 
@@ -284,8 +284,6 @@ function validate(){
 	</section>
 
 
-
-
 	<script src="../../../../../resources/js/jQuery-2.1.3.min.js"></script>
 	<!-- Bootstrap 3.3.2 JS -->
 	<script src="../../../../../resources/bootstrap/js/bootstrap.min.js"
@@ -298,27 +296,8 @@ function validate(){
 	<!-- Sparkline -->
 	<script src="../../../../../resources/js/jquery.sparkline.min.js"
 		type="text/javascript"></script>
-	<!-- jvectormap -->
-	<script
-		src="../../../../../resources/js/jquery-jvectormap-1.2.2.min.js"
-		type="text/javascript"></script>
-	<script
-		src="../../../../resources/js/jquery-jvectormap-world-mill-en.js"
-		type="text/javascript"></script>
-	<!-- daterangepicker -->
-	<script src="../../../../../resources/js/daterangepicker.js"
-		type="text/javascript"></script>
-	<!-- datepicker -->
-	<script src="../../../../../resources/js/bootstrap-datepicker.js"
-		type="text/javascript"></script>
-	<!-- iCheck -->
-	<script src="../../../../../resources/js/icheck.min.js"
-		type="text/javascript"></script>
 	<!-- SlimScroll 1.3.0 -->
 	<script src="../../../../../resources/js/jquery.slimscroll.min.js"
-		type="text/javascript"></script>
-	<!-- ChartJS 1.0.1 -->
-	<script src="../../../../../resources/js/Chart.min.js"
 		type="text/javascript"></script>
 
 	<!-- AdminLTE for demo purposes -->

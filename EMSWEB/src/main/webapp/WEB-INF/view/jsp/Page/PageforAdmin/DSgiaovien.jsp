@@ -193,6 +193,7 @@ th.image.sorting {
 			<li class="active">Quản Lí Nhân Viên</li>
 			<li class="active">Danh Sách Giáo Viên</li>
 		</ol>
+		<hr>
 	</section>
 	<!--Modalthemnhanvien-->
 	<div class="modal fade" id="myModal" role="dialog">

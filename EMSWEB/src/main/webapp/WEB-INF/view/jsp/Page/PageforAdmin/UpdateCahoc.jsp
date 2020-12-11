@@ -77,12 +77,12 @@ function validate(){
 </head>
 <body>
 	<section class="content-header">
-		<h1>THÔNG TIN</h1>
+		<h1>Thông Tin Ca học</h1>
 		<ol class="breadcrumb">
 			<li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-			<li class="active">Quản lí </li>
-			<li class="active">Danh sách Ca Học</li>
-			<li class="active">Cập nhật Ca Học</li>
+			<li class="active">Quản Lí Lịch Học </li>
+			<li class="active">Danh Sách Ca Học</li>
+			<li class="active">Cập Nhật Ca Học</li>
 		</ol>
 	</section>
 

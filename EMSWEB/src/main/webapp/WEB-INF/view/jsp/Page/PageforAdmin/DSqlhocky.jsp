@@ -74,14 +74,14 @@ table tr td:first-child::before {
 <body>
 	<section class="content-header">
 		<h1>
-			Danh Sách Nhân Viên
+			Danh Sách Môn Học Từng Kì
 			<button type="button" class="btn btn-info" data-toggle="modal"
 				data-target="#myModal">Thêm nhân viên</button>
 		</h1>
 		<ol class="breadcrumb">
 			<li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-			<li class="active">Quản lí nhân viên</li>
-			<li class="active">Danh sách Nhân Viên</li>
+			<li class="active">Quản Lí Sinh Viên</li>
+			<li class="active">Quản Lí Môn Học Từng Kì</li>
 		</ol>
 	</section>
 	<!--Modal-->
@@ -144,9 +144,10 @@ table tr td:first-child::before {
 	</div> --%>
 	
 	<!--Table  -->
+	<section class="content">
 	<table id="table1" class="display">
 
-		<thead style="background-color: aqua;">
+		<thead style="background-color: #4876FF; color: white">
 			<tr>
 				<th>STT</th>
 				<th>Học kỳ</th>
@@ -176,8 +177,14 @@ table tr td:first-child::before {
 						<td>${list.semester.name}</td>
 						<td>${list.majors.name}</td>
 						<td>${list.subject.subjectname}</td>
-						<td><a href="${updateLink}" class="btn btn-primary">Update</a>
-							<a href="${deleteLink}" class="btn btn-danger">Delete</a></td>
+						<td>							
+							<div class="btn-group" role="group" aria-label="Basic example">
+									<button type="button" class="btn btn-info"
+										onclick="location.href='${updateLink}';">Cập nhật</button>
+									<button type="button" class="btn btn-danger"
+										onclick="location.href='${deleteLink}';">Xóa</button>
+								</div>
+						</td>
 					</tr>
 				</c:forEach>
 			</c:if>
@@ -185,6 +192,6 @@ table tr td:first-child::before {
 
 	</table>
 
-
+</section>
 </body>
 </html>

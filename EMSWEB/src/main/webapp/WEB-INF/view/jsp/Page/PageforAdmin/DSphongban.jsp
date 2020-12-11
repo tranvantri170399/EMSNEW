@@ -145,7 +145,7 @@ th.image.sorting {
 			</form:form>
 		</div>
 	</div>
-	<section>
+	<section class="content">
 	<!--Table  -->
 		<table id="table1" class="display">
 
