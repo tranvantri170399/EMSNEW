@@ -18,6 +18,9 @@ import com.example.demo.entities.Attandence;
 import com.example.demo.entities.Classroom;
 import com.example.demo.entities.ClassroomStudent;
 import com.example.demo.entities.Course;
+import com.example.demo.entities.Exam;
+import com.example.demo.entities.ExamResult;
+import com.example.demo.entities.ExamType;
 import com.example.demo.entities.Schedule;
 import com.example.demo.entities.Student;
 import com.example.demo.entities.Teacher;
@@ -27,6 +30,9 @@ import com.example.demo.repository.AttandenceResponsitory;
 import com.example.demo.repository.ClassroomResponsitory;
 import com.example.demo.repository.ClassroomStudentResponsitory;
 import com.example.demo.repository.CourseResponsitory;
+import com.example.demo.repository.ExamResponsitory;
+import com.example.demo.repository.ExamResultResponsitory;
+import com.example.demo.repository.ExamtypeResponsitory;
 import com.example.demo.repository.ScheduleResponsitory;
 import com.example.demo.repository.SchoolroomResponsitory;
 import com.example.demo.repository.StudentResponsitory;
@@ -58,6 +64,12 @@ public class TeacherController {
 	UserResponsitory userResponsitory;
 	@Autowired
 	AttandenceResponsitory attandenceResponsitory;
+	@Autowired
+	ExamtypeResponsitory examtypeResponsitory;
+	@Autowired
+	ExamResponsitory examResponsitory;
+	@Autowired
+	ExamResultResponsitory examResultResponsitory;
 	//show list schedule
 	@RequestMapping(value = { "teacher/thoikhoabieu" })
 	public String loadthoikhoabieu(Model model,@RequestParam("teacherid") String teacherid) {
@@ -258,4 +270,124 @@ public class TeacherController {
 		model.addAttribute("List",list);
 		return "/jsp/Page/PageforTeacher/diemdanh";
 	}
+/*-----------------------------------------------------------------------------------------*/
+	//bảng điểm
+	String teacheridx=null;
+	@RequestMapping(value = { "Page/bangdiem" })
+	public String loadbangdiem(Model model,@RequestParam("teacherid") String teacherid,@ModelAttribute("attandence") Attandence attan) {
+		teacheridx=teacherid;
+		List<Classroom> listclassroom= classroomResponsitory.findAll();
+		model.addAttribute("Lists",listclassroom);
+		List<ExamType> list= examtypeResponsitory.findAll();
+		model.addAttribute("Listss",list);
+		return "/jsp/Page/PageforTeacher/bangdiem";
+	}
+	String noteid=null;
+	@RequestMapping(value = { "/mark/save" })
+	public String loadbangdiemafter(Model model,HttpServletRequest request,@ModelAttribute("attandence") Attandence attan) {
+		DateTimeFormatter dtfs = DateTimeFormatter.ofPattern("yyyy-MM-dd");  
+		   LocalDateTime nows = LocalDateTime.now();    
+		String namez= request.getParameter("nameexam");
+		System.out.println("ten bai kiem tra: "+namez);
+		
+		String namelab= request.getParameter("namelab");
+		System.out.println("loai bai: "+namelab);
+		
+		String namelabs= request.getParameter("course");
+		System.out.println("course: "+namelabs);
+		ExamType examTypes= examtypeResponsitory.findByname(namelab);
+		List<Course> couseid=courseResponsitory.findcustomteacher(teacheridx);
+		
+		List<Exam> attanlist = examResponsitory.findAll();
+		Exam lastid = attanlist.get(attanlist.size() - 1);
+		System.out.println("==>> " + lastid);
+		String id = lastid.getId();
+		String splitID = id.substring(2);
+		System.out.println("==> " + splitID);
+		int idNum = Integer.parseInt(splitID) + 1;
+		String outID = null;
+		if (idNum < 10) {
+			outID = "EX00" + idNum;
+		} else if (idNum >= 10 && idNum < 100) {
+			outID = "EX0" + idNum;
+		} else if (idNum >= 100 && idNum < 1000) {
+			outID = "EX" + idNum;
+		}
+		noteid=outID;
+		Course cotest= new Course();
+		cotest.setId(couseid.get(0).getId());
+		cotest.setName(couseid.get(0).getName());
+		Exam newa= new Exam();
+		newa.setId(outID);
+		newa.setName(namez);
+		newa.setExamType(examTypes);
+		newa.setCourse(cotest);
+		examResponsitory.save(newa);
+		
+		for (Course u : couseid) {
+			List<Schedule> schedule= scheduleResponsitory.findcustomCouse(u.getId());
+			for (Schedule s : schedule) {
+				Classroom classroom= classroomResponsitory.findByid(s.getClassroom().getId());
+				List<ClassroomStudent> croomstudent=classroomStudentrespon.findcustomclass(classroom.getId());
+				for (ClassroomStudent classroomStudent : croomstudent) {
+					List<ExamResult> listexamResult= examResultResponsitory.findAll();
+					List<ExamResult> listnew= examResultResponsitory.findcustomdate(dtfs.format(nows));
+					List<ExamResult> listnews= examResultResponsitory.findcustomid(outID);
+					if (listnew.size()<croomstudent.size() || listnews.size()<croomstudent.size()) {
+					ExamResult examResult= listexamResult.get(listexamResult.size()-1);
+					int idexamResult =examResult.getId();
+					int newid= idexamResult+1;
+					 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");  
+					   LocalDateTime now = LocalDateTime.now();  
+					   System.out.println(dtf.format(now));  
+					Exam test= examResponsitory.findByid(outID);
+					ExamResult examResults= new ExamResult();
+					examResults.setId(newid);
+					examResults.setExam(test);
+					Student st= studentResponsitory.findByid(classroomStudent.getStudent().getId());
+					examResults.setStudent(st);
+					examResults.setDate(dtf.format(now));
+					examResultResponsitory.save(examResults);
+					}else {
+						break;
+					}
+				}
+				model.addAttribute("Lists",croomstudent);
+			}
+			
+			
+		}
+		
+
+		List<ExamResult> listexamresult= examResultResponsitory.findcustomid(outID);
+		model.addAttribute("List",listexamresult);
+		return "/jsp/Page/PageforTeacher/selectbangdiem";
+	}
+	
+	
+	@RequestMapping(value = { "/servlets" })
+	public String loaddiem(Model model,HttpServletRequest request,@ModelAttribute("attandence") Attandence attan){
+		String[] id= request.getParameterValues("id");
+		String[] status = request.getParameterValues("statusxx");
+		float test=0;
+		for (String i : id) {
+	        System.out.println("id da chon: "+ i);
+	    }
+		int i =0;
+        for (String s : status) {
+        	int lastid=Integer.parseInt(id[i]);
+        	ExamResult saveattan= examResultResponsitory.findByid(lastid);
+            System.out.println("status da chon: "+ s);
+            test=Float.parseFloat(s);
+            saveattan.setMark(test);
+
+            examResultResponsitory.save(saveattan);
+           i++;
+        }
+
+		List<ExamResult> listexamresult= examResultResponsitory.findcustomid(noteid);
+		model.addAttribute("List",listexamresult);
+		return "/jsp/Page/PageforTeacher/selectbangdiem";
+	}
+	
 }

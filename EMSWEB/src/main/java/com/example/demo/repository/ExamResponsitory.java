@@ -7,4 +7,5 @@ import com.example.demo.entities.Exam;
 
 public interface ExamResponsitory extends JpaRepository<Exam, String>{
 	Exam findByname(String name); 
+	Exam findByid(String id);
 }
