@@ -64,6 +64,9 @@
 						<c:url var="diemdanh" value="Page/diemdanh">
 							<c:param name="teacherid" value="${sp.id}" />
 						</c:url>
+						<c:url var="bangdiem" value="Page/bangdiem">
+							<c:param name="teacherid" value="${sp.id}" />
+						</c:url>
 					</c:forEach>
                   </span>
                 </a>
@@ -141,7 +144,7 @@
                   <ul class="treeview-menu">
                       <!-- <li><a href="Page/diemdanh.html" target="frame"><i class="fa fa-circle-o"></i>Tài liệu học tập</a></li> -->
                      <!--  đánh dấu lại làm sao -->
-                    <!--   <li><a href="Page/bangdiem.html" target="frame"><i class="fa fa-circle-o"></i>Bảng điểm</a></li> -->
+                      <li><a href="${bangdiem}" target="frame"><i class="fa fa-circle-o"></i>Bảng điểm</a></li>
                       <li><a href="${diemdanh}" target="frame"><i class="fa fa-circle-o"></i>Điểm Danh</a></li>
                   </ul>
               </li>
@@ -163,7 +166,7 @@
         <div class="pull-right hidden-xs">
           <b>Version</b> Beta
         </div>
-        <strong>Copyright &copy; 2014-2015 <a href="">4TL Team</a>.</strong> All rights reserved.
+        <strong>Copyright &copy; 2020<a href="">4TL Team</a>.</strong> All rights reserved.
       </footer>
 
     </div><!-- ./wrapper -->

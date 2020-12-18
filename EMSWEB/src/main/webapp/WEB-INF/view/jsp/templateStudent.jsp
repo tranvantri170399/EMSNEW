@@ -22,16 +22,6 @@
 <link
 	href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css"
 	rel="stylesheet" type="text/css" />
-<!-- Morris chart -->
-<link href="../../../resources/bootstrap/css/morris.css"
-	rel="stylesheet" type="text/css" />
-<!-- jvectormap -->
-<link
-	href="../../../resources/bootstrap/css/jquery-jvectormap-1.2.2.css"
-	rel="stylesheet" type="text/css" />
-<!-- Daterange picker -->
-<link href="../../../resources/bootstrap/css/daterangepicker-bs3.css"
-	rel="stylesheet" type="text/css" />
 <!-- Theme style -->
 <link href="../../../resources/bootstrap/css/AdminLTE.min.css"
 	rel="stylesheet" type="text/css" />
@@ -40,8 +30,19 @@
 <link href="../../../resources/bootstrap/css/_all-skins.min.css"
 	rel="stylesheet" type="text/css" />
 
+<script type="text/javascript"
+	src="../../../resources/js/jquery-3.3.1.min.js"></script>
+
+<script type="text/javascript" src="../../../resources/js/script.js"></script>
+
+
+<link href="../../../resources/css/style.css" rel="stylesheet"
+	type="text/css" />
 </head>
 <body class="skin-blue">
+	<div class="loader">
+		<i class="fa fa-spinner xoay icon" aria-hidden="true"></i>
+	</div>
 	<div class="wrapper">
 
 		<header class="main-header">
@@ -64,8 +65,7 @@
 						<li class="dropdown user user-menu"><a href="#"
 							class="dropdown-toggle" data-toggle="dropdown"> <img
 								src="dist/img/user2-160x160.jpg" class="user-image"
-								alt="User Image" /> <span class="hidden-xs">
-									 <c:forEach
+								alt="User Image" /> <span class="hidden-xs"> <c:forEach
 										var="sp" items="${Listst}">
 													${sp.fname}
 										<c:url var="infoschedule" value="Student/thoikhoabieu">
@@ -98,17 +98,17 @@
 									<!-- Menu Body -->
 									<!-- Menu Footer-->
 									<li class="user-footer">
-									<div class="pull-left">
-										<form:form method="POST" modelAttribute="student" >
-										<button onclick="#'">Profile</button>
-										</form:form>
-									</div>
-									<div class="pull-right">
-										<form:form method="POST" modelAttribute="student" >
-										<button onclick="/logout'">Sign out</button>
-										</form:form>
-									</div>
-								</li>
+										<div class="pull-left">
+											<form:form method="POST" modelAttribute="student">
+												<button onclick="#'">Profile</button>
+											</form:form>
+										</div>
+										<div class="pull-right">
+											<form:form method="POST" modelAttribute="student">
+												<button onclick="/logout'">Sign out</button>
+											</form:form>
+										</div>
+									</li>
 								</ul>
 							</c:forEach></li>
 					</ul>
@@ -143,9 +143,9 @@
 									class="fa fa-circle-o"></i>Tình trạng sinh viên</a></li>
 						</ul></li>
 					<li>
-					<li class="treeview"><a href="#"> 
-						<i	class="fa fa-calendar"></i> <span>Học tập</span>
-						<i class="fa fa-angle-right pull-right"></i>
+					<li class="treeview"><a href="#"> <i
+							class="fa fa-calendar"></i> <span>Học tập</span> <i
+							class="fa fa-angle-right pull-right"></i>
 					</a>
 						<ul class="treeview-menu">
 							<li><a href="${infoschedule}" target="frame"><i
@@ -190,8 +190,7 @@
 			<div class="pull-right hidden-xs">
 				<b>Version</b>beta
 			</div>
-			<strong>Copyright &copy; 2019-2020 <a
-				href="">4TL Group</a>.
+			<strong>Copyright &copy; 2019-2020 <a href="">4TL Group</a>.
 			</strong> All rights reserved.
 		</footer>
 
@@ -213,12 +212,9 @@
 	<!-- SlimScroll 1.3.0 -->
 	<script src="../../../resources/js/jquery.slimscroll.min.js"
 		type="text/javascript"></script>
-	<!-- ChartJS 1.0.1 -->
-	<script src="../../../resources/js/Chart.min.js" type="text/javascript"></script>
-
-	<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 	<script src="../../../resources/js/dashboard2.js"
 		type="text/javascript"></script>
+
 
 	<!-- AdminLTE for demo purposes -->
 	<script src="../../../resources/js/demo.js" type="text/javascript"></script>
