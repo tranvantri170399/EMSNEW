@@ -55,4 +55,8 @@ public class StudentServiceimpl implements StudentService{
 		Pageable pageable = PageRequest.of(pageNo - 1, pageSize, sort);
 		return this.studentResponsitory.findAll(pageable);
 	}
+	
+	public List<Student> listAll(){
+		return studentResponsitory.findAll();
+	}
 }
