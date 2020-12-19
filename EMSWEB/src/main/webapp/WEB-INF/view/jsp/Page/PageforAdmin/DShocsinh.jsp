@@ -474,6 +474,7 @@ function validate() {
 					<th>Số điện thoại</th>
 					<th>Địa chỉ</th>
 					<th>Trạng thái</th>
+					<th>test EXport</th>
 					<th></th>
 				</tr>
 			</thead>
@@ -501,6 +502,9 @@ function validate() {
 							<td>${list.phone}</td>
 							<td>${list.address}</td>
 							<td>${list.status}</td>
+							<td>test EXport</td>
+							<td><a  href="<spring:url value='/exportPDF' />">Export to PDF</a>
+							</td>
 							<td>
 								<div class="btn-group" role="group" aria-label="Basic example">
 									<button type="button" class="btn btn-info"
