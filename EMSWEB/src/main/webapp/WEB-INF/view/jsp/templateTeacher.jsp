@@ -166,7 +166,7 @@
         <div class="pull-right hidden-xs">
           <b>Version</b> Beta
         </div>
-        <strong>Copyright &copy; 2020<a href="">4TL Team</a>.</strong> All rights reserved.
+        <strong>Copyright &copy; 2020<a href=""> 4TL Team</a>.</strong> All rights reserved.
       </footer>
 
     </div><!-- ./wrapper -->
