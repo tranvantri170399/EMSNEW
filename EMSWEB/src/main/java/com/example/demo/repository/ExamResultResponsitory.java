@@ -15,4 +15,7 @@ public interface ExamResultResponsitory extends JpaRepository<ExamResult, Intege
 	
 	@Query("SELECT e FROM ExamResult e where e.exam.id=?1")
 	public List<ExamResult> findcustomid(String id);
+	
+	@Query("SELECT e FROM ExamResult e where e.student.id=?1")
+	public List<ExamResult> findcustomstudentid(String id);
 }
