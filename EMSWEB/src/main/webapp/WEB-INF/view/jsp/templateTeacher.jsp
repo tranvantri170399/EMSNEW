@@ -75,10 +75,10 @@
                   <!-- User image -->
                   <li class="user-header">
                     <img src="../../../../../resources/FileUpload/${sp.image}" class="img-circle" alt="User Image" />
-                    <p>
-                      Alexander Pierce - Web Developer
-                      <small>Member since Nov. 2012</small>
-                    </p>
+                    
+													<p style="text-transform: capitalize; font-family:Arial;">${sp.fname}</p>
+													<p>${sp.email}</p>
+									
                   </li>
                   <!-- Menu Body -->
                   <!-- Menu Footer-->
@@ -166,7 +166,7 @@
         <div class="pull-right hidden-xs">
           <b>Version</b> Beta
         </div>
-        <strong>Copyright &copy; 2020<a href="">4TL Team</a>.</strong> All rights reserved.
+        <strong>Copyright &copy; 2020<a href=""> 4TL Team</a>.</strong> All rights reserved.
       </footer>
 
     </div><!-- ./wrapper -->

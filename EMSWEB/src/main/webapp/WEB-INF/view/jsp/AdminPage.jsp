@@ -60,22 +60,26 @@
 						<!-- Tasks: style can be found in dropdown.less -->
 						<!-- User Account: style can be found in dropdown.less -->
 						<li class="dropdown user user-menu"><a href="#"
-							class="dropdown-toggle" data-toggle="dropdown"> <img src="#"
-								class="user-image" alt="" /> <c:forEach var="sp"
+							class="dropdown-toggle" data-toggle="dropdown">
+							<c:forEach var="s" items="${Lists}"> 
+							<img src="../../../../../resources/FileUpload/${s.image}" class="user-image" alt="User Image"/>
+								</c:forEach>
+								<c:forEach var="sp"
 									items="${List}">
 									<span class="hidden-xs">${sp.username}</span>
 								</c:forEach>
 
 						</a>
+						<c:forEach var="s" items="${Lists}">
 							<ul class="dropdown-menu">
 								<!-- User image -->
 								<li class="user-header"><img
-									src="dist/img/user2-160x160.jpg" class="img-circle"
+									src="../../../../../resources/FileUpload/${s.image}" class="img-circle"
 									alt="User Image" />
-									<p>
-										Alexander Pierce - Web Developer <small>Member since
-											Nov. 2012</small>
-									</p></li>
+									
+													<p style="text-transform: capitalize; font-family:Arial;">${s.fname} ${s.lname}</p>
+													<p>${s.email}</p>
+									</li>
 								<!-- Menu Body -->
 								<!-- Menu Footer-->
 								<li class="user-footer">
@@ -90,7 +94,8 @@
 										</form:form>
 									</div>
 								</li>
-							</ul></li>
+							</ul>
+							</c:forEach></li>
 					</ul>
 				</div>
 			</nav>
@@ -179,7 +184,7 @@
 			<div class="pull-right hidden-xs">
 				<b>Version</b> Beta
 			</div>
-			<strong>Copyright &copy; 2019-2020 <a
+			<strong>Copyright &copy; 2020 <a
 				href="">4TL Team</a>.
 			</strong> All rights reserved.
 		</footer>

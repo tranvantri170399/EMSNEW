@@ -165,6 +165,18 @@ hr {
 .parent-info {
 	float: right;
 }
+<%--message--%>
+
+.ui-draggable .ui-dialog-titlebar{
+	background: #007bff;
+}
+.ui-dialog .ui-dialog-content{
+	text-align: center;
+}
+.ui-dialog .ui-dialog-title{
+	text-align: center;
+    color: white;
+}
 </style>
 </head>
 <body onload="myFunction()">
@@ -236,7 +248,7 @@ hr {
 							<div class="col-lg-9 col-xl-6">
 								<%-- <input type="text" value="${sp.username}" name="username" class="form-control" readonly> --%>
 								<form:input path="username" class="form-control"
-									valuexmlns="${sp.username}" readonly="" />
+									valuexmlns="${sp.username}" readonly=""/>
 							</div>
 						</div>
 					</div>
@@ -247,7 +259,7 @@ hr {
 						cũ</label>
 					<div class="col-lg-9 col-xl-6">
 						<%-- <form:input type="password" class="form-control" id="oldPass" path="password"> --%>
-						<form:input path="password" class="form-control" id="oldPass" />
+						<form:input path="password" class="form-control" id="oldPass"  type="password"/>
 						<span id="oldPass-check"></span>
 					</div>
 				</div>
@@ -285,20 +297,24 @@ hr {
 			if(${m}=="1"){
 				/* alert("Cập nhật thành công :))"); */
 				$( "#dialog" ).dialog();
+				document.getElementById("dialog").style.background = 'white';
 			}else{
 				$( "#dialogs" ).dialog();
-				document.getElementById("dialogs").style.background = 'red';
+				document.getElementById("dialogs").style.background = 'white';
 			}
 		}
 		</c:forEach>
 		
 	</script>
 
-	<div id="dialog" title="Message" style="display: none;">
-		<p>Cập nhật thành công</p>
+	<div id="dialog" title="Message" style="display: none;background:#007bff;">
+	<i class='far fa-check-circle' style='font-size:115px;color:#007bff;margin-top: 1.1rem;'></i>
+		<p style="margin-top: 1.5rem; font-size: 20px;"	>Cập nhật thành công</p>
 	</div>
-	<div id="dialogs" title="Message" style="display: none;">
-		<p>Cập nhật thất bại!</p>
+	<div id="dialogs" title="Message" style="display: none;background:#007bff;">
+		<i class='far fa-times-circle' style='font-size:115px;color:#FE2E2E;margin-top: 1.1rem;'></i>
+		<p style="margin-top: 1.5rem; font-size: 20px;">Cập nhật thất bại!</p>
 	</div>
+	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 </body>
 </html>
