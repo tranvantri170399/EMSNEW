@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entities.Attandence;
 import com.example.demo.entities.ClassroomStudent;
+import com.example.demo.entities.ExamResult;
 import com.example.demo.entities.Parent;
 import com.example.demo.entities.Schedule;
 import com.example.demo.entities.Student;
@@ -21,6 +22,9 @@ import com.example.demo.repository.AttandenceResponsitory;
 import com.example.demo.repository.ClassroomResponsitory;
 import com.example.demo.repository.ClassroomStudentResponsitory;
 import com.example.demo.repository.CourseResponsitory;
+import com.example.demo.repository.ExamResponsitory;
+import com.example.demo.repository.ExamResultResponsitory;
+import com.example.demo.repository.ExamtypeResponsitory;
 import com.example.demo.repository.ParentResponsitory;
 import com.example.demo.repository.ScheduleResponsitory;
 import com.example.demo.repository.SchoolroomResponsitory;
@@ -50,6 +54,12 @@ public class StudentController {
 	ParentResponsitory parentResponsitory;
 	@Autowired
 	AttandenceResponsitory attandenceResponsitory;
+	@Autowired
+	ExamtypeResponsitory examtypeResponsitory;
+	@Autowired
+	ExamResponsitory examResponsitory;
+	@Autowired
+	ExamResultResponsitory examResultResponsitory;
 	@RequestMapping(value = { "Student/thoikhoabieu" })
 	public String loadthoikhoabieu(Model model,@RequestParam("Studentid") String studentid) {
 		Student student= studentResponsitory.findByid(studentid);
@@ -100,4 +110,12 @@ public class StudentController {
 		model.addAttribute("List", attandences	);
 		return "/jsp/Page/diemdanh";
 	}
+	// bang diem
+	@RequestMapping(value = { "Student/bangdiem" })
+	public String loadbangdiem(Model model,@RequestParam("Studentid") String studentid,@ModelAttribute("attandence") Attandence attan) {
+		List<ExamResult> list = examResultResponsitory.findcustomstudentid(studentid);
+		model.addAttribute("List",list);
+		return "/jsp/Page/bangdiem";
+	}
+	
 }
