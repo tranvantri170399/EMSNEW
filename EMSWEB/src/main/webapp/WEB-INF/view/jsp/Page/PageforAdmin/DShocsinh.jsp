@@ -43,7 +43,8 @@
          folder instead of downloading all of them to reduce the load. -->
 <link href="../../../../../resources/bootstrap/css/_all-skins.min.css"
 	rel="stylesheet" type="text/css" />
-
+<link href="../../../../../resources/css/table.css"
+	rel="stylesheet" type="text/css" />
 
 
 <script>
@@ -476,6 +477,7 @@ function validate() {
 					<th>Trạng thái</th>
 					<th>test EXport</th>
 					<th></th>
+					<th></th>
 				</tr>
 			</thead>
 
@@ -495,13 +497,13 @@ function validate() {
 						</c:url>
 
 						<tr>
-							<td>${list.id}</td>
-							<td>${list.lname}&ensp;${list.fname}</td>
-							<td>${list.email}</td>
+							<td class="input-id">${list.id}</td>
+							<td class="table-name">${list.lname}&ensp;${list.fname}</td>
+							<td >${list.email}</td>
 							<td>${list.dob}</td>
 							<td>${list.phone}</td>
-							<td>${list.address}</td>
-							<td>${list.status}</td>
+							<td class="table-name">${list.address}</td>
+							<td class="table-name">${list.status}</td>
 							<td>test EXport</td>
 							<td><a  href="<spring:url value='/exportPDF' />">Export to PDF</a>
 							</td>
