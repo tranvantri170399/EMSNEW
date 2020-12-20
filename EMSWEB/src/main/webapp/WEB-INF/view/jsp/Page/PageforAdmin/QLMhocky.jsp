@@ -43,7 +43,8 @@
          folder instead of downloading all of them to reduce the load. -->
 <link href="../../../../../resources/bootstrap/css/_all-skins.min.css"
 	rel="stylesheet" type="text/css" />
-
+<link href="../../../../../resources/css/table.css"
+	rel="stylesheet" type="text/css" />
 
 
 <script>
@@ -74,14 +75,14 @@ table tr td:first-child::before {
 <body>
 	<section class="content-header">
 		<h1>
-			Danh Sách Nhân Viên
+			Quản Lý Môn Học Từng Kỳ
 			<button type="button" class="btn btn-info" data-toggle="modal"
-				data-target="#myModal">Thêm nhân viên</button>
+				data-target="#myModal">Thêm môn học</button>
 		</h1>
 		<ol class="breadcrumb">
 			<li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-			<li class="active">Quản lí nhân viên</li>
-			<li class="active">Danh sách Nhân Viên</li>
+			<li class="active">Quản lí sinh viên</li>
+			<li class="active">Quản lý môn học từng kỳ</li>
 		</ol>
 	</section>
 	<!--Modal-->
@@ -151,7 +152,7 @@ table tr td:first-child::before {
 	<!--Table  -->
 	<table id="table1" class="display">
 
-		<thead style="background-color: aqua;">
+		<thead style="background-color: #4876FF; color:white;">
 			<tr>
 				<th>STT</th>
 				<th>Học kỳ</th>
@@ -177,10 +178,10 @@ table tr td:first-child::before {
 					</c:url>
 
 					<tr>
-						<td></td>
-						<td>${list.semester.name}</td>
-						<td>${list.majors.name}</td>
-						<td>${list.subject.subjectname}</td>
+						<td class="input-id"></td>
+						<td class="table-name">${list.semester.name}</td>
+						<td class="table-name">${list.majors.name}</td>
+						<td class="table-name">${list.subject.subjectname}</td>
 						<td><a href="${updateLink}" class="btn btn-primary">Update</a>
 							<a href="${deleteLink}" class="btn btn-danger">Delete</a></td>
 					</tr>

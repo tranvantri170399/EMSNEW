@@ -43,7 +43,8 @@
          folder instead of downloading all of them to reduce the load. -->
 <link href="../../../../../resources/bootstrap/css/_all-skins.min.css"
 	rel="stylesheet" type="text/css" />
-
+<link href="../../../../../resources/css/table.css"
+	rel="stylesheet" type="text/css" />
 
 
 <script>
@@ -169,11 +170,11 @@
 						</c:url>
 
 						<tr>
-							<td>${list.id}</td>
-							<td>${list.name}</td>
-							<td>${list.semester.name}</td>
-							<td>${list.status}</td>
-							<td>${list.teacher.fname}</td>
+							<td class="input-id">${list.id}</td>
+							<td class="table-name">${list.name}</td>
+							<td class="table-name">${list.semester.name}</td>
+							<td class="table-name">${list.status}</td>
+							<td class="table-name">${list.teacher.fname}</td>
 							<td>
 								<div class="btn-group" role="group" aria-label="Basic example">
 								<button type="button" class="btn btn-info"

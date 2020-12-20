@@ -42,7 +42,8 @@
          folder instead of downloading all of them to reduce the load. -->
 <link href="../../../../../resources/bootstrap/css/_all-skins.min.css"
 	rel="stylesheet" type="text/css" />
-
+	<link href="../../../../../resources/css/table.css"
+	rel="stylesheet" type="text/css" />
 
 
 <script>
@@ -356,13 +357,13 @@ th.image.sorting {
 					</c:url>
 
 					<tr>
-						<td>${list.id}</td>
-						<td>${list.lname}&ensp;${list.fname}</td>
-						<td>${list.role.roleName}</td>
-						<td>${list.depart.name }</td>
+						<td class="input-id">${list.id}</td>
+						<td class="table-name">${list.lname}&ensp;${list.fname}</td>
+						<td class="table-name" >${list.role.roleName}</td>
+						<td class="table-name">${list.depart.name }</td>
 						<td>${list.email}</td>
 						<td>${list.phone}</td>
-						<td>${list.address}</td>
+						<td class="table-name">${list.address}</td>
 						<td>${list.salary}</td>
 						<td>
 							<div class="btn-group" role="group" aria-label="Basic example">

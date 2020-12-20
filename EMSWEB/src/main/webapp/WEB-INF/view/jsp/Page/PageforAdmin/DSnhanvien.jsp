@@ -42,6 +42,8 @@
          folder instead of downloading all of them to reduce the load. -->
 <link href="../../../../../resources/bootstrap/css/_all-skins.min.css"
 	rel="stylesheet" type="text/css" />
+	<link href="../../../../../resources/css/table.css"
+	rel="stylesheet" type="text/css" />
 
 
 <script>
@@ -351,16 +353,16 @@ function validate() {
 
 						
 						<tr style="color: black;">
-							<td class="gfgusername"><input style="color: red;border: none;width: 50px" name="idstaff"
+							<td class="gfgusername"><input class="input-id" name="idstaff"
 								value=" ${sp.id}"></td>
-							<td>${sp.fname}&ensp;${sp.lname}</td>
+							<td class="table-name">${sp.fname}&ensp;${sp.lname}</td>
 							<%-- <td class="gfgscores">${sp.lname}</td> --%>
-							<td>${sp.dob}</td>
-							<td>${sp.address}</td>	
+							<td >${sp.dob}</td>
+							<td class="table-name">${sp.address}</td>	
 							<td>${sp.email}</td>	
 							<td>${sp.phone}</td>																			
-							<td class="gfgarticles">${sp.depart.name}</td>
-							<td>${sp.role.roleName}</td>
+							<td class="table-name">${sp.depart.name}</td>
+							<td class="table-name">${sp.role.roleName}</td>
 						<%-- <td>${sp.image}</td> --%>
 						<%-- <td>${sp.status}</td> --%>
 						<td>${sp.level}</td>
