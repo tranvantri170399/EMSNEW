@@ -3,6 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,33 +57,78 @@
 #InputLastname {
 	border-color: red;
 }
+
+
+table tr {
+	counter-increment: row-num-1;
+}
+
+table tr td:first-child::before {
+	content: counter(row-num-1) " ";
+}
+
 </style>
 </head>
 <body>
-<section class="content-header">
-		<h1>
-		Điểm môn học theo kỳ
-		</h1>
-	</section>
-	<!--Table  -->
-	<form:form modelAttribute="teacher">
-		<table id="table1" class="display">
 
-			<thead style="background-color: aqua;">
+	<!--Table  -->
+	<form:form action="/servlets" modelAttribute="attandence">
+		<table id="table1" class="display" style="width: 100%">
+			<colgroup>
+				<col span="1" style="width: 3%;">
+				<col span="1" style="width: 19.4%;">
+				<col span="1" style="width: 19.4%;">
+				<col span="1" style="width: 19.4%;">
+				<col span="1" style="width: 19.4%;">
+				<col span="1" style="width: 19.4%;">
+				
+			</colgroup>
+			<thead style="background-color: #4876FF; color: white">
+
 				<tr>
 					<th>STT</th>
-					
+					<th>Tên</th>
+					<th>Học Kỳ</th>
+					<th>Môn</th>
+					<th>Mã Môn</th>
+					<th>Điểm</th>
+					<th>Trạng Thái</th>
 				</tr>
+
 			</thead>
 
 			<tbody>
-				
+				<c:if test="${not empty List}">
+					<c:forEach var="sp" items="${List}">
+						<tr>
+							<td><form:input path="id" value="${sp.id}" type="hidden" /></td>
+							<td>${sp.student.fname}</td>
+							<td>${sp.exam.course.semester.name}</td>
+							<td>${sp.exam.course.name}</td>
+							<td>${sp.exam.course.id}</td>
+							<td>${sp.mark}</td>
+							<td> <c:if test="${sp.mark>=5}"><c:out value = "Đạt"/></c:if>
+								 <c:if test="${sp.mark<5}"><c:out value = "Chưa Đạt"/></c:if>
+							</td>
+						</tr>
+
+					</c:forEach>
+				</c:if>
+
 			</tbody>
 
 		</table>
-
-
 	</form:form>
-
+<c:forEach var="sp" items="${List}">
+	<c:set var="ageTotal" value="${ageTotal + sp.mark}" /> 
+	<c:set var="aver" value="${aver + 1}" /> 
+	<c:set var="ageTotals" value="${ageTotal / aver}" /> 
+	
+	<c:if test="${sp.mark>=5}"><c:set var="a" value="${a + 1}" /></c:if>
+	<c:if test="${sp.mark<5}"><c:set var="b" value="${b + 1}" /></c:if>
+</c:forEach>
+<h4>Tổng số Môn: ${aver}</h4>
+<h3>Điểm Trung Bình: <fmt:formatNumber type="number" maxFractionDigits="2" value="${ageTotals}" /></h3>
+ <h3>Số Môn: ${a}/${aver} (Đạt/Tổng)</h3>
 </body>
 </html>

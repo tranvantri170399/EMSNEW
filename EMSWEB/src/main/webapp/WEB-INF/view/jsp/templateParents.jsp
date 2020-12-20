@@ -92,6 +92,9 @@
 										<c:url var="diemdanh" value="parent/diemdanh">
 											<c:param name="userid" value="${sp.id}" />
 										</c:url>
+										<c:url var="bangdiem" value="parent/bangdiem">
+											<c:param name="userid" value="${sp.id}" />
+										</c:url>
 									</c:forEach>
 							</span>
 						</a> <c:forEach var="sp" items="${Listp}">
@@ -171,11 +174,11 @@
 							class="fa fa-angle-left pull-right"></i>
 					</a>
 						<ul class="treeview-menu">
-							<li><a href="Page/DIEMTHEOKY" target="frame"><i
+							<!-- <li><a href="Page/DIEMTHEOKY" target="frame"><i
 									class="fa fa-circle-o"></i>Điểm theo kỳ</a></li>
 							<li><a href="Page/MONDAHOC" target="frame"><i
-									class="fa fa-circle-o"></i>Môn đã học</a></li>
-							<li><a href="Page/BANGDIEM" target="frame"><i
+									class="fa fa-circle-o"></i>Môn đã học</a></li> -->
+							<li><a href="${bangdiem}" target="frame"><i
 									class="fa fa-circle-o"></i>Bảng điểm</a></li>
 						</ul>
 					</li>

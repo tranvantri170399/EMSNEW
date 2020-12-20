@@ -77,9 +77,9 @@ table tr td:first-child::before {
 						<c:forEach var="sp" items="${Lists}">
 						<!-- construct an "update" link with customer id -->
 					<c:url var="attandence" value="/attandence/save">
-						<c:param name="id" value="${sp.classroom.id}" />
+						<c:param name="id" value="${sp.id}" />
 					</c:url>
-							<option>${sp.classroom.name}</option>
+							<option>${sp.name}</option>
 						</c:forEach>
 					</c:if>
 				</select>		

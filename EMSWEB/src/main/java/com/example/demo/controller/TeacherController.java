@@ -140,22 +140,24 @@ public class TeacherController {
 	String idzz=null;
 	@RequestMapping(value = { "Page/diemdanh" })
 	public String loaddiemdanh(Model model,@ModelAttribute("attandence") Attandence attan,@RequestParam("teacherid") String teacherid) {
-
-		List<Course> couseid=courseResponsitory.findcustomteacher(teacherid);
-		for (Course u : couseid) {
-			System.out.println("outti11>>>"+u.getId());
-			List<Schedule> schedule= scheduleResponsitory.findcustomCouse(u.getId());
-			for (Schedule s : schedule) {
-				System.out.println("out lop id>>>"+s.getClassroom().getId());
-				Classroom classroom= classroomResponsitory.findByid(s.getClassroom().getId());
-				System.out.println("outxxx>>>"+classroom.getId());
-				List<ClassroomStudent> croomstudent=classroomStudentrespon.findcustomclass(classroom.getId());
-				
-				model.addAttribute("Lists",croomstudent);
-			}
-			
-			
-		}
+//
+//		List<Course> couseid=courseResponsitory.findcustomteacher(teacherid);
+//		for (Course u : couseid) {
+//			System.out.println("outti11>>>"+u.getId());
+//			List<Schedule> schedule= scheduleResponsitory.findcustomCouse(u.getId());
+//			for (Schedule s : schedule) {
+//				System.out.println("out lop id>>>"+s.getClassroom().getId());
+//				Classroom classroom= classroomResponsitory.findByid(s.getClassroom().getId());
+//				System.out.println("outxxx>>>"+classroom.getId());
+//				List<ClassroomStudent> croomstudent=classroomStudentrespon.findcustomclass(classroom.getId());
+//				
+//				model.addAttribute("Lists",croomstudent);
+//			}
+//			
+//			
+//		}
+		List<Classroom> list = classroomResponsitory.findAll();
+		model.addAttribute("Lists",list);
 		idzz=teacherid;
 		return "/jsp/Page/PageforTeacher/testdiemdanh";
 	}
@@ -166,7 +168,7 @@ public class TeacherController {
 		String date = request.getParameter("dobss");
 		System.out.println("date hoom nay>>>"+date);
 		String namecourse=request.getParameter("course");
-		
+		String idgetparam= request.getParameter("id");
 		List<Course> couseid=courseResponsitory.findcustomteacher(idzz);
 		for (Course u : couseid) {
 			System.out.println("outti11>>>"+u.getId());
@@ -215,7 +217,9 @@ public class TeacherController {
 						break;
 					}
 				}
-				model.addAttribute("Lists",croomstudent);
+//				model.addAttribute("Lists",croomstudent);
+				List<Classroom> list = classroomResponsitory.findcustombyid(idgetparam);
+				model.addAttribute("Lists",list);
 			}
 			
 			
