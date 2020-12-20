@@ -96,6 +96,7 @@ public class adminController {
 	ClassroomStudentResponsitory classroomStudentRespon;
 	@Autowired
 	MajorSemesterResponsitory majorSemesterResponsitory;
+
 	// controller teacher//
 	@GetMapping("/DSgiaovien")
 	public String listTeacher(Model model, @ModelAttribute("teacherNew") Teacher teacher) {
@@ -163,7 +164,7 @@ public class adminController {
 		Role role = rolerepon.findByroleName(rl);
 		newTeacher.setRole(role);
 		newTeacher.setDepart(depart);
-		User user = new User(newTeacher.getEmail(), newTeacher.getPhone(), "GV",outID);
+		User user = new User(newTeacher.getEmail(), newTeacher.getPhone(), "GV", outID);
 		userrespon.save(user);
 		teacherResponsitory.save(newTeacher);
 		// model.addAttribute("List", teacherList);
@@ -302,7 +303,7 @@ public class adminController {
 		Role role = rolerepon.findByroleName(rl);
 		st.setRole(role);
 		st.setDepart(depart);
-		User user = new User(st.getEmail(), st.getPhone(), "NV",outID);
+		User user = new User(st.getEmail(), st.getPhone(), "NV", outID);
 		userrespon.save(user);
 		staffrep.save(st);
 		List<Staff> stafflistaffter = staffrep.findAll();
@@ -427,7 +428,7 @@ public class adminController {
 	public String loadDShocsinh(Model model, @ModelAttribute("student") Student student) {
 		List<Student> studentlist = studentResponsitory.findAll();
 		model.addAttribute("List", studentlist);
-		List<Classroom> classroomlist= classroomResponsitory.findAll();
+		List<Classroom> classroomlist = classroomResponsitory.findAll();
 		model.addAttribute("Listsl", classroomlist);
 		return "/jsp/Page/PageforAdmin/DShocsinh";
 	}
@@ -483,7 +484,7 @@ public class adminController {
 		parent.setStatus(statuss);
 		String relationshipp = request.getParameter("relationshipp");
 		parent.setRelationship(relationshipp);
-		User userss = new User(emaill, phonee, "PH",outIDd);
+		User userss = new User(emaill, phonee, "PH", outIDd);
 		userrespon.save(userss);
 		parentResponsitory.save(parent);
 
@@ -525,26 +526,26 @@ public class adminController {
 		student2.setStatus(student.getStatus());
 		student2.setIdcard(student.getIdcard());
 		student2.setParent(parent);
-		User userr = new User(student2.getEmail(), student2.getPhone(), "PS",outID);
+		User userr = new User(student2.getEmail(), student2.getPhone(), "PS", outID);
 		userrespon.save(userr);
 		//
 		studentResponsitory.save(student2);
-		
-		//luu them vao bang ClassroomStudent
-				List<ClassroomStudent> cr= classroomStudentRespon.findAll();
-				ClassroomStudent lastidcr = cr.get(cr.size() - 1);
-				int afterid= lastidcr.getId()+1; 
-				String classroomname= request.getParameter("classroomname");
-				System.out.println(">>>>>>"+classroomname);
-				Classroom newclass=classroomResponsitory.findByname(classroomname);		
-				System.out.println(">>>>>>"+newclass.getId());
-				System.out.println(">>>>>>"+newclass.getName());
-				System.out.println(">>>>>>"+newclass.getStatus());
-				ClassroomStudent crs= new ClassroomStudent();
-				crs.setId(afterid);
-				crs.setClassroom(newclass);
-				crs.setStudent(student2);
-				classroomStudentRespon.save(crs);
+
+		// luu them vao bang ClassroomStudent
+		List<ClassroomStudent> cr = classroomStudentRespon.findAll();
+		ClassroomStudent lastidcr = cr.get(cr.size() - 1);
+		int afterid = lastidcr.getId() + 1;
+		String classroomname = request.getParameter("classroomname");
+		System.out.println(">>>>>>" + classroomname);
+		Classroom newclass = classroomResponsitory.findByname(classroomname);
+		System.out.println(">>>>>>" + newclass.getId());
+		System.out.println(">>>>>>" + newclass.getName());
+		System.out.println(">>>>>>" + newclass.getStatus());
+		ClassroomStudent crs = new ClassroomStudent();
+		crs.setId(afterid);
+		crs.setClassroom(newclass);
+		crs.setStudent(student2);
+		classroomStudentRespon.save(crs);
 		return "redirect:/DShocsinh";
 	}
 	// student//
@@ -715,6 +716,47 @@ public class adminController {
 		model.addAttribute("List", list);
 		return "/jsp/Page/PageforAdmin/DSnganh";
 	}
+
+	@RequestMapping(value = { "/newDSnganh" })
+	public String newDSnganh(@ModelAttribute("major") Majors major, HttpServletRequest request, Model model) {
+		Majors majors = new Majors();
+		majors.setId(major.getId());
+		majors.setName(major.getName());
+		majors.setDescription(major.getDescription());
+		majors.setStatus(major.getStatus());
+		majorsResponsitory.save(majors);
+		return "redirect:/DSnganh";
+	}
+
+	@RequestMapping(value = { "/updateFormMJ" })
+	public String updateFormMJ(@ModelAttribute("major") Majors major, Model model, HttpServletRequest request,
+			@RequestParam("id") String id) {
+		Majors majorFM = majorsResponsitory.findByid(id);
+		List<Majors> mjtlist = new ArrayList<>();
+		mjtlist.add(majorFM);
+		model.addAttribute("List", mjtlist);
+		return "/jsp/Page/PageforAdmin/formupdateMJ";
+	}
+
+	@RequestMapping(value = { "/updateMJ" })
+	public String updateMJ(@ModelAttribute("major") Majors major, Model model, HttpServletRequest request,
+			@RequestParam("id") String id) {
+		Majors majors = majorsResponsitory.findByid(id);
+		majors.setId(major.getId());
+		majors.setName(major.getName());
+		majors.setDescription(major.getDescription());
+		majors.setStatus(major.getStatus());
+		majorsResponsitory.save(majors);
+		return "redirect:/DSnganh";
+	}
+
+	// delete
+	@GetMapping("/deleteMJ")
+	public String deleteMJ(@RequestParam("id") String id) {
+		majorsResponsitory.deleteById(id);
+		return "redirect:/DSnganh";
+	}
+
 	//
 
 	// list hocky//
@@ -738,8 +780,8 @@ public class adminController {
 		semesterResponsitory.save(newSemester);
 		return "redirect:/DShocki";
 	}
-	
-	//update form
+
+	// update form
 	@RequestMapping(value = { "/updateFormHK" })
 	public String updateFormHK(@ModelAttribute("semester") Semester semester, Model model, HttpServletRequest request,
 			@RequestParam("id") String id) {
@@ -749,14 +791,14 @@ public class adminController {
 		model.addAttribute("List", semesterlist);
 		return "/jsp/Page/PageforAdmin/formupdateHK";
 	}
+
 	@GetMapping(value = "/deleteHK")
 	public String deleteHK(@RequestParam("id") String id) {
 		semesterResponsitory.deleteById(id);
 		return "redirect:/DShocki";
 	}
 
-	
-	//quan ly mon tung hoc ky//
+	// quan ly mon tung hoc ky//
 	@RequestMapping(value = { "/QLMhocky" })
 	public String QLMhocky(Model model, @ModelAttribute("majorSemester") MajorsSemester majorSemester) {
 		List<MajorsSemester> listMJS = majorSemesterResponsitory.findAll();
@@ -769,32 +811,71 @@ public class adminController {
 		model.addAttribute("listSB", listSB);
 		return "/jsp/Page/PageforAdmin/QLMhocky";
 	}
+
 	@RequestMapping(value = { "/NewQLhocky" })
-	public String NewQLhocky(Model model, @ModelAttribute("majorSemester") MajorsSemester majorSemester, HttpServletRequest request) {
+	public String NewQLhocky(Model model, @ModelAttribute("majorSemester") MajorsSemester majorSemester,
+			HttpServletRequest request) {
 		MajorsSemester NewQLhocky = new MajorsSemester();
 		List<MajorsSemester> studentlist = majorSemesterResponsitory.findAll();
 		MajorsSemester lastid = studentlist.get(studentlist.size() - 1);
 		System.out.println("==>> " + lastid);
 		int idNum = lastid.getId() + 1;
 		NewQLhocky.setId(idNum);
-		
+
 		String sster = request.getParameter("semesters");
 		Semester semester = semesterResponsitory.findByname(sster);
-		System.out.println("test: "+semester.getId());
+		System.out.println("test: " + semester.getId());
 		NewQLhocky.setSemester(semester);
-		
+
 		String majs = request.getParameter("majors");
 		Majors majors = majorsResponsitory.findByname(majs);
 		NewQLhocky.setMajors(majors);
-		
-		String sujt= request.getParameter("subjectname");
+
+		String sujt = request.getParameter("subjectname");
 		Subject subject = subjectResponsitory.findBysubjectname(sujt);
 		NewQLhocky.setSubject(subject);
 		majorSemesterResponsitory.save(NewQLhocky);
 		return "redirect:/QLMhocky";
 	}
-	
-	//quan ly mon tung hoc ky//
+
+	// formUDQLMhocky
+	@RequestMapping(value = { "/formUDQLMhocky" })
+	public String formUDQLMhocky(Model model, @ModelAttribute("majorSemester") MajorsSemester majorSemester,
+			HttpServletRequest request) {
+		List<MajorsSemester> listMJS = majorSemesterResponsitory.findAll();
+		model.addAttribute("majorSemester", listMJS);
+		List<Semester> listST = semesterResponsitory.findAll();
+		model.addAttribute("listST", listST);
+		List<Majors> listMJ = majorsResponsitory.findAll();
+		model.addAttribute("listMJ", listMJ);
+		List<Subject> listSB = subjectResponsitory.findAll();
+		model.addAttribute("listSB", listSB);
+		return "/jsp/Page/PageforAdmin/formUDQLMhocky";
+	}
+
+	// update
+	@RequestMapping(value = { "/updateQLMhocky" })
+	public String updateQLMhocky(Model model, @ModelAttribute("majorSemester") MajorsSemester majorSemester,
+			HttpServletRequest request) {
+		List<MajorsSemester> majorsSemesters = majorSemesterResponsitory.findAll();
+		String nameSTr = request.getParameter("name");
+		Semester nameST = semesterResponsitory.findByname(nameSTr);
+		String namemjs = request.getParameter("name");
+		Majors nameMJ = majorsResponsitory.findByname(namemjs);
+		String sujt = request.getParameter("subjectname");
+		Subject subject = subjectResponsitory.findBysubjectname(sujt);
+		MajorsSemester mjst = new MajorsSemester();
+		mjst.setSemester(nameST);
+		mjst.setMajors(nameMJ);
+		mjst.setSubject(subject);
+		majorSemesterResponsitory.save(mjst);
+		return "redirect:/QLMhocky";
+	}
+	@GetMapping(value = "/deleteQLMhocky")
+	public String deleteQLMhocky(@RequestParam("id") int id) {
+		majorSemesterResponsitory.deleteById(id);
+		return "redirect:/DShocki";
+	}
+
+	// quan ly mon tung hoc ky//
 }
-
-
