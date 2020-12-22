@@ -60,51 +60,7 @@ table tr td:first-child::before {
 </style>
 </head>
 <body>
-	<label for="exampleInputName">Tên Lớp Học:a</label>
-	<div style="width: 60%;" class="row">
-<!-- 
-			<div class="form-group">
-				<label for="InputDob">Ngày sinh</label>
-				<input name="dobss" type="date" class="form-control"
-					id="InputDob" />
-				<span id="checkDob"></span>
-			</div> -->
-			
-			<div class="form-group col-sm-8">
-				
-				<select name="course" class="form-control" id="sel1">
-					<c:if test="${not empty Lists}">
-						<c:forEach var="sp" items="${Lists}">
-						<!-- construct an "update" link with customer id -->
-					<c:url var="attandence" value="/attandence/save">
-						<c:param name="id" value="${sp.classroom.id}" />
-					</c:url>
-							<option>${sp.classroom.name}</option>
-						</c:forEach>
-					</c:if>
-				</select>		
-			</div>
-			<div class="col-sm-4">
-			<button type="button" class="btn btn-info"
-									onclick="location.href='${attandence}';">Chọn</button>
-			</div>
-			
 
-
-			<!-- <div class="modal-footer">
-				<input type="submit" name="btnsave" class="btn btn-info" value="Chọn	">
-			</div> -->
-
-	</div>
-	<br/><br/>
-<!-- 	<section class="content-header">
-		<ol class="breadcrumb">
-			<li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-			<li class="active">Quản lí</li>
-			<li class="active">Danh sách Lịch Học</li>
-		</ol>
-	</section> -->
-	<!--Table  -->
 	<form:form action="/servlet" modelAttribute="attandence">
 		<table id="table1" class="display" style="width: 100%">
 			<colgroup>

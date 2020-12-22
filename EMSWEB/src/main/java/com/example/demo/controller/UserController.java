@@ -45,7 +45,7 @@ public class UserController {
 	@Autowired
 	StaffResponsitory staffResponsitory;
 	
-	@RequestMapping(value = { "/login" }, method = RequestMethod.POST)
+	@RequestMapping(value = { "/login" })
 	public String login111(ModelMap model, @ModelAttribute("student") User student, BindingResult errors) {
 		List<User> list= UserRep.findAll();
 		System.out.println("=> "+student.getUsername());

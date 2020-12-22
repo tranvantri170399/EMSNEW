@@ -192,7 +192,7 @@
 		<!-- Right side column. Contains the navbar and content of the page -->
 		<div class="content-wrapper">
 			<iframe src="" name="frame"
-				style="min-width: 100%; min-height: 660px" scrolling="no"></iframe>
+				style="width:100%; min-height: 660px" scrolling="no"></iframe>
 			<!-- Content Header (Page header) -->
 
 		</div>
