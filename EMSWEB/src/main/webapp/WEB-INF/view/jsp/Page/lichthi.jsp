@@ -60,11 +60,11 @@
 </head>
 <body>
 	<section class="content-header">
-		<H1>Thoi Khoa Bieu</H1>
+		<H1>Lịch Thi</H1>
 		<ol class="breadcrumb">
-			<li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
+			<li><a href="#"><i class="fa fa-dashboard"></i>Trang Chủ</a></li>
 			<li class="active">Học Tập</li>
-			<li class="active">Thời Khóa Biểu</li>
+			<li class="active">Lịch Thi</li>
 		</ol>
 	</section>
 <div>
@@ -85,7 +85,7 @@
        		<col span="1" style="width: 5%;">
        		<col span="1" style="width: 6%;">       		       		       		
     	</colgroup>
-			<thead style="background-color: aqua;">
+			<thead style="background-color: #4876FF;color: white;">
 				<tr>
 					<th>ID</th>
 					<th>Ngày</th>
@@ -114,7 +114,7 @@
 						</c:url>
 
 
-						<tr style="color: red;">
+						<tr style="color: black;">
 							<td class="gfgusername">${sp.id}</td>
 								<td class="gfgscores">${sp.date}</td>
 							<td class="gfgpp">${sp.amphitheater.amphitheaterName}</td>
