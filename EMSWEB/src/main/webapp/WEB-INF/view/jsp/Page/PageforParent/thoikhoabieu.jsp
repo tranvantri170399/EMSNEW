@@ -43,7 +43,8 @@
          folder instead of downloading all of them to reduce the load. -->
 <link href="../../../../../resources/bootstrap/css/_all-skins.min.css"
 	rel="stylesheet" type="text/css" />
-
+<link href="../../../../../resources/css/table.css"
+	rel="stylesheet" type="text/css" />
 
 
 <script>
@@ -60,13 +61,15 @@
 </head>
 <body>
 	<section class="content-header">
+		<h1>Thời khóa biểu</h1>
 		<ol class="breadcrumb">
 			<li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-			<li class="active">Quản lí </li>
-			<li class="active">Danh sách Lịch Học</li>
+			<li class="active">Học tập </li>
+			<li class="active">Thời khóa biểu</li>
 		</ol>
 	</section>
 	<!--Table  -->
+	<section class="content">
 	<form:form action="/save" modelAttribute="room">
 		<table id="table1" class="display" style="width: 100%">
 <colgroup>
@@ -112,15 +115,15 @@
 
 
 						<tr style="color: red;">
-							<td class="gfgusername">${sp.id}</td>
-								<td class="gfgscores">${sp.date}</td>
-							<td class="gfgpp">${sp.amphitheater.amphitheaterName}</td>
-							<td class="gfgscores">${sp.classroom.name}</td>
-							<td class="gfgscores">${sp.schoolroom.name}(${sp.schoolroom.schoolroomnumber})</td>
-							<td class="gfgscores">${sp.studyShift.nameShift}</td>
-							<td class="gfgscores">${sp.course.name}</td>
-							<td class="gfgscores">${sp.course.teacher.fname}</td>
-							<td class="gfgscores">${sp.studyShift.startingTime}-${sp.studyShift.endTime}</td>
+							<td class="input-id">${sp.id}</td>
+								<td class="table-time">${sp.date}</td>
+							<td class="table-name">${sp.amphitheater.amphitheaterName}</td>
+							<td class="table-name">${sp.classroom.name}</td>
+							<td class="table-name">${sp.schoolroom.name}(${sp.schoolroom.schoolroomnumber})</td>
+							<td class="table-name">${sp.studyShift.nameShift}</td>
+							<td class="table-name">${sp.course.name}</td>
+							<td class="table-name">${sp.course.teacher.fname}</td>
+							<td class="table-time">${sp.studyShift.startingTime}-${sp.studyShift.endTime}</td>
 							
 						</tr>
 
@@ -133,6 +136,7 @@
 
 
 	</form:form>
+	</section>
 <!-- </section>
  -->
 </body>

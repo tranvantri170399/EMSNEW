@@ -45,7 +45,8 @@
 <link href="../../../../../resources/bootstrap/css/_all-skins.min.css"
 	rel="stylesheet" type="text/css" />
 
-
+<link href="../../../../../resources/css/table.css"
+	rel="stylesheet" type="text/css" />
 
 <script>
 	$(document).ready(function() {
@@ -70,8 +71,16 @@ table tr td:first-child::before {
 </style>
 </head>
 <body>
-
+	<section class="content-header">
+		<h1>Bảng điểm</h1>
+		<ol class="breadcrumb">
+			<li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
+			<li class="active">Thống kê học tập </li>
+			<li class="active">Bảng điểm</li>
+		</ol>
+	</section>
 	<!--Table  -->
+	<section class= "content">
 	<form:form action="/servlets" modelAttribute="attandence">
 		<table id="table1" class="display" style="width: 100%">
 			<colgroup>
@@ -101,9 +110,9 @@ table tr td:first-child::before {
 				<c:if test="${not empty List}">
 					<c:forEach var="sp" items="${List}">
 						<tr>
-							<td><form:input path="id" value="${sp.id}" type="hidden" /></td>
-							<td>${sp.student.fname}</td>
-							<td>${sp.exam.course.semester.name}</td>
+							<td class="input-id"><form:input path="id" value="${sp.id}" type="hidden" /></td>
+							<td class="table-name">${sp.student.fname}</td>
+							<td class="table-name">${sp.exam.course.semester.name}</td>
 							<td>${sp.exam.course.name}</td>
 							<td>${sp.exam.course.id}</td>
 							<td>${sp.mark}</td>
@@ -119,6 +128,7 @@ table tr td:first-child::before {
 
 		</table>
 	</form:form>
+	</section>
 <c:forEach var="sp" items="${List}">
 	<c:set var="ageTotal" value="${ageTotal + sp.mark}" /> 
 	<c:set var="aver" value="${aver + 1}" /> 
