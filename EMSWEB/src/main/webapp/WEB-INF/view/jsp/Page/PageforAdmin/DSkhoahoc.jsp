@@ -43,8 +43,8 @@
          folder instead of downloading all of them to reduce the load. -->
 <link href="../../../../../resources/bootstrap/css/_all-skins.min.css"
 	rel="stylesheet" type="text/css" />
-<link href="../../../../../resources/css/table.css"
-	rel="stylesheet" type="text/css" />
+<link href="../../../../../resources/css/table.css" rel="stylesheet"
+	type="text/css" />
 
 
 <script>
@@ -79,12 +79,12 @@ table tr td:first-child::before {
 			<li class="active">Danh Sách Khóa Học</li>
 		</ol>
 	</section>
-	
+
 	<div class="modal fade" id="myModal" role="dialog">
 		<div class="modal-dialog">
 
 			<!-- Modal content-->
-			<form:form action="/newCourse" modelAttribute="course"
+			<form:form action="/newCourse/test" modelAttribute="course"
 				enctype="multipart/form-data">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -95,7 +95,9 @@ table tr td:first-child::before {
 						<div>
 
 							<div class="form-group">
-								<form:input type="hidden" path="id" />
+								<label for="InputID">Mã Khóa Học:</label>
+								<form:input type="text" path="id" class="form-control"
+									id="InputEmail" />
 							</div>
 
 							<div class="form-group">
@@ -106,33 +108,37 @@ table tr td:first-child::before {
 
 							<div class="form-group">
 								<label for="InputID">Học Kì</label>
-								<form:select path="semester" class="form-control"
-									idxmlns="sel1">
-									<c:if test="${not empty Listdp}">
-										<c:forEach var="sp" items="${Listdp}">
-											<form:option value="${sp.name}" />
-											<%--  <form:options items="${Listdp}" /> --%>
+								<select name="semesters" class="form-control" id="sel1">
+									<c:if test="${not empty Lists}">
+										<c:forEach var="sp" items="${Lists}">
+											<%-- <form:option value="${sp.name}" /> --%>
+											<option>${sp.name}</option>
 										</c:forEach>
 									</c:if>
-								</form:select>
+								</select>
 							</div>
 							<div class="form-group">
 								<label for="InputID">Giáo Viên</label>
-								<form:select path="teacher" class="form-control"
-									idxmlns="sel1">
-									<c:if test="${not empty Listdp}">
-										<c:forEach var="sp" items="${Listdp}">
-											<form:option value="${sp.name}" />
-											<%--  <form:options items="${Listdp}" /> --%>
+								<select name="teachers" class="form-control" id="sel1">
+									<c:if test="${not empty Listt}">
+										<c:forEach var="sp" items="${Listt}">
+											<option>${sp.fname}</option>
 										</c:forEach>
 									</c:if>
-								</form:select>
+								</select>
 							</div>
 							<div class="form-group">
 								<label for="InputID">Trạng Thái:</label>
 								<form:input path="status" class="form-control" />
 							</div>
-
+							<%-- <div class="form-group">
+								<label for="InputID">Chú Ý:</label>
+								<form:input path="desc" class="form-control" />
+							</div> --%>
+							<div class="form-group">
+								<label for="InputID">Học Phần:</label>
+								<form:input path="section" class="form-control" />
+							</div>
 						</div>
 					</div>
 					<div class="modal-footer">
@@ -144,64 +150,63 @@ table tr td:first-child::before {
 				</div>
 			</form:form>
 		</div>
-	</div>	
-	
-	<section class="content">	<!--Table  -->
-	<form:form action="/save" modelAttribute="course">
-		<table id="table1" class="display">
+	</div>
 
-			<thead style="background-color: #4876FF; color: white">
-				<tr>
-					<th>STT</th>
-					<th>ID</th>
-					<th>Tên Khóa Học</th>
-					<th>Học kì</th>
-					<th>Trạng thái</th>
-					<th>Giáo Viên</th>
-					<th></th>					
-				</tr>
-			</thead>
+	<section class="content">
+		<!--Table  -->
+		<form:form action="/save" modelAttribute="course">
+			<table id="table1" class="display">
 
-			<tbody>
-				<c:if test="${not empty List}">
-					<c:forEach var="list" items="${List}">
+				<thead style="background-color: #4876FF; color: white">
+					<tr>
+						<th>ID</th>
+						<th>Tên Khóa Học</th>
+						<th>Học kì</th>
+						<th>Trạng thái</th>
+						<th>Giáo Viên</th>
+						<th></th>
+					</tr>
+				</thead>
 
-
-						<!-- construct an "update" link with customer id -->
-						<c:url var="updateLink" value="/updateFormHS">
-							<c:param name="id" value="${list.id}" />
-						</c:url>
-
-						<!-- construct an "delete" link with customer id -->
-						<c:url var="deleteLink" value="/deleteST">
-							<c:param name="id" value="${list.id}" />
-						</c:url>
-
-						<tr>
-							<td class="input-id" style="text-align: center;"><input value=" ${list.id}" type="hidden"></td>
-							<td class="input-id">${list.id}</td>
-							<td class="table-name">${list.name}</td>
-							<td class="table-name">${list.semester.name}</td>
-							<td class="table-name">${list.status}</td>
-							<td class="table-name">${list.teacher.fname}</td>
-							<td>
-								<div class="btn-group" role="group" aria-label="Basic example">
-								<button type="button" class="btn btn-info"
-									onclick="location.href='${updateLink}';">Cập nhật</button>
-								<button type="button" class="btn btn-danger"
-									onclick="location.href='${deleteLink}';">Xóa</button>
-								</div>
-							</td>
-						</tr>
-					</c:forEach>
-				</c:if>
-			</tbody>
-
-		</table>
+				<tbody>
+					<c:if test="${not empty List}">
+						<c:forEach var="list" items="${List}">
 
 
-	</form:form>
-</section>
+							<!-- construct an "update" link with customer id -->
+							<c:url var="updateLink" value="/updatelichhoc">
+								<c:param name="id" value="${list.id}" />
+							</c:url>
+
+							<!-- construct an "delete" link with customer id -->
+							<c:url var="deleteLink" value="/deletelichhoc">
+								<c:param name="id" value="${list.id}" />
+							</c:url>
+
+							<tr>
+								<td class="input-id">${list.id}</td>
+								<td class="table-name">${list.name}</td>
+								<td class="table-name">${list.semester.name}</td>
+								<td class="table-name">${list.status}</td>
+								<td class="table-name">${list.teacher.fname}</td>
+								<td>
+									<div class="btn-group" role="group" aria-label="Basic example">
+										<button type="button" class="btn btn-info"
+											onclick="location.href='${updateLink}';">Cập nhật</button>
+										<button type="button" class="btn btn-danger"
+											onclick="location.href='${deleteLink}';">Xóa</button>
+									</div>
+								</td>
+							</tr>
+						</c:forEach>
+					</c:if>
+				</tbody>
+
+			</table>
+
+
+		</form:form>
+	</section>
 
 
 </body>

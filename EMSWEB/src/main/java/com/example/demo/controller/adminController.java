@@ -311,7 +311,7 @@ public class adminController {
 		return "/jsp/Page/PageforAdmin/DSnhanvien";
 	}
 
-	@RequestMapping(value = { "/deleteTeacher" })
+	@RequestMapping(value = { "/deletestaff" })
 	public String Delnhanvien(@ModelAttribute("staff") Staff staff, Model model, HttpServletRequest request,
 			@RequestParam("fname") String fname) {
 		System.out.println("===>>>" + fname);

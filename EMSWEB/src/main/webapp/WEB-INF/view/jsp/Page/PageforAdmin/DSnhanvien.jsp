@@ -378,7 +378,7 @@ table tr td:first-child::before {
 						</c:url>
 
 						<!-- construct an "delete" link with customer id -->
-						<c:url var="deleteLink" value="/deleteTeacher">
+						<c:url var="deleteLink" value="/deletestaff">
 							<c:param name="fname" value="${sp.fname}" />
 						</c:url>
 

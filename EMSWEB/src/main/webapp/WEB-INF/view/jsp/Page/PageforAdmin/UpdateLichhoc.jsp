@@ -60,7 +60,7 @@
 		<!--Thoi Khoa Bieu -->
 		<div class="row">
 			<div class="col-md-12">
-				<form:form action="/updatess" modelAttribute="staff"
+				<form:form action="/updatess/lichhoc" modelAttribute="schedule"
 					enctype="multipart/form-data">
 					<div class="box box-primary">
 						<!-- 						<img src="../../../../../resources/FileUpload/tri1703.jpg" name=""
@@ -68,132 +68,90 @@
 						<!--form  -->
 
 
-						<c:if test="${not empty List}">
-							<c:forEach var="sp" items="${List}">
-								<img src="../../../../../resources/FileUpload/${sp.image}"
-									name="" style="width: 200px; height: 300px;">
-								<div class="box-body">
-									<div class="form-group">
-										<input type="hidden" id="custId" name="custId" value="3487">
-									</div>
-									<div class="form-group">
-										<label for="exampleInputFile">File input</label>
-										<div class="input-group">
-											<input type="File" class="form-control" name="files"
-												id="InputImage"> <span class="input-group-btn">
-												<button class="btn btn-default" type="submit">Update
-												</button>
-											</span>
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="exampleInputName">Tên Giảng Đường:</label>
-										<form:select path="amphitheater" class="form-control" idxmlns="sel1">
-											<c:if test="${not empty Listdp}">
-												<c:forEach var="sp" items="${Listdp}">
-													<form:option value="${sp.name}" />
-													<%--  <form:options items="${Listdp}" /> --%>
-												</c:forEach>
-											</c:if>
-										</form:select>										
-									</div>
-									<!-- 									<script type="text/javascript">
+						<div class="box-body">
+							<div class="form-group">
+								<input type="hidden" id="custId" name="custId" value="3487">
+							</div>
+							<div class="form-group">
+								<label for="exampleInputName">Tên Giảng Đường:</label>
+								<select name="testamphitheater" class="form-control"
+									id="sel1">
+									<c:if test="${not empty Lista}">
+										<c:forEach var="sp" items="${Lista}">
+											<option>${sp.amphitheaterName}</option>
+										</c:forEach>
+									</c:if>
+								</select>
+							</div>
+							<!-- 									<script type="text/javascript">
 										var date = new Date("03/25/2015");
 										document.getElementById("InputDob").value =date;
 									</script> -->
-									<div class="form-group">
-										<label for="exampleInputName">Tên lớp:</label>
-										<form:select path="classroom" class="form-control" idxmlns="sel1">
-											<c:if test="${not empty Listdp}">
-												<c:forEach var="sp" items="${Listdp}">
-													<form:option value="${sp.name}" />
-													<%--  <form:options items="${Listdp}" /> --%>
-												</c:forEach>
-											</c:if>
-										</form:select>
-									</div>
+							<div class="form-group">
+								<label for="exampleInputName">Tên lớp:</label>
+								<form:select path="classroom" class="form-control"
+									idxmlns="sel1">
+									<c:if test="${not empty Listc}">
+										<c:forEach var="sp" items="${Listc}">
+											<form:option value="${sp.name}" />
+											<%--  <form:options items="${Listdp}" /> --%>
+										</c:forEach>
+									</c:if>
+								</form:select>
+							</div>
 
-									<div class="form-group">
-										<label for="exampleInputName">Tên phòng:</label>
-										<form:select path="schoolroom" class="form-control" idxmlns="sel1">
-											<c:if test="${not empty Listdp}">
-												<c:forEach var="sp" items="${Listdp}">
-													<form:option value="${sp.name}" />
-													<%--  <form:options items="${Listdp}" /> --%>
-												</c:forEach>
-											</c:if>
-										</form:select>
-									</div>
-									
-									<div class="form-group">
-										<label for="exampleInputName">Ca:</label>
-										<form:select path="studyShift" class="form-control" idxmlns="sel1">
-											<c:if test="${not empty Listdp}">
-												<c:forEach var="sp" items="${Listdp}">
-													<form:option value="${sp.name}" />
-													<%--  <form:options items="${Listdp}" /> --%>
-												</c:forEach>
-											</c:if>
-										</form:select>
-									</div>		
-									
-									<div class="form-group">
-										<label for="exampleInputName">Môn:</label>
-										<form:select path="course" class="form-control" idxmlns="sel1">
-											<c:if test="${not empty List}">
-												<c:forEach var="sp" items="${List}">
-													<form:option value="${sb.name}" />
-													<%--  <form:options items="${Listdp}" /> --%>
-												</c:forEach>
-											</c:if>
-										</form:select>
-									</div>	
+							<div class="form-group">
+								<label for="exampleInputName">Tên phòng:</label>
+								<form:select path="schoolroom" class="form-control"
+									idxmlns="sel1">
+									<c:if test="${not empty Listsh}">
+										<c:forEach var="sp" items="${Listsh}">
+											<form:option value="${sp.name}" />
+											<%--  <form:options items="${Listdp}" /> --%>
+										</c:forEach>
+									</c:if>
+								</form:select>
+							</div>
 
-									<div class="form-group">
-										<label for="exampleInputName">Tên Giáo Viên:</label>
-										<form:select path="amphitheater" class="form-control" idxmlns="sel1">
-											<c:if test="${not empty Listdp}">
-												<c:forEach var="sp" items="${Listdp}">
-													<form:option value="${sp.name}" />
-													<%--  <form:options items="${Listdp}" /> --%>
-												</c:forEach>
-											</c:if>
-										</form:select>
-									</div>																																			
+							<div class="form-group">
+								<label for="exampleInputName">Tên Ca:</label>
+								<select name="teststudyShift" class="form-control"
+									id="sel1">
+									<c:if test="${not empty Lists}">
+										<c:forEach var="sp" items="${Lists}">
+											<option>${sp.nameShift}</option>
+										</c:forEach>
+									</c:if>
+								</select>
+							</div>
 
-									<div class="form-group">
-										<label for="exampleInputName">Thời gian:</label>
-										<form:select path="amphitheater" class="form-control" idxmlns="sel1">
-											<c:if test="${not empty Listdp}">
-												<c:forEach var="sp" items="${Listdp}">
-													<form:option value="${sp.name}" />
-													<%--  <form:options items="${Listdp}" /> --%>
-												</c:forEach>
-											</c:if>
-										</form:select>
-									</div>	
-									<%-- <div clas="form-group">
-										<label for="InputID">Phòng Ban:</label>
-										<form:select path="depart" items="${sp.depart.name}" />
-									</div> --%>
-									<%-- 	<div clas="form-group">
-										<label for="InputID">Chức vụ</label>
-										<form:select path="role" items="" />
-									</div> --%>
+							<div class="form-group">
+								<label for="exampleInputName">Môn:</label>
+								<form:select path="course" class="form-control" idxmlns="sel1">
+									<c:if test="${not empty Listco}">
+										<c:forEach var="sp" items="${Listco}">
+											<form:option value="${sp.name}" />
+											<%--  <form:options items="${Listdp}" /> --%>
+										</c:forEach>
+									</c:if>
+								</form:select>
+							</div>
 
-									<div class="form-group">
-										<label for="InputID">Chức vụ</label>
-										<form:select path="role" class="form-control" idxmlns="sel1">
-											<c:if test="${not empty Listr}">
-												<c:forEach var="sp" items="${Listr}">
-													<option>${sp.roleName}</option>
-												</c:forEach>
-											</c:if>
-										</form:select>
-									</div>
-								</div>
-							</c:forEach>
-						</c:if>
+							<div class="form-group">
+								<label for="InputID">Ngày Học:</label>
+								<form:input type="date" path="date" class="form-control"
+									id="InputDate" />
+								<span id="checkDate"></span>
+							</div>
+
+							<div class="form-group">
+								<label for="exampleInputName">Chú ý:</label>
+								<form:select path="des" class="form-control" idxmlns="sel1">
+									<form:option value="Lịch Thi" />
+									<form:option value="Lịch Học" />
+								</form:select>
+							</div>
+						</div>
 					</div>
 					<!-- /.box-body -->
 					<div class="box-footer">
