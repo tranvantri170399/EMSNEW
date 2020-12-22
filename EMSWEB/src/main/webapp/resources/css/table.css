@@ -1,0 +1,23 @@
+
+.input-id{
+	color: black;
+	border: none;
+	width: 55px;
+	background: none;
+	font-weight: bold;
+}
+.table-name{
+	text-transform: capitalize;
+	background: none;
+	border: none;
+	color: black;
+}
+.table-time{
+	background: none;
+	border: none;
+	color: black;
+}
+table.dataTable{
+	border-spacing: 1px;
+	border-collapse: separate;
+}

@@ -43,7 +43,9 @@
          folder instead of downloading all of them to reduce the load. -->
 <link href="../../../../../resources/bootstrap/css/_all-skins.min.css"
 	rel="stylesheet" type="text/css" />
-
+<link href="../../../../../resources/css/table.css"
+	rel="stylesheet" type="text/css" />
+	
 <script type="text/javascript">
 function validate(){
 	var number = document.myform.InputNumber.value;
@@ -182,10 +184,10 @@ function validate(){
 
 
 						<tr style="color: red;">
-							<td class="gfgusername"> ${sp.id}</td>
-							<td class="gfgpp">${sp.schoolroom.name}</td>
-							<td class="gfgscores">${sp.device.deviceName}</td>
-							<td class="gfgscores">${sp.amount}</td>
+							<td class="input-id"> ${sp.id}</td>
+							<td class="table-name">${sp.schoolroom.name}</td>
+							<td class="table-name">${sp.device.deviceName}</td>
+							<td class="table-time">${sp.amount}</td>
 							<td>
 							<div class="btn-group" role="group" aria-label="Basic example">
 								<button type="button" class="btn btn-info"

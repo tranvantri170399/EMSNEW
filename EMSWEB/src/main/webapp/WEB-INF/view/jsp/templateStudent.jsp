@@ -63,9 +63,12 @@
 						<!-- User Account: style can be found in dropdown.less -->
 
 						<li class="dropdown user user-menu"><a href="#"
-							class="dropdown-toggle" data-toggle="dropdown"> <img
-								src="dist/img/user2-160x160.jpg" class="user-image"
-								alt="User Image" /> <span class="hidden-xs"> <c:forEach
+							class="dropdown-toggle" data-toggle="dropdown">
+							<c:forEach var="s" items="${Listst}"> <img
+										src="../../../../../resources/FileUpload/${s.image}"
+										class="user-image" alt="User Image" />
+								</c:forEach>
+								 <span class="hidden-xs"> <c:forEach
 										var="sp" items="${Listst}">
 													${sp.fname}
 										<c:url var="infoschedule" value="Student/thoikhoabieu">
@@ -83,6 +86,15 @@
 										<c:url var="diemdanh" value="Student/diemdanh">
 											<c:param name="Studentid" value="${sp.id}" />
 										</c:url>
+										<c:url var="bangdiem" value="Student/bangdiem">
+											<c:param name="Studentid" value="${sp.id}" />
+										</c:url>
+										<c:url var="bangdiemtheoky" value="Student/bangdiemtheoky">
+											<c:param name="Studentid" value="${sp.id}" />
+										</c:url>
+										<c:url var="mondahoc" value="Student/mondahoc">
+											<c:param name="Studentid" value="${sp.id}" />
+										</c:url>
 									</c:forEach>
 							</span>
 						</a> <c:forEach var="s" items="${Listst}">
@@ -91,10 +103,10 @@
 									<li class="user-header"><img
 										src="../../../../../resources/FileUpload/${s.image}"
 										class="img-circle" alt="User Image" />
-										<p>
-											Alexander Pierce - Web Developer <small>Member since
-												Nov. 2012</small>
-										</p></li>
+										
+													<p style="text-transform: capitalize; font-family:Arial;">${s.fname}</p>
+													<p>${s.email}</p>
+									</li>
 									<!-- Menu Body -->
 									<!-- Menu Footer-->
 									<li class="user-footer">
@@ -126,7 +138,7 @@
 				<!-- sidebar menu: : style can be found in sidebar.less -->
 				<ul class="sidebar-menu">
 					<li class="header">MENU</li>
-					<li class="active treeview"><a href="documentation/index.html">
+					<li class="active treeview"><a href="${lilich}">
 							<i class="fa fa-dashboard"></i> <span>TRANG CỦA BẠN</span> <i
 							class="fa fa-angle-left pull-right"></i>
 					</a></li>
@@ -154,8 +166,8 @@
 									class="fa fa-circle-o"></i>Lịch thi</a></li>
 							<li><a href="${diemdanh}" target="frame"><i
 									class="fa fa-circle-o"></i>Điểm danh</a></li>
-							<li><a href="Page/gopy.html" target="frame"><i
-									class="fa fa-circle-o"></i>Góp ý</a></li>
+							<!-- <li><a href="Page/gopy.html" target="frame"><i
+									class="fa fa-circle-o"></i>Góp ý</a></li> -->
 							<!-- <li><a href="Page/hocphi.html" target="frame"><i
 									class="fa fa-circle-o"></i>Học phí</a></li> -->
 						</ul></li>
@@ -164,11 +176,11 @@
 							class="fa fa-angle-left pull-right"></i>
 					</a>
 						<ul class="treeview-menu">
-							<li><a href="Page/diemtheoky.html" target="frame"><i
+							<li><a href="${bangdiemtheoky}" target="frame"><i
 									class="fa fa-circle-o"></i>Điểm theo kỳ</a></li>
-							<li><a href="Page/mondahoc.html" target="frame"><i
+							<li><a href="${mondahoc}" target="frame"><i
 									class="fa fa-circle-o"></i>Môn đã học</a></li>
-							<li><a href="Page/bangdiem.html" target="frame"><i
+							<li><a href="${bangdiem}" target="frame"><i
 									class="fa fa-circle-o"></i>Bảng điểm</a></li>
 						</ul></li>
 
@@ -190,8 +202,7 @@
 			<div class="pull-right hidden-xs">
 				<b>Version</b>beta
 			</div>
-			<strong>Copyright &copy; 2019-2020 <a href="">4TL Group</a>.
-			</strong> All rights reserved.
+<strong>Copyright &copy; 2020<a href=""> 4TL Team</a>.</strong> All rights reserved.
 		</footer>
 
 	</div>

@@ -189,12 +189,12 @@ function validate(){
 
 						
 						<tr style="color: red;">
-							<td class="gfgusername"><input style="color: red;border: none;width: 50px" name="idstaff"
+							<td class="gfgusername"><input class="input-id" name="idstaff"
 								value=" ${sp.id}"></td>
-							<td class="gfgpp"><input style="color: red;border: none;width: 80%" name="firstname"
+							<td class="gfgpp"><input class="table-name" name="firstname"
 								value="${sp.name}"></td>
-							<td class="gfgscores">${sp.description}</td>
-							<td class="gfgscores">${sp.status}</td>
+							<td class="table-name">${sp.description}</td>
+							<td class="table-name">${sp.status}</td>
 							<td>
 							<div class="btn-group" role="group" aria-label="Basic example">
 								<button type="button" class="btn btn-info"

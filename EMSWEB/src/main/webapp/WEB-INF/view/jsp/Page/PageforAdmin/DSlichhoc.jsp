@@ -43,7 +43,9 @@
          folder instead of downloading all of them to reduce the load. -->
 <link href="../../../../../resources/bootstrap/css/_all-skins.min.css"
 	rel="stylesheet" type="text/css" />
-
+<link href="../../../../../resources/css/table.css"
+	rel="stylesheet" type="text/css" />
+	
 <script type="text/javascript">
 function validate(){
 	var date = document.myform.InputDate.value;
@@ -236,15 +238,15 @@ function validate(){
 
 
 						<tr style="color: red;">
-							<td class="gfgusername">${sp.id}</td>
-								<td class="gfgscores">${sp.date}</td>
-							<td class="gfgpp">${sp.amphitheater.amphitheaterName}</td>
-							<td class="gfgscores">${sp.classroom.name}</td>
-							<td class="gfgscores">${sp.schoolroom.name}(${sp.schoolroom.schoolroomnumber})</td>
-							<td class="gfgscores">${sp.studyShift.nameShift}</td>
-							<td class="gfgscores">${sp.course.name}</td>
-							<td class="gfgscores">${sp.course.teacher.fname}</td>
-							<td class="gfgscores">${sp.studyShift.startingTime}-${sp.studyShift.endTime}</td>
+							<td class="input-id">${sp.id}</td>
+								<td class="table-time">${sp.date}</td>
+							<td class="table-name">${sp.amphitheater.amphitheaterName}</td>
+							<td class="table-name">${sp.classroom.name}</td>
+							<td class="table-name">${sp.schoolroom.name}(${sp.schoolroom.schoolroomnumber})</td>
+							<td class="table-name">${sp.studyShift.nameShift}</td>
+							<td class="table-name">${sp.course.name}</td>
+							<td class="table-name">${sp.course.teacher.fname}</td>
+							<td class="table-time">${sp.studyShift.startingTime}-${sp.studyShift.endTime}</td>
 							<td style="text-align: center;">
 							<div class="btn-group" role="group" aria-label="Basic example">
 								<button type="button" class="btn btn-info"

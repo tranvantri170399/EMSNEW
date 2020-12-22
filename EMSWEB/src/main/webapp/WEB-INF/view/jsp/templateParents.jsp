@@ -92,6 +92,9 @@
 										<c:url var="diemdanh" value="parent/diemdanh">
 											<c:param name="userid" value="${sp.id}" />
 										</c:url>
+										<c:url var="bangdiem" value="parent/bangdiem">
+											<c:param name="userid" value="${sp.id}" />
+										</c:url>
 									</c:forEach>
 							</span>
 						</a> <c:forEach var="sp" items="${Listp}">
@@ -100,10 +103,10 @@
 								<li class="user-header"><img
 									src="../../../../../resources/FileUpload/${sp.image}" class="img-circle"
 									alt="User Image" />
-									<p>
-										Alexander Pierce - Web Developer <small>Member since
-											Nov. 2012</small>
-									</p></li>
+									<c:forEach var="sp" items="${Listp}">
+													<p style="text-transform: capitalize; font-family:Arial;">${sp.fname}</p>
+													<p>${sp.email}</p>
+									</c:forEach></li>
 								<!-- Menu Body -->
 								<!-- Menu Footer-->
 								<li class="user-footer">
@@ -132,12 +135,11 @@
 				<ul class="sidebar-menu">
 					<li class="header">MENU</li>
 					<li class="active treeview"><a href="documentation/index.html">
-							<i class="fa fa-dashboard"></i> <span>TRANG CỦA BẠN</span> <i
-							class="fa fa-angle-left pull-right"></i>
+							<i class="fa fa-dashboard"></i> <span>TRANG CỦA BẠN</span> 
 					</a></li>
 					<li class="treeview"><a href="#"> <i class="fa fa-user"></i>
-							<span>Tài khoản</span> <span
-							class="label label-primary pull-right"></span>
+							<span>Tài khoản</span> <i
+							class="fa fa-angle-left pull-right"></i>
 					</a>
 						<ul class="treeview-menu">
 							<li><a href="${infoLink}" target="frame"><i
@@ -156,7 +158,8 @@
 					<li>
 					<li class="treeview"><a href="#"> <i
 							class="fa fa-calendar"></i> <span>Học tập</span>
-							<span class="label label-primary pull-right"></span>
+							<i
+							class="fa fa-angle-left pull-right"></i>
 					</a>
 						<ul class="treeview-menu">
 <!-- 							<li><a href="Page/LICHHOC" target="frame">lich học</a></li> -->
@@ -171,11 +174,11 @@
 							class="fa fa-angle-left pull-right"></i>
 					</a>
 						<ul class="treeview-menu">
-							<li><a href="Page/DIEMTHEOKY" target="frame"><i
+							<!-- <li><a href="Page/DIEMTHEOKY" target="frame"><i
 									class="fa fa-circle-o"></i>Điểm theo kỳ</a></li>
 							<li><a href="Page/MONDAHOC" target="frame"><i
-									class="fa fa-circle-o"></i>Môn đã học</a></li>
-							<li><a href="Page/BANGDIEM" target="frame"><i
+									class="fa fa-circle-o"></i>Môn đã học</a></li> -->
+							<li><a href="${bangdiem}" target="frame"><i
 									class="fa fa-circle-o"></i>Bảng điểm</a></li>
 						</ul>
 					</li>
@@ -198,7 +201,7 @@
 			<div class="pull-right hidden-xs">
 				<b>Version</b> Beta
 			</div>
-			<strong>Copyright &copy; 2019-2020 <a> href="">4TL Team</a>.
+			<strong>Copyright &copy; 2020 <a href=""> 4TL Team</a>.
 			</strong> All rights reserved.
 		</footer>
 
