@@ -96,7 +96,6 @@ table tr td:first-child::before {
 			</div> -->
 
 	</div>
-	<br/><br/>
 <!-- 	<section class="content-header">
 		<ol class="breadcrumb">
 			<li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
@@ -125,10 +124,10 @@ table tr td:first-child::before {
 
 				<tr>
 					<th>STT</th>
-					<th>date</th>
-					<th>name</th>
-					<th>course</th>
-					<th>status</th>
+					<th>Ngày</th>
+					<th>Tên Sinh Viên</th>
+					<th>Môn Học</th>
+					<th>Trạng thái</th>
 					
 				</tr>
 

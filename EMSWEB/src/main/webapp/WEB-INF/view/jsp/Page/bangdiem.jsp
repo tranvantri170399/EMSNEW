@@ -70,7 +70,14 @@ table tr td:first-child::before {
 </style>
 </head>
 <body>
-
+	<section class="content-header">
+		<H1>Bảng Điểm</H1>
+		<ol class="breadcrumb">
+			<li><a href="#"><i class="fa fa-dashboard"></i>Trang Chủ</a></li>
+			<li class="active">Thống Kê</li>
+			<li class="active">Bảng Điểm</li>
+		</ol>
+	</section>	
 	<!--Table  -->
 	<form:form action="/servlets" modelAttribute="attandence">
 		<table id="table1" class="display" style="width: 100%">

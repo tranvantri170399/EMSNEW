@@ -69,9 +69,16 @@ table tr td:first-child::before {
 
 </style>
 </head>
-<body>
-
-<br/>
+<body style="background-color:rgb(251,251,251);">
+	<section class="content-header">
+		<H1>Môn Đã Học</H1>
+		<ol class="breadcrumb">
+			<li><a href="#"><i class="fa fa-dashboard"></i>Trang Chủ</a></li>
+			<li class="active">Thống Kê </li>
+			<li class="active">Môn Đã Học</li>
+		</ol>
+	</section>
+	<section class="content">
 	<!--Table  -->
 	<form:form action="/servlets" modelAttribute="attandence">
 		<table id="table1" class="display" style="width: 100%">
@@ -128,5 +135,6 @@ table tr td:first-child::before {
 </c:forEach>
 <h4 style="color: blue;">Tổng số môn đã học: ${aver}</h4>
  <h3 style="color: blue;">Số Môn: ${a}/${aver} (Đạt/Tổng)</h3>
+</section>	 
 </body>
 </html>
