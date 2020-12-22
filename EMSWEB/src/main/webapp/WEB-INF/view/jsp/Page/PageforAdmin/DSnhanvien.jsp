@@ -170,6 +170,9 @@ function validate() {
 	$(document).ready(function() {
 		$('#table1').DataTable();
 	});
+	function uploadFile(target) {
+	    document.getElementById("file-name").innerHTML = target.files[0].name;
+	}
 </script>
 
 <style type="text/css">
@@ -179,6 +182,13 @@ table tr {
 
 table tr td:first-child::before {
 	content: counter(row-num-1) " ";
+}
+.file-box{
+    border: 1px solid;
+    border-color: #d2d6de;
+    width: 84%;
+    padding-top: 5px;
+    padding-left: 10px;
 }
 </style>
 </head>
@@ -234,7 +244,8 @@ table tr td:first-child::before {
 							
 							  	<div class="input-group">
 											<input type="File" class="form-control" name="files"
-												id="InputImage" >
+												id="InputImage" onchange='uploadFile(this)' style="display:none;">
+												<span id="file-name" class="file-box" style=""></span>
 												<div class="input-group-prepend">	
 									<label Class="input-group-text" for="InputImage">Browse</label>
 									</div>
