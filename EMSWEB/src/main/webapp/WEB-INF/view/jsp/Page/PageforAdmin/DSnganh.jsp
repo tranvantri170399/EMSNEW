@@ -43,14 +43,27 @@
          folder instead of downloading all of them to reduce the load. -->
 <link href="../../../../../resources/bootstrap/css/_all-skins.min.css"
 	rel="stylesheet" type="text/css" />
-
-<!-- <script type="text/javascript">
+<link href="../../../../../resources/css/table.css"
+	rel="stylesheet" type="text/css" />
+	
+<script type="text/javascript">
 function validate(){
+	var id = document.myform.InputId.value;
 	var name = document.myform.InputLastname.value;
 	var noteCk = document.myform.InputNote.value;
 	var statusCk = document.myform.InputStatus.value;
 	
 	var status = false;
+	
+	if(id.length < 1){
+		document.getElementById("checkId").innerHTML = 
+            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Mã chuyên ngành!</span> ";
+        status = false;
+	}else{
+		document.getElementById("checkId").innerHTML = 
+            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+		status = true;
+	}
 	
 	if(name.length < 1){
 		document.getElementById("checkName").innerHTML = 
@@ -59,7 +72,7 @@ function validate(){
 	}else{
 		document.getElementById("checkName").innerHTML = 
             " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
-		status = true;
+		
 	}
 	
 	if(noteCk.length < 1){
@@ -83,7 +96,7 @@ function validate(){
 	return status;
 }
 </script>
- -->
+
 <script>
 	$(document).ready(function() {
 		$('#table1').DataTable();
@@ -130,8 +143,8 @@ table tr td:first-child::before {
 							<div Class="form-group">
 								<label for="InputName">Mã ngành:</label>
 									<form:input type="text" path="id" class="form-control"
-										id="InputLastname" />
-										<span id="checkName"></span>
+										id="InputId" />
+										<span id="checkId"></span>
 							</div>
 							<div Class="form-group">
 								<label for="InputName">Tên Ngành:</label>
