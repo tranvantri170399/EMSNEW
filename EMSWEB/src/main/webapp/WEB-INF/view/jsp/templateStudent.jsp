@@ -143,8 +143,8 @@
 							class="fa fa-angle-left pull-right"></i>
 					</a></li>
 					<li class="treeview"><a href="#"> <i
-							class="fa fa-calendar"></i> <span>Thông tin sinh viên</span> <span
-							class="label label-primary pull-right">4</span>
+							class="fa fa-calendar"></i> <span>Thông tin sinh viên</span> <i
+							class="fa fa-angle-left pull-right"></i>
 					</a>
 						<ul class="treeview-menu">
 							<li><a href="${lilich}" target="frame"><i
@@ -157,7 +157,7 @@
 					<li>
 					<li class="treeview"><a href="#"> <i
 							class="fa fa-calendar"></i> <span>Học tập</span> <i
-							class="fa fa-angle-right pull-right"></i>
+							class="fa fa-angle-left pull-right"></i>
 					</a>
 						<ul class="treeview-menu">
 							<li><a href="${infoschedule}" target="frame"><i

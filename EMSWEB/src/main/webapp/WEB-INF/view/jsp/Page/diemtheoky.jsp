@@ -70,9 +70,16 @@ table tr td:first-child::before {
 </style>
 </head>
 <body>
+	<section class="content-header">
+		<H1>Điểm Theo Kỳ</H1>
+		<ol class="breadcrumb">
+			<li><a href="#"><i class="fa fa-dashboard"></i>Trang Chủ</a></li>
+			<li class="active">Thống Kê </li>
+			<li class="active">Điểm Theo Kỳ</li>
+		</ol>
+	</section>
+	<section class="content">
 	<form action="/mark/followsemester">
-	
-		<label for="exampleInputName">KÌ HỌC:</label>
 	<div style="width: 60%;" class="row">
 			
 			<div class="form-group col-sm-8">
@@ -87,7 +94,7 @@ table tr td:first-child::before {
 			</div>
 	</div>
 
-	<input type="submit" value="submit"/>
+	<input type="submit" value="Chọn"/>
 </form>
 <br/>
 	<!--Table  -->
@@ -147,5 +154,6 @@ table tr td:first-child::before {
 <h4 style="color: blue;">Tổng số Môn: ${aver}</h4>
 <h3 style="color: blue;">Điểm Trung Bình: <fmt:formatNumber type="number" maxFractionDigits="2" value="${ageTotals}" /></h3>
  <h3 style="color: blue;">Số Môn: ${a}/${aver} (Đạt/Tổng)</h3>
+ </section>
 </body>
 </html>
