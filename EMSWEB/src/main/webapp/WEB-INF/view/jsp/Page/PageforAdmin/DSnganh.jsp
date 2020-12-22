@@ -43,10 +43,8 @@
          folder instead of downloading all of them to reduce the load. -->
 <link href="../../../../../resources/bootstrap/css/_all-skins.min.css"
 	rel="stylesheet" type="text/css" />
-<link href="../../../../../resources/css/table.css"
-	rel="stylesheet" type="text/css" />
-	
-<script type="text/javascript">
+
+<!-- <script type="text/javascript">
 function validate(){
 	var name = document.myform.InputLastname.value;
 	var noteCk = document.myform.InputNote.value;
@@ -85,7 +83,7 @@ function validate(){
 	return status;
 }
 </script>
-
+ -->
 <script>
 	$(document).ready(function() {
 		$('#table1').DataTable();
@@ -114,7 +112,7 @@ function validate(){
 		<div class="modal-dialog">
 
 			<!-- Modal content-->
-			<form:form action="/save/major" modelAttribute="major" onsubmit="return validate()" name="myform">
+			<form:form action="/newDSnganh" modelAttribute="major" onsubmit="return validate()" name="myform">
 				<div class="modal-content">
 					<div class="modal-header">
 						<h4 class="modal-title">Thêm Chuyên Ngành</h4>
@@ -123,8 +121,11 @@ function validate(){
 					<div class="modal-body">
 						<div>
 
-							<div class="form-group">
-								<form:input type="hidden" path="id" />
+							<div Class="form-group">
+								<label for="InputName">Mã ngành:</label>
+									<form:input type="text" path="id" class="form-control"
+										id="InputLastname" />
+										<span id="checkName"></span>
 							</div>
 							<div Class="form-group">
 								<label for="InputName">Tên Ngành:</label>
@@ -177,12 +178,12 @@ function validate(){
 				<c:if test="${not empty List}">
 					<c:forEach var="sp" items="${List}">
 
-						<c:url var="updateLink" value="/updateMajors">
+						<c:url var="updateLink" value="/updateFormMJ">
 							<c:param name="id" value="${sp.id}" />
 						</c:url>
 
 						<!-- construct an "delete" link with customer id -->
-						<c:url var="deleteLink" value="/deleteMajors">
+						<c:url var="deleteLink" value="/deleteMJ">
 							<c:param name="id" value="${sp.id}" />
 						</c:url>
 

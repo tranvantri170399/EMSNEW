@@ -7,4 +7,5 @@ import com.example.demo.entities.Majors;
 @Repository("majorsResponsitory")
 public interface MajorsResponsitory extends JpaRepository<Majors, String>{
 	Majors findByname(String name);
+	Majors findByid(String id);
 }
