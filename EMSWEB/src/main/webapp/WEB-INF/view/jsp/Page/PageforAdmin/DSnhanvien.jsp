@@ -225,10 +225,19 @@ function validate() {
 							
 							<div class="form-group">
 								<label for="InputID">Image:</label>
-								<div class="custom-file">
-    								<input type="file" class="custom-file-input" id="inputGroupFile01" id="InputImage">
+							
+							  	<div class="input-group">
+											<input type="File" class="form-control" name="files"
+												id="InputImage" >
+												<div class="input-group-prepend">	
+									<label Class="input-group-text" for="InputImage">Browse</label>
+									</div>
+										</div>
+							  	
+							<!--<div class="custom-file">
+    								<input type="file" class="custom-file-input" id="inputGroupFile01">
     								<label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-							  	</div>
+							  	</div>-->
 							</div>
 							<div class="form-group">
 								<label for="InputID">Email:</label>
