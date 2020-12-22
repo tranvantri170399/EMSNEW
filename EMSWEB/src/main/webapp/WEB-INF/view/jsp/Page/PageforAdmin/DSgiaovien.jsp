@@ -199,6 +199,7 @@ table tr td:first-child::before {
     width: 84%;
     padding-top: 5px;
     padding-left: 10px;
+    margin-bottom: 0px !important;
 }
 </style>
 </head>
@@ -257,7 +258,9 @@ table tr td:first-child::before {
 									<div class="input-group">
 											<input type="File" class="form-control" name="files"
 												id="InputImage" onchange='uploadFile(this)' style="display:none;">
-												<span id="file-name" class="file-box" style=""></span>
+												<label for="InputImage"  class="file-box"  id="file-name">
+												
+												</label>
 												<div class="input-group-prepend">	
 									<label Class="input-group-text" for="InputImage">Browse</label>
 									</div>
