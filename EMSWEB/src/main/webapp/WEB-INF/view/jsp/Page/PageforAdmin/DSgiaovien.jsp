@@ -174,10 +174,32 @@ function validate() {
 }
 
 </script>
-
+<script>
+	$(document).ready(function() {
+		$('#table1').DataTable();
+	});
+	function uploadFile(target) {
+	    document.getElementById("file-name").innerHTML = target.files[0].name;
+	}
+</script>
 <style type="text/css">
 th.image.sorting {
 	width: 50px;
+}
+table tr {
+	counter-increment: row-num-1;
+}
+
+table tr td:first-child::before {
+	content: counter(row-num-1) " ";
+}
+.file-box{
+    border: 1px solid;
+    border-color: #d2d6de;
+    width: 84%;
+    padding-top: 5px;
+    padding-left: 10px;
+    margin-bottom: 0px !important;
 }
 </style>
 </head>
@@ -233,11 +255,16 @@ th.image.sorting {
 
 							<div class="form-group">
 								<label for="InputID">Image:</label>
-								<div class="custom-file">
-									<input type="file" class="custom-file-input" name="files"
-										id="InputImage"> <label class="custom-file-label"
-										for="InputImage">Choose file</label>
-								</div>
+									<div class="input-group">
+											<input type="File" class="form-control" name="files"
+												id="InputImage" onchange='uploadFile(this)' style="display:none;">
+												<label for="InputImage"  class="file-box"  id="file-name">
+												
+												</label>
+												<div class="input-group-prepend">	
+									<label Class="input-group-text" for="InputImage">Browse</label>
+									</div>
+										</div>
 							</div>
 							<div class="form-group">
 								<label for="InputID">Email:</label>
@@ -329,6 +356,7 @@ th.image.sorting {
     	</colgroup>
 		<thead style="background-color:#4876FF ;color: white">
 			<tr>
+				<th>STT</th>
 				<th>ID</th>
 				<th>Tên GV</th>
 				<th>Chức vụ</th>
@@ -357,6 +385,8 @@ th.image.sorting {
 					</c:url>
 
 					<tr>
+						<td class="input-id" style="text-align: center;"><input  name="idstaff"
+								value=" ${list.id}" type="hidden"></td>
 						<td class="input-id">${list.id}</td>
 						<td class="table-name">${list.lname}&ensp;${list.fname}</td>
 						<td class="table-name" >${list.role.roleName}</td>

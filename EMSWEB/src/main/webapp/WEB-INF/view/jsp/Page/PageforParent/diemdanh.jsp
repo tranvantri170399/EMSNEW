@@ -60,6 +60,15 @@ table tr td:first-child::before {
 </style>
 </head>
 <body>
+	<section class="content-header">
+		<h1>Điểm danh</h1>
+		<ol class="breadcrumb">
+			<li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
+			<li class="active">Học tập </li>
+			<li class="active">Điểm danh</li>
+		</ol>
+	</section>
+	<br>
 	<label for="exampleInputName">Tên Lớp Học:a</label>
 	<div style="width: 60%;" class="row">
 <!-- 
@@ -96,7 +105,7 @@ table tr td:first-child::before {
 			</div> -->
 
 	</div>
-	<br/><br/>
+	
 <!-- 	<section class="content-header">
 		<ol class="breadcrumb">
 			<li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>

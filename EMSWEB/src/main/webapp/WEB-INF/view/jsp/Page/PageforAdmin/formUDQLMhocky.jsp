@@ -162,7 +162,7 @@ function validate(){
 						<!--form  -->
 								<div class="box-body">		
 									<div class="form-group">
-										<label for="InputID">Phòng Ban:</label>
+										<label for="InputID">Học kỳ:</label>
 										<select name="" class="form-control"
 											id="sel1">
 											<c:if test="${not empty listST}">
@@ -175,7 +175,7 @@ function validate(){
 								</div>
 								
 								<div class="form-group">
-										<label for="InputID">Phòng Ban:</label>
+										<label for="InputID">Chuyên ngành:</label>
 										<select name="" class="form-control"
 											id="sel1">
 											<c:if test="${not empty listMJ}">
@@ -188,7 +188,7 @@ function validate(){
 								</div>
 								
 								<div class="form-group">
-										<label for="InputID">Phòng Ban:</label>
+										<label for="InputID">Tên môn học:</label>
 										<select name="" class="form-control"
 											id="sel1">
 											<c:if test="${not empty listSB}">

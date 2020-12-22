@@ -74,7 +74,7 @@ table tr td:first-child::before {
 <body>
 	<section class="content-header">
 		<h1>
-			Danh Sách Môn Học Từng Kì
+			Danh Sách Môn Học Từng Kỳ
 			<button type="button" class="btn btn-info" data-toggle="modal"
 				data-target="#myModal">Thêm nhân viên</button>
 		</h1>

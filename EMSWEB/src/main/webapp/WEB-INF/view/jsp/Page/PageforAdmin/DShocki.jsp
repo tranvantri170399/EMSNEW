@@ -122,6 +122,13 @@ function validate(){
 th.image.sorting {
 	width: 50px;
 }
+table tr {
+	counter-increment: row-num-1;
+}
+
+table tr td:first-child::before {
+	content: counter(row-num-1) " ";
+}
 </style>
 </head>
 
@@ -171,7 +178,7 @@ th.image.sorting {
 							<div class="form-group">
 								<label for="InputID">Ngày bắt đầu:</label>
 								<form:input type="date" path="starttime" class="form-control"
-									id="InputDSt" min="1980-1-1" max="2020-12-31" />
+									id="InputDSt" min="1980-1-1" />
 									<span id="checkDSt"></span>
 							</div>
 						</div>
@@ -179,7 +186,7 @@ th.image.sorting {
 							<div class="form-group">
 								<label for="InputID">Ngày kết thúc:</label>
 								<form:input type="date" path="endtime" class="form-control"
-									id="InputDEnd" min="1980-1-1" max="2020-12-31" />
+									id="InputDEnd" min="1980-1-1"/>
 									<span id="checkDEnd"></span>
 							</div>
 						</div>
@@ -208,10 +215,11 @@ th.image.sorting {
 
 		<thead style="background-color: #4876FF; color: white">
 			<tr>
+				<th>STT</th>
 				<th>Mã</th>
-				<th>Chuyên Ngành</th>
-				<th>Tên Môn học</th>
-				<th>Mô tả môn học</th>
+				<th>Tên kỳ học</th>
+				<th>Ngày bắt đầu</th>
+				<th>Ngày kết thúc</th>
 				<th>Trạng thái</th>
 				<th></th>
 			</tr>
@@ -233,6 +241,7 @@ th.image.sorting {
 					</c:url>
 
 					<tr>
+						<td class="input-id" style="text-align: center;"><input value=" ${list.id}" type="hidden"></td>
 						<td class="input-id">${list.id}</td>
 						<td class="table-name">${list.name}</td>
 						<td>${list.starttime}</td>

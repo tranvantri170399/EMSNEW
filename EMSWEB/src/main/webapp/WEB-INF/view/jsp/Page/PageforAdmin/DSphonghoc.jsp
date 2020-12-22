@@ -95,7 +95,15 @@ function validate(){
 		$('#table1').DataTable();
 	});
 </script>
+<style type="text/css">
+table tr {
+	counter-increment: row-num-1;
+}
 
+table tr td:first-child::before {
+	content: counter(row-num-1) " ";
+}
+</style>
 </head>
 <body>
 	<section class="content-header">
@@ -172,6 +180,7 @@ function validate(){
 
 			<thead style="background-color: #4876FF; color: white">
 				<tr>
+				<th>STT</th>
 					<th>ID</th>
 					<th>Tên Phòng</th>
 					<th>Số Phòng</th>
@@ -196,6 +205,7 @@ function validate(){
 
 
 						<tr style="color: red;">
+							<td class="input-id" style="text-align: center;"><input value=" ${list.id}" type="hidden"></td>
 							<td class="input-id">${sp.id}</td>
 							<td class="table-name">${sp.name}</td>
 							<td class="table-time">${sp.schoolroomnumber}</td>

@@ -170,10 +170,27 @@ function validate() {
 	$(document).ready(function() {
 		$('#table1').DataTable();
 	});
+	function uploadFile(target) {
+	    document.getElementById("file-name").innerHTML = target.files[0].name;
+	}
 </script>
 
 <style type="text/css">
+table tr {
+	counter-increment: row-num-1;
+}
 
+table tr td:first-child::before {
+	content: counter(row-num-1) " ";
+}
+.file-box{
+    border: 1px solid;
+    border-color: #d2d6de;
+    width: 84%;
+    padding-top: 5px;
+    padding-left: 10px;
+    margin-bottom: 0px !important;
+}
 </style>
 </head>
 <body>
@@ -228,9 +245,13 @@ function validate() {
 							
 							  	<div class="input-group">
 											<input type="File" class="form-control" name="files"
-												id="InputImage" >
+												id="InputImage" onchange='uploadFile(this)' style="display:none;">
+												<label for="InputImage"  class="file-box"  id="file-name">
+												
+												</label>
 												<div class="input-group-prepend">	
 									<label Class="input-group-text" for="InputImage">Browse</label>
+									
 									</div>
 										</div>
 							  	
@@ -248,7 +269,7 @@ function validate() {
 							<div class="form-group">
 								<label for="InputID">Ngày sinh</label>
 								<form:input type="date" path="dob" class="form-control"
-									id="InputDob" min="1980-1-1" max="2020-12-31"/>
+									id="InputDob" min="1980-1-1" />
 									<span id="checkDob"></span>
 							</div>
 							<div class="form-group">
@@ -332,6 +353,7 @@ function validate() {
     	</colgroup>
 			<thead style="background-color:#4876FF ;color: white">
 				<tr>
+					<th>STT</th>
 					<th>Mã</th>
 					<th>Họ Tên</th>
 					<th>Ngày sinh</th>	
@@ -362,6 +384,7 @@ function validate() {
 
 						
 						<tr style="color: black;">
+							<td class="input-id" style="text-align: center;"><input  value=" ${sp.id}" type="hidden"></td>
 							<td class="gfgusername"><input class="input-id" name="idstaff"
 								value=" ${sp.id}"></td>
 							<td class="table-name">${sp.fname}&ensp;${sp.lname}</td>

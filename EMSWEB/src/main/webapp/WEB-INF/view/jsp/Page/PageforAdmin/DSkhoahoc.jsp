@@ -57,6 +57,13 @@
 #InputLastname {
 	border-color: red;
 }
+table tr {
+	counter-increment: row-num-1;
+}
+
+table tr td:first-child::before {
+	content: counter(row-num-1) " ";
+}
 </style>
 </head>
 <body>
@@ -145,6 +152,7 @@
 
 			<thead style="background-color: #4876FF; color: white">
 				<tr>
+					<th>STT</th>
 					<th>ID</th>
 					<th>Tên Khóa Học</th>
 					<th>Học kì</th>
@@ -170,6 +178,7 @@
 						</c:url>
 
 						<tr>
+							<td class="input-id" style="text-align: center;"><input value=" ${list.id}" type="hidden"></td>
 							<td class="input-id">${list.id}</td>
 							<td class="table-name">${list.name}</td>
 							<td class="table-name">${list.semester.name}</td>

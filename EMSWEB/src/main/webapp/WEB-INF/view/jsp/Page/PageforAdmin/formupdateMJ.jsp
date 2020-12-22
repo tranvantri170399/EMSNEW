@@ -41,32 +41,54 @@
 <link href="../../../../../resources/bootstrap/css/_all-skins.min.css"
 	rel="stylesheet" type="text/css" />
 
-<!-- <script type="text/javascript">
+<script type="text/javascript">
 function validate(){
 	var name = document.myform.name.value;
+	var note = document.myform.description.value;
+	var ckstatus = document.myform.ckstatus.value;
+	
+	var status = false;
 	
 	if(name.length < 1){
 		 document.getElementById("checkName").innerHTML = 
-	            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Tên phòng ban!</span> ";
-		return false;
+	            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Tên chuyên ngành!</span> ";
+		status = false;
 	}else{
 		document.getElementById("checkName").innerHTML = 
             " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
-		return true;
+		status = true;
 	}
 	
+	if(note.length < 1){
+		 document.getElementById("checkNote").innerHTML = 
+	            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Chú thích!</span> ";
+		status = false;
+	}else{
+		document.getElementById("checkNote").innerHTML = 
+           " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	if(ckstatus.length < 1){
+		 document.getElementById("checkStatus").innerHTML = 
+	            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Trạng thái!</span> ";
+		status = false;
+	}else{
+		document.getElementById("checkStatus").innerHTML = 
+          " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+	}
+	
+	return status;
 }
-</script> -->
+</script>
 
 </head>
 <body>
 	<section class="content-header">
-		<h1>LÍ LỊCH</h1>
+		<h1>CHUYÊN NGÀNH</h1>
 		<ol class="breadcrumb">
 			<li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-			<li class="active">Quản lí nhân viên</li>
-			<li class="active">Danh sách phòng ban</li>
-			<li class="active">Cập nhật phòng ban</li>
+			<li class="active">Quản lí sinh viên</li>
+			<li class="active">Danh sách chuyên ngành</li>
+			<li class="active">Cập nhật chuyên ngành</li>
 		</ol>
 	</section>
 
@@ -93,22 +115,22 @@ function validate(){
 									</div>
 
 									<div class="form-group">
-										<label for="exampleInputEmail">Name</label>
+										<label for="exampleInputEmail">Tên ngành</label>
 										<form:input path="name" value="${sp.name}"
 											class="form-control" id="name" />
 											<span id="checkName"></span>
 									</div>
 									<div class="form-group">
-										<label for="exampleInputEmail">Name</label>
+										<label for="exampleInputEmail">Chú thích</label>
 										<form:input path="description" value="${sp.description}"
 											class="form-control" id="description" />
-											<span id="checkName"></span>
+											<span id="checkNote"></span>
 									</div>
 									<div class="form-group">
-										<label for="exampleInputEmail">Name</label>
+										<label for="exampleInputEmail">Trạng thái</label>
 										<form:input path="status" value="${sp.status}"
-											class="form-control" id="status" />
-											<span id="checkName"></span>
+											class="form-control" id="ckstatus" />
+											<span id="checkStatus"></span>
 									</div>
 								</div>
 							</c:forEach>
