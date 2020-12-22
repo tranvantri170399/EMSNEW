@@ -36,6 +36,10 @@
 <script type="text/javascript"
 	src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
+<!-- doan code cho dialog thong bao thanh cong -->
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <script>
 	$(document).ready(function() {
@@ -56,10 +60,21 @@ table tr {
 table tr td:first-child::before {
 	content: counter(row-num-1) " ";
 }
+<%--message--%>
 
+.ui-draggable .ui-dialog-titlebar{
+	background: #007bff;
+}
+.ui-dialog .ui-dialog-content{
+	text-align: center;
+}
+.ui-dialog .ui-dialog-title{
+	text-align: center;
+    color: white;
+}
 </style>
 </head>
-<body>
+<body onload="myFunction()">
 	<label for="exampleInputName">Tên Lớp Học:</label>
 	<div style="width: 60%;" class="row">
 <!-- 
@@ -172,6 +187,34 @@ table tr td:first-child::before {
 
 		<button type="submit" class="btn btn-info">Lưu thay đổi</button>
 	</form:form>
+	
+	
+	<script>
+		<c:forEach var="m" items="${mess}">
+		function myFunction() {
+			document.getElementById("dialog").style.display = 'none';
+			document.getElementById("dialogs").style.display = 'none';
+			if(${m}=="1"){
+				/* alert("Cập nhật thành công :))"); */
+				$( "#dialog" ).dialog();
+				document.getElementById("dialog").style.background = 'white';
+			}else{
+				$( "#dialogs" ).dialog();
+				document.getElementById("dialogs").style.background = 'white';
+			}
+		}
+		</c:forEach>
+		
+	</script>
 
+	<div id="dialog" title="Message" style="display: none;background:#007bff;">
+	<i class='far fa-check-circle' style='font-size:115px;color:#007bff;margin-top: 1.1rem;'></i>
+		<p style="margin-top: 1.5rem; font-size: 20px;"	>Cập nhật thành công</p>
+	</div>
+	<div id="dialogs" title="Message" style="display: none;background:#007bff;">
+		<i class='far fa-times-circle' style='font-size:115px;color:#FE2E2E;margin-top: 1.1rem;'></i>
+		<p style="margin-top: 1.5rem; font-size: 20px;">Cập nhật thất bại!</p>
+	</div>
+	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 </body>
 </html>

@@ -168,12 +168,12 @@ table tr td:first-child::before {
 
 
 					<!-- construct an "update" link with customer id -->
-					<c:url var="updateLink" value="/updateFormHS">
+					<c:url var="updateLink" value="/formUDQLMhocky">
 						<c:param name="id" value="${list.id}" />
 					</c:url>
 
 					<!-- construct an "delete" link with customer id -->
-					<c:url var="deleteLink" value="/deleteST">
+					<c:url var="deleteLink" value="/deleteQLMhocky">
 						<c:param name="id" value="${list.id}" />
 					</c:url>
 
