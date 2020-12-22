@@ -178,7 +178,7 @@ table tr td:first-child::before {
 							<div class="form-group">
 								<label for="InputID">Ngày bắt đầu:</label>
 								<form:input type="date" path="starttime" class="form-control"
-									id="InputDSt" min="1980-1-1" max="2020-12-31" />
+									id="InputDSt" min="1980-1-1" />
 									<span id="checkDSt"></span>
 							</div>
 						</div>
@@ -186,7 +186,7 @@ table tr td:first-child::before {
 							<div class="form-group">
 								<label for="InputID">Ngày kết thúc:</label>
 								<form:input type="date" path="endtime" class="form-control"
-									id="InputDEnd" min="1980-1-1" max="2020-12-31" />
+									id="InputDEnd" min="1980-1-1"/>
 									<span id="checkDEnd"></span>
 							</div>
 						</div>
@@ -217,9 +217,9 @@ table tr td:first-child::before {
 			<tr>
 				<th>STT</th>
 				<th>Mã</th>
-				<th>Chuyên Ngành</th>
-				<th>Tên Môn học</th>
-				<th>Mô tả môn học</th>
+				<th>Tên kỳ học</th>
+				<th>Ngày bắt đầu</th>
+				<th>Ngày kết thúc</th>
 				<th>Trạng thái</th>
 				<th></th>
 			</tr>

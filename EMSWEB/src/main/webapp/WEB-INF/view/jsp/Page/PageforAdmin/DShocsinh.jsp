@@ -325,7 +325,7 @@ table tr td:first-child::before {
 															<div class="form-group">
 																<label for="InputID">Ngày sinh:</label>
 																<form:input type="date" path="dob" class="form-control"
-																	id="InputDobSt" min="1980-1-1" max="2020-12-31" />
+																	id="InputDobSt" min="1980-1-1" />
 																	<span id="checkDobSt"></span>
 															</div>
 															<div class="form-group">
