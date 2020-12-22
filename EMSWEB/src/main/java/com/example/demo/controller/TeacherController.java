@@ -249,9 +249,10 @@ public class TeacherController {
             saveattan.setStatus(test);
 
             attandenceResponsitory.save(saveattan);
+            
            i++;
         }
-       
+        model.addAttribute("mess","1");
         DateTimeFormatter dtfs = DateTimeFormatter.ofPattern("yyyy-MM-dd");  
 		   LocalDateTime nows = LocalDateTime.now();   
         List<Course> couseid=courseResponsitory.findcustomteacher(idzz);
@@ -264,7 +265,9 @@ public class TeacherController {
 				System.out.println("outxxx>>>"+classroom.getId());
 				List<ClassroomStudent> croomstudent=classroomStudentrespon.findcustomclass(classroom.getId());
 				
-				model.addAttribute("Lists",croomstudent);
+//				model.addAttribute("Lists",croomstudent);
+				List<Classroom> list = classroomResponsitory.findAll();
+				model.addAttribute("Lists",list);
 			}
 			
 			
