@@ -69,6 +69,17 @@ table tr td:first-child::before {
 </style>
 </head>
 <body>
+    <section class="content-header">
+        <h1>
+            Điểm danh
+        </h1>
+          <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
+            <li class="active">Học Tập</li>
+            <li class="active">Điểm danh</li>            
+          </ol>        
+    </section>
+    <section class="content">
 	<label for="exampleInputName">Tên Lớp Học:</label>
 	<div style="width: 60%;" class="row">
 <!-- 
@@ -105,7 +116,6 @@ table tr td:first-child::before {
 			</div> -->
 
 	</div>
-	<br/><br/>
 <!-- 	<section class="content-header">
 		<ol class="breadcrumb">
 			<li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
@@ -134,10 +144,10 @@ table tr td:first-child::before {
 
 				<tr>
 					<th>STT</th>
-					<th>date</th>
-					<th>student name</th>
-					<th>course</th>
-					<th>status</th>
+					<th>Ngày</th>
+					<th>Tên SV</th>
+					<th>Môn</th>
+					<th>Trạng Thái	</th>
 				
 				</tr>
 
@@ -181,6 +191,6 @@ table tr td:first-child::before {
 
 		<button type="submit" class="btn btn-info">Lưu thay đổi</button>
 	</form:form>
-
+</section>
 </body>
 </html>
