@@ -173,7 +173,13 @@ function validate() {
 </script>
 
 <style type="text/css">
+table tr {
+	counter-increment: row-num-1;
+}
 
+table tr td:first-child::before {
+	content: counter(row-num-1) " ";
+}
 </style>
 </head>
 <body>
@@ -323,6 +329,7 @@ function validate() {
     	</colgroup>
 			<thead style="background-color:#4876FF ;color: white">
 				<tr>
+					<th>STT</th>
 					<th>Mã</th>
 					<th>Họ Tên</th>
 					<th>Ngày sinh</th>	
@@ -353,6 +360,7 @@ function validate() {
 
 						
 						<tr style="color: black;">
+							<td class="input-id" style="text-align: center;"><input  value=" ${sp.id}" type="hidden"></td>
 							<td class="gfgusername"><input class="input-id" name="idstaff"
 								value=" ${sp.id}"></td>
 							<td class="table-name">${sp.fname}&ensp;${sp.lname}</td>

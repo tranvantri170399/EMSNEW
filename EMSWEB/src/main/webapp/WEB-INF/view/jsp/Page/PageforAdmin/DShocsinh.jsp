@@ -239,7 +239,15 @@ function validate() {
     return status;
 }
 </script>
+<style type="text/css">
+table tr {
+	counter-increment: row-num-1;
+}
 
+table tr td:first-child::before {
+	content: counter(row-num-1) " ";
+}
+</style>
 </head>
 <body>
 	<section class="content-header">
@@ -457,6 +465,7 @@ function validate() {
 	<form:form action="/save" modelAttribute="student">
 		<table id="table1" class="display">
 			<colgroup>
+				<col span="1" style="width: 1%;">
 				<col span="1" style="width: 5%;">
 				<col span="1" style="width: 15%;">
 				<col span="1" style="width: 14%;">
@@ -468,6 +477,7 @@ function validate() {
 			</colgroup>
 			<thead style="background-color: #4876FF; color: white">
 				<tr>
+					<th>STT</th>
 					<th>Mã</th>
 					<th>Họ Tên</th>
 					<th>Email</th>
@@ -497,6 +507,7 @@ function validate() {
 						</c:url>
 
 						<tr>
+							<td class="input-id" style="text-align: center;"><input value=" ${list.id}" type="hidden"></td>
 							<td class="input-id">${list.id}</td>
 							<td class="table-name">${list.lname}&ensp;${list.fname}</td>
 							<td >${list.email}</td>

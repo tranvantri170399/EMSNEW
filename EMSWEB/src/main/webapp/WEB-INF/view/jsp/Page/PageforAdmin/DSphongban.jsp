@@ -91,6 +91,13 @@ function validate(){
 th.image.sorting {
 	width: 50px;
 }
+table tr {
+	counter-increment: row-num-1;
+}
+
+table tr td:first-child::before {
+	content: counter(row-num-1) " ";
+}
 </style>
 </head>
 
@@ -150,9 +157,16 @@ th.image.sorting {
 	<section class="content">
 	<!--Table  -->
 		<table id="table1" class="display">
-
+			<colgroup>
+       		<col span="1" style="width: 1%;">
+       		<col span="1" style="width: 5%;">
+       		<col span="1" style="width: 19%;">
+       		<col span="1" style="width: 1%;">
+       		    		       		       		
+    	</colgroup>
 			<thead style="background-color:#4876FF ;color: white">
 				<tr>
+					<th>STT</th>
 					<th>Mã</th>
 					<th>Tên Phòng</th>
 					<th></th>
@@ -175,6 +189,7 @@ th.image.sorting {
 						</c:url>
 
 						<tr>
+							<td class="input-id" style="text-align: center;"><input value=" ${sp.id}" type="hidden"></td>
 							<td class="input-id">${list.id}</td>
 							<td class="table-name">${list.name}</td>
 							<td>

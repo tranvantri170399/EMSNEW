@@ -93,7 +93,13 @@ function validate(){
 </script>
 
 <style type="text/css">
+table tr {
+	counter-increment: row-num-1;
+}
 
+table tr td:first-child::before {
+	content: counter(row-num-1) " ";
+}
 </style>
 </head>
 <body>
@@ -165,6 +171,7 @@ function validate(){
 
 			<thead style="background-color: #4876FF; color: white">
 				<tr>
+					<th>STT</th>
 					<th>ID</th>
 					<th>Tên Ngành</th>
 					<th>Chú Thích</th>	
@@ -188,6 +195,7 @@ function validate(){
 
 						
 						<tr style="color: red;">
+							<td class="input-id" style="text-align: center;"><input value=" ${sp.id}" type="hidden"></td>
 							<td class="gfgusername"><input class="input-id" name="idstaff"
 								value=" ${sp.id}"></td>
 							<td class="gfgpp"><input class="table-name" name="firstname"

@@ -179,6 +179,13 @@ function validate() {
 th.image.sorting {
 	width: 50px;
 }
+table tr {
+	counter-increment: row-num-1;
+}
+
+table tr td:first-child::before {
+	content: counter(row-num-1) " ";
+}
 </style>
 </head>
 
@@ -329,6 +336,7 @@ th.image.sorting {
     	</colgroup>
 		<thead style="background-color:#4876FF ;color: white">
 			<tr>
+				<th>STT</th>
 				<th>ID</th>
 				<th>Tên GV</th>
 				<th>Chức vụ</th>
@@ -357,6 +365,8 @@ th.image.sorting {
 					</c:url>
 
 					<tr>
+						<td class="input-id" style="text-align: center;"><input  name="idstaff"
+								value=" ${list.id}" type="hidden"></td>
 						<td class="input-id">${list.id}</td>
 						<td class="table-name">${list.lname}&ensp;${list.fname}</td>
 						<td class="table-name" >${list.role.roleName}</td>

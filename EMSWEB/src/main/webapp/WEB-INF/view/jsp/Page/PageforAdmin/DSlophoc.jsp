@@ -62,6 +62,13 @@
 th.image.sorting {
 	width: 50px;
 }
+table tr {
+	counter-increment: row-num-1;
+}
+
+table tr td:first-child::before {
+	content: counter(row-num-1) " ";
+}
 </style>
 </head>
 
@@ -135,6 +142,7 @@ th.image.sorting {
 
 		<thead style="background-color:#4876FF ;color: white">
 			<tr>
+				<th>STT</th>
 				<th>Mã</th>
 				<th>Tên Lớp Học</th>
 				<th>Mô tả</th>
@@ -160,6 +168,7 @@ th.image.sorting {
 					</c:url>
 
 					<tr>
+						<td class="input-id" style="text-align: center;"><input  value=" ${list.id}" type="hidden"></td>
 						<td class="input-id">${list.id}</td>
 						<td class="table-name">${list.name}</td>
 						<td class="table-name">${list.description}</td>
