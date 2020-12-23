@@ -134,11 +134,12 @@ table tr td:first-child::before {
 			</div> -->
 		<div class="form-group col-sm-6">			
 		<label for="exampleInputName">Tên Bài Kiểm Tra:</label>		
-				<input name="nameexam" >
-			</div>
-	<input type="submit" value="submit"/>
+				<input class ="form-control" name="nameexam" >
+		</div>
+		<div class="form-group col-sm-6" style="margin-top: 31px">					
+				<input type="submit" class="btn btn-primary" value="submit"/>
+		</div>		
 </form>
-	<br/><br/>
 <!-- 	<section class="content-header">
 		<ol class="breadcrumb">
 			<li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
