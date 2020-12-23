@@ -51,6 +51,53 @@
 	$(document).ready(function() {
 		$('#table1').DataTable();
 	});
+	function validate(){
+		 var id = document.myform.InputId.value;
+		 var name = document.myform.InputName.value;
+		 var ckstatus = document.myform.InputStatus.value;
+		 var hp = document.myform.InputHp.value;
+		 
+		 var status = false;
+		 
+		 if(id.length < 1){
+				document.getElementById("checkId").innerHTML = 
+		            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Mã khóa học!</span> ";
+		        status = false;
+			}else{
+				document.getElementById("checkId").innerHTML = 
+		            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+		        status = true;
+			}
+		 
+		 if(name.length < 1){
+				document.getElementById("checkName").innerHTML = 
+		            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Tên khóa học!</span> ";
+		        status = false;
+			}else{
+				document.getElementById("checkName").innerHTML = 
+		            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+			}
+		 
+		 if(ckstatus.length < 1){
+				document.getElementById("checkStatus").innerHTML = 
+		            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Trạng thái!</span> ";
+		        status = false;
+			}else{
+				document.getElementById("checkStatus").innerHTML = 
+		            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+			}
+		 
+		 if(hp.length < 1){
+				document.getElementById("checkHp").innerHTML = 
+		            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Học phần!</span> ";
+		        status = false;
+			}else{
+				document.getElementById("checkHp").innerHTML = 
+		            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+			}
+		 
+		 return status;
+	}
 </script>
 
 <style type="text/css">
@@ -85,7 +132,7 @@ table tr td:first-child::before {
 
 			<!-- Modal content-->
 			<form:form action="/newCourse/test" modelAttribute="course"
-				enctype="multipart/form-data">
+				enctype="multipart/form-data" onsubmit="return validate()" name="myform">
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -97,13 +144,15 @@ table tr td:first-child::before {
 							<div class="form-group">
 								<label for="InputID">Mã Khóa Học:</label>
 								<form:input type="text" path="id" class="form-control"
-									id="InputEmail" />
+									id="InputId" />
+									<span id="checkId"></span>
 							</div>
 
 							<div class="form-group">
 								<label for="InputID">Tên Khóa Học:</label>
 								<form:input type="text" path="name" class="form-control"
-									id="InputEmail" />
+									id="InputName" />
+									<span id="checkName"></span>
 							</div>
 
 							<div class="form-group">
@@ -129,7 +178,8 @@ table tr td:first-child::before {
 							</div>
 							<div class="form-group">
 								<label for="InputID">Trạng Thái:</label>
-								<form:input path="status" class="form-control" />
+								<form:input path="status" class="form-control" id="InputStatus"/>
+								<span id="checkStatus"></span>
 							</div>
 							<%-- <div class="form-group">
 								<label for="InputID">Chú Ý:</label>
@@ -137,7 +187,8 @@ table tr td:first-child::before {
 							</div> --%>
 							<div class="form-group">
 								<label for="InputID">Học Phần:</label>
-								<form:input path="section" class="form-control" />
+								<form:input path="section" class="form-control" id="InputHp"/>
+								<span id="checkHp"></span>
 							</div>
 						</div>
 					</div>
@@ -159,6 +210,7 @@ table tr td:first-child::before {
 
 				<thead style="background-color: #4876FF; color: white">
 					<tr>
+					<th>STT</th>
 						<th>ID</th>
 						<th>Tên Khóa Học</th>
 						<th>Học kì</th>
@@ -184,6 +236,7 @@ table tr td:first-child::before {
 							</c:url>
 
 							<tr>
+								<td class="input-id" style="text-align: center;"><input value=" ${list.id}" type="hidden"></td>
 								<td class="input-id">${list.id}</td>
 								<td class="table-name">${list.name}</td>
 								<td class="table-name">${list.semester.name}</td>

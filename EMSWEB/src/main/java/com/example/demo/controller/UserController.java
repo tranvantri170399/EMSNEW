@@ -44,7 +44,7 @@ public class UserController {
 	TeacherResponsitory teacherResponsitory;
 	@Autowired
 	StaffResponsitory staffResponsitory;
-	
+	public static String role=null;
 	@RequestMapping(value = { "/login" })
 	public String login111(ModelMap model, @ModelAttribute("student") User student, BindingResult errors) {
 		List<User> list= UserRep.findAll();
@@ -62,6 +62,7 @@ public class UserController {
 						model.addAttribute("List", us);
 						List<Staff> lists= staffResponsitory.findcustom(u.getUserid());
 						model.addAttribute("Lists", lists);
+						role=u.getRole();
 						return "/jsp/AdminPage";
 					}else if (u.getRole().equals("PH")) {
 						List<User> us= new ArrayList<User>();
@@ -71,6 +72,7 @@ public class UserController {
 						model.addAttribute("List", us);
 						List<Parent> listp= parentResponsitory.findcustom(u.getUserid());
 						model.addAttribute("Listp", listp);
+						role=u.getRole();
 						return "/jsp/templateParents";
 					}else if (u.getRole().equals("GV")) {
 						List<User> us= new ArrayList<User>();
@@ -80,6 +82,7 @@ public class UserController {
 						model.addAttribute("List", us);
 						List<Teacher> listt= teacherResponsitory.findcustom(u.getUserid());
 						model.addAttribute("Listt", listt);
+						role=u.getRole();
 						return "/jsp/templateTeacher";
 					}else {
 						List<User> us= new ArrayList<User>();
@@ -91,6 +94,7 @@ public class UserController {
 						List<Student> listst= new ArrayList<Student>();
 						listst.add(st);
 						model.addAttribute("Listst", listst);
+						role=u.getRole();
 						return "/jsp/templateStudent";
 					}
 				}else {
