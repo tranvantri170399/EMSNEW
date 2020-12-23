@@ -60,15 +60,19 @@ table tr td:first-child::before {
 </style>
 </head>
 <body>
-	<label for="exampleInputName">Tên Lớp Học:a</label>
+	<section class="content-header">
+		<H1>Điểm Danh</H1>
+		<ol class="breadcrumb">
+			<li><a href="#"><i class="fa fa-dashboard"></i>Trang Chủ</a></li>
+			<li class="active">Học Tập </li>
+			<li class="active">Điểm Danh</li>
+		</ol>
+	</section>
+
+	<section class="content">
+	<label for="exampleInputName">Tên Lớp Học:</label>
 	<div style="width: 60%;" class="row">
-<!-- 
-			<div class="form-group">
-				<label for="InputDob">Ngày sinh</label>
-				<input name="dobss" type="date" class="form-control"
-					id="InputDob" />
-				<span id="checkDob"></span>
-			</div> -->
+
 			
 			<div class="form-group col-sm-8">
 				
@@ -90,19 +94,7 @@ table tr td:first-child::before {
 			</div>
 			
 
-
-			<!-- <div class="modal-footer">
-				<input type="submit" name="btnsave" class="btn btn-info" value="Chọn	">
-			</div> -->
-
 	</div>
-<!-- 	<section class="content-header">
-		<ol class="breadcrumb">
-			<li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-			<li class="active">Quản lí</li>
-			<li class="active">Danh sách Lịch Học</li>
-		</ol>
-	</section> -->
 	<!--Table  -->
 	<form:form action="/servlet" modelAttribute="attandence">
 		<table id="table1" class="display" style="width: 100%">
@@ -169,6 +161,6 @@ table tr td:first-child::before {
 		</table>
 
 	</form:form>
-
+</section>
 </body>
 </html>

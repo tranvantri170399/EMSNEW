@@ -21,8 +21,20 @@
          folder instead of downloading all of them to reduce the load. -->
     <link href="../../../resources/bootstrap/css/_all-skins.min.css" rel="stylesheet" type="text/css" />
     
+    
+<script type="text/javascript"
+	src="../../../resources/js/jquery-3.3.1.min.js"></script>
+
+<script type="text/javascript" src="../../../resources/js/script.js"></script>
+
+
+<link href="../../../resources/css/style.css" rel="stylesheet"
+	type="text/css" />    
 </head>
   <body class="skin-blue">
+  	<div class="loader">
+		<i class="fa fa-spinner xoay icon" aria-hidden="true"></i>
+	</div>
     <div class="wrapper">
       
       <header class="main-header">
@@ -155,7 +167,7 @@
       </aside>
 
       <!-- Right side column. Contains the navbar and content of the page -->
-      <div class="content-wrapper" style="overflow: hidden;min-height: 660px;min-width:88%; ">
+      <div class="content-wrapper" style="overflow: hidden;min-height: 660px;min-width:86%; ">
         <iframe src="" name="frame" style="min-width: 100%;min-height: 660px;overflow-y: scroll;padding-right: 20px;  " 
         ></iframe>                                                                               
         <!-- Content Header (Page header) -->
