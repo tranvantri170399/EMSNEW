@@ -72,13 +72,16 @@ table tr td:first-child::before {
 </head>
 <body>
 	<section class="content-header">
-		<h1>Bảng điểm</h1>
+		<h1>
+			Bảng Điểm
+		</h1>
 		<ol class="breadcrumb">
 			<li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-			<li class="active">Thống kê học tập </li>
-			<li class="active">Bảng điểm</li>
+			<li class="active">Thống Kê Học Tập </li>
+			<li class="active">Bảng Điểm</li>
 		</ol>
 	</section>
+	<section class="content">
 	<!--Table  -->
 	<section class= "content">
 	<form:form action="/servlets" modelAttribute="attandence">
@@ -140,5 +143,6 @@ table tr td:first-child::before {
 <h4>Tổng số Môn: ${aver}</h4>
 <h3>Điểm Trung Bình: <fmt:formatNumber type="number" maxFractionDigits="2" value="${ageTotals}" /></h3>
  <h3>Số Môn: ${a}/${aver} (Đạt/Tổng)</h3>
+ </section>
 </body>
 </html>

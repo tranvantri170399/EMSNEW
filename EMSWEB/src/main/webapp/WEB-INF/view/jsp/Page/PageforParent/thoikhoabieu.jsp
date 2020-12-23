@@ -61,18 +61,19 @@
 </head>
 <body>
 	<section class="content-header">
-		<h1>Thời khóa biểu</h1>
+		<h1>Thời Khóa Biểu</h1>
 		<ol class="breadcrumb">
 			<li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
-			<li class="active">Học tập </li>
-			<li class="active">Thời khóa biểu</li>
+			<li class="active">Học Tập</li>
+			<li class="active">Thời Khóa Biểu</li>
 		</ol>
 	</section>
+	<section class="content">
 	<!--Table  -->
 	<section class="content">
 	<form:form action="/save" modelAttribute="room">
 		<table id="table1" class="display" style="width: 100%">
-<colgroup>
+	<colgroup>
        		<col span="1" style="width: 3%;">
        		<col span="1" style="width: 7%;">
        		<col span="1" style="width: 10%;">
@@ -136,8 +137,7 @@
 
 
 	</form:form>
-	</section>
-<!-- </section>
- -->
+</section>
+
 </body>
 </html>
