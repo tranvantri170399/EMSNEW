@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+	package com.example.demo.controller;
 
 import java.awt.Color;
 import java.io.IOException;
@@ -6,7 +6,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
-import com.example.demo.entities.Student;
+import com.example.demo.entities.ExamResult;
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Font;
@@ -19,10 +19,10 @@ import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 
 public class ExportFile {
-	private List<Student> listStudent;
+	private List<ExamResult> listExamResult;
 
-	public ExportFile(List<Student> listStudent) {
-		this.listStudent = listStudent;
+	public ExportFile(List<ExamResult> listExamResult) {
+		this.listExamResult = listExamResult;
 	}
 	
 	private void writeTableHeader(PdfPTable table) {
@@ -33,29 +33,35 @@ public class ExportFile {
 		Font font = FontFactory.getFont(FontFactory.HELVETICA);
         font.setColor(Color.WHITE);
         
-        cell.setPhrase(new Phrase("User ID", font));
+        
+        cell.setPhrase(new Phrase("Tên Học Sinh", font));
         table.addCell(cell);
         
-        cell.setPhrase(new Phrase("E-mail", font));
+        cell.setPhrase(new Phrase("Bài Kiểm Tra", font));
         table.addCell(cell);
-         
-        cell.setPhrase(new Phrase("Full Name", font));
+//         
+        cell.setPhrase(new Phrase("Học Kỳ", font));
         table.addCell(cell);
-         
-        cell.setPhrase(new Phrase("Roles", font));
+//         
+        cell.setPhrase(new Phrase("Môn", font));
         table.addCell(cell);
-         
-        cell.setPhrase(new Phrase("Enabled", font));
-        table.addCell(cell);       
+//         
+        cell.setPhrase(new Phrase("Mã Môn", font));
+        table.addCell(cell);   
+        
+      cell.setPhrase(new Phrase("Điểm", font));
+      table.addCell(cell);  
+           
 	}
 	
 	 private void writeTableData(PdfPTable table) {
-	        for (Student student : listStudent) {
-	            table.addCell(String.valueOf(student.getFname()));
-	            table.addCell(student.getLname());
-	            table.addCell(student.getEmail());
-	            table.addCell(student.getDob());
-	            table.addCell(String.valueOf(student.getIdcard()));
+	        for (ExamResult examResult : listExamResult) {
+	        	 table.addCell(String.valueOf(examResult.getStudent().getLname()));
+	            table.addCell(String.valueOf(examResult.getExam().getName()));
+	            table.addCell(String.valueOf(examResult.getExam().getCourse().getSemester().getName()));
+	            table.addCell(String.valueOf(examResult.getExam().getCourse().getName()));
+	            table.addCell(String.valueOf(examResult.getExam().getId()));
+	            table.addCell(String.valueOf(examResult.getMark()));
 	        }
 	    }
 	 
@@ -64,18 +70,20 @@ public class ExportFile {
 	        PdfWriter.getInstance(document, response.getOutputStream());
 	         
 	        document.open();
-	        Font font = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
+	        Font font = FontFactory.getFont(FontFactory.TIMES_ROMAN);
 	        font.setSize(18);
 	        font.setColor(Color.BLUE);
 	         
-	        Paragraph p = new Paragraph("List test student", font);
+	        Paragraph p = new Paragraph("Bang điểm sinh viên theo kỳ", font);
 	        p.setAlignment(Paragraph.ALIGN_CENTER);
+	        p.setFont(font);
 	         
 	        document.add(p);
 	         
-	        PdfPTable table = new PdfPTable(5);
+	        PdfPTable table = new PdfPTable(6);
+	        
 	        table.setWidthPercentage(100f);
-	        table.setWidths(new float[] {1.5f, 3.5f, 3.0f, 3.0f, 1.5f});
+	        table.setWidths(new float[] {1.5f, 3.5f, 3.0f, 3.0f, 1.5f,1.5f});
 	        table.setSpacingBefore(10);
 	         
 	        writeTableHeader(table);

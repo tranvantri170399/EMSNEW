@@ -72,11 +72,30 @@ table tr td:first-child::before {
 <body>
 	<section class="content-header">
 		<H1>Điểm Theo Kỳ</H1>
+		<a href="/exportPDFs" class="btn btn-danger">PDF</a>
 		<ol class="breadcrumb">
 			<li><a href="#"><i class="fa fa-dashboard"></i>Trang Chủ</a></li>
 			<li class="active">Thống Kê </li>
 			<li class="active">Điểm Theo Kỳ</li>
 		</ol>
+		<form action="/exportPDFs">
+	<div style="width: 60%;" class="row">
+			
+			<div class="form-group col-sm-8">
+				
+				<select name="namesemester" class="form-control" id="sel1">
+					<c:if test="${not empty Lists}">
+						<c:forEach var="sp" items="${Lists}">
+							<option>${sp.name}</option>
+						</c:forEach>
+					</c:if>
+				</select>		
+			</div>
+			
+	</div>
+
+	<input type="submit" value="Chọn"/>
+</form>
 	</section>
 	<section class="content">
 	<form action="/mark/followsemester">

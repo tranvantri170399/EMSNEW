@@ -168,7 +168,7 @@
 
       <!-- Right side column. Contains the navbar and content of the page -->
       <div class="content-wrapper" style="overflow: hidden;min-height: 660px;min-width:86%; ">
-        <iframe src="" name="frame" style="min-width: 100%;min-height: 660px;overflow-y: scroll;padding-right: 20px;  " 
+        <iframe src="" name="frame" style="width: 100%;min-height: 660px;overflow-y: scroll;padding-right: 20px;  " 
         ></iframe>                                                                               
         <!-- Content Header (Page header) -->
 

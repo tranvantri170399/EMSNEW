@@ -486,8 +486,7 @@ table tr td:first-child::before {
 					<th>Địa chỉ</th>
 					<th>Trạng thái</th>
 					<th>test EXport</th>
-					<th></th>
-					<th></th>
+					<th>Action</th>
 				</tr>
 			</thead>
 
@@ -515,7 +514,6 @@ table tr td:first-child::before {
 							<td>${list.phone}</td>
 							<td class="table-name">${list.address}</td>
 							<td class="table-name">${list.status}</td>
-							<td>test EXport</td>
 							<td><a  href="<spring:url value='/exportPDF' />">Export to PDF</a>
 							</td>
 							<td>
