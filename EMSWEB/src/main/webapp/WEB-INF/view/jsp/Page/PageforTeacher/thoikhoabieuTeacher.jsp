@@ -60,6 +60,9 @@
 </head>
 <body>
 	<section class="content-header">
+        <h1>
+            Thời Khóa Biểu
+        </h1>	
 		<ol class="breadcrumb">
 			<li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
 			<li class="active">Quản lí </li>
@@ -73,16 +76,13 @@
 <colgroup>
        		<col span="1" style="width: 3%;">
        		<col span="1" style="width: 7%;">
-       		<col span="1" style="width: 10%;">
-       		<col span="1" style="width: 7%;">
+       		<col span="1" style="width: 13%;">
+       		<col span="1" style="width: 13%;">
        		<col span="1" style="width: 17%;">
        		<col span="1" style="width: 10%;">
-       		<col span="1" style="width: 7%;">
-       		<col span="1" style="width: 11%;">
        		<col span="1" style="width: 9%;">
-       		<col span="1" style="width: 8%;">
-       		<col span="1" style="width: 5%;">
-       		<col span="1" style="width: 6%;">       		       		       		
+       		<col span="1" style="width: 11%;">
+       		<col span="1" style="width: 9%;">     		       		       		
     	</colgroup>
 			<thead style="background-color: #4876FF; color: white">
 				<tr>
@@ -112,7 +112,7 @@
 						</c:url>
 
 
-						<tr style="color: red;">
+						<tr style="color: black;">
 							<td class="gfgusername">${sp.id}</td>
 								<td class="gfgscores">${sp.date}</td>
 							<td class="gfgpp">${sp.amphitheater.amphitheaterName}</td>

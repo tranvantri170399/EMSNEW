@@ -77,7 +77,8 @@ table tr td:first-child::before {
 			<li class="active">Thống Kê</li>
 			<li class="active">Bảng Điểm</li>
 		</ol>
-	</section>	
+	</section>
+	<section class="content">	
 	<!--Table  -->
 	<form:form action="/servlets" modelAttribute="attandence">
 		<table id="table1" class="display" style="width: 100%">
@@ -135,5 +136,6 @@ table tr td:first-child::before {
 <h4 style="color: blue;">Tổng số Môn: ${aver}</h4>
 <h3 style="color: blue;">Điểm Trung Bình: <fmt:formatNumber type="number" maxFractionDigits="2" value="${ageTotals}" /></h3>
  <h3 style="color: blue;">Số Môn: ${a}/${aver} (Đạt/Tổng)</h3>
+ </section>
 </body>
 </html>

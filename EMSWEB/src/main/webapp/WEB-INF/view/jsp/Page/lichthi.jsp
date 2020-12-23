@@ -67,23 +67,21 @@
 			<li class="active">Lịch Thi</li>
 		</ol>
 	</section>
-<div>
+<section class="content">
 	<!--Table  -->
 	<form:form action="/save" modelAttribute="hocsinh">
 		<table id="table1" class="display" style="width: 100%">
 		<colgroup>
        		<col span="1" style="width: 3%;">
-       		<col span="1" style="width: 14%;">
-       		<col span="1" style="width: 10%;">
+       		<col span="1" style="width: 9%;">
+       		<col span="1" style="width: 12%;">
+       		<col span="1" style="width: 13%;">
+       		<col span="1" style="width: 12%;">
        		<col span="1" style="width: 7%;">
-       		<col span="1" style="width: 10%;">
-       		<col span="1" style="width: 10%;">
-       		<col span="1" style="width: 7%;">
+       		<col span="1" style="width: 9%;">
        		<col span="1" style="width: 11%;">
        		<col span="1" style="width: 9%;">
-       		<col span="1" style="width: 8%;">
-       		<col span="1" style="width: 5%;">
-       		<col span="1" style="width: 6%;">       		       		       		
+       		<col span="1" style="width: 8%;">      	      		       		       		
     	</colgroup>
 			<thead style="background-color: #4876FF;color: white;">
 				<tr>
@@ -135,7 +133,7 @@
 
 
 	</form:form>
-</div>
+</section>
 
 </body>
 </html>

@@ -92,6 +92,7 @@ table tr td:first-child::before {
 					</c:if>
 				</select>		
 			</div>
+			
 	</div>
 
 	<input type="submit" value="Chọn"/>

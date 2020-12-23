@@ -66,13 +66,14 @@ th.image.sorting {
 
 <body>
 	<section class="content-header">
-
+		<h1>Danh Sách Lớp Học</h1>
 		<ol class="breadcrumb">
 			<li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
 			<li class="active">Quản Lí Học Sinh</li>
 			<li class="active">Danh sách Học Sinh</li>
 		</ol>
 	</section>
+	<section class="content">
 	<!--Table  -->
 	<table id="table1" class="display">
 
@@ -121,7 +122,7 @@ th.image.sorting {
 			</c:if>
 		</tbody>
 	</table>
-
+	</section>
 </body>
 
 </html>

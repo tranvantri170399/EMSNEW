@@ -80,10 +80,18 @@ table tr td:first-child::before {
 </style>
 </head>
 <body>
-<form action="/mark/save">
-	<label for="exampleInputName">Tên Lớp Học:</label>
-	<div style="width: 60%;" class="row">		
-			<div class="form-group col-sm-8">
+	<section class="content-header">
+		<h1>Bảng Điểm</h1>
+		<ol class="breadcrumb">
+			<li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
+			<li class="active">Học Tập</li>
+			<li class="active">Bảng Điểm</li>
+		</ol>
+	</section>
+	<section class="content">
+	<form action="/mark/save" class="row">
+			<div class="form-group col-sm-6">
+			<label for="exampleInputName">Tên Lớp Học:</label>		
 				
 				<select name="course" class="form-control" id="sel1">
 					<c:if test="${not empty Lists}">
@@ -102,12 +110,9 @@ table tr td:first-child::before {
 									onclick="location.href='${attandence}';">Chọn</button>
 			</div> --%>
 
-	</div><br/>
+		<div class="form-group col-sm-6">
 		<label for="exampleInputName">Loại bài kiểm tra:</label>
-	<div style="width: 60%;" class="row">
-			
-			<div class="form-group col-sm-8">
-				
+							
 				<select name="namelab" class="form-control" id="sel1">
 					<c:if test="${not empty Listss}">
 						<c:forEach var="sp" items="${Listss}">
@@ -127,15 +132,10 @@ table tr td:first-child::before {
 			<!-- <div class="modal-footer">
 				<input type="submit" name="btnsave" class="btn btn-info" value="Chọn	">
 			</div> -->
-
-	</div>
-	<br/>
-		<label for="exampleInputName">Tên Bài Kiểm Tra:</label>
-	<div style="width: 60%;" class="row">		
-			<div class="form-group col-sm-8">
+		<div class="form-group col-sm-6">			
+		<label for="exampleInputName">Tên Bài Kiểm Tra:</label>		
 				<input name="nameexam" >
 			</div>
-	</div>
 	<input type="submit" value="submit"/>
 </form>
 	<br/><br/>
@@ -243,5 +243,6 @@ table tr td:first-child::before {
 		<p style="margin-top: 1.5rem; font-size: 20px;">Cập nhật thất bại!</p>
 	</div>
 	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+</section>	
 </body>
 </html>

@@ -112,12 +112,13 @@
 									<li class="user-footer">
 										<div class="pull-left">
 											<form:form method="POST" modelAttribute="student">
-												<button onclick="#'">Profile</button>
+												<button onclick="#'" class="btn btn-info">Thông tin</button>
 											</form:form>
 										</div>
 										<div class="pull-right">
 											<form:form method="POST" modelAttribute="student">
-												<button onclick="/logout'">Sign out</button>
+												<button onclick="/logout'" class="btn btn-danger">Đăng
+													xuất</button>
 											</form:form>
 										</div>
 									</li>
