@@ -51,6 +51,46 @@
 	$(document).ready(function() {
 		$('#table1').DataTable();
 	});
+	function validate(){
+		 
+		 var name = document.myform.InputName.value;
+		 var ckstatus = document.myform.InputStatus.value;
+		 var hp = document.myform.InputHp.value;
+		 
+		 var status = false;
+		 
+		 
+		 
+		 if(name.length < 1){
+				document.getElementById("checkName").innerHTML = 
+		            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Tên khóa học!</span> ";
+		        status = false;
+			}else{
+				document.getElementById("checkName").innerHTML = 
+		            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+		            status = true;
+			}
+		 
+		 if(ckstatus.length < 1){
+				document.getElementById("checkStatus").innerHTML = 
+		            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Trạng thái!</span> ";
+		        status = false;
+			}else{
+				document.getElementById("checkStatus").innerHTML = 
+		            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+			}
+		 
+		 if(hp.length < 1){
+				document.getElementById("checkHp").innerHTML = 
+		            " <span class='fas fa-window-close' style='color:red;'>Vui lòng nhập Học phần!</span> ";
+		        status = false;
+			}else{
+				document.getElementById("checkHp").innerHTML = 
+		            " <span class='fa fa-check-square' style='color:#3FFF00;'></span>";
+			}
+		 
+		 return status;
+	}
 </script>
 
 <style type="text/css">
@@ -72,7 +112,7 @@
 
 	<!-- Modal content-->
 	<form:form action="/newCourse/testupdate" modelAttribute="course"
-		enctype="multipart/form-data">
+		enctype="multipart/form-data" onsubmit="return validate()" name="myform">
 
 		<div>
 			<c:if test="${not empty List}">
@@ -86,7 +126,8 @@
 					<div class="form-group">
 						<label for="InputID">Tên Khóa Học:</label>
 						<form:input type="text" path="name" class="form-control"
-							id="InputEmail" value="${sp.name}" />
+							id="InputName" value="${sp.name}" />
+							<span id="checkName"></span>
 					</div>
 
 					<div class="form-group">
@@ -114,16 +155,18 @@
 						<label for="InputID">Trạng Thái:</label>
 						<c:if test="${not empty List}">
 				<c:forEach var="sp" items="${List}">
-						<form:input path="status" class="form-control" id="InputEmail"
+						<form:input path="status" class="form-control" id="InputStatus"
 							value="${sp.status}" />
+							<span id="checkStatus"></span>
 							</c:forEach></c:if>
 					</div>
 					<div class="form-group">
 						<label for="InputID">Học Phần:</label>
 						<c:if test="${not empty List}">
 				<c:forEach var="sp" items="${List}">
-						<form:input path="section" class="form-control"
+						<form:input path="section" class="form-control"  id="InputHp"
 							value="${sp.section}" />
+							<span id="checkHp"></span>
 							</c:forEach></c:if>
 					</div>
 				</c:forEach>

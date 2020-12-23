@@ -11,6 +11,7 @@ import java.util.Map;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.hibernate.mapping.Array;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.entities.Classroom;
@@ -96,6 +98,11 @@ public class adminController {
 	ClassroomStudentResponsitory classroomStudentRespon;
 	@Autowired
 	MajorSemesterResponsitory majorSemesterResponsitory;
+
+	String RoleNV = "NV";
+	String RoleGV = "GV";
+	String RoleSV = "PS";
+	String RolePH = "PH";
 
 	// controller teacher//
 	@GetMapping("/DSgiaovien")
@@ -248,13 +255,19 @@ public class adminController {
 	// nhanvien
 	@RequestMapping(value = { "/DSnhanvien" })
 	public String loadDSnhanvien(Model model, @ModelAttribute("staff") Staff staff) {
-		List<Staff> stafflist = staffrep.findAll();
-		model.addAttribute("List", stafflist);
-		List<Depart> departlist = departResponsitory.findAll();
-		model.addAttribute("Listdp", departlist);
-		List<Role> rolelist = rolerepon.findAll();
-		model.addAttribute("Listr", rolelist);
-		return "/jsp/Page/PageforAdmin/DSnhanvien";
+		String Role = UserController.role;
+		if (Role.equals(RoleNV)) {
+			List<Staff> stafflist = staffrep.findAll();
+			model.addAttribute("List", stafflist);
+			List<Depart> departlist = departResponsitory.findAll();
+			model.addAttribute("Listdp", departlist);
+			List<Role> rolelist = rolerepon.findAll();
+			model.addAttribute("Listr", rolelist);
+			return "/jsp/Page/PageforAdmin/DSnhanvien";
+		} else {
+			return "/jsp/Page/ErrorPage";
+		}
+
 	}
 
 	@RequestMapping(value = { "/save/staff" })
@@ -314,12 +327,17 @@ public class adminController {
 	@RequestMapping(value = { "/deletestaff" })
 	public String Delnhanvien(@ModelAttribute("staff") Staff staff, Model model, HttpServletRequest request,
 			@RequestParam("fname") String fname) {
-		System.out.println("===>>>" + fname);
-		Staff sfs = staffrep.findByfname(fname);
-		staffrep.delete(sfs);
-		List<Staff> staffs = staffrep.findAll();
-		model.addAttribute("List", staffs);
-		return "/jsp/Page/PageforAdmin/DSnhanvien";
+		String Role = UserController.role;
+		if (Role.equals(RoleNV)) {
+			System.out.println("===>>>" + fname);
+			Staff sfs = staffrep.findByfname(fname);
+			staffrep.delete(sfs);
+			List<Staff> staffs = staffrep.findAll();
+			model.addAttribute("List", staffs);
+			return "/jsp/Page/PageforAdmin/DSnhanvien";
+		} else {
+			return "/jsp/Page/ErrorPage";
+		}
 	}
 
 	@RequestMapping(value = { "/updatestaff" })
@@ -382,10 +400,14 @@ public class adminController {
 
 	@RequestMapping(value = { "/DSphongban" })
 	public String loadDSPhongban(Model model, @ModelAttribute("departNew") Depart departNew) {
-		List<Depart> departlist = departResponsitory.findAll();
-		model.addAttribute("List", departlist);
-
-		return "/jsp/Page/PageforAdmin/DSphongban";
+		String Role = UserController.role;
+		if (Role.equals(RoleNV)) {
+			List<Depart> departlist = departResponsitory.findAll();
+			model.addAttribute("List", departlist);
+			return "/jsp/Page/PageforAdmin/DSphongban";
+		} else {
+			return "/jsp/Page/ErrorPage";
+		}
 	}
 
 	@RequestMapping(value = "/newDepart", method = RequestMethod.POST)
@@ -426,11 +448,18 @@ public class adminController {
 	// student//
 	@RequestMapping(value = { "/DShocsinh" })
 	public String loadDShocsinh(Model model, @ModelAttribute("student") Student student) {
-		List<Student> studentlist = studentResponsitory.findAll();
-		model.addAttribute("List", studentlist);
-		List<Classroom> classroomlist = classroomResponsitory.findAll();
-		model.addAttribute("Listsl", classroomlist);
-		return "/jsp/Page/PageforAdmin/DShocsinh";
+		String Role = UserController.role;
+		if (Role.equals(RoleNV)) {
+
+			List<Student> studentlist = studentResponsitory.findAll();
+			model.addAttribute("List", studentlist);
+			List<Classroom> classroomlist = classroomResponsitory.findAll();
+			model.addAttribute("Listsl", classroomlist);
+			return "/jsp/Page/PageforAdmin/DShocsinh";
+
+		} else {
+			return "/jsp/Page/ErrorPage";
+		}
 	}
 
 	@RequestMapping(value = { "/studentNew" })
@@ -596,21 +625,31 @@ public class adminController {
 	// deletehs//
 	@GetMapping("/deleteST")
 	public String deleteST(@RequestParam("id") String id) {
-		Student student = studentResponsitory.findByid(id);
-		parentResponsitory.deleteById(student.getParent().getId());
-		studentResponsitory.deleteById(id);
-		return "redirect:/DShocsinh";
+		String Role = UserController.role;
+		if (Role.equals(RoleNV)) {
+			Student student = studentResponsitory.findByid(id);
+			parentResponsitory.deleteById(student.getParent().getId());
+			studentResponsitory.deleteById(id);
+			return "redirect:/DShocsinh";
+		} else {
+			return "/jsp/Page/ErrorPage";
+		}
 	}
 	// deletehs//
 
 	// list mon hoc//
 	@RequestMapping(value = { "/DSmonhoc" })
 	public String loadDSmonhoc(Model model, @ModelAttribute("subjectNew") Subject subjectNew) {
-		List<Subject> list = subjectResponsitory.findAll();
-		model.addAttribute("List", list);
-		List<Majors> majors = majorsResponsitory.findAll();
-		model.addAttribute("Listmj", majors);
-		return "/jsp/Page/PageforAdmin/DSmonhoc";
+		String Role = UserController.role;
+		if (Role.equals(RoleNV)) {
+			List<Subject> list = subjectResponsitory.findAll();
+			model.addAttribute("List", list);
+			List<Majors> majors = majorsResponsitory.findAll();
+			model.addAttribute("Listmj", majors);
+			return "/jsp/Page/PageforAdmin/DSmonhoc";
+		} else {
+			return "/jsp/Page/ErrorPage";
+		}
 	}
 
 	// new
@@ -666,9 +705,14 @@ public class adminController {
 	// loadtable
 	@RequestMapping(value = { "/DSlophoc" })
 	public String loadDSlophoc(Model model, @ModelAttribute("classroom") Classroom Classroom) {
-		List<Classroom> list = classroomResponsitory.findAll();
-		model.addAttribute("List", list);
-		return "/jsp/Page/PageforAdmin/DSlophoc";
+		String Role = UserController.role;
+		if (Role.equals(RoleNV)) {
+			List<Classroom> list = classroomResponsitory.findAll();
+			model.addAttribute("List", list);
+			return "/jsp/Page/PageforAdmin/DSlophoc";
+		} else {
+			return "/jsp/Page/ErrorPage";
+		}
 	}
 
 	// new
@@ -712,9 +756,14 @@ public class adminController {
 	// Danh Sach Nganh //
 	@RequestMapping(value = { "/DSnganh" })
 	public String loadDSnganh(Model model, @ModelAttribute("major") Majors major) {
-		List<Majors> list = majorsResponsitory.findAll();
-		model.addAttribute("List", list);
-		return "/jsp/Page/PageforAdmin/DSnganh";
+		String Role = UserController.role;
+		if (Role.equals(RoleNV)) {
+			List<Majors> list = majorsResponsitory.findAll();
+			model.addAttribute("List", list);
+			return "/jsp/Page/PageforAdmin/DSnganh";
+		} else {
+			return "/jsp/Page/ErrorPage";
+		}
 	}
 
 	@RequestMapping(value = { "/newDSnganh" })
@@ -762,9 +811,14 @@ public class adminController {
 	// list hocky//
 	@RequestMapping(value = { "/DShocki" })
 	public String DShocki(Model model, @ModelAttribute("semester") Semester semester) {
-		List<Semester> semester1 = semesterResponsitory.findAll();
-		model.addAttribute("List", semester1);
-		return "/jsp/Page/PageforAdmin/DShocki";
+		String Role = UserController.role;
+		if (Role.equals(RoleNV)) {
+			List<Semester> semester1 = semesterResponsitory.findAll();
+			model.addAttribute("List", semester1);
+			return "/jsp/Page/PageforAdmin/DShocki";
+		} else {
+			return "/jsp/Page/ErrorPage";
+		}
 	}
 
 	// new
@@ -801,15 +855,20 @@ public class adminController {
 	// quan ly mon tung hoc ky//
 	@RequestMapping(value = { "/QLMhocky" })
 	public String QLMhocky(Model model, @ModelAttribute("majorSemester") MajorsSemester majorSemester) {
-		List<MajorsSemester> listMJS = majorSemesterResponsitory.findAll();
-		model.addAttribute("majorSemester", listMJS);
-		List<Semester> listST = semesterResponsitory.findAll();
-		model.addAttribute("listST", listST);
-		List<Majors> listMJ = majorsResponsitory.findAll();
-		model.addAttribute("listMJ", listMJ);
-		List<Subject> listSB = subjectResponsitory.findAll();
-		model.addAttribute("listSB", listSB);
-		return "/jsp/Page/PageforAdmin/QLMhocky";
+		String Role = UserController.role;
+		if (Role.equals(RoleNV)) {
+			List<MajorsSemester> listMJS = majorSemesterResponsitory.findAll();
+			model.addAttribute("majorSemester", listMJS);
+			List<Semester> listST = semesterResponsitory.findAll();
+			model.addAttribute("listST", listST);
+			List<Majors> listMJ = majorsResponsitory.findAll();
+			model.addAttribute("listMJ", listMJ);
+			List<Subject> listSB = subjectResponsitory.findAll();
+			model.addAttribute("listSB", listSB);
+			return "/jsp/Page/PageforAdmin/QLMhocky";
+		} else {
+			return "/jsp/Page/ErrorPage";
+		}
 	}
 
 	@RequestMapping(value = { "/NewQLhocky" })
@@ -871,6 +930,7 @@ public class adminController {
 		majorSemesterResponsitory.save(mjst);
 		return "redirect:/QLMhocky";
 	}
+
 	@GetMapping(value = "/deleteQLMhocky")
 	public String deleteQLMhocky(@RequestParam("id") int id) {
 		majorSemesterResponsitory.deleteById(id);
