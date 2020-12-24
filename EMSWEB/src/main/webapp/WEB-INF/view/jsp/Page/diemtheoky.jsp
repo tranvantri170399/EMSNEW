@@ -72,36 +72,19 @@ table tr td:first-child::before {
 <body>
 	<section class="content-header">
 		<H1>Điểm Theo Kỳ</H1>
-		<a href="/exportPDFs" class="btn btn-danger">PDF</a>
 		<ol class="breadcrumb">
 			<li><a href="#"><i class="fa fa-dashboard"></i>Trang Chủ</a></li>
 			<li class="active">Thống Kê </li>
 			<li class="active">Điểm Theo Kỳ</li>
 		</ol>
-		<form action="/exportPDFs">
-	<div style="width: 60%;" class="row">
-			
-			<div class="form-group col-sm-8">
-				
-				<select name="namesemester" class="form-control" id="sel1">
-					<c:if test="${not empty Lists}">
-						<c:forEach var="sp" items="${Lists}">
-							<option>${sp.name}</option>
-						</c:forEach>
-					</c:if>
-				</select>		
-			</div>
-			
-	</div>
-
-	<input type="submit" value="Chọn"/>
-</form>
 	</section>
 	<section class="content">
-	<form action="/mark/followsemester">
-	<div style="width: 60%;" class="row">
+	<div class="row">
+	<div class="col-sm-6">
+	<form action="/mark/followsemester" style="width: 60%;">
+	<div class="row">
 			
-			<div class="form-group col-sm-8">
+			<div class="form-group col-sm-12">
 				
 				<select name="namesemester" class="form-control" id="sel1">
 					<c:if test="${not empty Lists}">
@@ -116,6 +99,23 @@ table tr td:first-child::before {
 
 	<input type="submit" value="Chọn"/>
 </form>
+</div>
+	<div class="col-sm-6">
+		<form action="/exportPDFs">		
+			<div class="form-group col-sm-12">
+				
+				<select name="namesemester" class="form-control" id="sel1">
+					<c:if test="${not empty Lists}">
+						<c:forEach var="sp" items="${Lists}">
+							<option>${sp.name}</option>
+						</c:forEach>
+					</c:if>
+				</select>		
+			</div>
+		<input type="submit" style="float: right;margin-top: 39px" class="btn btn-danger"  value="PDF"/>
+	</form>
+	</div>
+	</div>
 <br/>
 	<!--Table  -->
 	<form:form action="/servlets" modelAttribute="attandence">
