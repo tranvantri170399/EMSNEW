@@ -191,13 +191,12 @@
 		</aside>
 
 		<!-- Right side column. Contains the navbar and content of the page -->
-		<div class="content-wrapper"
-			style="overflow: hidden; min-height: 660px; min-width: 86%;">
+		<div class="content-wrapper">
 			<iframe src="" name="frame"
-				style="width: 100%; min-height: 660px; overflow-y: scroll; overflow-x: scroll; padding-right: 20px;"></iframe>
+				style="width:100%; min-height: 660px" scrolling="no"></iframe>
 			<!-- Content Header (Page header) -->
 
-		</div>		
+		</div>
 		<!-- /.content-wrapper -->
 
 		<footer class="main-footer">

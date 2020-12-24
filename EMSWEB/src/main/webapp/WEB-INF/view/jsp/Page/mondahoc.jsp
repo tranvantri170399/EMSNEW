@@ -133,6 +133,7 @@ table tr td:first-child::before {
 	<c:if test="${sp.mark>=5}"><c:set var="a" value="${a + 1}" /></c:if>
 	<c:if test="${sp.mark<5}"><c:set var="b" value="${b + 1}" /></c:if>
 </c:forEach>
+<h4 style="color: blue;">Tổng số môn đã học: ${aver}</h4>
  <h3 style="color: blue;">Số Môn: ${a}/${aver} (Đạt/Tổng)</h3>
 </section>	 
 </body>
