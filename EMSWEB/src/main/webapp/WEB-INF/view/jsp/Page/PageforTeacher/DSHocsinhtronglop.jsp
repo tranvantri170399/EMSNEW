@@ -84,7 +84,7 @@ th.image.sorting {
 				<th>Tên Môn học</th>
 				<th>Mô tả môn học</th>
 				<th>Trạng thái</th>
-				<th>Actions</th>
+				
 			</tr>
 		</thead>
 
@@ -109,14 +109,7 @@ th.image.sorting {
 						<td>${list.classroom.name}</td>
 						<td>${list.student.fname}</td>
 						<td>${list.student.email}</td>
-						<td>
-							<div class="btn-group" role="group" aria-label="Basic example">
-								<button type="button" class="btn btn-info"
-									onclick="location.href='${updateLink}';">Cập Nhật</button>
-								<button type="button" class="btn btn-danger"
-									onclick="location.href='${deleteLink}';">Xóa</button>
-							</div>
-						</td>
+						
 					</tr>
 				</c:forEach>
 			</c:if>

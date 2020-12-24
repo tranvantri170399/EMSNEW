@@ -6,4 +6,5 @@ import com.example.demo.entities.SchoolRoom;
 
 public interface SchoolroomResponsitory extends JpaRepository<SchoolRoom, String> {
 	SchoolRoom findByname(String name);
+	SchoolRoom findByschoolroomnumber(String schoolnumber);
 }

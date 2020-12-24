@@ -71,7 +71,8 @@ table tr td:first-child::before {
 <body>
 
 	<!--Table  -->
-	<form:form action="/servlets" modelAttribute="attandence">
+	<!-- /servlets -->
+	<form:form action="" modelAttribute="attandence">
 		<table id="table1" class="display" style="width: 100%">
 			<colgroup>
 				<col span="1" style="width: 3%;">
@@ -91,9 +92,9 @@ table tr td:first-child::before {
 
 				<tr>
 					<th>STT</th>
-					<th>Student Name</th>
-					<th>Course</th>
-					<th>Mark</th>
+					<th>Tên sinh viên</th>
+					<th>Tên bài kiểm tra</th>
+					<th>Điểm</th>
 				
 				</tr>
 
