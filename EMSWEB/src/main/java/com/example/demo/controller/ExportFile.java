@@ -34,22 +34,22 @@ public class ExportFile {
         font.setColor(Color.WHITE);
         
         
-        cell.setPhrase(new Phrase("Tên Học Sinh", font));
+        cell.setPhrase(new Phrase("Student Name", font));
         table.addCell(cell);
         
-        cell.setPhrase(new Phrase("Bài Kiểm Tra", font));
+        cell.setPhrase(new Phrase("Test Name", font));
         table.addCell(cell);
 //         
-        cell.setPhrase(new Phrase("Học Kỳ", font));
+        cell.setPhrase(new Phrase("Semester", font));
         table.addCell(cell);
 //         
-        cell.setPhrase(new Phrase("Môn", font));
+        cell.setPhrase(new Phrase("Subject", font));
         table.addCell(cell);
 //         
-        cell.setPhrase(new Phrase("Mã Môn", font));
+        cell.setPhrase(new Phrase("Subject Code", font));
         table.addCell(cell);   
         
-      cell.setPhrase(new Phrase("Điểm", font));
+      cell.setPhrase(new Phrase("Score", font));
       table.addCell(cell);  
            
 	}
@@ -74,7 +74,7 @@ public class ExportFile {
 	        font.setSize(18);
 	        font.setColor(Color.BLUE);
 	         
-	        Paragraph p = new Paragraph("Bang điểm sinh viên theo kỳ", font);
+	        Paragraph p = new Paragraph("ScoreBoard", font);
 	        p.setAlignment(Paragraph.ALIGN_CENTER);
 	        p.setFont(font);
 	         
