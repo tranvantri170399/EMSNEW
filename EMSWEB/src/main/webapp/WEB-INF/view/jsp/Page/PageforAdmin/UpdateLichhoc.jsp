@@ -106,7 +106,7 @@
 									idxmlns="sel1">
 									<c:if test="${not empty Listsh}">
 										<c:forEach var="sp" items="${Listsh}">
-											<form:option value="${sp.name}" />
+											<form:option value="${sp.schoolroomnumber}" />
 											<%--  <form:options items="${Listdp}" /> --%>
 										</c:forEach>
 									</c:if>

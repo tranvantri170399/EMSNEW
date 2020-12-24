@@ -47,7 +47,7 @@
           <div class="row">
             <div class="col-md-12">
               <div class="box box-primary">
-                <img src="../../../../../resources/FileUpload/${sp.image}" name="" style="background: blue;width: 200px;height: 200px;">
+                <img src="../../../../../resources/FileUpload/${sp.image}" name="" style="background: blue;width: 150px;height: 200px;">
               <form:form role="form">
              	 
                 <div class="box-body">
@@ -58,26 +58,26 @@
                     <label for="exampleInputName">Họ và Tên</label>
                     <div class="input-group">
                       <span class="input-group-addon">Họ</span> 
-                      <input type="text" class="form-control" id="InputLastname" name="" value="${sp.lname}" />
+                      <input type="text" class="form-control" id="InputLastname" name="" value="${sp.lname}" readonly/>
                       <span class="input-group-addon">Tên</span> 
-                      <input type="text" class="form-control"  id="InputFirstname" name="" value="${sp.fname}"/>            
+                      <input type="text" class="form-control"  id="InputFirstname" name="" value="${sp.fname}" readonly/>            
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="InputDob">Ngày sinh</label>
-                    <input type="date" class="form-control" id="InputDob" min="1980-1-1" max="2020-12-31" name="" value="${sp.dob}"/>
+                    <input type="date" class="form-control" id="InputDob" min="1980-1-1" max="2020-12-31" name="" value="${sp.dob}" readonly/>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail">Email</label>
-                    <input type="text" class="form-control" id="InputEmail" name="" value="${sp.email}"/>
+                    <input type="text" class="form-control" id="InputEmail" name="" value="${sp.email}" readonly/>
                   </div>        
                   <div class="form-group">
                     <label for="InputPhone">Số Điện Thoại</label>
-                    <input type="text" class="form-control" id="InputPhone" name="" value="${sp.phone}"/>
+                    <input type="text" class="form-control" id="InputPhone" name="" value="${sp.phone}" readonly/>
                   </div>      
                   <div class="form-group">
                     <label for="InputPhone">Địa chỉ</label>
-                    <input type="text" class="form-control" id="InputAddress" name="" value="${sp.address}"/>
+                    <input type="text" class="form-control" id="InputAddress" name="" value="${sp.address}" readonly/>
                   </div>                                               
                   <div class="form-group">
                     <label for="InputPhone">Trạng thái:</label>
@@ -85,11 +85,11 @@
                   </div>   
                   <div class="form-group">
                     <label for="InputID">Cấp độ:</label>
-                    <input name="id" class="form-control" value="${sp.level}"/>
+                    <input name="id" class="form-control" value="${sp.level}" readonly/>
                    </div>
                   <div class="form-group">
                     <label for="InputID">Lương</label>
-                    <input name="id" class="form-control" value="${sp.salary}"/>
+                    <input name="id" class="form-control" value="${sp.salary}" readonly/>
                   </div>  
                   <div class="form-group">
                     <label for="InputID">Phòng Ban: ${sp.depart.name}</label>

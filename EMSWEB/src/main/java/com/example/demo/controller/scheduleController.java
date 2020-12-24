@@ -141,7 +141,7 @@ public class scheduleController {
 		Classroom classroom=classroomResponsitory.findByname(name);
 		
 		String shoolname= request.getParameter("schoolroom");
-		SchoolRoom schoolRoom=schoolroomResponsitory.findByname(shoolname);
+		SchoolRoom schoolRoom=schoolroomResponsitory.findByschoolroomnumber(shoolname);
 		
 		String nameShift= request.getParameter("teststudyShift");
 		StudyShift shift = studyShiftResponsitorys.findBynameShift(nameShift);
@@ -196,7 +196,7 @@ public class scheduleController {
 		Classroom classroom=classroomResponsitory.findByname(name);
 		
 		String shoolname= request.getParameter("schoolroom");
-		SchoolRoom schoolRoom=schoolroomResponsitory.findByname(shoolname);
+		SchoolRoom schoolRoom=schoolroomResponsitory.findByschoolroomnumber(shoolname);
 		
 		String nameShift= request.getParameter("teststudyShift");
 		StudyShift shift = studyShiftResponsitorys.findBynameShift(nameShift);
